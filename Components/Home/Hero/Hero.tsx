@@ -1,9 +1,13 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
 
+import Image from "next/image";
+
 const useStyles = makeStyles({
   root: {
+    position: "relative",
     width: "100vw",
+    paddingTop: 150,
     height: 600,
     padding: "5%",
     color: "white",
@@ -21,10 +25,28 @@ const useStyles = makeStyles({
   button: {
     fontSize: "small",
     background: "#0380A7 0% 0% no-repeat padding-box",
-    padding: "10px 30px 10px 30px",
+    padding: "10px 40px 10px 40px",
     marginRight: 20,
     borderRadius: 50,
   },
+  youtubeButtonsContainer: {
+    display: "flex",
+    width: "65%",
+  },
+  youtubeLogo: {
+    marginRight: 20,
+    marginLeft: -25,
+    display: "flex",
+    alignItems: "center",
+  },
+  awe: {
+    position: "absolute",
+    top: '25%',
+    right: '20%',
+    ['@media (max-width: 600px)']: {
+      display: 'none',
+    }
+  }
 });
 
 const useContentStyles = makeStyles({
@@ -49,17 +71,36 @@ const Hero: React.FC<{}> = () => {
           </span>
         </Typography>
         <div className={classes.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil
-          eum totam aspernatur voluptate, molestiae expedita aliquid dolores
-          explicabo quae rerum, alias minima obcaecati nostrum maxime dolorum.
-          Iusto harum cumque aut exercitationem velit impedit vel alias iste
-          accusamus laudantium vero eum rerum, ex culpa, perspiciatis quis ipsa
-          atque, earum quisquam.
+          <Typography component="h2" variant="caption">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil
+            eum totam aspernatur voluptate, molestiae expedita aliquid dolores
+            explicabo quae rerum, alias minima obcaecati nostrum maxime dolorum.
+            Iusto harum cumque aut exercitationem velit impedit vel alias iste
+            accusamus laudantium vero eum rerum, ex culpa, perspiciatis quis
+            ipsa atque, earum quisquam.
+          </Typography>
         </div>
         <div className={classes.buttons}>
           <div className={classes.button}>Talk to us</div>
           <div className={classes.button}>All Courses</div>
         </div>
+        <div
+          className={`${classes.youtubeButtonsContainer} ${classes.buttons} ${classes.button}`}
+        >
+          <div className={classes.youtubeLogo}>
+            <Image
+              src="/assets/small_youtube_logo.png"
+              width={29}
+              height={21}
+            />
+          </div>
+          <Typography variant="caption">
+            Find free video tutorials on YouTube
+          </Typography>
+        </div>
+      </div>
+      <div className={classes.awe}>
+        <Image src="/assets/awe.png" width={300} height={300} />
       </div>
     </div>
   );
