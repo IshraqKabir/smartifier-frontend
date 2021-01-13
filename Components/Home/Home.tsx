@@ -9,6 +9,7 @@ const useStyles = makeStyles({
         width: '100vw',
         height: '100vh',
         backgroundColor: '#022671',
+        overflowX: "hidden",
     }
 });
 
