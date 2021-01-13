@@ -3,7 +3,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Image from "next/image";
 import NavItems from "./NavItems/NavItems";
-import Login from "./NavItems/NavItem/Login/User/User";
+import Login from "./NavItems/NavItem/Login/Login";
 
 const useStyles = makeStyles({
   topbarContainer: {

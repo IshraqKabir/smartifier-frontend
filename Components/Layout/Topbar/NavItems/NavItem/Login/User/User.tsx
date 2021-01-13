@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Login: React.FC<{}> = () => {
+const User: React.FC<{}> = () => {
   const [user] = useLocalState<any>("user", "");
   const [open, setOpen] = useState<boolean>(false);
 
@@ -60,4 +60,4 @@ const Login: React.FC<{}> = () => {
   );
 };
 
-export default Login;
+export default User;

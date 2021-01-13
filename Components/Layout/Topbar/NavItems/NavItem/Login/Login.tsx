@@ -6,8 +6,9 @@ import { backend_url } from "../../../../../../url";
 
 import post from "../../../../../../UtilFunctions/post";
 import useLocalState from "../../../../../../custom-hooks/useLocalState";
-
 import User from "./User/User";
+
+// import User from "./User/User";
 
 const Login: React.FC<{}> = () => {
   const [user, setUser] = useLocalState<any>("user", "");
@@ -28,9 +29,10 @@ const Login: React.FC<{}> = () => {
     }
   };
 
+
   return (
     <>
-      {user === "" ? (
+      {!user ? (
         <GoogleLogin
           clientId="540083931812-7bt05mqtrriog1f1kdpvotbvnr01iien.apps.googleusercontent.com"
           buttonText="Login"
