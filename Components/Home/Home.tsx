@@ -3,6 +3,7 @@ import React from "react";
 
 import Topbar from "../Layout/Topbar/Topbar";
 import Hero from "./Hero/Hero";
+import Intro from "./Intro/Intro";
 
 const useStyles = makeStyles({
     root: {
@@ -19,6 +20,7 @@ const HomeComponent: React.FC<{}> = () => {
     return (<div className={classes.root}>
         <Topbar />
         <Hero />
+        <Intro />
     </div>)
 }
 

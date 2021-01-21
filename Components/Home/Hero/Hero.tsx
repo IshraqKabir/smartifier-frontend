@@ -7,8 +7,7 @@ const useStyles = makeStyles({
   root: {
     position: "relative",
     width: "100vw",
-    paddingTop: 150,
-    height: 600,
+    // paddingTop: 250,
     padding: "5%",
     color: "white",
     background:
@@ -26,15 +25,16 @@ const useStyles = makeStyles({
     display: "flex",
   },
   button: {
-    fontSize: "small",
     background: "#0380A7 0% 0% no-repeat padding-box",
     padding: "10px 40px 10px 40px",
     marginRight: 20,
     borderRadius: 50,
+    fontSize: "small",
   },
   youtubeButtonsContainer: {
     display: "flex",
     width: "65%",
+    fontSize: "large",
   },
   youtubeLogo: {
     marginRight: 20,
@@ -44,7 +44,7 @@ const useStyles = makeStyles({
   },
   awe: {
     position: "absolute",
-    top: "25%",
+    top: "15%",
     right: "20%",
     ["@media (max-width: 600px)"]: {
       display: "none",
@@ -67,14 +67,14 @@ const Hero: React.FC<{}> = () => {
   return (
     <div className={classes.root}>
       <div className={contentStyles.root}>
-        <Typography component="h1" variant="h4">
+        <Typography component="h1" variant="h3">
           Why{" "}
           <span style={{ color: "#5AB4E2", fontWeight: "bold" }}>
             Smartifier
           </span>
         </Typography>
         <div className={classes.description}>
-          <Typography component="h2" variant="caption">
+          <Typography component="h2" variant="subtitle1">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil
             eum totam aspernatur voluptate, molestiae expedita aliquid dolores
             explicabo quae rerum, alias minima obcaecati nostrum maxime dolorum.
@@ -103,7 +103,7 @@ const Hero: React.FC<{}> = () => {
         </div>
       </div>
       <div className={classes.awe}>
-        <Image src="/assets/awe.png" width={300} height={300} />
+        <Image src="/assets/awe.png" width={400} height={400} />
       </div>
     </div>
   );
