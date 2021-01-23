@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     width: "100%",
     paddingLeft: "2.5%",
     paddingRight: "2.5%",
+    background: 'transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box',
   },
 });
 

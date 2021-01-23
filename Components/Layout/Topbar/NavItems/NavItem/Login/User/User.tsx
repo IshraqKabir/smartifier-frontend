@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useLocalState from "../../../../../../../custom-hooks/useLocalState";
 
 import {
+  Avatar,
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -48,7 +49,7 @@ const User: React.FC<{}> = () => {
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <div className={classes.profilePic}>
-            <Image src={`${user?.image_url}`} width={"100%"} height={"100%"} />
+            <Avatar alt={`${user?.name}`} src={`${user?.image_url}`} />
           </div>
         </ListItemIcon>
         <div className={classes.userName}>

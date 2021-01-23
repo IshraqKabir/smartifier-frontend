@@ -3,7 +3,6 @@ import { makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   outerContainer: {
-    height: 1000,
     backgroundColor: "white",
     position: "relative",
   },
