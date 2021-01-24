@@ -18,6 +18,9 @@ const useStyles = makeStyles({
     borderRadius: 40,
     paddingBlock: 5,
     cursor: "pointer",
+    ["@media (max-width: 750px)"]: {
+      maxWidth: "100%",
+    }
   },
 });
 
@@ -25,6 +28,9 @@ const SearchText = withStyles({
   root: {
     textTransform: "capitalize",
     color: "#CFCFCF",
+    '&:hover': {
+      color: "white",
+    }
   },
 })(Typography);
 

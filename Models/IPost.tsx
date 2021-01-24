@@ -1,5 +1,6 @@
 import IMeta from "./IMeta";
 import IPostWriter from "./IPostWriter";
+import ITag from "./ITag";
 import ITopic from "./ITopic";
 
 export default interface IPost {
@@ -17,4 +18,5 @@ export default interface IPost {
     read_time: string;
     user: IPostWriter;
     topic: ITopic[];
+    tags: ITag[];
 }

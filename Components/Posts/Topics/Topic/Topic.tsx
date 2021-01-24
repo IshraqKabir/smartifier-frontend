@@ -24,6 +24,9 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
     marginRight: "10%",
     cursor: "pointer",
+    '&:hover': {
+      textDecoration: "underline",
+    }
   },
   icon: {
     backgroundColor: (props: { position: number }) => {

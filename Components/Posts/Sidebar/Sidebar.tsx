@@ -9,6 +9,9 @@ const useStyles = makeStyles({
     height: 700,
     backgroundColor: "#F3F5F8",
     marginLeft: "8%",
+    ["@media (max-width: 750px)"]: {
+      display: "none",
+    },
   },
 });
 
