@@ -22,6 +22,7 @@ const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
   },
   topic: {
     color: "white",

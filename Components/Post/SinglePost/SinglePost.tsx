@@ -2,6 +2,7 @@ import React from "react";
 import { Divider, makeStyles, Typography, withStyles } from "@material-ui/core";
 import IPost from "../../../Models/IPost";
 import Tags from "./Tags/Tags";
+import PostBody from "./PostBody/PostBody";
 
 interface IProps {
   post: IPost;
@@ -19,6 +20,7 @@ const useStyles = makeStyles({
   container: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
   },
   topic: {
     color: "white",
@@ -65,12 +67,13 @@ const Post: React.FC<IProps> = ({ post }) => {
           <PostTitle>{post.title}</PostTitle>
           <PostAuthor variant="subtitle2">by {post.user.name}</PostAuthor>
         </div>
-        <div>
+        {/* <div>
           <PostSummary>{`${post.summary.substr(
             0,
             200
           )}[...][...]`}</PostSummary>
-        </div>
+        </div> */}
+        <PostBody body={post.body} />        
       </div>
       <div className={classes.bottomContainer}>
         {post.tags ? <Tags tags={post.tags} /> : null}

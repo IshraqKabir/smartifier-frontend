@@ -1,6 +1,6 @@
 
 module.exports = {
     images: {
-      domains: [],
+      domains: ["admin.smartifier.org"],
     },
   }
