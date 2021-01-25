@@ -3,6 +3,7 @@ import { Divider, makeStyles, Typography, withStyles } from "@material-ui/core";
 import IPost from "../../../Models/IPost";
 import Tags from "./Tags/Tags";
 import PostBody from "./PostBody/PostBody";
+import PostFeaturedImage from "./PostBody/PostFeaturedImage/PostFeaturedImage";
 
 interface IProps {
   post: IPost;
@@ -37,6 +38,7 @@ const useStyles = makeStyles({
     overflow: "hidden",
     textOverflow: "ellipsis",
     paddingInline: 3,
+    marginBottom: 10,
     "&:hover": {
       textDecoration: "underline",
     },
@@ -57,6 +59,8 @@ const useStyles = makeStyles({
 const Post: React.FC<IProps> = ({ post }) => {
   const classes = useStyles();
 
+  const postDate = new Date();
+
   return (
     <div className={classes.container}>
       <div className={classes.topic}>
@@ -67,13 +71,16 @@ const Post: React.FC<IProps> = ({ post }) => {
           <PostTitle>{post.title}</PostTitle>
           <PostAuthor variant="subtitle2">by {post.user.name}</PostAuthor>
         </div>
-        {/* <div>
-          <PostSummary>{`${post.summary.substr(
-            0,
-            200
-          )}[...][...]`}</PostSummary>
-        </div> */}
-        <PostBody body={post.body} />        
+        <div>
+          <PostDate variant="caption">{postDate.toDateString()} . {post.read_time}</PostDate>
+        </div>
+        {post.featured_image ? (
+          <PostFeaturedImage
+            src={post.featured_image}
+            caption={post.featured_image_caption}
+          />
+        ) : null}
+        <PostBody body={post.body} />
       </div>
       <div className={classes.bottomContainer}>
         {post.tags ? <Tags tags={post.tags} /> : null}
@@ -96,24 +103,13 @@ const PostTitle = withStyles({
   root: {
     color: "#3798A7",
     fontSize: 22,
-    marginBlock: 10,
+    // marginBlock: 10,
     whiteSpace: "nowrap",
     textTransform: "capitalize",
     cursor: "pointer",
     "&:hover": {
       textDecoration: "underline",
     },
-  },
-})(Typography);
-
-const PostSummary = withStyles({
-  root: {
-    color: "#686868",
-    fontSize: 15,
-    lineHeight: 1.5,
-    textTransform: "capitalize",
-    cursor: "pointer",
-    paddingRight: "10%",
   },
 })(Typography);
 
@@ -141,3 +137,10 @@ const PostDivider = withStyles({
     marginBottom: 20,
   },
 })(Divider);
+
+const PostDate = withStyles({
+  root: {
+    color: "#C5C5C5",
+    fontWeight: "bold",
+  },
+})(Typography);

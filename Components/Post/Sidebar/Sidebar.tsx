@@ -5,7 +5,7 @@ interface IProps {}
 
 const useStyles = makeStyles({
   container: {
-    minWidth: 414,
+    minWidth: 300,
     height: 700,
     backgroundColor: "#F3F5F8",
     marginLeft: "8%",
