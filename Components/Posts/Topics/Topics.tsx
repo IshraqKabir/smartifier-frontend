@@ -28,7 +28,7 @@ const Topics: React.FC<IProps> = ({ topics }) => {
   return (
     <div className={classes.container}>
       {topics.map((topic, position) => (
-        <Topic topic={topic} position={position} />
+        <Topic key={topic.id} topic={topic} position={position} />
       ))}
     </div>
   );

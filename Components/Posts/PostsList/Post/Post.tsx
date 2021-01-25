@@ -3,6 +3,8 @@ import { Divider, makeStyles, Typography, withStyles } from "@material-ui/core";
 import IPost from "../../../../Models/IPost";
 import Tags from "./Tags/Tags";
 
+import Link from "next/link";
+
 interface IProps {
   post: IPost;
   position: number;
@@ -67,7 +69,11 @@ const Post: React.FC<IProps> = ({ post, position }) => {
       </div>
       <div>
         <div className={classes.postTitle}>
-          <PostTitle>{post.title}</PostTitle>
+          <Link href={`/blog/posts/${post.slug}`}>
+            <a>
+              <PostTitle>{post.title}</PostTitle>
+            </a>
+          </Link>
           <PostAuthor variant="subtitle2">by {post.user.name}</PostAuthor>
         </div>
         <div>
