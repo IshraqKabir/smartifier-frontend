@@ -2,7 +2,7 @@ import React from "react";
 
 import Image from "material-ui-image";
 import { backend_url } from "../../../../../url";
-import { makeStyles, Typography, withStyles } from "@material-ui/core";
+import { Avatar, makeStyles, Typography, withStyles } from "@material-ui/core";
 
 interface IProps {
   src: string;
@@ -13,22 +13,17 @@ interface IProps {
 const useStyles = makeStyles({
   container: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
     marginBlock: 50,
     ["@media (max-width: 500px)"]: {
-      marginBloc: 25,
+      marginBlock: 25,
     },
   },
   imageContainer: {
-    width: "60%",
-    paddingTop: "100%",
-    marginTop: "-100%",
-    paddingBlock: "auto",
-    ["@media (max-width: 500px)"]: {
-      width: "100%",
-    },
+    width: "80%",
     display: "flex",
-    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -40,13 +35,14 @@ const PostBodyImage: React.FC<IProps> = ({ src, caption, isWide }) => {
   return (
     <div className={classes.container}>
       <div className={classes.imageContainer}>
-        <Image
+        <Avatar
           src={`${backend_url}${src}`}
           alt={caption}
+          variant="square"
           style={{ width: "100%", height: "100%" }}
         />
-        {caption ? <Caption>Caption: {caption}</Caption> : null}
       </div>
+      {caption ? <Caption>Caption: {caption}</Caption> : null}
     </div>
   );
 };

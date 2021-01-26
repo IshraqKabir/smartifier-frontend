@@ -19,6 +19,7 @@ const useStyles = makeStyles({
     ["@media (max-width: 700px)"]: {
       overflowX: "scroll",
     },
+    zIndex: 100,
   },
 });
 
