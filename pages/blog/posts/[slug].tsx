@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const topics: ITopic[] = [...topicsRes.data];
 
   const topPostsRes = await axios.get(
-    `${local_backend_url}/canvas-blog/api/posts/top-by-views`
+    `${local_backend_url}/canvas-blog/api/posts/top-by-views?post_count=10`
   );
   const topPosts = [...topPostsRes.data];
 

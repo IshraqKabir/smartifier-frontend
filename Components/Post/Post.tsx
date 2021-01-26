@@ -4,9 +4,9 @@ import IPost from "../../Models/IPost";
 import ITopic from "../../Models/ITopic";
 import Topbar from "../Layout/Topbar/Topbar";
 import Intro from "./Intro/Intro";
-import Search from "./Search/Search";
-import Sidebar from "./Sidebar/Sidebar";
-import Topics from "./Topics/Topics";
+import Search from "../Search/Search";
+import Sidebar from "../Sidebar/Sidebar";
+import Topics from "../Topics/Topics";
 import SinglePost from "./SinglePost/SinglePost";
 import IPostSuggestion from "../../Models/IPostSuggestion";
 
@@ -49,7 +49,6 @@ const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
         <Topics topics={topics} />
         <Search />
         <div className={classes.postsAndSidebarContainer}>
-          {/* <PostsList posts={posts} /> */}
           <SinglePost post={post} />
           <Sidebar topPosts={topPosts} />
         </div>

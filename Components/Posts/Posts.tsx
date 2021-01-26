@@ -7,9 +7,9 @@ import ITopic from "../../Models/ITopic";
 import Topbar from "../Layout/Topbar/Topbar";
 import Intro from "./Intro/Intro";
 import PostsList from "./PostsList/PostsList";
-import Search from "./Search/Search";
-import Sidebar from "./Sidebar/Sidebar";
-import Topics from "./Topics/Topics";
+import Search from "../Search/Search";
+import Sidebar from "../Sidebar/Sidebar";
+import Topics from "../Topics/Topics";
 
 const useStyles = makeStyles({
   pageContainer: {
