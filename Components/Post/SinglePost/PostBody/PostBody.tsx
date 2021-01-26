@@ -1,17 +1,12 @@
 import React from "react";
 
 import parse, { HTMLReactParserOptions } from "html-react-parser";
-import { Element } from "domhandler/lib/node";
-import { backend_url } from "../../../../url";
 import PostBodyImage from "./PostBodyImage/PostBodyImage";
 import PostBodyText from "./PostBodyText/PostBodyText";
 
 const options: HTMLReactParserOptions = {
   replace: ({ attribs, children }: any) => {
-    console.log(children);
-    console.log(attribs);
-    console.log("end");
-    let image;
+    let image: any;
     if (children) {
       children.forEach((child) => {
         if (child.name == "img") {

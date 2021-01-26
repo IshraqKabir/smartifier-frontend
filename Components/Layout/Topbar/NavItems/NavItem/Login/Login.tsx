@@ -70,7 +70,7 @@ const Login: React.FC<{}> = () => {
           render={(renderProps) => (
             <button
               onClick={renderProps.onClick}
-              disabled={false}
+              disabled={renderProps.disabled}
               className={classes.loginButton}
             >
               <GoogleIcon />
