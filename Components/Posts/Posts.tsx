@@ -2,6 +2,7 @@ import classes from "*.module.css";
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import IPost from "../../Models/IPost";
+import IPostSuggestion from "../../Models/IPostSuggestion";
 import ITopic from "../../Models/ITopic";
 import Topbar from "../Layout/Topbar/Topbar";
 import Intro from "./Intro/Intro";
@@ -34,10 +35,11 @@ const useStyles = makeStyles({
 
 interface IProps {
   posts: IPost[];
+  topPosts: IPostSuggestion[];
   topics: ITopic[];
 }
 
-const Posts: React.FC<IProps> = ({ posts, topics }) => {
+const Posts: React.FC<IProps> = ({ posts, topics, topPosts}) => {
   const classes = useStyles();
 
   return (
@@ -49,7 +51,7 @@ const Posts: React.FC<IProps> = ({ posts, topics }) => {
         <Search />
         <div className={classes.postsAndSidebarContainer}>
           <PostsList posts={posts} />
-          <Sidebar />
+          <Sidebar topPosts={topPosts} />
         </div>
       </div>
     </div>

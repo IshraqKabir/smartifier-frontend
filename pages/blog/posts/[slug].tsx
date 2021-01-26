@@ -6,6 +6,7 @@ import ITopic from "../../../Models/ITopic";
 import axios from "axios";
 
 import PostComponent from "../../../Components/Post/Post";
+import IPostSuggestion from "../../../Models/IPostSuggestion";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { slug } = context.params;
@@ -20,18 +21,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
   const topics: ITopic[] = [...topicsRes.data];
 
+  const topPostsRes = await axios.get(
+    `${local_backend_url}/canvas-blog/api/posts/top-by-views`
+  );
+  const topPosts = [...topPostsRes.data];
+
   return {
-    props: { post, topics },
+    props: { post, topics, topPosts },
   };
 };
 
 interface IProps {
   post: IPost;
   topics: ITopic[];
+  topPosts: IPostSuggestion[];
 }
 
-const Post: React.FC<IProps> = ({ post, topics }) => {
-  return <PostComponent post={post} topics={topics} />;
+const Post: React.FC<IProps> = ({ post, topics, topPosts }) => {
+  return <PostComponent post={post} topics={topics} topPosts={topPosts} />;
 };
 
 export default Post;

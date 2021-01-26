@@ -17,6 +17,21 @@ const colors: string[] = [
   "#FFE533",
 ];
 
+const monthNames = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 const useStyles = makeStyles({
   container: {
     display: "flex",
@@ -59,7 +74,7 @@ const useStyles = makeStyles({
 const Post: React.FC<IProps> = ({ post }) => {
   const classes = useStyles();
 
-  const postDate = new Date();
+  const postDate = new Date(post.created_at);
 
   return (
     <div className={classes.container}>
@@ -72,7 +87,9 @@ const Post: React.FC<IProps> = ({ post }) => {
           <PostAuthor variant="subtitle2">by {post.user.name}</PostAuthor>
         </div>
         <div>
-          <PostDate variant="caption">{postDate.toDateString()} . {post.read_time}</PostDate>
+          <PostDate variant="caption">
+            {`${monthNames[postDate.getMonth()]} ${postDate.getDate()} ${postDate.getFullYear()}`} . {post.read_time}
+          </PostDate>
         </div>
         {post.featured_image ? (
           <PostFeaturedImage

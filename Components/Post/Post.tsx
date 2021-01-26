@@ -8,6 +8,7 @@ import Search from "./Search/Search";
 import Sidebar from "./Sidebar/Sidebar";
 import Topics from "./Topics/Topics";
 import SinglePost from "./SinglePost/SinglePost";
+import IPostSuggestion from "../../Models/IPostSuggestion";
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -34,9 +35,10 @@ const useStyles = makeStyles({
 interface IProps {
   post: IPost;
   topics: ITopic[];
+  topPosts: IPostSuggestion[];
 }
 
-const Posts: React.FC<IProps> = ({ post, topics }) => {
+const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
   const classes = useStyles();
 
   return (
@@ -49,7 +51,7 @@ const Posts: React.FC<IProps> = ({ post, topics }) => {
         <div className={classes.postsAndSidebarContainer}>
           {/* <PostsList posts={posts} /> */}
           <SinglePost post={post} />
-          <Sidebar />
+          <Sidebar topPosts={topPosts} />
         </div>
       </div>
     </div>
