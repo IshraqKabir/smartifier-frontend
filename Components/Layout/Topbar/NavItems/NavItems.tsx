@@ -20,11 +20,12 @@ const NavItems: React.FC<{}> = () => {
   const classes = useStyles();
   return (
     <div className={classes.navItemsContainer}>
-      <NavItem title="Quizzes" />
-      <NavItem title="Blogs" />
-      <NavItem title="Testimonials" />
-      <NavItem title="About" />
-      <NavItem title="Meet The Team" />
+      <NavItem title="Home" link="/" />
+      <NavItem title="Quizzes" link="/" />
+      <NavItem title="Blogs" link="/blog/posts" />
+      <NavItem title="Testimonials" link="/" />
+      <NavItem title="About" link="/" />
+      <NavItem title="Meet The Team" link="/" />
     </div>
   );
 };

@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
+import SearchBox from "./SearchBox/SearchBox";
+import useSearch from "../../../custom-hooks/useSearch";
+import SearchResults from "./SearchResults/SearchResults";
 
 interface IProps {
   handleClose: Function;
 }
+
+const SearchModal: React.FC<IProps> = ({ handleClose }) => {
+  const [query, setQuery] = useState<String>("");
+  const classes = useStyles();
+
+  const { data: results, loading, error } = useSearch(
+    "/api/canvas-blog/search",
+    query
+  );
+
+  return (
+    <>
+      <div className={classes.backdrop} onClick={() => handleClose()}></div>
+      <div className={classes.container}>
+        <SearchBox query={query} setQuery={setQuery} />
+        {results && <SearchResults results={results} />}
+      </div>
+    </>
+  );
+};
+
+export default SearchModal;
 
 const useStyles = makeStyles({
   backdrop: {
@@ -23,19 +48,13 @@ const useStyles = makeStyles({
     zIndex: 2000,
     color: "black",
     width: "100vw",
-    height: 200,
+    paddingInline: "20%",
+    paddingTop: 50,
+    ["@media (max-width: 700px)"]: {
+      paddingInline: "10%",
+    },
+    ["@media (max-width: 400px)"]: {
+      paddingInline: "5%",
+    },
   },
 });
-
-const SearchModal: React.FC<IProps> = ({ handleClose }) => {
-  const classes = useStyles();
-
-  return (
-    <>
-      <div className={classes.backdrop} onClick={() => handleClose()}></div>
-      <div className={classes.container}>asdfkh jaskldfhklahsd fkjahsdf k</div>
-    </>
-  );
-};
-
-export default SearchModal;

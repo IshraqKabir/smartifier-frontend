@@ -7,6 +7,19 @@ interface IProps {
   position: number;
 }
 
+const Topic: React.FC<IProps> = ({ topic, position }) => {
+  const classes = useStyles({ position });
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.icon}></div>
+      <TopicName variant="subtitle1">{topic.name}</TopicName>
+    </div>
+  );
+};
+
+export default Topic;
+
 const colors: string[] = [
   "#97A5B8",
   "#9C95FD",
@@ -24,9 +37,9 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
     marginRight: "10%",
     cursor: "pointer",
-    '&:hover': {
+    "&:hover": {
       textDecoration: "underline",
-    }
+    },
   },
   icon: {
     backgroundColor: (props: { position: number }) => {
@@ -50,16 +63,3 @@ const TopicName = withStyles({
     cursor: "pointer",
   },
 })(Typography);
-
-const Topic: React.FC<IProps> = ({ topic, position }) => {
-  const classes = useStyles({ position });
-
-  return (
-    <div className={classes.container}>
-      <div className={classes.icon}></div>
-      <TopicName variant="subtitle1">{topic.name}</TopicName>
-    </div>
-  );
-};
-
-export default Topic;

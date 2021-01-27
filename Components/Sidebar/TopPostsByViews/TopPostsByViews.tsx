@@ -24,7 +24,7 @@ const TopPostsByViews: React.FC<IProps> = ({ topPosts }) => {
         <HeadingDivider light />
       </div>
       {topPosts.map((post) => (
-        <PostSuggestion post={post} />
+        <PostSuggestion key={post.id} post={post} />
       ))}
     </div>
   );
