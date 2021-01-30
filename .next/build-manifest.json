@@ -28,21 +28,6 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/blog/posts": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/blog/posts.js"
-    ],
-    "/blog/tags/[slug]/posts": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/blog/tags/[slug]/posts.js"
-    ],
-    "/blog/topics/[slug]/posts": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/blog/topics/[slug]/posts.js"
     ]
   },
   "ampFirstPages": []
