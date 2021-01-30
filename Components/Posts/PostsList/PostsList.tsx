@@ -1,5 +1,6 @@
-import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
+import { makeStyles, Typography } from "@material-ui/core";
+
 import IPost from "../../../Models/IPost";
 import Post from "./Post/Post";
 
@@ -16,15 +17,15 @@ const useStyles = makeStyles({
 });
 
 const PostsList: React.FC<IProps> = ({ posts }) => {
-  const classes = useStyles();
-
   if (posts.length == 0) {
     return (
       <Typography color="textSecondary" variant="h6">
-        Sorry, no posts found :
+        Sorry, no posts found.
       </Typography>
     );
   }
+
+  const classes = useStyles();
 
   return (
     <div className={classes.container}>

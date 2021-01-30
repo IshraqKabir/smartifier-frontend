@@ -1,6 +1,9 @@
 import { makeStyles, Typography, withStyles } from "@material-ui/core";
 import React from "react";
+
 import ITag from "../../../../../../Models/ITag";
+
+import Link from "next/link";
 
 interface IProps {
   tag: ITag;
@@ -31,9 +34,9 @@ const useStyles = makeStyles({
     marginRight: 10,
     textTransform: "capitalize",
     cursor: "pointer",
-    '&:hover': {
+    "&:hover": {
       textDecoration: "underline",
-    }
+    },
   },
 });
 
@@ -42,7 +45,9 @@ const Tag: React.FC<IProps> = ({ tag, position }) => {
 
   return (
     <div className={classes.container}>
-      <TagName>{tag.name}</TagName>
+      <Link href={`/blog/tags/${tag.slug}/posts`}>
+        <TagName>{tag.name}</TagName>
+      </Link>
     </div>
   );
 };
@@ -50,7 +55,7 @@ const Tag: React.FC<IProps> = ({ tag, position }) => {
 export default Tag;
 
 const TagName = withStyles({
-    root: {
-        fontSize: 13,
-    }
-})(Typography)
+  root: {
+    fontSize: 13,
+  },
+})(Typography);
