@@ -5,6 +5,8 @@ import Tags from "./Tags/Tags";
 import PostBody from "./PostBody/PostBody";
 import PostFeaturedImage from "./PostBody/PostFeaturedImage/PostFeaturedImage";
 
+import Link from "next/link";
+
 interface IProps {
   post: IPost;
 }
@@ -78,9 +80,13 @@ const Post: React.FC<IProps> = ({ post }) => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.topic}>
-        <TopicName>{post.topic[0].name}</TopicName>
-      </div>
+      <Link href={`/blog/topics/${post.topic[0].slug}/posts`}>
+        <a>
+          <div className={classes.topic}>
+            <TopicName>{post.topic[0].name}</TopicName>
+          </div>
+        </a>
+      </Link>
       <div>
         <div className={classes.postTitle}>
           <PostTitle>{post.title}</PostTitle>
@@ -88,7 +94,10 @@ const Post: React.FC<IProps> = ({ post }) => {
         </div>
         <div>
           <PostDate variant="caption">
-            {`${monthNames[postDate.getMonth()]} ${postDate.getDate()} ${postDate.getFullYear()}`} . {post.read_time}
+            {`${
+              monthNames[postDate.getMonth()]
+            } ${postDate.getDate()} ${postDate.getFullYear()}`}{" "}
+            . {post.read_time}
           </PostDate>
         </div>
         {post.featured_image ? (

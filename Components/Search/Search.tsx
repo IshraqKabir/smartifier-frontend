@@ -47,7 +47,7 @@ const SearchText = withStyles({
 })(Typography);
 
 const Search: React.FC<IProps> = () => {
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   const classes = useStyles();
 

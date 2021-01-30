@@ -65,9 +65,13 @@ const Post: React.FC<IProps> = ({ post, position }) => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.topic}>
-        <TopicName>{post.topic[0].name}</TopicName>
-      </div>
+      <Link href={`/blog/topics/${post.topic[0].slug}/posts`}>
+        <a>
+          <div className={classes.topic}>
+            <TopicName>{post.topic[0].name}</TopicName>
+          </div>
+        </a>
+      </Link>
       <div>
         <div className={classes.postTitle}>
           <Link href={`/blog/posts/${post.slug}`}>

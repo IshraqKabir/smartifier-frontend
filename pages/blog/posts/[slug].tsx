@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticPaths } from "next";
+import { GetServerSideProps } from "next";
 import IPost from "../../../Models/IPost";
 import { local_backend_url } from "../../../url";
 
@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const postRes = await fetch(
     `${local_backend_url}/canvas-blog/api/posts/${slug}`
   );
-  const post = await postRes.json();
+  const post: IPost = await postRes.json();
 
   const topicsRes = await axios.get(
     `${local_backend_url}/canvas-blog/api/topics`

@@ -39,7 +39,7 @@ interface IProps {
   topics: ITopic[];
 }
 
-const Posts: React.FC<IProps> = ({ posts, topics, topPosts}) => {
+const Posts: React.FC<IProps> = ({ posts, topics, topPosts }) => {
   const classes = useStyles();
 
   return (

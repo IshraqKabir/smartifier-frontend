@@ -1,7 +1,8 @@
 import IPost from "./IPost";
 
 export default interface ISearchResult {
-  title: String;
+  title?: String;
+  name?: String;
   slug: String;
   posts?: IPost[];
 }

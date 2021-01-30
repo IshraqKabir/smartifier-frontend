@@ -2,6 +2,8 @@ import { makeStyles, Typography, withStyles } from "@material-ui/core";
 import React from "react";
 import ITopic from "../../../Models/ITopic";
 
+import Link from "next/link";
+
 interface IProps {
   topic: ITopic;
   position: number;
@@ -13,7 +15,11 @@ const Topic: React.FC<IProps> = ({ topic, position }) => {
   return (
     <div className={classes.container}>
       <div className={classes.icon}></div>
-      <TopicName variant="subtitle1">{topic.name}</TopicName>
+      <Link href={`/blog/topics/${topic.slug}/posts`}>
+        <a>
+          <TopicName variant="subtitle1">{topic.name}</TopicName>
+        </a>
+      </Link>
     </div>
   );
 };

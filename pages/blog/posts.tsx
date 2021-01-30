@@ -10,20 +10,20 @@ import ITopic from "../../Models/ITopic";
 import IPostSuggestion from "../../Models/IPostSuggestion";
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const postsRes = await axios.get(
+  const postsRes: any = await axios.get(
     local_backend_url + "/canvas-blog/api/posts"
   );
   const posts: IPost[] = [...postsRes.data.data];
 
-  const topicsRes = await axios.get(
+  const topicsRes: any = await axios.get(
     `${local_backend_url}/canvas-blog/api/topics`
   );
   const topics: ITopic[] = [...topicsRes.data];
 
-  const topPostsRes = await axios.get(
+  const topPostsRes: any = await axios.get(
     `${local_backend_url}/canvas-blog/api/posts/top-by-views?post_count=10`
   );
-  const topPosts = [...topPostsRes.data];
+  const topPosts: IPost[] = [...topPostsRes.data];
 
   return {
     props: {
@@ -40,7 +40,7 @@ interface IProps {
   topics: ITopic[];
 }
 
-const Posts: React.FC<IProps> = ({ posts, topics, topPosts}) => {
+const Posts: React.FC<IProps> = ({ posts, topics, topPosts }) => {
   return <PostsComponent posts={posts} topics={topics} topPosts={topPosts} />;
 };
 
