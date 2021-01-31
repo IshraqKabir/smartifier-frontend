@@ -49,7 +49,7 @@ const User: React.FC<{}> = () => {
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <div className={classes.profilePic}>
-            <Avatar alt={`${user?.name}`} src={`${user?.image_url}`} />
+            <Avatar alt={`${user?.name}`} src={`${user.image_url}`} />
           </div>
         </ListItemIcon>
         <div className={classes.userName}>

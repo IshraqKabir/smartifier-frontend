@@ -27,14 +27,28 @@ const Login: React.FC<IProps> = () => {
         (response: any) => {
           setUser(response.data);
         },
-        () => {}
+        () => {
+          signOut();
+        }
       );
     }
   };
 
+  function signOut() {
+    const w: any = window;
+    const { gapi } = w;
+
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log("User signed out.");
+    });
+  }
+
   const onFail = ({ error }) => {
     console.log(error);
   };
+
+  console.log(user);
 
   useEffect(() => {
     const w: any = window;
@@ -55,7 +69,7 @@ const Login: React.FC<IProps> = () => {
     });
   }, []);
 
-  return <>{!user ? <div id="signin-button"></div> : <User />}</>;
+  return <>{user == "" ? <div id="signin-button"></div> : <User />}</>;
 };
 
 export default Login;
