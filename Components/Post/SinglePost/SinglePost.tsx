@@ -6,6 +6,7 @@ import PostBody from "./PostBody/PostBody";
 import PostFeaturedImage from "./PostBody/PostFeaturedImage/PostFeaturedImage";
 
 import Link from "next/link";
+import LCSStatus from "./LCSStatusu/LCSStatus";
 
 interface IProps {
   post: IPost;
@@ -47,14 +48,16 @@ const useStyles = makeStyles({
     borderRadius: 10,
     textAlign: "center",
     textTransform: "capitalize",
-    paddingBlock: 3,
+    paddingTop: 3,
+    paddingBottom: 3,
     backgroundColor: () => {
       return colors[0];
     },
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    paddingInline: 3,
+    paddingLeft: 3,
+    paddingRight: 3,
     marginBottom: 10,
     "&:hover": {
       textDecoration: "underline",
@@ -113,6 +116,7 @@ const Post: React.FC<IProps> = ({ post }) => {
         <ReadTime variant="subtitle2">{post.read_time}</ReadTime>
       </div>
       <PostDivider />
+      <LCSStatus />
     </div>
   );
 };

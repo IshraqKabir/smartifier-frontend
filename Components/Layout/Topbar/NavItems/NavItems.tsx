@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     justifyContent: "space-around",
     alignItems: "center",
     width: "60%",
+    color: "white",
     fontSize: "small",
     ["@media (max-width: 700px)"]: {
       display: "none",

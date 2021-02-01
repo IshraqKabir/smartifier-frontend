@@ -4,7 +4,6 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 
-import "../src/reset.css";
 import "../src/style.css";
 
 export default function MyApp(props) {
@@ -34,11 +33,7 @@ export default function MyApp(props) {
           content="540083931812-7bt05mqtrriog1f1kdpvotbvnr01iien.apps.googleusercontent.com"
         />
 
-        <script
-          src="https://apis.google.com/js/platform.js"
-          async
-          defer
-        ></script>
+        <script src="https://apis.google.com/js/platform.js"></script>
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

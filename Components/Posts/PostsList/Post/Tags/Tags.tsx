@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import React from "react";
 import ITag from "../../../../../Models/ITag";
-import Tag from "./Tag/Tag";
+import Tag from "../../../../Tag/Tag";
 
 interface IProps {
   tags: ITag[];

@@ -8,7 +8,8 @@ interface IProps {}
 const useStyles = makeStyles({
   container: {
     width: "100%",
-    marginBlock: 30,
+    marginTop: 30,
+    marginBottom: 30,
   },
   search: {
     width: "100%",
@@ -17,7 +18,8 @@ const useStyles = makeStyles({
     background: "#0380A7D4 0% 0% no-repeat padding-box",
     textAlign: "center",
     borderRadius: 40,
-    paddingBlock: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
     cursor: "pointer",
     ["@media (max-width: 750px)"]: {
       maxWidth: "100%",

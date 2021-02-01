@@ -20,7 +20,8 @@ const useStyles = makeStyles({
   mainContainer: {
     width: "100%",
     paddingTop: 40,
-    paddingInline: "5%",
+    paddingLeft: "5%",
+    paddingRight: "5%",
     height: "100vh",
     marginLeft: "auto",
     marginRight: "auto",
@@ -28,7 +29,8 @@ const useStyles = makeStyles({
   postsAndSidebarContainer: {
     display: "flex",
     justifyContent: "space-between",
-    marginBlock: 10,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

@@ -15,7 +15,8 @@ const useStyles = makeStyles({
     borderBottom: "1px solid #96A4B7",
     display: "flex",
     alignItems: "center",
-    paddingInline: 5,
+    paddingLeft: 5,
+    paddingRight: 5,
     ["@media (max-width: 700px)"]: {
       overflowX: "scroll",
     },

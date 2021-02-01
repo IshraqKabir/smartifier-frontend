@@ -31,7 +31,8 @@ const useStyles = makeStyles({
     borderRadius: 10,
     textAlign: "center",
     textTransform: "capitalize",
-    paddingBlock: 3,
+    paddingTop: 3,
+    paddingBottom: 3,
     backgroundColor: (props: { position: number }) => {
       const { position } = props;
       if (position > colors.length) {
@@ -42,7 +43,8 @@ const useStyles = makeStyles({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    paddingInline: 3,
+    paddingLeft: 3,
+    paddingRight: 3,
     "&:hover": {
       textDecoration: "underline",
     },
@@ -109,7 +111,8 @@ const PostTitle = withStyles({
   root: {
     color: "#3798A7",
     fontSize: 22,
-    marginBlock: 10,
+    marginTop: 10,
+    marginBottom: 10,
     whiteSpace: "nowrap",
     textTransform: "capitalize",
     cursor: "pointer",

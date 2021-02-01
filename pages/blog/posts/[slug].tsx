@@ -16,6 +16,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
   const post: IPost = await postRes.json();
 
+  console.log(post)
+
   const topicsRes = await axios.get(
     `${local_backend_url}/canvas-blog/api/topics`
   );

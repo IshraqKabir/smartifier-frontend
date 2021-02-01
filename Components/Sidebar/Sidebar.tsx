@@ -16,8 +16,7 @@ const useStyles = makeStyles({
     ["@media (max-width: 750px)"]: {
       display: "none",
     },
-    paddingBlock: 30,
-    paddingInline: 20,
+    padding: "30px 20px",
     color: "#97A5B8",
   },
 });

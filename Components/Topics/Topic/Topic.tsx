@@ -38,7 +38,8 @@ const useStyles = makeStyles({
   container: {
     display: "flex",
     alignItems: "center",
-    paddingBlock: 15,
+    paddingTop: 15,
+    paddingBottom: 15,
     fontColor: "blue",
     textTransform: "capitalize",
     marginRight: "10%",
