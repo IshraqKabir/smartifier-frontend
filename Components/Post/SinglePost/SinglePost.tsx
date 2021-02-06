@@ -6,7 +6,7 @@ import PostBody from "./PostBody/PostBody";
 import PostFeaturedImage from "./PostBody/PostFeaturedImage/PostFeaturedImage";
 
 import Link from "next/link";
-import LCSStatus from "./LCSStatusu/LCSStatus";
+import LCSStatus from "./LCSStatus/LCSStatus";
 
 interface IProps {
   post: IPost;

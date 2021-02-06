@@ -48,28 +48,28 @@ const Login: React.FC<IProps> = () => {
     console.log(error);
   };
 
-  console.log(user);
-
   useEffect(() => {
-    const w: any = window;
-    const { gapi } = w;
+    setTimeout(() => {
+      const w: any = window;
+      const { gapi } = w;
 
-    gapi.load("auth2", () => {
-      const auth2 = gapi.auth2.init({
-        client_id: "540083931812-7bt05mqtrriog1f1kdpvotbvnr01iien",
-      });
+      gapi.load("auth2", () => {
+        const auth2 = gapi.auth2.init({
+          client_id: "540083931812-7bt05mqtrriog1f1kdpvotbvnr01iien",
+        });
 
-      gapi.signin2.render("signin-button", {
-        width: "100%",
-        height: 40,
-        longtitle: false,
-        onsuccess: onSignIn,
-        onfailure: onFail,
+        gapi.signin2.render("signin-button", {
+          width: "100%",
+          height: 40,
+          longtitle: false,
+          onsuccess: onSignIn,
+          onfailure: onFail,
+        });
       });
-    });
+    }, 500);
   }, []);
 
-  return <>{user == "" ? <div id="signin-button"></div> : <User />}</>;
+  return <>{!user.id ? <div id="signin-button"></div> : <User />}</>;
 };
 
 export default Login;

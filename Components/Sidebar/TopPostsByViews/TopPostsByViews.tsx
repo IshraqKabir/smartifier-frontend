@@ -32,7 +32,10 @@ const TopPostsByViews: React.FC<IProps> = ({ topPosts }) => {
 
 export default TopPostsByViews;
 
-const Heading = withStyles({ root: { marginBottom: 5, fontWeight: "bold" } })(
-  Typography
-);
-const HeadingDivider = withStyles({ root: { marginBottom: 10 } })(Divider);
+const Heading = withStyles({
+  root: { marginBottom: 5, fontWeight: "bold" },
+})(Typography);
+
+const HeadingDivider = withStyles({
+  root: { marginBottom: 10 },
+})(Divider);

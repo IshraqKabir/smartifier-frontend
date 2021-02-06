@@ -9,6 +9,8 @@ import Sidebar from "../Sidebar/Sidebar";
 import Topics from "../Topics/Topics";
 import SinglePost from "./SinglePost/SinglePost";
 import IPostSuggestion from "../../Models/IPostSuggestion";
+import Head from "next/head";
+import url from "../../url";
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -45,6 +47,16 @@ const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
 
   return (
     <div className={classes.pageContainer}>
+      <div>
+        <Head>
+          <title>Smartifer Blog</title>
+          <meta property="og:url" content={`${url}`} />
+          <meta property="og:type" content="article" />
+          <meta property="og:title" content={`${post.title}`} />
+          <meta property="og:description" content={`${post.summary}`} />
+          <meta property="og:image" content={`${post.featured_image}`} />
+        </Head>
+      </div>
       <Topbar />
       <Intro />
       <div className={classes.mainContainer}>

@@ -22,7 +22,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>Smartifier</title>
 
         <meta
           name="viewport"

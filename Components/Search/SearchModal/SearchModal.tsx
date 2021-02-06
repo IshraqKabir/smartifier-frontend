@@ -23,7 +23,7 @@ const SearchModal: React.FC<IProps> = ({ handleClose }) => {
       <div className={classes.container}>
         <SearchBox query={query} setQuery={setQuery} />
         {results && (
-          <SearchResults results={results} />
+          <SearchResults results={results} handleClose={handleClose} />
         )}
       </div>
     </>

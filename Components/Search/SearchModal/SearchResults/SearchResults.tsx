@@ -6,6 +6,7 @@ import SearchResult from "./SearchResult/SearchResult";
 
 interface IProps {
   results: IResult;
+  handleClose: Function;
 }
 
 interface IResult {
@@ -14,9 +15,9 @@ interface IResult {
   tags: ISearchResult[];
 }
 
-const SearchResults: React.FC<IProps> = ({ results }) => {
+const SearchResults: React.FC<IProps> = ({ results, handleClose }) => {
   return (
-    <Container>
+    <Container onClick={() => handleClose()}>
       {results.posts &&
         results.posts.map((post, index) => {
           return <SearchResult key={index} type="post" result={post} />;

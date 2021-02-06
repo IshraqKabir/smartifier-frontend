@@ -10,6 +10,8 @@ import Search from "../Search/Search";
 import Sidebar from "../Sidebar/Sidebar";
 import Topics from "../Topics/Topics";
 
+import Head from "next/head";
+
 const useStyles = makeStyles({
   pageContainer: {
     width: "100vw",
@@ -45,6 +47,11 @@ const Posts: React.FC<IProps> = ({ posts, topics, topPosts }) => {
 
   return (
     <div className={classes.pageContainer}>
+      <div>
+        <Head>
+          <title>Smartifer Blog</title>
+        </Head>
+      </div>
       <Topbar />
       <Intro />
       <div className={classes.mainContainer}>
