@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/blog/topics/[slug]/posts": [
+    "/authresp/google": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/blog/topics/[slug]/posts.js"
+      "static/chunks/pages/authresp/google.js"
     ]
   },
   "ampFirstPages": []

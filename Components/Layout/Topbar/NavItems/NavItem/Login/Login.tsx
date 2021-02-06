@@ -1,9 +1,11 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import useLocalState from "../../../../../../custom-hooks/useLocalState";
 
 import { backend_url } from "../../../../../../url";
 
 import post from "../../../../../../UtilFunctions/post";
+import GoogleLoginButton from "../../../../../GoogleLoginButton/GoogleLoginButton";
 
 import User from "./User/User";
 
@@ -26,6 +28,7 @@ const Login: React.FC<IProps> = () => {
         { id_token: id_token, google_id: google_id },
         (response: any) => {
           setUser(response.data);
+          console.log(response.data)
         },
         () => {
           signOut();
@@ -69,7 +72,7 @@ const Login: React.FC<IProps> = () => {
     }, 500);
   }, []);
 
-  return <>{!user.id ? <div id="signin-button"></div> : <User />}</>;
+  return <>{!user.id ? <GoogleLoginButton /> : <User />}</>;
 };
 
 export default Login;

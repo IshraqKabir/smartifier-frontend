@@ -2,6 +2,7 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
+  "/authresp/google": "pages/authresp/google.js",
   "/": "pages/index.js",
-  "/blog/topics/[slug]/posts": "pages/blog/topics/[slug]/posts.js"
+  "/api/auth/google": "pages/api/auth/google.js"
 }
