@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect } from "react";
 import useLocalState from "../../../../../../custom-hooks/useLocalState";
 
@@ -12,7 +11,7 @@ import User from "./User/User";
 interface IProps {}
 
 const Login: React.FC<IProps> = () => {
-  const [user, setUser] = useLocalState<any>("user", "");
+  const [user, setUser] = useLocalState("user", "");
 
   const onSignIn = async (googleUser: any) => {
     if (!googleUser.error) {
@@ -28,7 +27,7 @@ const Login: React.FC<IProps> = () => {
         { id_token: id_token, google_id: google_id },
         (response: any) => {
           setUser(response.data);
-          console.log(response.data)
+          console.log(response.data);
         },
         () => {
           signOut();
@@ -72,7 +71,9 @@ const Login: React.FC<IProps> = () => {
     }, 500);
   }, []);
 
-  return <>{!user.id ? <GoogleLoginButton /> : <User />}</>;
+  if (user) return <User />;
+
+  return <GoogleLoginButton />;
 };
 
 export default Login;

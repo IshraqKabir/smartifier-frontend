@@ -9,15 +9,15 @@ import {
   makeStyles,
 } from "@material-ui/core";
 
-import Image from "next/image";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   userContainer: {
-    float: "right",
     whiteSpace: "nowrap",
     textTransform: "capitalize",
     color: "#3798A7",
+    height: "auto",
+    width: "auto",
   },
   profilePic: {
     borderRadius: "50%",
@@ -28,6 +28,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   userName: {
+    textTransform: "capitalize",
     color: "white",
     marginLeft: 5,
     marginRight: 5,
@@ -43,6 +44,8 @@ const User: React.FC<{}> = () => {
   const handleClick = () => {
     setOpen(!open);
   };
+
+  if (!user) return;
 
   return (
     <div className={classes.userContainer}>

@@ -1,15 +1,26 @@
-import { Box, CircularProgress, withStyles } from "@material-ui/core";
+import {
+  Box,
+  CircularProgress,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
 import axios from "axios";
+import { userInfo } from "os";
 import React, { useEffect, useState } from "react";
 
 import GoogleButton from "react-google-button";
+import useLocalState from "../../custom-hooks/useLocalState";
+import useUserCookie from "../../custom-hooks/useUserCookie";
 
 interface IProps {}
 
 const GoogleLoginButton: React.FC<IProps> = () => {
   const [url, setUrl] = useState<string>("");
 
+  const [user, setUser] = useLocalState<any>("user", "");
+
   useEffect(() => {
+    if (user) return;
     axios({
       method: "get",
       url: "/api/auth/google?get=link",
@@ -25,9 +36,7 @@ const GoogleLoginButton: React.FC<IProps> = () => {
           <GoogleButton />
         </a>
       ) : (
-        <Loading>
-          <CircularProgress color="inherit" />
-        </Loading>
+        <Loading>Loading...</Loading>
       )}
     </Container>
   );
@@ -42,5 +51,6 @@ const Container = withStyles({
 const Loading = withStyles({
   root: {
     color: "white",
+    textTransform: "capitalize",
   },
-})(Box);
+})(Typography);
