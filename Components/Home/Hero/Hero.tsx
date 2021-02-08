@@ -7,14 +7,15 @@ const useStyles = makeStyles({
   root: {
     position: "relative",
     width: "100vw",
-    // paddingTop: 250,
     padding: "5%",
+    paddingTop: 50,
+    paddingBottom: 50,
     color: "white",
     background:
       "transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box",
-    ["@media (max-width: 880px)"] : {
+    ["@media (max-width: 880px)"]: {
       height: 1000,
-    }
+    },
   },
   description: {
     marginTop: 50,

@@ -36,7 +36,6 @@ export default function useSearch(url: String, query: String) {
     })
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
 
         setLoading(false);
       })

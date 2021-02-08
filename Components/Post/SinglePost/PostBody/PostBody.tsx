@@ -10,9 +10,6 @@ const options: HTMLReactParserOptions = {
     if (children) {
       children.forEach((child) => {
         if (child.name == "img") {
-          console.log("returning");
-          console.log(child);
-          console.log(attribs);
           image = (
             <PostBodyImage
               src={child.attribs.src}

@@ -17,16 +17,22 @@ const useStyles = makeStyles({
   },
 });
 
-const NavItems: React.FC<{}> = () => {
+const NavItems: React.FC<{ setShowLoading: Function }> = ({
+  setShowLoading,
+}) => {
   const classes = useStyles();
   return (
     <div className={classes.navItemsContainer}>
-      <NavItem title="Home" link="/" />
-      <NavItem title="Quizzes" link="/" />
-      <NavItem title="Blogs" link="/blog/posts" />
-      <NavItem title="Testimonials" link="/" />
-      <NavItem title="About" link="/" />
-      <NavItem title="Meet The Team" link="/" />
+      <NavItem title="Home" link="/" setShowLoading={setShowLoading} />
+      <NavItem title="Quizzes" link="/" setShowLoading={setShowLoading} />
+      <NavItem
+        title="Blogs"
+        link="/blog/posts"
+        setShowLoading={setShowLoading}
+      />
+      <NavItem title="Testimonials" link="/" setShowLoading={setShowLoading} />
+      <NavItem title="About" link="/" setShowLoading={setShowLoading} />
+      <NavItem title="Meet The Team" link="/" setShowLoading={setShowLoading} />
     </div>
   );
 };

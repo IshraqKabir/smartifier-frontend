@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/authresp/google": [
+    "/blog/posts": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/authresp/google.js"
+      "static/chunks/pages/blog/posts.js"
     ],
     "/next/dist/pages/_error": [
       "static/chunks/main.js",

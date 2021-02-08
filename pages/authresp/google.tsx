@@ -33,7 +33,6 @@ const Google: React.FC<IProps> = () => {
           method: "GET",
           url: `https://oauth2.googleapis.com/tokeninfo?id_token=${id_token}`,
         }).then((response: any) => {
-          console.log(response.data);
           const {
             email,
             email_verified,

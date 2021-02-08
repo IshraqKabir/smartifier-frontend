@@ -6,22 +6,24 @@ import Hero from "./Hero/Hero";
 import Intro from "./Intro/Intro";
 
 const useStyles = makeStyles({
-    root: {
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: '#022671',
-        overflowX: "hidden",
-    }
+  root: {
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "#022671",
+    overflowX: "hidden",
+  },
 });
 
 const HomeComponent: React.FC<{}> = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (<div className={classes.root}>
+  return (
+    <div className={classes.root}>
         <Topbar />
-        <Hero />
-        <Intro />
-    </div>)
-}
+      <Hero />
+      <Intro />
+    </div>
+  );
+};
 
 export default HomeComponent;

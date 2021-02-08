@@ -33,6 +33,9 @@ const useStyles = makeStyles({
     marginLeft: 5,
     marginRight: 5,
   },
+  arrow: {
+    color: "#3798A7",
+  },
 });
 
 const User: React.FC<{}> = () => {
@@ -58,7 +61,13 @@ const User: React.FC<{}> = () => {
         <div className={classes.userName}>
           <ListItemText primary={`${user?.name?.toLowerCase()}`} />
         </div>
-        {open ? <ExpandLess color="inherit" /> : <ExpandMore color="inherit" />}
+        <div className={classes.arrow}>
+          {open ? (
+            <ExpandLess color="inherit" />
+          ) : (
+            <ExpandMore color="inherit" />
+          )}
+        </div>
       </ListItem>
     </div>
   );

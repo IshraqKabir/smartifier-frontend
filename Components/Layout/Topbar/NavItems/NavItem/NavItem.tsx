@@ -2,10 +2,12 @@ import { makeStyles } from "@material-ui/core";
 import React from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface IProps {
   title: String;
   link: String;
+  setShowLoading: Function;
 }
 
 const useStyles = makeStyles({
@@ -21,10 +23,18 @@ const useStyles = makeStyles({
   },
 });
 
-const NavItem: React.FC<IProps> = ({ title, link }) => {
+const NavItem: React.FC<IProps> = ({ title, link, setShowLoading }) => {
   const classes = useStyles();
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (router.pathname !== link) setShowLoading(true);
+    router.push(`${link}`);
+  };
+
   return (
-    <div className={classes.root}>
+    <div className={classes.root} onClick={handleClick}>
       <Link href={`${link}`}>
         <a>{title}</a>
       </Link>
