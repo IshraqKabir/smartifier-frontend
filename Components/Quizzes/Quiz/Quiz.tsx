@@ -3,7 +3,9 @@ import { useRouter } from "next/router";
 import React from "react";
 import useLocalState from "../../../custom-hooks/useLocalState";
 import IQuiz from "../../../Models/IQuiz";
-import { backend_url } from "../../../url";
+import url, { backend_url } from "../../../url";
+
+import ShareOnFB from "../../ShareOnFB/ShareOnFB";
 
 interface IProps {
   quiz: IQuiz;
@@ -37,6 +39,9 @@ const Quiz: React.FC<IProps> = ({ quiz, setShowLoginAlert }) => {
         <Title>{quiz.title}</Title>
         <Button onClick={() => handleClick()}>Take the Quiz</Button>
       </TitleButtonContainer>
+      <FBShareContainer>
+        <ShareOnFB link={`${url}/share/fb/quizzes/${quiz.id}`} />
+      </FBShareContainer>
     </Container>
   );
 };
@@ -54,6 +59,8 @@ const Container = withStyles({
     padding: "40px 50px",
     ["@media (max-width: 600px)"]: {
       width: "95%",
+      paddingLeft: 10,
+      paddingRight: 10,
     },
     display: "flex",
   },
@@ -85,5 +92,13 @@ const Button = withStyles({
     textAlign: "center",
     background:
       "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box",
+  },
+})(Box);
+
+const FBShareContainer = withStyles({
+  root: {
+    position: "absolute",
+    right: 30,
+    bottom: 10,
   },
 })(Box);

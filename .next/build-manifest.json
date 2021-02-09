@@ -14,11 +14,6 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
-    "/": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -29,10 +24,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/authresp/google": [
+    "/blog/posts": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/authresp/google.js"
+      "static/chunks/pages/blog/posts.js"
     ],
     "/next/dist/pages/_error": [
       "static/chunks/main.js",
@@ -43,6 +38,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/quizzes.js"
+    ],
+    "/share/fb/quizzes/[id]": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/share/fb/quizzes/[id].js"
     ]
   },
   "ampFirstPages": []
