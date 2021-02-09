@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const useStyles = makeStyles({
   root: {
-    position: "relative",
     width: "100vw",
+    height: "90vh",
     padding: "5%",
     paddingTop: 50,
     paddingBottom: 50,
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   },
   awe: {
     position: "absolute",
-    top: "15%",
+    top: 200,
     right: "20%",
     ["@media (max-width: 600px)"]: {
       display: "none",
@@ -102,9 +102,9 @@ const Hero: React.FC<{}> = () => {
             Find free video tutorials on YouTube
           </Typography>
         </div>
-      </div>
-      <div className={classes.awe}>
-        <Image src="/assets/awe.png" width={400} height={400} />
+        <div className={classes.awe}>
+          <Image src="/assets/awe.png" width={400} height={400} />
+        </div>
       </div>
     </div>
   );

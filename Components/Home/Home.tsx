@@ -8,7 +8,7 @@ import Intro from "./Intro/Intro";
 const useStyles = makeStyles({
   root: {
     width: "100vw",
-    height: "100vh",
+    height: 1000,
     backgroundColor: "#022671",
     overflowX: "hidden",
   },
@@ -18,11 +18,13 @@ const HomeComponent: React.FC<{}> = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-        <Topbar />
-      <Hero />
-      <Intro />
-    </div>
+    <>
+      <Topbar />
+      <div className={classes.root}>
+        <Hero />
+        <Intro />
+      </div>
+    </>
   );
 };
 

@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     position: "fixed",
     top: 0,
     left: 0,
-    right: 15,
+    right: 0,
     maxHeight: 100,
     borderBottomRightRadius: 15,
     display: "flex",
@@ -23,6 +23,10 @@ const useStyles = makeStyles({
       "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box",
   },
   placeholder: {
+    position: "relative",
+    top: 0,
+    left: 0,
+    marginRight: 100,
     width: "100%",
     height: 100,
     background:
@@ -41,7 +45,12 @@ const Topbar: React.FC<{}> = () => {
       {showLoading && <LinearProgress color="primary" />}
       <div className={classes.topbarContainer}>
         <div>
-          <Image src="/assets/logo.png" height={100} width={100} />
+          <Image
+            src="/assets/logo.png"
+            alt="Smartifier Logo"
+            height={100}
+            width={100}
+          />
         </div>
         <NavItems setShowLoading={setShowLoading} />
         <Login />

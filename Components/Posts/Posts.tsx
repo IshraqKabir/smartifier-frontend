@@ -4,18 +4,17 @@ import IPost from "../../Models/IPost";
 import IPostSuggestion from "../../Models/IPostSuggestion";
 import ITopic from "../../Models/ITopic";
 import Topbar from "../Layout/Topbar/Topbar";
-import Intro from "./Intro/Intro";
 import PostsList from "./PostsList/PostsList";
 import Search from "../Search/Search";
 import Sidebar from "../Sidebar/Sidebar";
 import Topics from "../Topics/Topics";
 
 import Head from "next/head";
+import PageTitle from "../PageTitle/PageTitle";
 
 const useStyles = makeStyles({
   pageContainer: {
     width: "100vw",
-    height: "100vh",
     backgroundColor: "white",
     overflowX: "hidden",
   },
@@ -24,7 +23,7 @@ const useStyles = makeStyles({
     paddingTop: 40,
     paddingLeft: "5%",
     paddingRight: "5%",
-    height: "100vh",
+    height: "auto",
     marginLeft: "auto",
     marginRight: "auto",
   },
@@ -53,7 +52,7 @@ const Posts: React.FC<IProps> = ({ posts, topics, topPosts }) => {
         </Head>
       </div>
       <Topbar />
-      <Intro />
+      <PageTitle title="Smartifier Blog" />
       <div className={classes.mainContainer}>
         <Topics topics={topics} />
         <Search />

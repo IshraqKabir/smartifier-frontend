@@ -3,6 +3,10 @@ import { makeStyles } from "@material-ui/core";
 
 import NavItem from "./NavItem/NavItem";
 
+interface IProps {
+  setShowLoading: Function;
+}
+
 const useStyles = makeStyles({
   navItemsContainer: {
     display: "flex",
@@ -11,22 +15,21 @@ const useStyles = makeStyles({
     width: "60%",
     color: "white",
     fontSize: "small",
+    overflow: "hidden",
     ["@media (max-width: 700px)"]: {
       display: "none",
     },
   },
 });
 
-const NavItems: React.FC<{ setShowLoading: Function }> = ({
-  setShowLoading,
-}) => {
+const NavItems: React.FC<IProps> = ({ setShowLoading }) => {
   const classes = useStyles();
   return (
     <div className={classes.navItemsContainer}>
       <NavItem title="Home" link="/" setShowLoading={setShowLoading} />
-      <NavItem title="Quizzes" link="/" setShowLoading={setShowLoading} />
+      <NavItem title="Quizzes" link="/quizzes" setShowLoading={setShowLoading} />
       <NavItem
-        title="Blogs"
+        title="Blog"
         link="/blog/posts"
         setShowLoading={setShowLoading}
       />

@@ -35,6 +35,9 @@ const useStyles = makeStyles({
   },
   arrow: {
     color: "#3798A7",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
