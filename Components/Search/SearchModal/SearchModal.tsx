@@ -44,7 +44,7 @@ const useStyles = makeStyles({
     zIndex: 9000,
   },
   container: {
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
     zIndex: 10000,

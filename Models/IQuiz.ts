@@ -1,4 +1,5 @@
 import IImage from "./IImage";
+import IQuestion from "./IQuestion";
 
 export default interface IQuiz {
   id: number;
@@ -18,4 +19,5 @@ export default interface IQuiz {
   passing_percentage: number;
   is_featured: boolean;
   image: IImage;
+  questions: IQuestion[];
 }

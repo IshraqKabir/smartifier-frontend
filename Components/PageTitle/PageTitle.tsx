@@ -25,6 +25,10 @@ const useStyles = makeStyles({
   titleContainer: {
     color: "white",
     textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textTransform: "capitalize",
   },
   mainContainer: {
     position: "absolute",
@@ -38,9 +42,10 @@ const useStyles = makeStyles({
 
 interface IProps {
   title: string;
+  children?: React.ReactNode;
 }
 
-const PageTitle: React.FC<IProps> = ({ title }) => {
+const PageTitle: React.FC<IProps> = ({ title, children = null }) => {
   const classes = useStyles();
 
   return (
@@ -51,6 +56,7 @@ const PageTitle: React.FC<IProps> = ({ title }) => {
           <Typography variant="h4" component="h1">
             {title}
           </Typography>
+          {children}
         </div>
       </div>
     </div>

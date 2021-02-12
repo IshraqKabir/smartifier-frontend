@@ -48,7 +48,7 @@ const Tag: React.FC<IProps> = ({ tag, position }) => {
     <div className={classes.container}>
       <Link href={`/blog/tags/${tag.slug}/posts`}>
         <a>
-          <TagName>{tag.name}</TagName>
+          <TagName variant="caption">{tag.name}</TagName>
         </a>
       </Link>
     </div>
@@ -58,7 +58,5 @@ const Tag: React.FC<IProps> = ({ tag, position }) => {
 export default Tag;
 
 const TagName = withStyles({
-  root: {
-    fontSize: 13,
-  },
+  root: {},
 })(Typography);

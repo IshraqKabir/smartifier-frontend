@@ -10,7 +10,6 @@ import React, { useEffect, useState } from "react";
 
 import GoogleButton from "react-google-button";
 import useLocalState from "../../custom-hooks/useLocalState";
-import useUserCookie from "../../custom-hooks/useUserCookie";
 
 interface IProps {}
 

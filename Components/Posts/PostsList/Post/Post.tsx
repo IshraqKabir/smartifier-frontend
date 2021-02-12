@@ -1,5 +1,11 @@
 import React from "react";
-import { Divider, makeStyles, Typography, withStyles } from "@material-ui/core";
+import {
+  Box,
+  Divider,
+  makeStyles,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
 import IPost from "../../../../Models/IPost";
 import Tags from "./Tags/Tags";
 
@@ -66,11 +72,11 @@ const Post: React.FC<IProps> = ({ post, position }) => {
   const classes = useStyles({ position });
 
   return (
-    <div className={classes.container}>
+    <Container>
       <Link href={`/blog/topics/${post.topic[0].slug}/posts`}>
         <a>
           <div className={classes.topic}>
-            <TopicName>{post.topic[0].name}</TopicName>
+            <TopicName variant="subtitle2">{post.topic[0].name}</TopicName>
           </div>
         </a>
       </Link>
@@ -78,7 +84,7 @@ const Post: React.FC<IProps> = ({ post, position }) => {
         <div className={classes.postTitle}>
           <Link href={`/blog/posts/${post.slug}`}>
             <a>
-              <PostTitle>{post.title}</PostTitle>
+              <PostTitle variant="h5">{post.title}</PostTitle>
             </a>
           </Link>
           <PostAuthor variant="subtitle2">by {post.user.name}</PostAuthor>
@@ -95,22 +101,27 @@ const Post: React.FC<IProps> = ({ post, position }) => {
         <ReadTime variant="subtitle2">{post.read_time}</ReadTime>
       </div>
       <PostDivider />
-    </div>
+    </Container>
   );
 };
 
 export default Post;
 
-const TopicName = withStyles({
+const Container = withStyles({
   root: {
-    fontSize: 13,
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
   },
+})(Box);
+
+const TopicName = withStyles({
+  root: {},
 })(Typography);
 
 const PostTitle = withStyles({
   root: {
     color: "#3798A7",
-    fontSize: 22,
     marginTop: 10,
     marginBottom: 10,
     whiteSpace: "nowrap",
@@ -125,7 +136,6 @@ const PostTitle = withStyles({
 const PostSummary = withStyles({
   root: {
     color: "#686868",
-    fontSize: 15,
     lineHeight: 1.5,
     textTransform: "capitalize",
     cursor: "pointer",

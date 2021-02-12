@@ -1,21 +1,32 @@
-import { Avatar, Box, Typography, withStyles } from "@material-ui/core";
+import React, { useState } from "react";
+
+import {
+  Avatar,
+  Box,
+  Snackbar,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
+
 import { useRouter } from "next/router";
-import React from "react";
+
 import useLocalState from "../../../custom-hooks/useLocalState";
+
 import IQuiz from "../../../Models/IQuiz";
+
 import url, { backend_url } from "../../../url";
 
 import ShareOnFB from "../../ShareOnFB/ShareOnFB";
 
 interface IProps {
   quiz: IQuiz;
-  setShowLoginAlert: Function;
 }
 
-const Quiz: React.FC<IProps> = ({ quiz, setShowLoginAlert }) => {
-  const router = useRouter();
-
+const Quiz: React.FC<IProps> = ({ quiz }) => {
+  const [showLoginAlert, setShowLoginAlert] = useState<boolean>(false);
   const [user] = useLocalState("user", "");
+
+  const router = useRouter();
 
   const handleClick = () => {
     if (!user.token) {
@@ -25,6 +36,7 @@ const Quiz: React.FC<IProps> = ({ quiz, setShowLoginAlert }) => {
       }, 3000);
       return;
     }
+
     router.push(`/test/quiz/${quiz.id}`);
   };
 
@@ -36,12 +48,19 @@ const Quiz: React.FC<IProps> = ({ quiz, setShowLoginAlert }) => {
         style={{ width: 90, height: 90 }}
       />
       <TitleButtonContainer>
-        <Title>{quiz.title}</Title>
+        <Title variant="h6">{quiz.title}</Title>
         <Button onClick={() => handleClick()}>Take the Quiz</Button>
       </TitleButtonContainer>
       <FBShareContainer>
         <ShareOnFB link={`${url}/share/fb/quizzes/${quiz.id}`} />
       </FBShareContainer>
+      <LoginAlert
+        key={quiz.id}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={showLoginAlert}
+        onClose={() => setShowLoginAlert(false)}
+        message="Please Login To Take The Quiz."
+      />
     </Container>
   );
 };
@@ -76,9 +95,7 @@ const TitleButtonContainer = withStyles({
 })(Box);
 
 const Title = withStyles({
-  root: {
-    fontSize: "1.2rem",
-  },
+  root: {},
 })(Typography);
 
 const Button = withStyles({
@@ -102,3 +119,9 @@ const FBShareContainer = withStyles({
     bottom: 10,
   },
 })(Box);
+
+const LoginAlert = withStyles({
+  root: {
+    zIndex: 20000,
+  },
+})(Snackbar);
