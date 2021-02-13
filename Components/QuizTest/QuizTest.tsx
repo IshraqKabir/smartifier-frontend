@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
 
-import postFunc from "../../UtilFunctions/postFunc";
-
-import { local_backend_url } from "../../url";
-import axios from "axios";
-import useLocalState from "../../custom-hooks/useLocalState";
-import ITest from "../../Models/ITest";
 import useStartTest from "./useStartTest";
 import { Box, CircularProgress, withStyles } from "@material-ui/core";
 import PageTitle from "../PageTitle/PageTitle";
 import Topbar from "../Layout/Topbar/Topbar";
+import Timer from "./Timer/Timer";
 
 interface IProps {
   id: number;
 }
 
 const QuizTest: React.FC<IProps> = ({ id }) => {
-  const [user] = useLocalState("user", "");
   const { test, isLoading, isError } = useStartTest(id);
+
+  if (isError) return <p>Sorry some error occured. Please refresh the page.</p>;
 
   return (
     <>
@@ -26,6 +22,9 @@ const QuizTest: React.FC<IProps> = ({ id }) => {
         <PageTitle title={isLoading ? "Starting Test..." : test.quiz.title}>
           {isLoading && <CircularProgress />}
         </PageTitle>
+        {test && !isLoading && (
+          <Timer start_time={test.created_at} duration={test?.quiz?.duration} />
+        )}
       </Container>
     </>
   );

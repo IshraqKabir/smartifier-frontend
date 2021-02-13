@@ -2,8 +2,6 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/quizzes": "pages/quizzes.js",
-  "/": "pages/index.js",
   "/test/quiz/[id]": "pages/test/quiz/[id].js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+  "/quizzes": "pages/quizzes.js"
 }
