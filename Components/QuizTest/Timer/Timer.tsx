@@ -48,6 +48,7 @@ const Container = withStyles({
   root: {
     position: "fixed",
     top: 100,
+    zIndex: 4000,
     left: 0,
     textAlign: "center",
     right: 0,

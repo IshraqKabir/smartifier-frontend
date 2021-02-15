@@ -26,7 +26,9 @@ const QuizTest: React.FC<IProps> = ({ id }) => {
         {test && !isLoading && (
           <Timer start_time={test.created_at} duration={test?.quiz?.duration} />
         )}
-        {test && !isLoading && test?.quiz.questions && <Questions questions={test.quiz.questions} />}
+        {test && !isLoading && test?.quiz.questions && (
+          <Questions questions={test.quiz.questions} />
+        )}
       </Container>
     </>
   );
@@ -42,5 +44,6 @@ const Container = withStyles({
     alignItems: "center",
     backgroundColor: "#5D00A5",
     minHeight: "100vh",
+    color: "white",
   },
 })(Box);
