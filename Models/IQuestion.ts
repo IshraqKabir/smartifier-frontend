@@ -13,4 +13,6 @@ export default interface IQuestion {
     | "short_paragraph"
     | "long_paragraph";
   options: IOption[];
+  chosenOption?: IOption;
+  style: number;
 }

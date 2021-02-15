@@ -32,40 +32,48 @@ const Google: React.FC<IProps> = () => {
         axios({
           method: "GET",
           url: `https://oauth2.googleapis.com/tokeninfo?id_token=${id_token}`,
-        }).then((response: any) => {
-          const {
-            email,
-            email_verified,
-            at_hash,
-            name,
-            picture,
-          } = response.data;
+        })
+          .then((response: any) => {
+            const {
+              email,
+              email_verified,
+              at_hash,
+              name,
+              picture,
+            } = response.data;
 
-          axios
-            .post(`${local_backend_url}/api/auth/googleSignIn`, {
-              id_token: id_token,
-              email: email,
-              at_hash: at_hash,
-              email_verified: email_verified === "true" ? true : false,
-              name: name,
-              picture: picture,
-            })
-            .then((response) => {
-              const token = response.data;
-
-              const user: any = {
+            axios
+              .post(`${local_backend_url}/api/auth/googleSignIn`, {
+                id_token: id_token,
                 email: email,
+                at_hash: at_hash,
+                email_verified: email_verified === "true" ? true : false,
                 name: name,
                 picture: picture,
-                token: token,
-              };
+              })
+              .then((response) => {
+                const token = response.data;
 
-              setUser(user);
+                const user: any = {
+                  email: email,
+                  name: name,
+                  picture: picture,
+                  token: token,
+                };
 
-              router.replace("/");
-            })
-            .catch((error) => setUser(""));
-        });
+                setUser(user);
+
+                router.replace("/");
+              })
+              .catch((error) => {
+                setUser("");
+                window.history.back();
+              });
+          })
+          .catch((error) => {
+            setUser("");
+            window.history.back();
+          });
       });
     }
   }, [code]);

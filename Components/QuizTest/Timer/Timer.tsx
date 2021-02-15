@@ -47,7 +47,7 @@ export default Timer;
 const Container = withStyles({
   root: {
     position: "fixed",
-    bottom: 0,
+    top: 100,
     left: 0,
     textAlign: "center",
     right: 0,
@@ -59,8 +59,9 @@ const Container = withStyles({
 const useStyles = makeStyles({
   loader: {
     display: "relative",
-    background:
-      "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box",
+    // background:
+    //   "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box",
+    backgroundColor: "#209434",
     opacity: 1,
     width: (props: { percentage: number }) => {
       const { percentage } = props;

@@ -5,6 +5,7 @@ import { Box, CircularProgress, withStyles } from "@material-ui/core";
 import PageTitle from "../PageTitle/PageTitle";
 import Topbar from "../Layout/Topbar/Topbar";
 import Timer from "./Timer/Timer";
+import Questions from "../Questions/Questions";
 
 interface IProps {
   id: number;
@@ -25,6 +26,7 @@ const QuizTest: React.FC<IProps> = ({ id }) => {
         {test && !isLoading && (
           <Timer start_time={test.created_at} duration={test?.quiz?.duration} />
         )}
+        {test && !isLoading && test?.quiz.questions && <Questions questions={test.quiz.questions} />}
       </Container>
     </>
   );
