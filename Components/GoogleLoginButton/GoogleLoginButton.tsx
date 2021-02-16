@@ -1,11 +1,5 @@
-import {
-  Box,
-  CircularProgress,
-  Typography,
-  withStyles,
-} from "@material-ui/core";
+import { Box, Typography, withStyles } from "@material-ui/core";
 import axios from "axios";
-import { userInfo } from "os";
 import React, { useEffect, useState } from "react";
 
 import GoogleButton from "react-google-button";
@@ -16,7 +10,7 @@ interface IProps {}
 const GoogleLoginButton: React.FC<IProps> = () => {
   const [url, setUrl] = useState<string>("");
 
-  const [user, setUser] = useLocalState<any>("user", "");
+  const [user] = useLocalState<any>("user", "");
 
   useEffect(() => {
     if (user) return;

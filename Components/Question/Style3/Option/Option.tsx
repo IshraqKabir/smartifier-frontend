@@ -25,7 +25,6 @@ const Option: React.FC<IProps> = ({ option, position }) => {
       )}
       {option.title && (
         <TextContainer>
-          <OptionButton />
           <Typography>{`${String.fromCharCode(position + 64)}. ${
             option.title
           }`}</Typography>
@@ -43,6 +42,7 @@ const Container = withStyles({
     flexDirection: "column",
     justifyContent: "space-between",
     width: "45%",
+    cursor: "pointer",
     background:
       "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box",
     borderRadius: 10,
@@ -66,6 +66,3 @@ const TextContainer = withStyles({
   },
 })(Box);
 
-const OptionButton = withStyles({
-  root: {},
-})(Box);

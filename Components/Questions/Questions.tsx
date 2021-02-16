@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 
 import Question from "../Question/Question";
 import IQuestion from "../../Models/IQuestion";
@@ -8,17 +8,23 @@ interface IProps {
   questions: IQuestion[];
 }
 
+export const QuestionContext = createContext(null);
+
 const Questions: React.FC<IProps> = ({ questions }) => {
   return (
     <Container>
       {questions &&
         questions.map((question, index) => {
           return (
-            <Question
+            <QuestionContext.Provider
+              value={{
+                questionID: question.id,
+                answerType: question.answer_type,
+              }}
               key={question.id}
-              question={question}
-              position={index + 1}
-            />
+            >
+              <Question question={question} position={index + 1} />
+            </QuestionContext.Provider>
           );
         })}
     </Container>

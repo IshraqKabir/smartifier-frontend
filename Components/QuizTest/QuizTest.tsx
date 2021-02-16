@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 import useStartTest from "./useStartTest";
 import { Box, CircularProgress, withStyles } from "@material-ui/core";
@@ -10,6 +10,8 @@ import Questions from "../Questions/Questions";
 interface IProps {
   id: number;
 }
+
+export const QuizIDContext = createContext(null);
 
 const QuizTest: React.FC<IProps> = ({ id }) => {
   const { test, isLoading, isError } = useStartTest(id);
@@ -27,7 +29,9 @@ const QuizTest: React.FC<IProps> = ({ id }) => {
           <Timer start_time={test.created_at} duration={test?.quiz?.duration} />
         )}
         {test && !isLoading && test?.quiz.questions && (
-          <Questions questions={test.quiz.questions} />
+          <QuizIDContext.Provider value={{ quizID: id }}>
+            <Questions questions={test.quiz.questions} />
+          </QuizIDContext.Provider>
         )}
       </Container>
     </>

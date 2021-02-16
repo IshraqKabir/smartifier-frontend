@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Box, Typography, withStyles } from "@material-ui/core";
 import IOption from "../../../../Models/IOption";
 
 import Image from "next/image";
 import { local_backend_url } from "../../../../url";
+import useOptionClicked from "../../../../custom-hooks/useOptionClicked";
+import { QuestionContext } from "../../../Questions/Questions";
+import { QuizIDContext } from "../../../QuizTest/QuizTest";
 
 interface IProps {
   option: IOption;
@@ -12,8 +15,18 @@ interface IProps {
 }
 
 const Option: React.FC<IProps> = ({ option, position }) => {
+  const { questionID, answerType } = useContext(QuestionContext);
+  const { quizID } = useContext(QuizIDContext);
+
+  const [handleClick] = useOptionClicked(
+    option.id,
+    questionID,
+    quizID,
+    answerType
+  );
+
   return (
-    <Container>
+    <Container onClick={() => handleClick()}>
       {option.image && (
         <ImageContainer>
           <Image
@@ -28,7 +41,9 @@ const Option: React.FC<IProps> = ({ option, position }) => {
       {option.title && (
         <TextContainer>
           <OptionButton />
-          <Typography>{`${String.fromCharCode(position + 64)}. ${option.title}`}</Typography>
+          <Typography>{`${String.fromCharCode(position + 64)}. ${
+            option.title
+          }`}</Typography>
         </TextContainer>
       )}
     </Container>

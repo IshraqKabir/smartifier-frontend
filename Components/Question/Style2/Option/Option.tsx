@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Box, Typography, withStyles } from "@material-ui/core";
 import IOption from "../../../../Models/IOption";
 
 import Image from "next/image";
 import { local_backend_url } from "../../../../url";
+import { QuestionContext } from "../../../Questions/Questions";
 
 interface IProps {
   option: IOption;
@@ -12,7 +13,8 @@ interface IProps {
 }
 
 const Option: React.FC<IProps> = ({ option, position }) => {
-  console.log(option);
+  const { answerType } = useContext(QuestionContext);
+
   return (
     <Container>
       {option.image && (
@@ -48,6 +50,7 @@ const Container = withStyles({
     margin: "0.3rem 0rem",
     marginBottom: "2rem",
     width: "100%",
+    cursor: "pointer",
   },
 })(Box);
 

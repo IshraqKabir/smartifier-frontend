@@ -3,7 +3,7 @@ import React from "react";
 import IQuestion from "../../Models/IQuestion";
 import Style1 from "./Style1/Style1";
 import Style2 from "./Style2/Style2";
-import Style3 from "./Style3/Style3"
+import Style3 from "./Style3/Style3";
 
 interface IProps {
   question: IQuestion;
