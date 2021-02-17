@@ -1,6 +1,7 @@
 import { Box, withStyles } from "@material-ui/core";
 import React from "react";
 import IOption from "../../../../Models/IOption";
+import OptionContainer from "../../OptionContainer/OptionContainer";
 import Option from "../Option/Option";
 
 interface IProps {
@@ -13,7 +14,13 @@ const Options: React.FC<IProps> = ({ options }) => {
       {options &&
         options.map((option, index) => {
           return (
-            <Option key={option.id} option={option} position={index + 1} />
+            <OptionContainer
+              key={option.id}
+              option={option}
+              position={index + 1}
+            >
+              <Option option={option} position={index + 1} />
+            </OptionContainer>
           );
         })}
     </Container>
@@ -24,9 +31,6 @@ export default Options;
 
 const Container = withStyles({
   root: {
-    display: "flex",
-    flexDirection: "column",
-    flexWrap: "wrap",
-    padding: "2rem 0rem 0rem 0rem",
+    marginTop: "2rem",
   },
 })(Box);

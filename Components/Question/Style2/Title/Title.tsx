@@ -12,7 +12,6 @@ interface IProps {
 }
 
 const Title: React.FC<IProps> = ({ title, image, position }) => {
-
   return (
     <Container>
       <TextContainer>
@@ -28,9 +27,9 @@ const Container = withStyles({
   root: {
     width: "100%",
     display: "flex",
+    marginBottom: "2rem",
   },
 })(Box);
-
 
 const TextContainer = withStyles({
   root: { maxWidth: "75ch" },

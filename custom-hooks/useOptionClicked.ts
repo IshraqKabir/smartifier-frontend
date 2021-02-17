@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useLocalState from "./useLocalState";
 
 type answerType = "multiple_choice" | "checkboxes";
@@ -8,14 +8,17 @@ export default function useOptionClicked(
   questionID: number,
   quizID: number,
   answerType: answerType
-) {
+): [handleClick: Function, answers: any] {
   const [user] = useLocalState("user", "");
-  const [answers, setAnswers] = useLocalState(`${user.email}-${quizID}`, {});
+  const [answers, setAnswers] = useLocalState(
+    `${user.email}-quiz${quizID}-answers`,
+    {}
+  );
 
   const handleClick = () => {
-    console.log(
-      `${user.email} has clicked option: ${optionID} of question: ${questionID}`
-    );
+    // console.log(
+    //   `${user.email} has clicked option: ${optionID} of question: ${questionID}`
+    // );
 
     setAnswers((state: any) => {
       let tempAnswers = { ...state };
@@ -33,10 +36,17 @@ export default function useOptionClicked(
     });
   };
 
-  useEffect(() => {
-    console.log("answer changed");
-    console.log(answers);
-  }, [answers]);
+  return [handleClick, answers];
+}
 
-  return [handleClick];
+export function getIsChecked(
+  answers: any,
+  questionID: number,
+  optionID: number
+): boolean {
+  if (answers[questionID] && answers[questionID].includes(optionID)) {
+    return true;
+  }
+
+  return false;
 }

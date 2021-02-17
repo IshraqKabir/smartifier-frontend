@@ -1,46 +1,69 @@
 import React, { useContext } from "react";
 
-import { Box, Typography, withStyles } from "@material-ui/core";
+import { Box, makeStyles, Typography, withStyles } from "@material-ui/core";
 import IOption from "../../../../Models/IOption";
-
-import Image from "next/image";
-import { local_backend_url } from "../../../../url";
-import { QuestionContext } from "../../../Questions/Questions";
 
 interface IProps {
   option: IOption;
   position: number;
+  isChecked?: boolean;
 }
 
-const Option: React.FC<IProps> = ({ option, position }) => {
-  const { answerType } = useContext(QuestionContext);
+const Option: React.FC<IProps> = ({ option, position, isChecked }) => {
+  const classes = useStyles({ isChecked });
 
   return (
-    <Container>
-      {option.image && (
-        <ImageContainer>
-          <Image
-            alt="image"
-            src={`${local_backend_url}/storage/${option.image.image_link}`}
-            height={"100%"}
-            width={"100%"}
-            layout="responsive"
-          />
-        </ImageContainer>
-      )}
+    <div className={classes.container}>
       {option.title && (
-        <TextContainer>
-          <OptionButton />
+        <div className={classes.textContainer}>
+          <div className={classes.optionButton} />
           <Typography>{`${String.fromCharCode(position + 64)}. ${
             option.title
           }`}</Typography>
-        </TextContainer>
+        </div>
       )}
-    </Container>
+    </div>
   );
 };
 
 export default Option;
+
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    margin: "0.3rem 0rem",
+    marginBottom: "2rem",
+    width: "100%",
+  },
+  textContainer: {
+    background: (props: { isChecked: boolean }) => {
+      return props.isChecked
+        ? "#209434"
+        : "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box";
+    },
+    width: "100%",
+    padding: "1rem 1rem",
+    borderRadius: 10,
+    display: "flex",
+    alignItems: "center",
+  },
+  optionButton: {
+    padding: (props: { isChecked: boolean }) => {
+      return props.isChecked ? "0.5rem" : "0.7rem";
+    },
+    backgroundColor: (props: { isChecked: boolean }) => {
+      return props.isChecked ? "white" : "#17ABC2";
+    },
+    borderRadius: "50%",
+    overflow: "hidden",
+    marginRight: "1rem",
+    border: (props: { isChecked: boolean }) => {
+      return props.isChecked ? "5px solid #17ABC2" : "none";
+    },
+  },
+});
 
 const Container = withStyles({
   root: {
@@ -50,18 +73,6 @@ const Container = withStyles({
     margin: "0.3rem 0rem",
     marginBottom: "2rem",
     width: "100%",
-    cursor: "pointer",
-  },
-})(Box);
-
-const ImageContainer = withStyles({
-  root: {
-    height: 100,
-    width: 100,
-    borderRadius: 5,
-    marginRight: "2rem",
-    overflow: "hidden",
-    flexShrink: 0,
   },
 })(Box);
 

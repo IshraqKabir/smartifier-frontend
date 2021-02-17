@@ -10,7 +10,6 @@ interface IProps {
 }
 
 const Style2: React.FC<IProps> = ({ question, position }) => {
-  console.log(question)
   return (
     <Container>
       <Title
