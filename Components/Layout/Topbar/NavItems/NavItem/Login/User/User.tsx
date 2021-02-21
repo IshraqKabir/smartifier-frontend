@@ -3,13 +3,19 @@ import useLocalState from "../../../../../../../custom-hooks/useLocalState";
 
 import {
   Avatar,
+  Box,
+  Collapse,
   ListItem,
   ListItemIcon,
   ListItemText,
   makeStyles,
+  Typography,
+  withStyles,
 } from "@material-ui/core";
 
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
+
+import Link from "next/link";
 
 const useStyles = makeStyles({
   userContainer: {
@@ -18,6 +24,7 @@ const useStyles = makeStyles({
     color: "#3798A7",
     height: "auto",
     width: "auto",
+    position: "relative",
   },
   profilePic: {
     borderRadius: "50%",
@@ -72,8 +79,61 @@ const User: React.FC<{}> = () => {
           )}
         </div>
       </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <CollapseContainer
+          onClick={() => {
+            if (open) setOpen(false);
+          }}
+        >
+          <MenuItem>
+            <Link href={`/user/profile`}>
+              <a>
+                <LinkText>Profile</LinkText>
+              </a>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <LinkText>Logout</LinkText>
+          </MenuItem>
+        </CollapseContainer>
+      </Collapse>
     </div>
   );
 };
 
 export default User;
+
+const CollapseContainer = withStyles({
+  root: {
+    position: "absolute",
+    zIndex: 1000,
+    backgroundColor: "#003085",
+    color: "white",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+})(Box);
+
+const MenuItem = withStyles({
+  root: {
+    width: "100%",
+    padding: "0.3rem",
+    borderBottom: "1px solid white",
+    color: "white",
+    cursor: "pointer",
+    textAlign: "center",
+    "&:hover": {
+      borderBottom: "1px solid #3798A7",
+    },
+  },
+})(Box);
+
+const LinkText = withStyles({
+  root: {
+    color: "white",
+    "&:hover": {
+      color: "#3798A7",
+    },
+  },
+})(Typography);

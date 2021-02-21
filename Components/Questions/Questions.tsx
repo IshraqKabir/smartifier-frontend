@@ -20,6 +20,7 @@ const Questions: React.FC<IProps> = ({ questions }) => {
               value={{
                 questionID: question.id,
                 answerType: question.answer_type,
+                question: question
               }}
               key={question.id}
             >
@@ -39,7 +40,7 @@ const Container = withStyles({
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
-    padding: "2rem 4rem",
+    padding: "2rem 4rem 0.5rem 4rem",
     ["@media (max-width: 1000px)"]: {
       padding: "2rem 2rem",
     },

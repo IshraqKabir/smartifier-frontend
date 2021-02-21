@@ -13,7 +13,7 @@ export default function useStartTest(id: number) {
   useEffect(() => {
     axios
       .post(
-        `${local_backend_url}/api/test/start`,
+        `${local_backend_url}/api/quiz-test/start`,
         {
           quiz_id: id,
         },

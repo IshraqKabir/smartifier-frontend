@@ -13,59 +13,7 @@ interface IProps {
   position: number;
 }
 
-export const AnswersContext = createContext(null);
-
 const Question: React.FC<IProps> = ({ question, position }) => {
-  const [user] = useLocalState("user", "");
-  const { quizID } = useContext(QuizIDContext);
-
-  const [answers, setAnswersState] = useLocalState(
-    `${user.email}-quiz${quizID}-answers`,
-    {}
-  );
-
-  const setAnswers = (optionID: number) => {
-    setAnswersState((state: any) => {
-      let tempAnswers = { ...state };
-
-      if (question.answer_type === "multiple_choice") {
-        const options = tempAnswers[`${question.id}`];
-
-        if (options && options.includes(optionID)) {
-          tempAnswers = { ...state, [`${question.id}`]: [] };
-        } else {
-          tempAnswers = { ...state, [`${question.id}`]: [optionID] };
-        }
-      } else if (question.answer_type === "checkboxes") {
-        const options = tempAnswers[`${question.id}`];
-
-        if (options && options.includes(optionID)) {
-          tempAnswers = {
-            ...state,
-            [`${question.id}`]: options.filter(
-              (option: number) => option != optionID
-            ),
-          };
-        } else {
-          tempAnswers = {
-            ...state,
-            [`${question.id}`]: [...options, optionID],
-          };
-        }
-      }
-
-      return { ...tempAnswers };
-    });
-  };
-
-  function getIsChecked(optionID: number): boolean {
-    if (answers[question.id] && answers[question.id].includes(optionID)) {
-      return true;
-    }
-
-    return false;
-  }
-
   let style = null;
   switch (question.style) {
     case 1:
@@ -84,20 +32,14 @@ const Question: React.FC<IProps> = ({ question, position }) => {
 
   return (
     <>
-      <AnswersContext.Provider
-        value={{
-          answers,
-          setAnswers,
-          getIsChecked,
-        }}
-      >
-        <Container>
-          {question.answer_type === "checkboxes" && (
-            <Typography variant="caption">* More than one answer may be correct.</Typography>
-          )}
-          {style}
-        </Container>
-      </AnswersContext.Provider>
+      <Container>
+        {question.answer_type === "checkboxes" && (
+          <Typography variant="caption">
+            * More than one answer may be correct.
+          </Typography>
+        )}
+        {style}
+      </Container>
     </>
   );
 };
