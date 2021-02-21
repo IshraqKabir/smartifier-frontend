@@ -49,7 +49,7 @@ const useStyles = makeStyles({
 });
 
 const User: React.FC<{}> = () => {
-  const [user] = useLocalState<any>("user", "");
+  const [user, setUser] = useLocalState<any>("user", "");
   const [open, setOpen] = useState<boolean>(false);
 
   const classes = useStyles();
@@ -58,7 +58,11 @@ const User: React.FC<{}> = () => {
     setOpen(!open);
   };
 
-  if (!user) return;
+  if (!user) return <></>;
+
+  const logOut = () => {
+    setUser("");
+  };
 
   return (
     <div className={classes.userContainer}>
@@ -92,7 +96,7 @@ const User: React.FC<{}> = () => {
               </a>
             </Link>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => logOut()}>
             <LinkText>Logout</LinkText>
           </MenuItem>
         </CollapseContainer>
@@ -106,10 +110,11 @@ export default User;
 const CollapseContainer = withStyles({
   root: {
     position: "absolute",
+    right: 0,
     zIndex: 1000,
     backgroundColor: "#003085",
     color: "white",
-    width: "100%",
+    width: "auto",
     display: "flex",
     flexDirection: "column",
   },
@@ -118,7 +123,7 @@ const CollapseContainer = withStyles({
 const MenuItem = withStyles({
   root: {
     width: "100%",
-    padding: "0.3rem",
+    padding: "1rem",
     borderBottom: "1px solid white",
     color: "white",
     cursor: "pointer",
