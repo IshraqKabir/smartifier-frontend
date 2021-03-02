@@ -5,16 +5,15 @@ import Image from "next/image";
 
 const useStyles = makeStyles({
   root: {
-    width: "100vw",
-    height: "90vh",
-    padding: "5%",
-    paddingTop: 50,
-    paddingBottom: 50,
     color: "white",
+    display: "flex",
+    alignItems: "center",
+    padding: "10rem 2rem 10rem 0rem",
+    justifyContent: "center",
     background:
       "transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box",
     ["@media (max-width: 880px)"]: {
-      height: 1000,
+      padding: "5rem 2rem 5rem 1rem",
     },
   },
   description: {
@@ -36,6 +35,11 @@ const useStyles = makeStyles({
     display: "flex",
     width: "65%",
     fontSize: "large",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    ["@media (max-width: 880px)"]: {
+      width: "80%"
+    },
   },
   youtubeLogo: {
     marginRight: 20,
@@ -44,9 +48,6 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   awe: {
-    position: "absolute",
-    top: 200,
-    right: "20%",
     ["@media (max-width: 600px)"]: {
       display: "none",
     },
@@ -57,7 +58,7 @@ const useContentStyles = makeStyles({
   root: {
     display: "flex",
     flexDirection: "column",
-    width: "40%",
+    width: "80ch",
   },
 });
 
@@ -102,9 +103,9 @@ const Hero: React.FC<{}> = () => {
             Find free video tutorials on YouTube
           </Typography>
         </div>
-        <div className={classes.awe}>
-          <Image src="/assets/awe.png" width={400} height={400} />
-        </div>
+      </div>
+      <div className={classes.awe}>
+        <Image src="/assets/awe.png" width={400} height={400} />
       </div>
     </div>
   );
