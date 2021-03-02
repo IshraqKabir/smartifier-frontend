@@ -1,0 +1,9 @@
+
+> smartifier-frontend@0.1.0 dev
+> next dev
+
+Browserslist: caniuse-lite is outdated. Please run:
+npx browserslist@latest --update-db
+Loaded env from /home/ishraqkabir/workspace/smartifier-frontend/.env.local
+ready - started server on http://localhost:3000
+event - compiled successfully

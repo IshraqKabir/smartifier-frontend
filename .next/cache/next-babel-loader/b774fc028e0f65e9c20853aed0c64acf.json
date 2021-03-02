@@ -1,1 +1,0 @@
-{"ast":null,"code":"const url = \"http://smartifier.local\";\nexport default url;","map":{"version":3,"sources":["/home/ishraqkabir/workspace/smartifier-frontend/url.js"],"names":["url"],"mappings":"AAAA,MAAMA,GAAG,GAAG,yBAAZ;AAEA,eAAeA,GAAf","sourcesContent":["const url = \"http://smartifier.local\";\n\nexport default url;"]},"metadata":{},"sourceType":"module"}

@@ -54,6 +54,9 @@ const Container = withStyles({
     right: 0,
     backgroundColor: "transparent",
     fontWeight: "bold",
+    ["@media (max-width: 700px)"]: {
+      top: 135,
+    }
   },
 })(Box);
 

@@ -5,4 +5,6 @@ export default interface ITest {
   quiz: IQuiz;
   created_at: string;
   updated_at: string;
+  marks?: number;
+  percentage?: number;
 }

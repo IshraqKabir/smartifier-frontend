@@ -1,7 +1,7 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
 import Topbar from "../../Components/Layout/Topbar/Topbar";
-import Profile from "../../Components/Profile";
+import Profile from "../../Components/Profile/Profile";
 import useLocalState from "../../custom-hooks/useLocalState";
 
 const UserProfile: React.FC<{}> = () => {

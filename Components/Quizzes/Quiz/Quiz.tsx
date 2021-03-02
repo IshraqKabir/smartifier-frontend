@@ -52,7 +52,10 @@ const Quiz: React.FC<IProps> = ({ quiz }) => {
         <Button onClick={() => handleClick()}>Take the Quiz</Button>
       </TitleButtonContainer>
       <FBShareContainer>
-        <ShareOnFB link={`${url}/share/fb/quizzes/${quiz.id}`} />
+        <ShareOnFB
+          link={`${url}/share/fb/quizzes/${quiz.id}`}
+          title="Share this on Facebook"
+        />
       </FBShareContainer>
       <LoginAlert
         key={quiz.id}

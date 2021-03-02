@@ -5,6 +5,7 @@ import Post from "../SinglePost/SinglePost";
 
 interface IProps {
   posts: IPost[];
+  position: number;
 }
 
 const useStyles = makeStyles({
@@ -21,7 +22,7 @@ const PostsList: React.FC<IProps> = ({ posts }) => {
   return (
     <div className={classes.container}>
       {posts.map((post, position) => (
-        <Post post={post} position={position} />
+        <Post post={post} />
       ))}
     </div>
   );

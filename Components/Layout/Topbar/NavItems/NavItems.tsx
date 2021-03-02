@@ -12,13 +12,9 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
-    width: "60%",
     color: "white",
     fontSize: "small",
     overflow: "hidden",
-    ["@media (max-width: 700px)"]: {
-      display: "none",
-    },
   },
 });
 

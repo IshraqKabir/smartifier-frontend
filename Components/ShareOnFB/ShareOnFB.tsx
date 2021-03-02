@@ -4,9 +4,10 @@ import ShareLink from "react-facebook-share-link";
 
 interface IProps {
   link: string;
+  title: string;
 }
 
-const ShareOnFB: React.FC<IProps> = ({ link }) => {
+const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
   return (
     <>
       <ShareLink link={`${link}`}>
@@ -23,7 +24,7 @@ const ShareOnFB: React.FC<IProps> = ({ link }) => {
                   marginBottom: "auto",
                 }}
               />
-              <Typography variant="caption">Share this on Facebook</Typography>
+              <Typography variant="caption">{title}</Typography>
             </Container>
           </a>
         )}

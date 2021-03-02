@@ -32,6 +32,30 @@ const useStyles = makeStyles({
     background:
       "transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box",
   },
+  outerContainer: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  mobileNavItems: {
+    backgroundColor: "rgba(0, 34, 94, 0.8)",
+    padding: "0.5rem 1rem",
+    color: "white",
+    position: "fixed",
+    top: 100,
+    left: 0,
+    right: 0,
+    zIndex: 4000,
+    // overflowX: "scroll",
+    ["@media (min-width: 700px)"]: {
+      display: "none",
+    },
+  },
+  pcNavItems: {
+    width: "60%",
+    ["@media (max-width: 700px)"]: {
+      display: "none",
+    },
+  },
 });
 
 const Topbar: React.FC<{}> = () => {
@@ -40,22 +64,29 @@ const Topbar: React.FC<{}> = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <div className={classes.outerContainer}>
       <div className={classes.placeholder}></div>
       {showLoading && <LinearProgress color="primary" />}
-      <div className={classes.topbarContainer}>
-        <div>
-          <Image
-            src="/assets/logo.png"
-            alt="Smartifier Logo"
-            height={100}
-            width={100}
-          />
+      <div className={classes.outerContainer}>
+        <div className={classes.topbarContainer}>
+          <div>
+            <Image
+              src="/assets/logo.png"
+              alt="Smartifier Logo"
+              height={100}
+              width={100}
+            />
+          </div>
+          <div className={classes.pcNavItems}>
+            <NavItems setShowLoading={setShowLoading} />
+          </div>
+          <Login />
         </div>
-        <NavItems setShowLoading={setShowLoading} />
-        <Login />
+        <div className={classes.mobileNavItems}>
+          <NavItems setShowLoading={setShowLoading} />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
