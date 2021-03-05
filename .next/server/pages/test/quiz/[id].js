@@ -1765,7 +1765,7 @@ module.exports = require("react/jsx-runtime");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return local_backend_url; });
 const url = "https://smartifier.org";
 const backend_url = "https://admin.smartifier.org";
-const local_backend_url = "http://localhost:8000";
+const local_backend_url = "https://admin.smartifier.org";
 /* harmony default export */ __webpack_exports__["b"] = (url);
 
 /***/ }),
