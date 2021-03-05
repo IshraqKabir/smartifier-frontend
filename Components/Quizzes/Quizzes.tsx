@@ -27,7 +27,7 @@ export default Quizzes;
 
 const Container = withStyles({
   root: {
-    width: "100vw",
+    width: "100%",
     minHeight: "100vh",
     backgroundColor: "#5D00A5",
   },

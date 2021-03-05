@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 
 import "../src/style.css";
-import Topbar from "../Components/Layout/Topbar/Topbar";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -15,10 +14,10 @@ export default function MyApp(props) {
     // Executing the below commented code breaks some of the styles after render
     // i dont know why but i have a slight guess
     // Remove the server-side injected CSS.
-    // const jssStyles = document.querySelector("#jss-server-side");
-    // if (jssStyles) {
-    //   jssStyles.parentElement.removeChild(jssStyles);
-    // }
+     const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
   }, []);
 
   return (

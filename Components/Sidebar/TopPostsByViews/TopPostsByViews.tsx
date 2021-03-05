@@ -12,6 +12,12 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
   },
+  heading: {
+    marginBottom: 5,
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 20,
+  },
 });
 
 const TopPostsByViews: React.FC<IProps> = ({ topPosts }) => {
@@ -20,7 +26,7 @@ const TopPostsByViews: React.FC<IProps> = ({ topPosts }) => {
   return (
     <div className={classes.container}>
       <div>
-        <Heading>Top Articles</Heading>
+        <div className={classes.heading}>Top Articles</div>
         <HeadingDivider light />
       </div>
       {topPosts.map((post) => (

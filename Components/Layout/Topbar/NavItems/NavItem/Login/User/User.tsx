@@ -46,6 +46,12 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
   },
+  linkText: {
+    color: "white",
+    "&:hover": {
+      color: "#3798A7",
+    },
+  },
 });
 
 const User: React.FC<{}> = () => {
@@ -97,7 +103,7 @@ const User: React.FC<{}> = () => {
             </Link>
           </MenuItem>
           <MenuItem onClick={() => logOut()}>
-            <LinkText>Logout</LinkText>
+            <div className={classes.linkText}>Logout</div>
           </MenuItem>
         </CollapseContainer>
       </Collapse>
@@ -123,7 +129,8 @@ const CollapseContainer = withStyles({
 const MenuItem = withStyles({
   root: {
     width: "100%",
-    padding: "1rem",
+    height: "100%",
+    padding: 16,
     borderBottom: "1px solid white",
     color: "white",
     cursor: "pointer",
