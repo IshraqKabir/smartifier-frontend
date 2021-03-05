@@ -1,0 +1,1 @@
+{"ast":null,"code":"export default function getIsChecked(optionID, question, answers) {\n  if (answers[question.id] && answers[question.id].includes(optionID)) {\n    return true;\n  }\n\n  return false;\n}","map":null,"metadata":{},"sourceType":"module"}
