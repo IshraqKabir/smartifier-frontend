@@ -50,7 +50,7 @@ const Login: React.FC<IProps> = () => {
     }
   };
 
-  return (
+  const Element = (
     <div className={classes.container} onClick={handleClick}>
       {!user && (
         <div className={classes.googleLogoContainer}>
@@ -95,6 +95,12 @@ const Login: React.FC<IProps> = () => {
         </div>
       )}
     </div>
+  );
+
+  return (
+    <>
+      {user ? Element : url ? <a href={url.toString()}>{Element}</a> : Element}
+    </>
   );
 };
 
