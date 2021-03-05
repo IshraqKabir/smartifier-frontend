@@ -402,13 +402,6 @@ module.exports = require("next/router");
 
 /***/ }),
 
-/***/ "4q7U":
-/***/ (function(module, exports) {
-
-module.exports = require("react-google-button");
-
-/***/ }),
-
 /***/ "6D7l":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -606,7 +599,8 @@ module.exports = require("react/jsx-runtime");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return backend_url; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return local_backend_url; });
 const url = "https://smartifier.org";
-const backend_url = "https://admin.smartifier.org";
+const backend_url = "https://admin.smartifier.org"; // export const local_backend_url = "localhost:8000";
+
 const local_backend_url = "https://admin.smartifier.org";
 /* harmony default export */ __webpack_exports__["b"] = (url);
 
@@ -1049,7 +1043,7 @@ var core_ = __webpack_require__("KKbo");
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
 
-// EXTERNAL MODULE: ./Components/Layout/Topbar/Topbar.tsx + 5 modules
+// EXTERNAL MODULE: ./Components/Layout/Topbar/Topbar.tsx + 3 modules
 var Topbar = __webpack_require__("gMP8");
 
 // EXTERNAL MODULE: ./Components/Tag/Tag.tsx
@@ -3519,168 +3513,18 @@ const NavItems = ({
 // EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
 var useLocalState = __webpack_require__("PhsX");
 
-// EXTERNAL MODULE: external "axios"
-var external_axios_ = __webpack_require__("zr5I");
-var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
-
-// EXTERNAL MODULE: external "react-google-button"
-var external_react_google_button_ = __webpack_require__("4q7U");
-var external_react_google_button_default = /*#__PURE__*/__webpack_require__.n(external_react_google_button_);
-
-// CONCATENATED MODULE: ./Components/GoogleLoginButton/GoogleLoginButton.tsx
-
-
-
-
-
-
-
-const GoogleLoginButton = () => {
-  const {
-    0: url,
-    1: setUrl
-  } = Object(external_react_["useState"])("");
-  const [user] = Object(useLocalState["a" /* default */])("user", "");
-  Object(external_react_["useEffect"])(() => {
-    if (user) return;
-    external_axios_default()({
-      method: "get",
-      url: "/api/auth/google?get=link"
-    }).then(res => {
-      setUrl(res.data.url);
-    });
-  }, []);
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Container, {
-    children: url ? /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
-      href: `${url}`,
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_google_button_default.a, {})
-    }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])(Loading, {
-      children: "Loading..."
-    })
-  });
-};
-
-/* harmony default export */ var GoogleLoginButton_GoogleLoginButton = (GoogleLoginButton);
-const Container = Object(core_["withStyles"])({
-  root: {}
-})(core_["Box"]);
-const Loading = Object(core_["withStyles"])({
-  root: {
-    color: "white",
-    textTransform: "capitalize"
-  }
-})(core_["Typography"]);
-// CONCATENATED MODULE: ./Components/Layout/Topbar/NavItems/NavItem/Login/User/User.tsx
-
-
-
-
-const User_useStyles = Object(core_["makeStyles"])({
-  userContainer: {
-    whiteSpace: "nowrap",
-    textTransform: "capitalize",
-    color: "#3798A7"
-  },
-  profilePic: {
-    borderRadius: "50%",
-    overflow: "hidden",
-    height: 40,
-    width: 40,
-    display: "flex",
-    alignItems: "center"
-  },
-  userName: {
-    textTransform: "capitalize",
-    color: "white",
-    marginLeft: 5,
-    marginRight: 5
-  },
-  arrow: {
-    color: "#3798A7",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  linkText: {
-    color: "white",
-    "&:hover": {
-      color: "#3798A7"
-    }
-  }
-});
-
-const User = () => {
-  const [user, setUser] = Object(useLocalState["a" /* default */])("user", "");
-  const {
-    0: open,
-    1: setOpen
-  } = Object(external_react_["useState"])(false);
-  const classes = User_useStyles();
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
-  if (!user) return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-    className: classes.userContainer
-  });
-
-  const logOut = () => {
-    setUser("");
-  };
-
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-    className: classes.userContainer,
-    children: user === null || user === void 0 ? void 0 : user.name
-  });
-};
-
-/* harmony default export */ var User_User = (User);
-const CollapseContainer = Object(core_["withStyles"])({
-  root: {
-    position: "absolute",
-    right: 0,
-    zIndex: 1000,
-    backgroundColor: "#003085",
-    color: "white",
-    width: "auto",
-    display: "flex",
-    flexDirection: "column"
-  }
-})(core_["Box"]);
-const MenuItem = Object(core_["withStyles"])({
-  root: {
-    width: "100%",
-    height: "100%",
-    padding: 16,
-    borderBottom: "1px solid white",
-    color: "white",
-    cursor: "pointer",
-    textAlign: "center",
-    "&:hover": {
-      borderBottom: "1px solid #3798A7"
-    }
-  }
-})(core_["Box"]);
-const LinkText = Object(core_["withStyles"])({
-  root: {
-    color: "white",
-    "&:hover": {
-      color: "#3798A7"
-    }
-  }
-})(core_["Typography"]);
 // CONCATENATED MODULE: ./Components/Layout/Topbar/NavItems/NavItem/Login/Login.tsx
 
 
 
 
-
-
 const Login = () => {
-  const [user] = Object(useLocalState["a" /* default */])("user", "");
-  if (user) return /*#__PURE__*/Object(jsx_runtime_["jsx"])(User_User, {});
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(GoogleLoginButton_GoogleLoginButton, {});
+  const [user] = Object(useLocalState["a" /* default */])("user", ""); // if (user) return <User />;
+  // return <GoogleLoginButton />;
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+    children: user ? "logged in" : "not logged in"
+  });
 };
 
 /* harmony default export */ var Login_Login = (Login);

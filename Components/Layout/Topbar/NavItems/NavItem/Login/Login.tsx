@@ -10,9 +10,13 @@ interface IProps {}
 const Login: React.FC<IProps> = () => {
   const [user] = useLocalState("user", "");
 
-  if (user) return <User />;
+  // if (user) return <User />;
 
-  return <GoogleLoginButton />;
+  // return <GoogleLoginButton />;
+
+  return <div>
+    {user ? "logged in": "not logged in"}
+  </div>
 };
 
 export default Login;

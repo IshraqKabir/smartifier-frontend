@@ -22,6 +22,9 @@ const useStyles = makeStyles({
     whiteSpace: "nowrap",
     textTransform: "capitalize",
     color: "#3798A7",
+    height: "auto",
+    width: "auto",
+    position: "relative",
   },
   profilePic: {
     borderRadius: "50%",
@@ -61,7 +64,7 @@ const User: React.FC<{}> = () => {
     setOpen(!open);
   };
 
-  if (!user) return <div className={classes.userContainer}></div>;
+  if (!user) return <></>;
 
   const logOut = () => {
     setUser("");
@@ -69,8 +72,7 @@ const User: React.FC<{}> = () => {
 
   return (
     <div className={classes.userContainer}>
-      {user?.name}
-      {/* <ListItem button onClick={handleClick}>
+      <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <div className={classes.profilePic}>
             <Avatar alt={`${user?.name}`} src={`${user.image_url}`} />
@@ -104,7 +106,7 @@ const User: React.FC<{}> = () => {
             <div className={classes.linkText}>Logout</div>
           </MenuItem>
         </CollapseContainer>
-      </Collapse> */}
+      </Collapse>
     </div>
   );
 };
