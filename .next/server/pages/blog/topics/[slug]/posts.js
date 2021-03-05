@@ -308,13 +308,6 @@ module.exports = _interopRequireWildcard;
 
 /***/ }),
 
-/***/ "2kat":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/icons");
-
-/***/ }),
-
 /***/ "3WeD":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3577,14 +3570,7 @@ const Loading = Object(core_["withStyles"])({
     textTransform: "capitalize"
   }
 })(core_["Typography"]);
-// EXTERNAL MODULE: external "@material-ui/icons"
-var icons_ = __webpack_require__("2kat");
-
 // CONCATENATED MODULE: ./Components/Layout/Topbar/NavItems/NavItem/Login/User/User.tsx
-
-
-
-
 
 
 
@@ -3593,10 +3579,7 @@ const User_useStyles = Object(core_["makeStyles"])({
   userContainer: {
     whiteSpace: "nowrap",
     textTransform: "capitalize",
-    color: "#3798A7",
-    height: "auto",
-    width: "auto",
-    position: "relative"
+    color: "#3798A7"
   },
   profilePic: {
     borderRadius: "50%",
@@ -3627,8 +3610,6 @@ const User_useStyles = Object(core_["makeStyles"])({
 });
 
 const User = () => {
-  var _user$name;
-
   const [user, setUser] = Object(useLocalState["a" /* default */])("user", "");
   const {
     0: open,
@@ -3640,64 +3621,17 @@ const User = () => {
     setOpen(!open);
   };
 
-  if (!user) return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {});
+  if (!user) return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+    className: classes.userContainer
+  });
 
   const logOut = () => {
     setUser("");
   };
 
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
     className: classes.userContainer,
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["ListItem"], {
-      button: true,
-      onClick: handleClick,
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["ListItemIcon"], {
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-          className: classes.profilePic,
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
-            alt: `${user === null || user === void 0 ? void 0 : user.name}`,
-            src: `${user.image_url}`
-          })
-        })
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-        className: classes.userName,
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["ListItemText"], {
-          primary: `${user === null || user === void 0 ? void 0 : (_user$name = user.name) === null || _user$name === void 0 ? void 0 : _user$name.toLowerCase()}`
-        })
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-        className: classes.arrow,
-        children: open ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["ExpandLess"], {
-          color: "inherit"
-        }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["ExpandMore"], {
-          color: "inherit"
-        })
-      })]
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Collapse"], {
-      in: open,
-      timeout: "auto",
-      unmountOnExit: true,
-      children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CollapseContainer, {
-        onClick: () => {
-          if (open) setOpen(false);
-        },
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(MenuItem, {
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
-            href: `/user/profile`,
-            children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
-              children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(LinkText, {
-                children: "Profile"
-              })
-            })
-          })
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(MenuItem, {
-          onClick: () => logOut(),
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-            className: classes.linkText,
-            children: "Logout"
-          })
-        })]
-      })
-    })]
+    children: user === null || user === void 0 ? void 0 : user.name
   });
 };
 
