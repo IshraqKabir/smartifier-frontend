@@ -1,0 +1,1 @@
+{"ast":null,"code":"var url = \"https://smartifier.org\";\nexport var backend_url = \"https://admin.smartifier.org\"; // export const local_backend_url = \"localhost:8000\";\n\nexport var local_backend_url = \"https://admin.smartifier.org\";\nexport default url;","map":null,"metadata":{},"sourceType":"module"}
