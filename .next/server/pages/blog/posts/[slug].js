@@ -3806,6 +3806,7 @@ var icons_ = __webpack_require__("2kat");
 
 
 
+
 const Login = () => {
   const [user, setUser] = Object(useLocalState["a" /* default */])("user", "");
   const {
@@ -3853,7 +3854,7 @@ const Login = () => {
     }
   };
 
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+  const Element = /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
     className: classes.container,
     onClick: handleClick,
     children: [!user && /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
@@ -3906,6 +3907,13 @@ const Login = () => {
         })
       })]
     })]
+  });
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {
+    children: user ? Element : url ? /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+      href: url.toString(),
+      children: Element
+    }) : Element
   });
 };
 

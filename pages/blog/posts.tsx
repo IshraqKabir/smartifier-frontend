@@ -31,6 +31,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       topics: topics,
       topPosts: topPosts,
     },
+    revalidate: 1,
   };
 };
 

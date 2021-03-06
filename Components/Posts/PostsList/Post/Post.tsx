@@ -73,24 +73,24 @@ const Post: React.FC<IProps> = ({ post, position }) => {
 
   return (
     <Container>
-      <Link href={`/blog/topics/${post.topic[0].slug}/posts`}>
+      <Link href={`/blog/topics/${post?.topic[0]?.slug}/posts`}>
         <a>
           <div className={classes.topic}>
-            <TopicName variant="subtitle2">{post.topic[0].name}</TopicName>
+            <TopicName variant="subtitle2">{post?.topic[0]?.name}</TopicName>
           </div>
         </a>
       </Link>
       <div>
         <div className={classes.postTitle}>
-          <Link href={`/blog/posts/${post.slug}`}>
+          <Link href={`/blog/posts/${post?.slug}`}>
             <a>
-              <PostTitle variant="h5">{post.title}</PostTitle>
+              <PostTitle variant="h5">{post?.title}</PostTitle>
             </a>
           </Link>
-          <PostAuthor variant="subtitle2">by {post.user.name}</PostAuthor>
+          <PostAuthor variant="subtitle2">by {post?.user?.name}</PostAuthor>
         </div>
         <div>
-          <PostSummary>{`${post.summary.substr(
+          <PostSummary>{`${post?.summary?.substr(
             0,
             200
           )}[...][...]`}</PostSummary>
