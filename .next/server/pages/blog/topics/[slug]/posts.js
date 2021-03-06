@@ -1148,18 +1148,20 @@ const Post = ({
   post,
   position
 }) => {
+  var _post$topic$, _post$topic$2, _post$user, _post$summary;
+
   const classes = Post_useStyles({
     position
   });
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
-      href: `/blog/topics/${post.topic[0].slug}/posts`,
+      href: `/blog/topics/${post === null || post === void 0 ? void 0 : (_post$topic$ = post.topic[0]) === null || _post$topic$ === void 0 ? void 0 : _post$topic$.slug}/posts`,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
           className: classes.topic,
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(TopicName, {
             variant: "subtitle2",
-            children: post.topic[0].name
+            children: post === null || post === void 0 ? void 0 : (_post$topic$2 = post.topic[0]) === null || _post$topic$2 === void 0 ? void 0 : _post$topic$2.name
           })
         })
       })
@@ -1167,20 +1169,20 @@ const Post = ({
       children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
         className: classes.postTitle,
         children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
-          href: `/blog/posts/${post.slug}`,
+          href: `/blog/posts/${post === null || post === void 0 ? void 0 : post.slug}`,
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
             children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(PostTitle, {
               variant: "h5",
-              children: post.title
+              children: post === null || post === void 0 ? void 0 : post.title
             })
           })
         }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(PostAuthor, {
           variant: "subtitle2",
-          children: ["by ", post.user.name]
+          children: ["by ", post === null || post === void 0 ? void 0 : (_post$user = post.user) === null || _post$user === void 0 ? void 0 : _post$user.name]
         })]
       }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(PostSummary, {
-          children: `${post.summary.substr(0, 200)}[...][...]`
+          children: `${post === null || post === void 0 ? void 0 : (_post$summary = post.summary) === null || _post$summary === void 0 ? void 0 : _post$summary.substr(0, 200)}[...][...]`
         })
       })]
     }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
@@ -3537,6 +3539,7 @@ var icons_ = __webpack_require__("2kat");
 
 
 
+
 const Login = () => {
   const [user, setUser] = Object(useLocalState["a" /* default */])("user", "");
   const {
@@ -3584,7 +3587,7 @@ const Login = () => {
     }
   };
 
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+  const Element = /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
     className: classes.container,
     onClick: handleClick,
     children: [!user && /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
@@ -3637,6 +3640,13 @@ const Login = () => {
         })
       })]
     })]
+  });
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {
+    children: user ? Element : url ? /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+      href: url.toString(),
+      children: Element
+    }) : Element
   });
 };
 

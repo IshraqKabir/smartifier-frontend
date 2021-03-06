@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       quizzes: quizzes,
     },
+    revalidate: 1,
   };
 };
 
