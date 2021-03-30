@@ -21,10 +21,8 @@ const useStyles = makeStyles({
   },
   container: {
     width: "100vw",
-    // position: "absolute",
     top: 0,
     left: 0,
-    // paddingTop: 50,
   },
   titleContainer: {
     marginTop: "3rem",
@@ -32,17 +30,12 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   mainContainer: {
-    // position: "absolute",
-    // top: 250,
-    // left: 0,
-    // marginTop: 250,
     paddingLeft: "5%",
     paddingRight: "5%",
     width: "100%",
   },
   blocks: {
     display: "flex",
-    // justifyContent: "stretch",
     alignItems: "center",
     width: "95%",
     flexWrap: "wrap",

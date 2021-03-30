@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     color: "white",
     display: "flex",
     alignItems: "center",
-    padding: "10rem 2rem 10rem 0rem",
+    padding: "2rem 2rem 10rem 0rem",
     justifyContent: "center",
     background:
       "transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box",

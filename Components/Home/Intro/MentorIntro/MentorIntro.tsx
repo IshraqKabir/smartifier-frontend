@@ -10,7 +10,7 @@ const MentorIntro: React.FC<IProps> = () => {
     <Container>
       <LeftSide>
         <Title>Hello,</Title>
-        <Title>{texts.message_from_menetor_title}</Title>
+        <Title>{texts.message_from_mentor_title}</Title>
         <MessageContainer>
           {texts.message_from_mentor_messages.map((message) => {
             return <Message>{message}</Message>;
@@ -91,7 +91,7 @@ const RightSide = withStyles({
   root: {
     marginLeft: "10%",
     flexShrink: 1,
-    ["@media (max-width: 600px)"]: {
+    ["@media (max-width: 800px)"]: {
       display: "none",
     },
   },
