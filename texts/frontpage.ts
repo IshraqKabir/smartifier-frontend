@@ -16,10 +16,10 @@ Our aim is to enhance soft skills through courses and training. By smashing the 
 Because, ‘Your transformation is our motivation.’
 `,
 
-  message_from_menetor_title: `I am Sohan Haidear, I am your Mentor at Smartifier!`,
+  message_from_menetor_title: `I am Sohan Haidear, I am your Mentor at Smartifier Training & Consultancy!`,
   message_from_mentor_messages: [
     `In today’s knowledge economy, we must develop skills fast. But how? Being passionate about learning and self-development all my life, I’ve chased this question for a long time. That pursuit led me to discover the concept of 'Meta-Learning' from the famous course 'Learning How to Learn' on Coursera.`,
-    `It helped me progress rapidly in my career, and within a few years I had the privilege of winning 2 South Asian Digital Media Awards with the Digital Marketing team of The Daily Star.`,
+    `It helped me progress kkrapidly in my career, and within a few years I had the privilege of winning 2 South Asian Digital Media Awards with the Digital Marketing team of The Daily Star.`,
     `Instead of piling up my showcase with awards, I wanted to help others pile up their showcases with awards. I had always enjoyed teaching others. Watching them grow gave me a special satisfaction.`,
     `From that thought, I had founded Smartifier Academy where our aim is to help people improve their performance through meta-learning skills. We are now incorporated as Smartifier Training & Consultation.`,
     `I firmly believe that every human being has unlimited potential. When you see a dream, the dream also sees you. But if you don’t take the right steps, it starts to fade away into the air.`,

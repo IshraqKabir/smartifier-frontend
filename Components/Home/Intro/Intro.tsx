@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import MentorIntro from "./MentorIntro/MentorIntro";
 import FindUsOnFB from "./FindUsOnFB/FindUsOnFB";
+import PageTitle from "../../PageTitle/PageTitle";
 
 const useStyles = makeStyles({
   outerContainer: {
@@ -20,10 +21,10 @@ const useStyles = makeStyles({
   },
   container: {
     width: "100vw",
-    position: "absolute",
+    // position: "absolute",
     top: 0,
     left: 0,
-    paddingTop: 50,
+    // paddingTop: 50,
   },
   titleContainer: {
     marginTop: "3rem",
@@ -31,9 +32,10 @@ const useStyles = makeStyles({
     textAlign: "center",
   },
   mainContainer: {
-    position: "absolute",
-    top: 250,
-    left: 0,
+    // position: "absolute",
+    // top: 250,
+    // left: 0,
+    // marginTop: 250,
     paddingLeft: "5%",
     paddingRight: "5%",
     width: "100%",
@@ -65,22 +67,16 @@ const Intro: React.FC<{}> = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.outerContainer}>
-      <div className={classes.polygonBackground}></div>
-      <div className={classes.container}>
-        <div className={classes.titleContainer}>
-          <Typography variant="h4">Message from Mentor</Typography>
-          {/* <Typography variant="subtitle1">Subtitle</Typography> */}
-        </div>
-        <div className={classes.mainContainer}>
-          {/* <div className={classes.blocks}>
+    <div className={classes.container}>
+      <PageTitle title="Message from Mentor" />
+      <div className={classes.mainContainer}>
+        {/* <div className={classes.blocks}>
             <div className={classes.block}>Hello</div>
             <div className={classes.block}>Hello</div>
             <div className={classes.block}>Hello</div>
           </div> */}
-          <MentorIntro />
-          <FindUsOnFB />
-        </div>
+        <MentorIntro />
+        <FindUsOnFB />
       </div>
     </div>
   );

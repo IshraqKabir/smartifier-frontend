@@ -1,4 +1,4 @@
-import { Box, withStyles } from "@material-ui/core";
+import { Avatar, Box, withStyles } from "@material-ui/core";
 import React from "react";
 
 import texts from "../../../../texts/frontpage";
@@ -16,8 +16,18 @@ const MentorIntro: React.FC<IProps> = () => {
             return <Message>{message}</Message>;
           })}
         </MessageContainer>
-        <Button>Book a call</Button>
+        <Button>Book your Need Assessment Phone Call</Button>
       </LeftSide>
+      <RightSide>
+        <Avatar
+          src={`/assets/mentor_image.png`}
+          variant="square"
+          style={{
+            height: "70%",
+            width: "70%",
+          }}
+        />
+      </RightSide>
     </Container>
   );
 };
@@ -43,6 +53,7 @@ const Container = withStyles({
 const LeftSide = withStyles({
   root: {
     maxWidth: "80ch",
+    flexShrink: 2,
   },
 })(Box);
 
@@ -73,5 +84,15 @@ const Button = withStyles({
     borderRadius: 50,
     padding: "1rem 2rem",
     color: "white",
+  },
+})(Box);
+
+const RightSide = withStyles({
+  root: {
+    marginLeft: "10%",
+    flexShrink: 1,
+    ["@media (max-width: 600px)"]: {
+      display: "none",
+    },
   },
 })(Box);
