@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext } from "react";
 
 import useStartTest from "./useStartTest";
 import { Box, CircularProgress, withStyles } from "@material-ui/core";
@@ -26,7 +26,6 @@ const QuizTest: React.FC<IProps> = ({ id }) => {
     {}
   );
 
-  console.log(answers);
   if (isError) return <p>Sorry some error occured. Please refresh the page.</p>;
 
   const setAnswers = (optionID: number, question: IQuestion) => {

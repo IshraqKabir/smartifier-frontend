@@ -3,6 +3,9 @@ import React from "react";
 
 import Image from "next/image";
 
+import texts from "../../../texts/frontpage";
+import links from "../../../texts/links";
+
 const useStyles = makeStyles({
   root: {
     color: "white",
@@ -38,7 +41,7 @@ const useStyles = makeStyles({
     whiteSpace: "nowrap",
     overflow: "hidden",
     ["@media (max-width: 880px)"]: {
-      width: "80%"
+      width: "80%",
     },
   },
   youtubeLogo: {
@@ -77,32 +80,29 @@ const Hero: React.FC<{}> = () => {
         </Typography>
         <div className={classes.description}>
           <Typography component="h2" variant="subtitle1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nihil
-            eum totam aspernatur voluptate, molestiae expedita aliquid dolores
-            explicabo quae rerum, alias minima obcaecati nostrum maxime dolorum.
-            Iusto harum cumque aut exercitationem velit impedit vel alias iste
-            accusamus laudantium vero eum rerum, ex culpa, perspiciatis quis
-            ipsa atque, earum quisquam.
+            {texts.why_smartifier}
           </Typography>
         </div>
         <div className={classes.buttons}>
           <div className={classes.button}>Talk to us</div>
           <div className={classes.button}>All Courses</div>
         </div>
-        <div
-          className={`${classes.youtubeButtonsContainer} ${classes.buttons} ${classes.button}`}
-        >
-          <div className={classes.youtubeLogo}>
-            <Image
-              src="/assets/small_youtube_logo.png"
-              width={29}
-              height={21}
-            />
+        <a href={links.youtube} target="_blank">
+          <div
+            className={`${classes.youtubeButtonsContainer} ${classes.buttons} ${classes.button}`}
+          >
+            <div className={classes.youtubeLogo}>
+              <Image
+                src="/assets/small_youtube_logo.png"
+                width={29}
+                height={21}
+              />
+            </div>
+            <Typography variant="caption">
+              Find free video tutorials on YouTube
+            </Typography>
           </div>
-          <Typography variant="caption">
-            Find free video tutorials on YouTube
-          </Typography>
-        </div>
+        </a>
       </div>
       <div className={classes.awe}>
         <Image src="/assets/awe.png" width={400} height={400} />
