@@ -53,7 +53,7 @@ const Submit: React.FC<IProps> = ({ answers, test_id }) => {
           },
         }
       )
-      .then((response) => {})
+      .then(() => {})
       .catch(() => {});
 
     setOpen(true);

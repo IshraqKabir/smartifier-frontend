@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core";
 import React from "react";
 
 import Topbar from "../Layout/Topbar/Topbar";
+import Details from "./Details/Details";
 import Hero from "./Hero/Hero";
 import Intro from "./Intro/Intro";
 
@@ -23,6 +24,7 @@ const HomeComponent: React.FC<{}> = () => {
       <div className={classes.root}>
         <Hero />
         <Intro />
+        <Details />
       </div>
     </>
   );

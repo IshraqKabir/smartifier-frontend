@@ -1,10 +1,12 @@
 import React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
+import MentorIntro from "./MentorIntro/MentorIntro";
+import FindUsOnFB from "./FindUsOnFB/FindUsOnFB";
+import PageTitle from "../../PageTitle/PageTitle";
 
 const useStyles = makeStyles({
   outerContainer: {
     width: "100vw",
-    height: 1000,
     backgroundColor: "#01176C",
     position: "relative",
   },
@@ -19,31 +21,27 @@ const useStyles = makeStyles({
   },
   container: {
     width: "100vw",
-    position: "absolute",
     top: 0,
     left: 0,
-    paddingTop: 50,
   },
   titleContainer: {
+    marginTop: "3rem",
     color: "white",
     textAlign: "center",
   },
   mainContainer: {
-    position: "absolute",
-    top: 250,
-    left: 0,
     paddingLeft: "5%",
     paddingRight: "5%",
     width: "100%",
   },
   blocks: {
     display: "flex",
-    // justifyContent: "stretch",
     alignItems: "center",
     width: "95%",
     flexWrap: "wrap",
     marginLeft: "auto",
     marginRight: "auto",
+    marginBottom: "4rem",
   },
   block: {
     background: "#FFFFFFDB 0% 0% no-repeat padding-box",
@@ -62,20 +60,16 @@ const Intro: React.FC<{}> = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.outerContainer}>
-      <div className={classes.polygonBackground}></div>
-      <div className={classes.container}>
-        <div className={classes.titleContainer}>
-          <Typography variant="h4">Title</Typography>
-          <Typography variant="subtitle1">Subtitle</Typography>
-        </div>
-        <div className={classes.mainContainer}>
-          <div className={classes.blocks}>
+    <div className={classes.container}>
+      <PageTitle title="Message from Mentor" />
+      <div className={classes.mainContainer}>
+        {/* <div className={classes.blocks}>
             <div className={classes.block}>Hello</div>
             <div className={classes.block}>Hello</div>
             <div className={classes.block}>Hello</div>
-          </div>
-        </div>
+          </div> */}
+        <MentorIntro />
+        <FindUsOnFB />
       </div>
     </div>
   );
