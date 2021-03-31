@@ -79,9 +79,13 @@ const Hero: React.FC<{}> = () => {
           </span>
         </Typography>
         <div className={classes.description}>
-          <Typography component="h2" variant="subtitle1">
-            {texts.why_smartifier}
-          </Typography>
+          {texts.why_smartifier_array.map((line) => {
+            return (
+              <Typography component="h2" variant="subtitle1">
+                {line}
+              </Typography>
+            );
+          })}
         </div>
         <div className={classes.buttons}>
           <div className={classes.button}>Talk to us</div>

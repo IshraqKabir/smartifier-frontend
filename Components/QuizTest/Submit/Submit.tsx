@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import axios from "axios";
 import { local_backend_url } from "../../../url";
 import useLocalState from "../../../custom-hooks/useLocalState";
+import { Box } from "@material-ui/core";
 
 export interface SimpleDialogProps {
   open: boolean;
   onClose: () => void;
+  handleSubmit: () => void;
 }
 
 function SimpleDialog(props: SimpleDialogProps) {
-  const { onClose, open } = props;
+  const { onClose, open, handleSubmit } = props;
+  const [isSubmitting, setIsSubmitting] = useState<Boolean>(false);
 
   const handleClose = () => {
     onClose();
@@ -24,10 +27,51 @@ function SimpleDialog(props: SimpleDialogProps) {
       aria-labelledby="simple-dialog-title"
       open={open}
     >
-      yooo
+      <DialogueContaier>
+        <Title>Are you sure you want to submit the test?</Title>
+        <ButtonsContainer>
+          <WarningButton
+            onClick={() => {
+              setIsSubmitting(true);
+              handleSubmit();
+            }}
+          >
+            {isSubmitting ? "Submitting..." : "Yes"}
+          </WarningButton>
+          <Button onClick={handleClose}>No</Button>
+        </ButtonsContainer>
+      </DialogueContaier>
     </Dialog>
   );
 }
+
+const DialogueContaier = withStyles({
+  root: {
+    padding: "2rem",
+  },
+})(Box);
+
+const Title = withStyles({
+  root: { fontWeight: 600, fontSize: "1.3rem", margin: "1rem auto" },
+})(Box);
+
+const ButtonsContainer = withStyles({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+})(Box);
+
+const WarningButton = withStyles({
+  root: {
+    backgroundColor: "red",
+    color: "white",
+    "&:hover": {
+      color: "red",
+    },
+  },
+})(Button);
 
 interface IProps {
   answers: any;
@@ -39,6 +83,10 @@ const Submit: React.FC<IProps> = ({ answers, test_id }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleSubmit = () => {
     axios
       .post(
         `${local_backend_url}/api/quiz-test/answers/store`,
@@ -55,8 +103,6 @@ const Submit: React.FC<IProps> = ({ answers, test_id }) => {
       )
       .then(() => {})
       .catch(() => {});
-
-    setOpen(true);
   };
 
   const handleClose = () => {
@@ -69,7 +115,11 @@ const Submit: React.FC<IProps> = ({ answers, test_id }) => {
       <SubmitButton variant="outlined" onClick={handleClickOpen}>
         Submit
       </SubmitButton>
-      <SimpleDialog open={open} onClose={handleClose} />
+      <SimpleDialog
+        open={open}
+        onClose={handleClose}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };
