@@ -63,7 +63,8 @@ const Google: React.FC<IProps> = () => {
 
                 setUser(user);
 
-                router.replace("/");
+                window.close();
+                // router.replace("/");
               })
               .catch((error) => {
                 setUser("");

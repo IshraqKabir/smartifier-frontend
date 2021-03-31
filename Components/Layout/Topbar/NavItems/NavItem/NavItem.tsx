@@ -20,6 +20,9 @@ const useStyles = makeStyles({
       transition: "0.3s",
       fontSize: 16,
     },
+    ["@media (max-width: 700px)"]: {
+      marginRight: "1rem",
+    },
   },
 });
 

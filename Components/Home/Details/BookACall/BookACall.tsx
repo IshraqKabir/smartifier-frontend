@@ -1,13 +1,18 @@
 import { Box, withStyles } from "@material-ui/core";
 import React from "react";
 
+import texts from "../../../../texts/frontpage";
+
 interface IProps {}
 
 const BookACall: React.FC<IProps> = () => {
   return (
     <Container>
       <Title>B2B Free Session</Title>
-      <Button>Book Your Free 1-Hour Session</Button>
+
+      <a href={`${texts.links.free_1_hour_session}`} target="_blank">
+        <Button>Book Your Free 1-Hour Session</Button>
+      </a>
     </Container>
   );
 };

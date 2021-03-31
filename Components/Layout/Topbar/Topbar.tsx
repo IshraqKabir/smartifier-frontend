@@ -44,7 +44,7 @@ const useStyles = makeStyles({
     top: 100,
     left: 0,
     right: 0,
-    zIndex: 4000,
+    zIndex: 40,
     // overflowX: "scroll",
     ["@media (min-width: 700px)"]: {
       display: "none",

@@ -16,7 +16,9 @@ const MentorIntro: React.FC<IProps> = () => {
             return <Message>{message}</Message>;
           })}
         </MessageContainer>
-        <Button>Book your Need Assessment Phone Call</Button>
+        <a href={`${texts.links.need_assessment_call}`} target="_blank">
+          <Button>Book your Need Assessment Phone Call</Button>
+        </a>
       </LeftSide>
       <RightSide>
         <Avatar

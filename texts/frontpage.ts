@@ -29,7 +29,7 @@ Because, ‘Your transformation is our motivation.’
     "/assets/client_1.png",
     "/assets/client_2.png",
     "/assets/client_3.png",
-    "/assets/client_4.png",
+    "/assets/the_daily_star.png",
     "/assets/client_5.png",
   ],
   testimonials: [
@@ -69,6 +69,10 @@ Because, ‘Your transformation is our motivation.’
       },
     },
   ],
+  links: {
+    need_assessment_call: "https://forms.gle/37ysuepdrJQJn1xCA",
+    free_1_hour_session: "https://forms.gle/1pMxuWVHfzmXF1Ti8",
+  },
 };
 
 export default texts;
