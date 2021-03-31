@@ -39,12 +39,15 @@ const Login: React.FC<IProps> = () => {
 
   const logOut = () => {
     setUser("");
+    location.reload();
   };
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     if (!user && !url) return;
     if (!user && url) {
-      window.location.href = url.toString();
+      event.preventDefault();
+      // window.location.href = url.toString();
+      window.open(url.toString());
     } else if (user) {
       setOpen(!open);
     }

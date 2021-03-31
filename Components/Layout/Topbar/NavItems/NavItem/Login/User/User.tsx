@@ -68,6 +68,7 @@ const User: React.FC<{}> = () => {
 
   const logOut = () => {
     setUser("");
+    location.reload();
   };
 
   return (

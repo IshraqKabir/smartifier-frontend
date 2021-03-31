@@ -3491,6 +3491,9 @@ const useStyles = Object(core_["makeStyles"])({
     "&:hover": {
       transition: "0.3s",
       fontSize: 16
+    },
+    ["@media (max-width: 700px)"]: {
+      marginRight: "1rem"
     }
   }
 });
@@ -3556,18 +3559,6 @@ const NavItems = ({
       title: "Blog",
       link: "/blog/posts",
       setShowLoading: setShowLoading
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(NavItem_NavItem, {
-      title: "Testimonials",
-      link: "/",
-      setShowLoading: setShowLoading
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(NavItem_NavItem, {
-      title: "About",
-      link: "/",
-      setShowLoading: setShowLoading
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(NavItem_NavItem, {
-      title: "Meet The Team",
-      link: "/",
-      setShowLoading: setShowLoading
     })]
   });
 };
@@ -3629,13 +3620,16 @@ const Login = () => {
 
   const logOut = () => {
     setUser("");
+    location.reload();
   };
 
-  const handleClick = () => {
+  const handleClick = event => {
     if (!user && !url) return;
 
     if (!user && url) {
-      window.location.href = url.toString();
+      event.preventDefault(); // window.location.href = url.toString();
+
+      window.open(url.toString());
     } else if (user) {
       setOpen(!open);
     }
@@ -3854,7 +3848,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     top: 100,
     left: 0,
     right: 0,
-    zIndex: 4000,
+    zIndex: 40,
     // overflowX: "scroll",
     ["@media (min-width: 700px)"]: {
       display: "none"

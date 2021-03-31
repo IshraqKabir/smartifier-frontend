@@ -1311,11 +1311,17 @@ var Dialog_default = /*#__PURE__*/__webpack_require__.n(Dialog_);
 
 
 
+
 function SimpleDialog(props) {
   const {
     onClose,
-    open
+    open,
+    handleSubmit
   } = props;
+  const {
+    0: isSubmitting,
+    1: setIsSubmitting
+  } = Object(external_react_["useState"])(false);
 
   const handleClose = () => {
     onClose();
@@ -1325,9 +1331,53 @@ function SimpleDialog(props) {
     onClose: handleClose,
     "aria-labelledby": "simple-dialog-title",
     open: open,
-    children: "yooo"
+    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(DialogueContaier, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit_Title, {
+        children: "Are you sure you want to submit the test?"
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ButtonsContainer, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(WarningButton, {
+          onClick: () => {
+            setIsSubmitting(true);
+            handleSubmit();
+          },
+          children: isSubmitting ? "Submitting..." : "Yes"
+        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button_default.a, {
+          onClick: handleClose,
+          children: "No"
+        })]
+      })]
+    })
   });
 }
+
+const DialogueContaier = Object(styles_["withStyles"])({
+  root: {
+    padding: "2rem"
+  }
+})(core_["Box"]);
+const Submit_Title = Object(styles_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    fontSize: "1.3rem",
+    margin: "1rem auto"
+  }
+})(core_["Box"]);
+const ButtonsContainer = Object(styles_["withStyles"])({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around"
+  }
+})(core_["Box"]);
+const WarningButton = Object(styles_["withStyles"])({
+  root: {
+    backgroundColor: "red",
+    color: "white",
+    "&:hover": {
+      color: "red"
+    }
+  }
+})(Button_default.a);
 
 const Submit = ({
   answers,
@@ -1337,6 +1387,10 @@ const Submit = ({
   const [open, setOpen] = external_react_default.a.useState(false);
 
   const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleSubmit = () => {
     external_axios_default.a.post(`${url["c" /* local_backend_url */]}/api/quiz-test/answers/store`, {
       test_id: test_id,
       options: answers
@@ -1346,7 +1400,6 @@ const Submit = ({
         Authorization: `Bearer ${user.token}`
       }
     }).then(() => {}).catch(() => {});
-    setOpen(true);
   };
 
   const handleClose = () => {
@@ -1360,7 +1413,8 @@ const Submit = ({
       children: "Submit"
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(SimpleDialog, {
       open: open,
-      onClose: handleClose
+      onClose: handleClose,
+      handleSubmit: handleSubmit
     })]
   });
 };
@@ -4065,6 +4119,9 @@ const useStyles = Object(core_["makeStyles"])({
     "&:hover": {
       transition: "0.3s",
       fontSize: 16
+    },
+    ["@media (max-width: 700px)"]: {
+      marginRight: "1rem"
     }
   }
 });
@@ -4130,18 +4187,6 @@ const NavItems = ({
       title: "Blog",
       link: "/blog/posts",
       setShowLoading: setShowLoading
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(NavItem_NavItem, {
-      title: "Testimonials",
-      link: "/",
-      setShowLoading: setShowLoading
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(NavItem_NavItem, {
-      title: "About",
-      link: "/",
-      setShowLoading: setShowLoading
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(NavItem_NavItem, {
-      title: "Meet The Team",
-      link: "/",
-      setShowLoading: setShowLoading
     })]
   });
 };
@@ -4203,13 +4248,16 @@ const Login = () => {
 
   const logOut = () => {
     setUser("");
+    location.reload();
   };
 
-  const handleClick = () => {
+  const handleClick = event => {
     if (!user && !url) return;
 
     if (!user && url) {
-      window.location.href = url.toString();
+      event.preventDefault(); // window.location.href = url.toString();
+
+      window.open(url.toString());
     } else if (user) {
       setOpen(!open);
     }
@@ -4428,7 +4476,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     top: 100,
     left: 0,
     right: 0,
-    zIndex: 4000,
+    zIndex: 40,
     // overflowX: "scroll",
     ["@media (min-width: 700px)"]: {
       display: "none"

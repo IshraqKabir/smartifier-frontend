@@ -15,7 +15,7 @@ const Clients: React.FC<IProps> = () => {
             <Avatar
               src={image_link}
               style={{
-                width: 120,
+                width: 170,
                 height: "100%",
                 marginTop: "2rem",
               }}
