@@ -88,7 +88,11 @@ const QuizTest: React.FC<IProps> = ({ id, status }) => {
           </QuizIDContext.Provider>
         </AnswersContext.Provider>
       )}
-      <Submit answers={answers} test_id={test.id} />
+      <Submit
+        answers={answers}
+        test_id={test.id}
+        setAnswersState={setAnswersState}
+      />
     </Container>
   );
 };

@@ -1339,8 +1339,9 @@ function SimpleDialog(props) {
       }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ButtonsContainer, {
         children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(WarningButton, {
           onClick: () => {
-            setIsSubmitting(true);
+            // if (!isSubmitting)
             handleSubmit();
+            setIsSubmitting(true);
           },
           children: isSubmitting ? "Submitting..." : "Yes"
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button_default.a, {
@@ -1383,7 +1384,8 @@ const WarningButton = Object(styles_["withStyles"])({
 
 const Submit = ({
   answers,
-  test_id
+  test_id,
+  setAnswersState
 }) => {
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const [open, setOpen] = external_react_default.a.useState(false);
@@ -1401,7 +1403,11 @@ const Submit = ({
         Accept: "Application/json",
         Authorization: `Bearer ${user.token}`
       }
-    }).then(() => {}).catch(() => {});
+    }).then(response => {
+      console.log(response.data);
+      setAnswersState({});
+      window.location.href = "/user/profile";
+    }).catch(() => {});
   };
 
   const handleClose = () => {
@@ -1527,7 +1533,8 @@ const QuizTest = ({
       })
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit_Submit, {
       answers: answers,
-      test_id: test.id
+      test_id: test.id,
+      setAnswersState: setAnswersState
     })]
   });
 };

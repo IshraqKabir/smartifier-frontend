@@ -8,7 +8,7 @@ interface IProps {
   quizID: number;
   percentage: number;
   quiz: IQuiz;
-  setShowTest: () => {};
+  setShowTest: () => void;
 }
 
 const RetakePrompt = ({ quizID, percentage, quiz, setShowTest }) => {
