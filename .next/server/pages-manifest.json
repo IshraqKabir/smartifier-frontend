@@ -1,18 +1,8 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/api/auth/google": "pages/api/auth/google.js",
-  "/api/hello": "pages/api/hello.js",
-  "/authresp/google": "pages/authresp/google.html",
-  "/blog/posts": "pages/blog/posts.js",
-  "/blog/posts/[slug]": "pages/blog/posts/[slug].js",
-  "/blog/tags/[slug]/posts": "pages/blog/tags/[slug]/posts.js",
-  "/blog/topics/[slug]/posts": "pages/blog/topics/[slug]/posts.js",
-  "/": "pages/index.html",
-  "/quizzes": "pages/quizzes.js",
-  "/share/fb/quizzes/[id]": "pages/share/fb/quizzes/[id].js",
-  "/test/quiz/[id]": "pages/test/quiz/[id].js",
-  "/user/profile": "pages/user/profile.html",
   "/_error": "pages/_error.js",
-  "/404": "pages/404.html"
+  "/quizzes": "pages/quizzes.js",
+  "/test/quiz/[id]": "pages/test/quiz/[id].js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }

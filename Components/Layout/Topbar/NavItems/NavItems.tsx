@@ -31,9 +31,6 @@ const NavItems: React.FC<IProps> = ({ setShowLoading }) => {
       />
       {/* <NavItem title="Testimonials" link="/" setShowLoading={setShowLoading} /> */}
       {/* <NavItem title="About" link="/" setShowLoading={setShowLoading} /> */}
-      {/* <NavItem title="Meet The Team" link="/" setShowLoading={setShowLoading} /> */}
-    </div>
-  );
-};
+      {/* <NavItem title="Meet The Team" link="/" setShowLoading={setShowLoading} /> */} </div>); };
 
 export default NavItems;

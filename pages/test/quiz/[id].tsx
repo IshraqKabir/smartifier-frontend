@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import CheckTestStatus from "../../../Components/QuizTest/CheckTestStatus/CheckTestStatus";
 import QuizTest from "../../../Components/QuizTest/QuizTest";
 import useLocalState from "../../../custom-hooks/useLocalState";
 
@@ -19,7 +20,7 @@ const Post: React.FC<IProps> = ({ id }) => {
 
   if (!user.token) return <p>Unauthorized access</p>;
 
-  return <QuizTest id={id} />;
+  return <CheckTestStatus quizID={id} />;
 };
 
 export default Post;
