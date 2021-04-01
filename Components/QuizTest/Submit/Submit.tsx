@@ -32,8 +32,9 @@ function SimpleDialog(props: SimpleDialogProps) {
         <ButtonsContainer>
           <WarningButton
             onClick={() => {
-              setIsSubmitting(true);
+              // if (!isSubmitting)
               handleSubmit();
+              setIsSubmitting(true);
             }}
           >
             {isSubmitting ? "Submitting..." : "Yes"}
@@ -76,9 +77,10 @@ const WarningButton = withStyles({
 interface IProps {
   answers: any;
   test_id: number;
+  setAnswersState: (answers: any) => void;
 }
 
-const Submit: React.FC<IProps> = ({ answers, test_id }) => {
+const Submit: React.FC<IProps> = ({ answers, test_id, setAnswersState }) => {
   const [user] = useLocalState("user", "");
   const [open, setOpen] = React.useState(false);
 
@@ -101,7 +103,11 @@ const Submit: React.FC<IProps> = ({ answers, test_id }) => {
           },
         }
       )
-      .then(() => {})
+      .then((response) => {
+        console.log(response.data);
+        setAnswersState({});
+        window.location.href = "/user/profile";
+      })
       .catch(() => {});
   };
 
