@@ -12,13 +12,14 @@ import Submit from "./Submit/Submit";
 
 interface IProps {
   id: number;
+  status: "retake" | "ongoing" | "new_test" | "unknown";
 }
 
 export const QuizIDContext = createContext(null);
 export const AnswersContext = createContext(null);
 
-const QuizTest: React.FC<IProps> = ({ id }) => {
-  const { test, isLoading, isError } = useStartTest(id);
+const QuizTest: React.FC<IProps> = ({ id, status }) => {
+  const { test, isLoading, isError } = useStartTest(id, status);
 
   const [user] = useLocalState("user", "");
   const [answers, setAnswersState] = useLocalState(
@@ -68,30 +69,27 @@ const QuizTest: React.FC<IProps> = ({ id }) => {
   };
 
   return (
-    <>
-      <Topbar />
-      <Container>
-        <PageTitle title={isLoading ? "Starting Test..." : test.quiz.title}>
-          {isLoading && <CircularProgress />}
-        </PageTitle>
-        {test && !isLoading && (
-          <Timer start_time={test.created_at} duration={test?.quiz?.duration} />
-        )}
-        {test && !isLoading && test?.quiz.test_questions && (
-          <AnswersContext.Provider
-            value={{
-              answers,
-              setAnswers,
-            }}
-          >
-            <QuizIDContext.Provider value={{ quizID: id }}>
-              <Questions questions={test.quiz.test_questions} />
-            </QuizIDContext.Provider>
-          </AnswersContext.Provider>
-        )}
-        <Submit answers={answers} test_id={test.id} />
-      </Container>
-    </>
+    <Container>
+      <PageTitle title={isLoading ? "Starting Test..." : test.quiz.title}>
+        {isLoading && <CircularProgress />}
+      </PageTitle>
+      {test && !isLoading && (
+        <Timer start_time={test.created_at} duration={test?.quiz?.duration} />
+      )}
+      {test && !isLoading && test?.quiz.test_questions && (
+        <AnswersContext.Provider
+          value={{
+            answers,
+            setAnswers,
+          }}
+        >
+          <QuizIDContext.Provider value={{ quizID: id }}>
+            <Questions questions={test.quiz.test_questions} />
+          </QuizIDContext.Provider>
+        </AnswersContext.Provider>
+      )}
+      <Submit answers={answers} test_id={test.id} />
+    </Container>
   );
 };
 

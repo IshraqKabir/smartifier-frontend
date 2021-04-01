@@ -10,7 +10,7 @@ interface IProps {}
 const QuizResults: React.FC<IProps> = ({}) => {
   const [user] = useLocalState("user", "");
   const [results, setResults] = useState([]);
-  const classes = useStyles({ count: results.length });
+  const classes = useStyles();
 
   useEffect(() => {
     axios({

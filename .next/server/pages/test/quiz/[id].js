@@ -392,26 +392,32 @@ __webpack_require__.d(__webpack_exports__, "getServerSideProps", function() { re
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__("F5FC");
 
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__("cDcd");
-var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
+// EXTERNAL MODULE: external "@material-ui/core"
+var core_ = __webpack_require__("KKbo");
 
 // EXTERNAL MODULE: external "axios"
 var external_axios_ = __webpack_require__("zr5I");
 var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
 
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__("cDcd");
+var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
+
 // EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
 var useLocalState = __webpack_require__("PhsX");
 
 // EXTERNAL MODULE: ./url.js
-var url = __webpack_require__("Gw4m");
+var url_0 = __webpack_require__("Gw4m");
+
+// EXTERNAL MODULE: ./Components/Layout/Topbar/Topbar.tsx + 3 modules
+var Topbar = __webpack_require__("gMP8");
 
 // CONCATENATED MODULE: ./Components/QuizTest/useStartTest.ts
 
 
 
 
-function useStartTest(id) {
+function useStartTest(id, status) {
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const {
     0: test,
@@ -426,7 +432,9 @@ function useStartTest(id) {
     1: setIsError
   } = Object(external_react_["useState"])(true);
   Object(external_react_["useEffect"])(() => {
-    external_axios_default.a.post(`${url["c" /* local_backend_url */]}/api/quiz-test/start`, {
+    if (status == "unknown") return;
+    const url = `${url_0["c" /* local_backend_url */]}/api/quiz-test/${status == "new_test" ? "start" : status == "ongoing" ? "resume" : "retake"}`;
+    external_axios_default.a.post(url, {
       quiz_id: id
     }, {
       headers: {
@@ -448,14 +456,8 @@ function useStartTest(id) {
     isError
   };
 }
-// EXTERNAL MODULE: external "@material-ui/core"
-var core_ = __webpack_require__("KKbo");
-
 // EXTERNAL MODULE: ./Components/PageTitle/PageTitle.tsx
 var PageTitle = __webpack_require__("/Cw6");
-
-// EXTERNAL MODULE: ./Components/Layout/Topbar/Topbar.tsx + 3 modules
-var Topbar = __webpack_require__("gMP8");
 
 // CONCATENATED MODULE: ./Components/QuizTest/Timer/Timer.tsx
 
@@ -658,7 +660,7 @@ const Option = ({
       className: classes.imageContainer,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
         alt: "image",
-        src: `${url["c" /* local_backend_url */]}/storage/${option.image.image_link}`,
+        src: `${url_0["c" /* local_backend_url */]}/storage/${option.image.image_link}`,
         height: "100%",
         width: "100%",
         layout: "responsive"
@@ -765,7 +767,7 @@ const Title = ({
     children: [image && /*#__PURE__*/Object(jsx_runtime_["jsx"])(ImageContainer, {
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
         alt: "image",
-        src: `${url["c" /* local_backend_url */]}/storage/${image.image_link}`,
+        src: `${url_0["c" /* local_backend_url */]}/storage/${image.image_link}`,
         height: "100%",
         width: "100%",
         layout: "responsive"
@@ -1029,7 +1031,7 @@ const Style3_Option_Option_Option = ({
       className: classes.imageContainer,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
         alt: `${option.title}`,
-        src: `${url["c" /* local_backend_url */]}/storage/${option.image.image_link}`,
+        src: `${url_0["c" /* local_backend_url */]}/storage/${option.image.image_link}`,
         style: {
           width: "100%",
           height: "100%"
@@ -1391,7 +1393,7 @@ const Submit = ({
   };
 
   const handleSubmit = () => {
-    external_axios_default.a.post(`${url["c" /* local_backend_url */]}/api/quiz-test/answers/store`, {
+    external_axios_default.a.post(`${url_0["c" /* local_backend_url */]}/api/quiz-test/answers/store`, {
       test_id: test_id,
       options: answers
     }, {
@@ -1431,7 +1433,6 @@ const SubmitButton = Object(styles_["withStyles"])({
 
 
 
-
 function QuizTest_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function QuizTest_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { QuizTest_ownKeys(Object(source), true).forEach(function (key) { QuizTest_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { QuizTest_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1446,12 +1447,12 @@ function QuizTest_defineProperty(obj, key, value) { if (key in obj) { Object.def
 
 
 
-
 const QuizIDContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
 const AnswersContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
 
 const QuizTest = ({
-  id
+  id,
+  status
 }) => {
   var _test$quiz;
 
@@ -1459,7 +1460,7 @@ const QuizTest = ({
     test,
     isLoading,
     isError
-  } = useStartTest(id);
+  } = useStartTest(id, status);
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const [answers, setAnswersState] = Object(useLocalState["a" /* default */])(`${user.email}-quiz${id}-answers`, {});
   if (isError) return /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
@@ -1504,37 +1505,306 @@ const QuizTest = ({
     });
   };
 
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(jsx_runtime_["Fragment"], {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Topbar["a" /* default */], {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizTest_Container, {
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(PageTitle["a" /* default */], {
-        title: isLoading ? "Starting Test..." : test.quiz.title,
-        children: isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {})
-      }), test && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Timer_Timer, {
-        start_time: test.created_at,
-        duration: test === null || test === void 0 ? void 0 : (_test$quiz = test.quiz) === null || _test$quiz === void 0 ? void 0 : _test$quiz.duration
-      }), test && !isLoading && (test === null || test === void 0 ? void 0 : test.quiz.test_questions) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(AnswersContext.Provider, {
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizTest_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(PageTitle["a" /* default */], {
+      title: isLoading ? "Starting Test..." : test.quiz.title,
+      children: isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {})
+    }), test && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Timer_Timer, {
+      start_time: test.created_at,
+      duration: test === null || test === void 0 ? void 0 : (_test$quiz = test.quiz) === null || _test$quiz === void 0 ? void 0 : _test$quiz.duration
+    }), test && !isLoading && (test === null || test === void 0 ? void 0 : test.quiz.test_questions) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(AnswersContext.Provider, {
+      value: {
+        answers,
+        setAnswers
+      },
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizIDContext.Provider, {
         value: {
-          answers,
-          setAnswers
+          quizID: id
         },
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizIDContext.Provider, {
-          value: {
-            quizID: id
-          },
-          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Questions_Questions, {
-            questions: test.quiz.test_questions
-          })
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Questions_Questions, {
+          questions: test.quiz.test_questions
         })
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit_Submit, {
-        answers: answers,
-        test_id: test.id
-      })]
+      })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit_Submit, {
+      answers: answers,
+      test_id: test.id
     })]
   });
 };
 
 /* harmony default export */ var QuizTest_QuizTest = (QuizTest);
 const QuizTest_Container = Object(core_["withStyles"])({
+  root: {
+    width: "100vw",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: "#5D00A5",
+    minHeight: "100vh",
+    color: "white"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTest/CheckTestStatus/RetakePrompt/RetakeDialogue/RetakeDialogue.tsx
+
+
+
+
+
+const RetakeDialogue = props => {
+  const {
+    onClose,
+    open,
+    handleSubmit
+  } = props;
+  const {
+    0: isSubmitting,
+    1: setIsSubmitting
+  } = Object(external_react_["useState"])(false);
+
+  const handleClose = () => {
+    onClose();
+  };
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Dialog"], {
+    onClose: handleClose,
+    "aria-labelledby": "Retake Dialog",
+    open: open,
+    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(RetakeDialogue_DialogueContaier, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeDialogue_Title, {
+        children: "Are you sure you want to retake the test?"
+      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(WarningText, {
+        children: "*Your previous answers will be deleted if you retake the test."
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(RetakeDialogue_ButtonsContainer, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeDialogue_WarningButton, {
+          onClick: () => {
+            setIsSubmitting(true);
+            handleSubmit();
+          },
+          children: isSubmitting ? "Loading..." : "Retake"
+        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Button"], {
+          onClick: handleClose,
+          children: "No"
+        })]
+      })]
+    })
+  });
+};
+
+/* harmony default export */ var RetakeDialogue_RetakeDialogue = (RetakeDialogue);
+const RetakeDialogue_DialogueContaier = Object(core_["withStyles"])({
+  root: {
+    padding: "2rem"
+  }
+})(core_["Box"]);
+const RetakeDialogue_Title = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    fontSize: "1.3rem",
+    margin: "1rem auto"
+  }
+})(core_["Box"]);
+const RetakeDialogue_ButtonsContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around"
+  }
+})(core_["Box"]);
+const RetakeDialogue_WarningButton = Object(core_["withStyles"])({
+  root: {
+    backgroundColor: "red",
+    color: "white",
+    "&:hover": {
+      color: "red"
+    }
+  }
+})(core_["Button"]);
+const WarningText = Object(core_["withStyles"])({
+  root: {
+    fontSize: "0.8rem",
+    fontWeight: 600,
+    marginBottom: "1rem",
+    color: "red"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTest/CheckTestStatus/RetakePrompt/RetakePrompt.tsx
+
+
+
+
+
+
+const RetakePrompt = ({
+  quizID,
+  percentage,
+  quiz,
+  setShowTest
+}) => {
+  const {
+    0: promptOpen,
+    1: setPromptOpen
+  } = Object(external_react_["useState"])(false);
+
+  const handleClickRetake = () => {
+    setPromptOpen(true);
+  };
+
+  const handleClose = () => {
+    setPromptOpen(false);
+  };
+
+  const handleSubmit = () => {
+    setShowTest(true);
+    handleClose();
+  };
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(RetakePrompt_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakePrompt_ImageContainer, {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+        alt: `${quiz.title}`,
+        src: `${quiz.image_link}`,
+        style: {
+          height: "90px",
+          width: "90px"
+        }
+      })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(TitleAndScoreContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakePrompt_Title, {
+        children: `You have already attempted "${quiz.title}" and attained ${percentage.toFixed(2)}% marks.`
+      }), quiz.retake && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button, {
+        onClick: handleClickRetake,
+        children: "Retake Test"
+      })]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeDialogue_RetakeDialogue, {
+      open: promptOpen,
+      onClose: handleClose,
+      handleSubmit: handleSubmit
+    })]
+  });
+};
+
+/* harmony default export */ var RetakePrompt_RetakePrompt = (RetakePrompt);
+const RetakePrompt_Container = Object(core_["withStyles"])({
+  root: {
+    width: "70%",
+    padding: "2rem 1rem",
+    display: "flex",
+    alignItems: "center",
+    color: "white",
+    marginTop: "2rem",
+    borderRadius: 5,
+    minHeight: 100,
+    background: "transparent linear-gradient(180deg, #966BC2 0%, #437BBE6E 100%) 0% 0% no-repeat padding-box"
+  }
+})(core_["Box"]);
+const RetakePrompt_ImageContainer = Object(core_["withStyles"])({
+  root: {
+    margin: "0rem 1rem 0rem 3rem"
+  }
+})(core_["Box"]);
+const TitleAndScoreContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column"
+  }
+})(core_["Box"]);
+const RetakePrompt_Title = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 700,
+    fontSize: "1.2rem"
+  }
+})(core_["Box"]);
+const Button = Object(core_["withStyles"])({
+  root: {
+    maxWidth: 400,
+    marginTop: 20,
+    cursor: "pointer",
+    width: "100%",
+    padding: "10px 0px",
+    borderRadius: 10,
+    textAlign: "center",
+    background: "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTest/CheckTestStatus/CheckTestStatus.tsx
+
+
+
+
+
+
+
+
+
+
+
+
+const CheckTestStatus = ({
+  quizID
+}) => {
+  const {
+    0: status,
+    1: setStatus
+  } = Object(external_react_["useState"])("unknown");
+  const {
+    0: percentage,
+    1: setPercentage
+  } = Object(external_react_["useState"])(0);
+  const {
+    0: quiz,
+    1: setQuiz
+  } = Object(external_react_["useState"])(null);
+  const {
+    0: isLoading,
+    1: setIsLoading
+  } = Object(external_react_["useState"])(true);
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
+  const {
+    0: showTest,
+    1: setShowTest
+  } = Object(external_react_["useState"])(false);
+  Object(external_react_["useEffect"])(() => {
+    external_axios_default.a.get(`${url_0["c" /* local_backend_url */]}/api/quiz-test/${quizID}/check-status`, {
+      headers: {
+        Accept: "Application/json",
+        Authorization: `Bearer ${user.token}`
+      }
+    }).then(response => {
+      setStatus(response.data.status);
+
+      if (response.data.status == "retake") {
+        setPercentage(response.data.percentage);
+        setQuiz(response.data.quiz);
+      } else if (response.data.status == "ongoing") {
+        setStatus("ongoing");
+        setShowTest(true);
+      } else if (response.data.status == "new_test") {
+        setStatus("new_test");
+        setShowTest(true);
+      }
+
+      setIsLoading(false);
+    });
+  }, []);
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(jsx_runtime_["Fragment"], {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Topbar["a" /* default */], {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CheckTestStatus_Container, {
+      children: [status == "unknown" && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
+        children: "Some Error Occured. Please Refresh or Go Back."
+      }), status == "retake" && !isLoading && !showTest && /*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakePrompt_RetakePrompt, {
+        quizID: quizID,
+        percentage: percentage,
+        quiz: quiz,
+        setShowTest: () => setShowTest(true)
+      }), showTest && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizTest_QuizTest, {
+        id: quizID,
+        status: status
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ var CheckTestStatus_CheckTestStatus = (CheckTestStatus);
+const CheckTestStatus_Container = Object(core_["withStyles"])({
   root: {
     width: "100vw",
     display: "flex",
@@ -1567,8 +1837,8 @@ const Post = ({
   if (!user.token) return /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
     children: "Unauthorized access"
   });
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizTest_QuizTest, {
-    id: id
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(CheckTestStatus_CheckTestStatus, {
+    quizID: id
   });
 };
 
@@ -4187,7 +4457,7 @@ const NavItems = ({
       title: "Blog",
       link: "/blog/posts",
       setShowLoading: setShowLoading
-    })]
+    }), " "]
   });
 };
 

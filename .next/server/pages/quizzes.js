@@ -2976,7 +2976,7 @@ const NavItems = ({
       title: "Blog",
       link: "/blog/posts",
       setShowLoading: setShowLoading
-    })]
+    }), " "]
   });
 };
 
