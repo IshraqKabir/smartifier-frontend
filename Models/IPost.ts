@@ -19,4 +19,5 @@ export default interface IPost {
     user: IPostWriter;
     topic: ITopic[];
     tags: ITag[];
+    likes_count?: number;
 }

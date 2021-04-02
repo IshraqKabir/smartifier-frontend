@@ -26,6 +26,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
   const topPosts = [...topPostsRes.data];
 
+  console.log(post);
+
   return {
     props: { post, topics, topPosts },
   };

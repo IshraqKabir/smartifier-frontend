@@ -29,7 +29,9 @@ const Container = withStyles({
   root: {
     width: "100%",
     minHeight: "100vh",
-    backgroundColor: "#5D00A5",
+    // backgroundColor: "#5D00A5",
+    background:
+      "transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box",
   },
 })(Box);
 

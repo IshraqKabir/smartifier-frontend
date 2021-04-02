@@ -83,40 +83,40 @@ const Post: React.FC<IProps> = ({ post }) => {
 
   return (
     <div className={classes.container}>
-      <Link href={`/blog/topics/${post.topic[0].slug}/posts`}>
+      <Link href={`/blog/topics/${post?.topic[0]?.slug}/posts`}>
         <a>
           <div className={classes.topic}>
-            <TopicName>{post.topic[0].name}</TopicName>
+            <TopicName>{post?.topic[0]?.name}</TopicName>
           </div>
         </a>
       </Link>
       <div>
         <div className={classes.postTitle}>
-          <PostTitle>{post.title}</PostTitle>
-          <PostAuthor variant="subtitle2">by {post.user.name}</PostAuthor>
+          <PostTitle>{post?.title}</PostTitle>
+          <PostAuthor variant="subtitle2">by {post?.user?.name}</PostAuthor>
         </div>
         <div>
           <PostDate variant="caption">
             {`${
               monthNames[postDate.getMonth()]
             } ${postDate.getDate()} ${postDate.getFullYear()}`}{" "}
-            . {post.read_time}
+            . {post?.read_time}
           </PostDate>
         </div>
-        {post.featured_image ? (
+        {post?.featured_image ? (
           <PostFeaturedImage
-            src={post.featured_image}
-            caption={post.featured_image_caption}
+            src={post?.featured_image}
+            caption={post?.featured_image_caption}
           />
         ) : null}
-        <PostBody body={post.body} />
+        <PostBody body={post?.body} />
       </div>
       <div className={classes.bottomContainer}>
         {post.tags ? <Tags tags={post.tags} /> : null}
-        <ReadTime variant="subtitle2">{post.read_time}</ReadTime>
+        <ReadTime variant="subtitle2">{post?.read_time}</ReadTime>
       </div>
       <PostDivider />
-      <LCSStatus />
+      <LCSStatus post={post} />
     </div>
   );
 };

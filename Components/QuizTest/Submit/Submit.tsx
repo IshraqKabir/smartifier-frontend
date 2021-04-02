@@ -15,7 +15,7 @@ export interface SimpleDialogProps {
 
 function SimpleDialog(props: SimpleDialogProps) {
   const { onClose, open, handleSubmit } = props;
-  const [isSubmitting, setIsSubmitting] = useState<Boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const handleClose = () => {
     onClose();
@@ -82,7 +82,7 @@ interface IProps {
 
 const Submit: React.FC<IProps> = ({ answers, test_id, setAnswersState }) => {
   const [user] = useLocalState("user", "");
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleClickOpen = () => {
     setOpen(true);
