@@ -15,7 +15,6 @@ const useStyles = makeStyles({
   heading: {
     marginBottom: 5,
     fontWeight: "bold",
-    color: "white",
     fontSize: 20,
   },
 });

@@ -11,10 +11,8 @@ interface IProps {
 const LCSStatus: React.FC<IProps> = ({ post }) => {
   return (
     <Container>
-      {/* <Comments /> */}
-      <Button>
-        <Likes post={post} />
-      </Button>
+      <Likes post={post} />
+      <Comments post={post} />
     </Container>
   );
 };
@@ -40,7 +38,6 @@ const Container = withStyles({
     borderBottom: "1px solid black",
     margin: "16px",
     display: "flex",
-    justifyContent: "space-between",
     color: "#808080",
   },
 })(Box);

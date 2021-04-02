@@ -25,7 +25,6 @@ const Likes: React.FC<IProps> = ({ post }) => {
       return;
     }
 
-    console.log("yay");
     if (isLikedByUser) {
       unLikePost();
     } else {
@@ -34,15 +33,15 @@ const Likes: React.FC<IProps> = ({ post }) => {
   };
 
   useEffect(() => {
-    getIfUserHasLikedThePost();
+    getHasUserLikedThePost();
   }, []);
 
   useEffect(() => {
-    getIfUserHasLikedThePost();
+    getHasUserLikedThePost();
     if (!user.token) setIsLikedByUser(false);
   }, [user]);
 
-  const getIfUserHasLikedThePost = () => {
+  const getHasUserLikedThePost = () => {
     if (user.token) {
       axios
         .get(`${backend_url}/api/posts/${post?.slug}/is-liked-by-user`, {
@@ -145,15 +144,7 @@ const Button = withStyles({
     maxWidth: "240px",
     display: "flex",
     alignItems: "center",
-    marginRight: "16px",
-    cursor: "pointer",
-  },
-})(Box);
-
-const Container = withStyles({
-  root: {
-    display: "flex",
-    alignItems: "center",
+    marginRight: "4rem",
     cursor: "pointer",
   },
 })(Box);
