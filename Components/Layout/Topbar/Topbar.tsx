@@ -71,10 +71,10 @@ const Topbar: React.FC<{}> = () => {
         <div className={classes.topbarContainer}>
           <div>
             <Image
-              src="/assets/logo.png"
+              src="/assets/new_logo.png"
               alt="Smartifier Logo"
-              height={100}
-              width={100}
+              height={110}
+              width={180}
             />
           </div>
           <div className={classes.pcNavItems}>

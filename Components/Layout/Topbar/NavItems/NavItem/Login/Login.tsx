@@ -62,7 +62,11 @@ const Login: React.FC<IProps> = () => {
       )}
       {user && (
         <div className={classes.profilePic}>
-          <Avatar alt={`${user?.name}`} src={`${user.image_url}`} />
+          <Avatar
+            alt={`${user?.name}`}
+            src={`${user.picture}`}
+            style={{ height: 35, width: 35 }}
+          />
         </div>
       )}
       <p className={classes.text}>{!user && !url && "Loading..."}</p>
@@ -113,9 +117,9 @@ const useStyles = makeStyles({
   container: {
     display: "flex",
     alignItems: "center",
-    minWidth: 200,
+    minWidth: 150,
     justifyContent: "space-between",
-    padding: "1rem 1rem 1rem 0.5rem",
+    padding: "0.5rem 0.5rem 0.5rem 0.25rem",
     borderRadius: 5,
     position: "relative",
     cursor: "pointer",
@@ -129,13 +133,14 @@ const useStyles = makeStyles({
       const { user } = props;
       return user ? "white" : "black";
     },
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 500,
     textTransform: "capitalize",
-    margin: "0px 10px 0px 5px",
+    margin: "0px 5px 0px 2px",
   },
   googleLogoContainer: {
     marginRight: 5,
+    marginLeft: 5,
     width: 20,
     height: 20,
     float: "left",

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { Divider, makeStyles, Typography, withStyles } from "@material-ui/core";
 import IPost from "../../../Models/IPost";
 import Tags from "./Tags/Tags";
@@ -8,81 +8,41 @@ import PostFeaturedImage from "./PostBody/PostFeaturedImage/PostFeaturedImage";
 import Link from "next/link";
 import LCSStatus from "./LCSStatus/LCSStatus";
 import CommentBox from "./CommentBox/CommentBox";
+import CommentsSection from "./CommentsSection/CommentsSection";
+import axios from "axios";
+import { backend_url } from "../../../url";
+import IPostComment from "../../../Models/IPostComment";
 
 interface IProps {
   post: IPost;
 }
 
-const colors: string[] = [
-  "#97A5B8",
-  "#9C95FD",
-  "#F493FF",
-  "#28E36E",
-  "#FFE533",
-];
-
-const monthNames = [
-  "Jan",
-  "Feb",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-  },
-  topic: {
-    color: "white",
-    cursor: "pointer",
-    width: 150,
-    borderRadius: 10,
-    textAlign: "center",
-    textTransform: "capitalize",
-    paddingTop: 3,
-    paddingBottom: 3,
-    backgroundColor: () => {
-      return colors[0];
-    },
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    paddingLeft: 3,
-    paddingRight: 3,
-    marginBottom: 10,
-    "&:hover": {
-      textDecoration: "underline",
-    },
-  },
-  postTitle: {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-  },
-  bottomContainer: {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    marginTop: 20,
-  },
-});
-
 export const CommentsCountContext = createContext(null);
+export const CommentsContext = createContext(null);
 
 const Post: React.FC<IProps> = ({ post }) => {
   const [commentsCount, setCommentsCount] = useState<number>(
     post?.comments_count
   );
+
+  const [comments, setComments] = useState<[] | IPostComment[]>([]);
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
+  const fetchComments = () => {
+    axios
+      .get(`${backend_url}/api/posts/${post.id}/comments`, {
+        headers: {
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        setComments(response.data);
+      });
+  };
+
   const classes = useStyles();
 
   const postDate = new Date(post.created_at);
@@ -131,13 +91,62 @@ const Post: React.FC<IProps> = ({ post }) => {
         }}
       >
         <LCSStatus post={post} />
-        <CommentBox postId={post.id} />
+        <CommentsContext.Provider
+          value={{
+            comments: comments,
+            setComments: setComments,
+          }}
+        >
+          <CommentBox postId={post.id} />
+          <CommentsSection />
+        </CommentsContext.Provider>
       </CommentsCountContext.Provider>
     </div>
   );
 };
 
 export default Post;
+
+const useStyles = makeStyles({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+  },
+  topic: {
+    color: "white",
+    cursor: "pointer",
+    width: 150,
+    borderRadius: 10,
+    textAlign: "center",
+    textTransform: "capitalize",
+    paddingTop: 3,
+    paddingBottom: 3,
+    backgroundColor: () => {
+      return colors[0];
+    },
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    paddingLeft: 3,
+    paddingRight: 3,
+    marginBottom: 10,
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+  postTitle: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+  },
+  bottomContainer: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    marginTop: 20,
+  },
+});
 
 const TopicName = withStyles({
   root: {
@@ -189,3 +198,26 @@ const PostDate = withStyles({
     fontWeight: "bold",
   },
 })(Typography);
+
+const colors: string[] = [
+  "#97A5B8",
+  "#9C95FD",
+  "#F493FF",
+  "#28E36E",
+  "#FFE533",
+];
+
+const monthNames = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
