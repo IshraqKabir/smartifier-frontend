@@ -71,12 +71,13 @@ const User: React.FC<{}> = () => {
     location.reload();
   };
 
+  console.log(user);
   return (
     <div className={classes.userContainer}>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
           <div className={classes.profilePic}>
-            <Avatar alt={`${user?.name}`} src={`${user.image_url}`} />
+            <Avatar alt={`${user?.name}`} src={`${user?.picture}`} />
           </div>
         </ListItemIcon>
         <div className={classes.userName}>
@@ -90,7 +91,7 @@ const User: React.FC<{}> = () => {
           )}
         </div>
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
+      {/* <Collapse in={open} timeout="auto" unmountOnExit>
         <CollapseContainer
           onClick={() => {
             if (open) setOpen(false);
@@ -107,7 +108,7 @@ const User: React.FC<{}> = () => {
             <div className={classes.linkText}>Logout</div>
           </MenuItem>
         </CollapseContainer>
-      </Collapse>
+      </Collapse> */}
     </div>
   );
 };

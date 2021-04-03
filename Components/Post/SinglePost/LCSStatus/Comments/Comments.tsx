@@ -1,15 +1,14 @@
 import { Avatar, Box, withStyles } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import IPost from "../../../../../Models/IPost";
+import { CommentsCountContext } from "../../SinglePost";
 
 interface IProps {
   post: IPost;
 }
 
 const Comments: React.FC<IProps> = ({ post }) => {
-  const [commentsCount, setCommentsCount] = useState<number>(
-    post?.comments_count
-  );
+  const { commentsCount, setCommentsCount } = useContext(CommentsCountContext);
 
   const handleClick = () => {};
 
@@ -29,15 +28,10 @@ const Comments: React.FC<IProps> = ({ post }) => {
         }}
       />
 
-      {post.likes_count ? (
+      {post.likes_count && (
         <>
           <Number>{commentsCount}</Number>
           <p>Comment{commentsCount > 1 ? "s" : ""}</p>
-        </>
-      ) : (
-        <>
-          <Number>0</Number>
-          <p>Comment</p>
         </>
       )}
     </Button>
