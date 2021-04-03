@@ -12,7 +12,7 @@ import useLocalState from "../../../../custom-hooks/useLocalState";
 import Image from "next/image";
 import axios from "axios";
 import { backend_url } from "../../../../url";
-import { CommentsCountContext } from "../SinglePost";
+import { CommentsContext, CommentsCountContext } from "../SinglePost";
 
 interface IProps {
   postId: string;
@@ -27,6 +27,7 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
   const [showLoginAlert, setShowLoginAlert] = useState<boolean>(false);
 
   const { setCommentsCount } = useContext(CommentsCountContext);
+  const { setComments } = useContext(CommentsContext);
 
   const classes = useStyles({ comment });
 
@@ -74,8 +75,12 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
       .then((response) => {
         setIsSending(false);
         setCommentsCount((count: number) => count + 1);
+
+        setComments((comments) => {
+          return [response.data, ...comments];
+        });
+
         setComment("");
-        console.log(response.data);
       });
   };
 
@@ -101,8 +106,8 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
         <input
           type="text"
           placeholder={
-            user.token
-              ? "Tell us what you think about this post..."
+            user
+              ? "Tell us what you think about this post!"
               : "Login to post a comment!"
           }
           value={comment}

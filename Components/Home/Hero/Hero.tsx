@@ -110,6 +110,7 @@ const Hero: React.FC<{}> = () => {
       </div>
       <div className={classes.awe}>
         <Image src="/assets/awe.png" width={400} height={400} />
+        {/* <Image src="/assets/IMG_2093.JPG" width={400} height={400} /> */}
       </div>
     </div>
   );
