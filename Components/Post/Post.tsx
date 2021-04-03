@@ -25,8 +25,6 @@ const useStyles = makeStyles({
     paddingLeft: "5%",
     paddingRight: "5%",
     height: "100vh",
-    marginLeft: "auto",
-    marginRight: "auto",
   },
   postsAndSidebarContainer: {
     display: "flex",

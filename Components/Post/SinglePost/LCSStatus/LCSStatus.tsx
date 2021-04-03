@@ -34,9 +34,9 @@ const Container = withStyles({
   root: {
     width: "100%",
     padding: "8px 0",
-    borderTop: "1px solid black",
-    borderBottom: "1px solid black",
-    margin: "16px",
+    borderTop: "1px solid lightgrey",
+    borderBottom: "1px solid lightgrey",
+    marginTop: "1rem",
     display: "flex",
     color: "#808080",
   },

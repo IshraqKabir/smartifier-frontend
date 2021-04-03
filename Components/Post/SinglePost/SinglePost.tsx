@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { Divider, makeStyles, Typography, withStyles } from "@material-ui/core";
 import IPost from "../../../Models/IPost";
 import Tags from "./Tags/Tags";
@@ -7,6 +7,7 @@ import PostFeaturedImage from "./PostBody/PostFeaturedImage/PostFeaturedImage";
 
 import Link from "next/link";
 import LCSStatus from "./LCSStatus/LCSStatus";
+import CommentBox from "./CommentBox/CommentBox";
 
 interface IProps {
   post: IPost;
@@ -76,20 +77,27 @@ const useStyles = makeStyles({
   },
 });
 
+export const CommentsCountContext = createContext(null);
+
 const Post: React.FC<IProps> = ({ post }) => {
+  const [commentsCount, setCommentsCount] = useState<number>(
+    post?.comments_count
+  );
   const classes = useStyles();
 
   const postDate = new Date(post.created_at);
 
   return (
     <div className={classes.container}>
-      <Link href={`/blog/topics/${post?.topic[0]?.slug}/posts`}>
-        <a>
-          <div className={classes.topic}>
-            <TopicName>{post?.topic[0]?.name}</TopicName>
-          </div>
-        </a>
-      </Link>
+      {post?.topic && (
+        <Link href={`/blog/topics/${post?.topic[0]?.slug}/posts`}>
+          <a>
+            <div className={classes.topic}>
+              <TopicName>{post?.topic[0]?.name}</TopicName>
+            </div>
+          </a>
+        </Link>
+      )}
       <div>
         <div className={classes.postTitle}>
           <PostTitle>{post?.title}</PostTitle>
@@ -115,8 +123,16 @@ const Post: React.FC<IProps> = ({ post }) => {
         {post.tags ? <Tags tags={post.tags} /> : null}
         <ReadTime variant="subtitle2">{post?.read_time}</ReadTime>
       </div>
-      <PostDivider />
-      <LCSStatus post={post} />
+
+      <CommentsCountContext.Provider
+        value={{
+          commentsCount: commentsCount,
+          setCommentsCount: setCommentsCount,
+        }}
+      >
+        <LCSStatus post={post} />
+        <CommentBox postId={post.id} />
+      </CommentsCountContext.Provider>
     </div>
   );
 };
@@ -133,7 +149,6 @@ const PostTitle = withStyles({
   root: {
     color: "#3798A7",
     fontSize: 22,
-    // marginBlock: 10,
     whiteSpace: "nowrap",
     textTransform: "capitalize",
     cursor: "pointer",

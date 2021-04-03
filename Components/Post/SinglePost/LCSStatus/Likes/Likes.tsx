@@ -116,15 +116,10 @@ const Likes: React.FC<IProps> = ({ post }) => {
         }}
       />
 
-      {post.likes_count ? (
+      {post.likes_count && (
         <>
           <Number>{likesCount}</Number>
           <p>Like{likesCount > 1 ? "s" : ""}</p>
-        </>
-      ) : (
-        <>
-          <Number>0</Number>
-          <p>Like</p>
         </>
       )}
       <LoginAlert
