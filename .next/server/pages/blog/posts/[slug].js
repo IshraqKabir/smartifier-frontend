@@ -918,7 +918,7 @@ const Comments = ({
         padding: "5px",
         cursor: "pointer"
       }
-    }), post.likes_count && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(jsx_runtime_["Fragment"], {
+    }), post.comments_count && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(jsx_runtime_["Fragment"], {
       children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Comments_Number, {
         children: commentsCount
       }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("p", {
@@ -956,7 +956,6 @@ var useLocalState = __webpack_require__("PhsX");
 
 
 
-
 const Likes = ({
   post
 }) => {
@@ -972,7 +971,7 @@ const Likes = ({
   const {
     0: likesCount,
     1: setLikesCount
-  } = Object(external_react_["useState"])(post === null || post === void 0 ? void 0 : post.likes_count);
+  } = Object(external_react_["useState"])((post === null || post === void 0 ? void 0 : post.likes_count) ? post === null || post === void 0 ? void 0 : post.likes_count : 0);
 
   const handleClick = () => {
     if (!user.token) {
@@ -1057,12 +1056,10 @@ const Likes = ({
         padding: "5px",
         cursor: "pointer"
       }
-    }), post.likes_count && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(jsx_runtime_["Fragment"], {
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Likes_Number, {
-        children: likesCount
-      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("p", {
-        children: ["Like", likesCount > 1 ? "s" : ""]
-      })]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Likes_Number, {
+      children: likesCount
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("p", {
+      children: ["Like", likesCount > 1 ? "s" : ""]
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(LoginAlert, {
       anchorOrigin: {
         vertical: "top",
@@ -1344,19 +1341,177 @@ const CommentBox_LoginAlert = Object(core_["withStyles"])({
     zIndex: 20000
   }
 })(core_["Snackbar"]);
+// CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/CommentReact/Likes/Likes.tsx
+
+
+
+
+
+
+
+
+
+
+const Likes_Likes_Likes = () => {
+  const {
+    comment
+  } = Object(external_react_["useContext"])(CommentContext);
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
+  const {
+    0: showLoginAlert,
+    1: setShowLoginAlert
+  } = Object(external_react_["useState"])(false);
+  const {
+    0: likesCount,
+    1: setLikesCount
+  } = Object(external_react_["useState"])(comment.likes_count ? comment.likes_count : 0);
+  const {
+    likedCommentsIdsByUser,
+    setLikedCommentsIdsByUser
+  } = Object(external_react_["useContext"])(CommentsContext);
+
+  const handleClick = () => {
+    if (!user.token) {
+      setShowLoginAlert(true);
+      setTimeout(() => {
+        setShowLoginAlert(false);
+      }, 3000);
+      return;
+    }
+
+    if (likedCommentsIdsByUser == "empty") {
+      unLikeComment();
+      return;
+    }
+
+    if (likedCommentsIdsByUser.includes(comment.id)) {
+      unLikeComment();
+    } else {
+      likeComment();
+    }
+  };
+
+  const likeComment = () => {
+    if (user.token) {
+      external_axios_default.a.post(`${url["a" /* backend_url */]}/api/comment/like`, {
+        comment_id: comment === null || comment === void 0 ? void 0 : comment.id
+      }, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${user.token}`
+        }
+      }).then(response => {
+        setLikedCommentsIdsByUser(ids => {
+          return [comment.id, ...ids];
+        });
+        setLikesCount(count => count + 1);
+      });
+    }
+  };
+
+  const unLikeComment = () => {
+    if (user.token) {
+      external_axios_default.a.post(`${url["a" /* backend_url */]}/api/comment/unlike`, {
+        comment_id: comment === null || comment === void 0 ? void 0 : comment.id
+      }, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${user.token}`
+        }
+      }).then(response => {
+        setLikedCommentsIdsByUser(ids => ids.filter(id => id != comment.id));
+        setLikesCount(count => count - 1);
+      });
+    }
+  };
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Likes_Likes_Button, {
+    onClick: handleClick,
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+      src: `https://img.icons8.com/pastel-glyph/34/000000/facebook-like--v1.png`,
+      style: {
+        width: "23px",
+        height: "23px",
+        marginRight: "16px",
+        alignSelf: "center",
+        backgroundColor: likedCommentsIdsByUser == "empty" ? "lightgrey" : likedCommentsIdsByUser.includes(comment.id) ? "#2d95b5" : "lightgrey",
+        borderRadius: "50%",
+        padding: "5px",
+        cursor: "pointer"
+      }
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Likes_Likes_Number, {
+      children: likesCount
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("p", {
+      children: ["Like", likesCount > 1 ? "s" : ""]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Likes_LoginAlert, {
+      anchorOrigin: {
+        vertical: "top",
+        horizontal: "center"
+      },
+      open: showLoginAlert,
+      message: "Please Login To Like The Comment."
+    }, comment.id)]
+  });
+};
+
+/* harmony default export */ var CommentReact_Likes_Likes = (Likes_Likes_Likes);
+const Likes_Likes_Button = Object(core_["withStyles"])({
+  root: {
+    maxWidth: "240px",
+    display: "flex",
+    alignItems: "center",
+    marginRight: "4rem",
+    cursor: "pointer",
+    margin: "1rem 0rem 0.3rem 0rem"
+  }
+})(core_["Box"]);
+const Likes_Likes_Number = Object(core_["withStyles"])({
+  root: {
+    display: "inline-block",
+    marginRight: 8
+  }
+})(core_["Box"]);
+const Likes_LoginAlert = Object(core_["withStyles"])({
+  root: {
+    zIndex: 20000
+  }
+})(core_["Snackbar"]);
+// CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/CommentReact/CommentReact.tsx
+
+
+
+
+
+const CommentReact = () => {
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_Container, {
+    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_Likes_Likes, {})
+  });
+};
+
+/* harmony default export */ var CommentReact_CommentReact = (CommentReact);
+const CommentReact_Container = Object(core_["withStyles"])({
+  root: {
+    borderBottom: "1px solid lightgrey",
+    display: "flex",
+    alignItems: "center",
+    color: "grey"
+  }
+})(core_["Box"]);
 // CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/Comment.tsx
 
 
 
 
 
+const CommentContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
+
 const Comment = ({
   comment
 }) => {
   var _comment$user;
 
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Comment_Container, {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentContainer, {
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Comment_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentContainer, {
       children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
         src: `${comment === null || comment === void 0 ? void 0 : comment.user.image_url}`,
         style: {
@@ -1372,14 +1527,20 @@ const Comment = ({
           children: comment === null || comment === void 0 ? void 0 : comment.comment
         })]
       })]
-    })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentContext.Provider, {
+      value: {
+        comment: comment
+      },
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_CommentReact, {})
+    })]
   });
 };
 
 /* harmony default export */ var Comment_Comment = (Comment);
 const Comment_Container = Object(core_["withStyles"])({
   root: {
-    borderBottom: "1px solid grey"
+    borderBottom: "1px solid grey",
+    padding: "0rem 0rem 2rem 0rem"
   }
 })(core_["Box"]);
 const CommentContainer = Object(core_["withStyles"])({
@@ -1387,8 +1548,7 @@ const CommentContainer = Object(core_["withStyles"])({
     marginTop: "1rem",
     display: "flex",
     alignItems: "center",
-    color: "#808080",
-    padding: "0rem 0rem 2rem 0rem"
+    color: "#808080"
   }
 })(core_["Box"]);
 const CommentTextContaier = Object(core_["withStyles"])({
@@ -1417,7 +1577,8 @@ const CommentText = Object(core_["withStyles"])({
 
 const CommentsSection = () => {
   const {
-    comments
+    comments,
+    postId
   } = Object(external_react_["useContext"])(CommentsContext);
   const {
     commentsCount
@@ -1459,6 +1620,7 @@ const CommentsSection_Container = Object(core_["withStyles"])({
 
 
 
+
 const CommentsCountContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
 const CommentsContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
 
@@ -1475,9 +1637,32 @@ const Post = ({
     0: comments,
     1: setComments
   } = Object(external_react_["useState"])([]);
+  const {
+    0: likedCommentsIdsByUser,
+    1: setLikedCommentsIdsByUser
+  } = Object(external_react_["useState"])("empty");
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
   Object(external_react_["useEffect"])(() => {
     fetchComments();
+    getLikedCommentsIds();
   }, []);
+  Object(external_react_["useEffect"])(() => {
+    getLikedCommentsIds();
+    if (!user) setLikedCommentsIdsByUser("empty");
+  }, [user]);
+
+  const getLikedCommentsIds = () => {
+    if (user.token && likedCommentsIdsByUser == "empty") {
+      external_axios_default.a.get(`${url["a" /* backend_url */]}/api/posts/${post.id}/liked-comments-ids`, {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${user.token}`
+        }
+      }).then(response => {
+        setLikedCommentsIdsByUser(response.data);
+      });
+    }
+  };
 
   const fetchComments = () => {
     external_axios_default.a.get(`${url["a" /* backend_url */]}/api/posts/${post.id}/comments`, {
@@ -1541,7 +1726,10 @@ const Post = ({
       }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentsContext.Provider, {
         value: {
           comments: comments,
-          setComments: setComments
+          setComments: setComments,
+          postId: post.id,
+          likedCommentsIdsByUser: likedCommentsIdsByUser,
+          setLikedCommentsIdsByUser: setLikedCommentsIdsByUser
         },
         children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentBox_CommentBox, {
           postId: post.id
@@ -4490,7 +4678,9 @@ const Login_useStyles = Object(core_["makeStyles"])({
     fontSize: 14,
     fontWeight: 500,
     textTransform: "capitalize",
-    margin: "0px 5px 0px 2px"
+    margin: "0px 5px 0px 2px",
+    whiteSpace: "nowrap",
+    overflow: "hidden"
   },
   googleLogoContainer: {
     marginRight: 5,
@@ -4582,7 +4772,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     top: 0,
     left: 0,
     right: 0,
-    maxHeight: 100,
+    height: 100,
     borderBottomRightRadius: 15,
     display: "flex",
     justifyContent: "space-between",
@@ -4647,8 +4837,8 @@ const Topbar = () => {
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
             src: "/assets/new_logo.png",
             alt: "Smartifier Logo",
-            height: 110,
-            width: 180
+            height: 40,
+            width: 150
           })
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
           className: classes.pcNavItems,

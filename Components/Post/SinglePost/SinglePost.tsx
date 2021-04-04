@@ -12,6 +12,7 @@ import CommentsSection from "./CommentsSection/CommentsSection";
 import axios from "axios";
 import { backend_url } from "../../../url";
 import IPostComment from "../../../Models/IPostComment";
+import useLocalState from "../../../custom-hooks/useLocalState";
 
 interface IProps {
   post: IPost;
@@ -26,10 +27,36 @@ const Post: React.FC<IProps> = ({ post }) => {
   );
 
   const [comments, setComments] = useState<[] | IPostComment[]>([]);
+  const [likedCommentsIdsByUser, setLikedCommentsIdsByUser] = useState<
+    "empty" | number[]
+  >("empty");
+
+  const [user] = useLocalState("user", "");
 
   useEffect(() => {
     fetchComments();
+    getLikedCommentsIds();
   }, []);
+
+  useEffect(() => {
+    getLikedCommentsIds();
+    if (!user) setLikedCommentsIdsByUser("empty");
+  }, [user]);
+
+  const getLikedCommentsIds = () => {
+    if (user.token && likedCommentsIdsByUser == "empty") {
+      axios
+        .get(`${backend_url}/api/posts/${post.id}/liked-comments-ids`, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        })
+        .then((response) => {
+          setLikedCommentsIdsByUser(response.data);
+        });
+    }
+  };
 
   const fetchComments = () => {
     axios
@@ -95,6 +122,9 @@ const Post: React.FC<IProps> = ({ post }) => {
           value={{
             comments: comments,
             setComments: setComments,
+            postId: post.id,
+            likedCommentsIdsByUser: likedCommentsIdsByUser,
+            setLikedCommentsIdsByUser: setLikedCommentsIdsByUser,
           }}
         >
           <CommentBox postId={post.id} />

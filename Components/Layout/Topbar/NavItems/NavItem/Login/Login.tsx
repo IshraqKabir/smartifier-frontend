@@ -137,6 +137,8 @@ const useStyles = makeStyles({
     fontWeight: 500,
     textTransform: "capitalize",
     margin: "0px 5px 0px 2px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
   },
   googleLogoContainer: {
     marginRight: 5,
