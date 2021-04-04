@@ -88,8 +88,10 @@ const Hero: React.FC<{}> = () => {
           })}
         </div>
         <div className={classes.buttons}>
-          <div className={classes.button}>Talk to us</div>
-          <div className={classes.button}>All Courses</div>
+          <a href="mailto:smartifier.ac@gmail.com">
+            <div className={classes.button}>Talk to us</div>
+          </a>
+          {/* <div className={classes.button}>All Courses</div> */}
         </div>
         <a href={links.youtube} target="_blank">
           <div
