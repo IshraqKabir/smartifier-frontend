@@ -21,10 +21,12 @@ const texts = {
   ],
   clients: [
     "/assets/client_1.png",
-    "/assets/client_2.png",
-    "/assets/client_3.png",
-    "/assets/the_daily_star.png",
+    "/assets/client_2.svg",
+    "/assets/client_3.jpg",
+    "/assets/client_4.png",
     "/assets/client_5.png",
+    "/assets/client_6.png",
+    "/assets/client_7.png",
   ],
   testimonials: [
     {

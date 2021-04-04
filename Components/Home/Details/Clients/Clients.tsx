@@ -15,9 +15,9 @@ const Clients: React.FC<IProps> = () => {
             <Avatar
               src={image_link}
               style={{
-                width: 170,
+                width: 190,
                 height: "100%",
-                marginTop: "2rem",
+                margin: "2rem 1rem 0rem 1rem",
               }}
               variant="square"
             />
@@ -35,7 +35,7 @@ const Container = withStyles({
     margin: "2rem 5%",
     border: "2px solid white",
     borderTopLeftRadius: 30,
-    padding: "2rem 2rem",
+    padding: "2rem 0rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -56,7 +56,7 @@ const ImagesList = withStyles({
     display: "flex",
     flexWrap: "wrap",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     width: "95%",
     ["@media (max-width: 800px)"]: {
       justifyContent: "center",
