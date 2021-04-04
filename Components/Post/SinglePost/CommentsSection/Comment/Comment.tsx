@@ -1,12 +1,16 @@
 import { Avatar, Box, withStyles } from "@material-ui/core";
-import React from "react";
+import React, { createContext } from "react";
 import IPostComment from "../../../../../Models/IPostComment";
+import CommentReact from "./CommentReact/CommentReact";
 
 interface IProps {
   comment: IPostComment;
 }
 
+export const CommentContext = createContext(null);
+
 const Comment: React.FC<IProps> = ({ comment }) => {
+
   return (
     <Container>
       <CommentContainer>
@@ -24,6 +28,9 @@ const Comment: React.FC<IProps> = ({ comment }) => {
           <CommentText>{comment?.comment}</CommentText>
         </CommentTextContaier>
       </CommentContainer>
+      <CommentContext.Provider value={{ comment: comment }}>
+        <CommentReact />
+      </CommentContext.Provider>
     </Container>
   );
 };
@@ -33,6 +40,7 @@ export default Comment;
 const Container = withStyles({
   root: {
     borderBottom: "1px solid grey",
+    padding: "0rem 0rem 2rem 0rem",
   },
 })(Box);
 
@@ -42,7 +50,6 @@ const CommentContainer = withStyles({
     display: "flex",
     alignItems: "center",
     color: "#808080",
-    padding: "0rem 0rem 2rem 0rem",
   },
 })(Box);
 

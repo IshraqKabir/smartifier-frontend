@@ -4637,7 +4637,9 @@ const Login_useStyles = Object(core_["makeStyles"])({
     fontSize: 14,
     fontWeight: 500,
     textTransform: "capitalize",
-    margin: "0px 5px 0px 2px"
+    margin: "0px 5px 0px 2px",
+    whiteSpace: "nowrap",
+    overflow: "hidden"
   },
   googleLogoContainer: {
     marginRight: 5,
@@ -4729,7 +4731,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     top: 0,
     left: 0,
     right: 0,
-    maxHeight: 100,
+    height: 100,
     borderBottomRightRadius: 15,
     display: "flex",
     justifyContent: "space-between",
@@ -4794,8 +4796,8 @@ const Topbar = () => {
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
             src: "/assets/new_logo.png",
             alt: "Smartifier Logo",
-            height: 110,
-            width: 180
+            height: 40,
+            width: 150
           })
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
           className: classes.pcNavItems,

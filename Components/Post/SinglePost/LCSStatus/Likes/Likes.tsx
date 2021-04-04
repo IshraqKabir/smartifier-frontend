@@ -13,7 +13,9 @@ const Likes: React.FC<IProps> = ({ post }) => {
   const [user] = useLocalState("user", "");
   const [showLoginAlert, setShowLoginAlert] = useState<boolean>(false);
   const [isLikedByUser, setIsLikedByUser] = useState<boolean>(false);
-  const [likesCount, setLikesCount] = useState<number>(post?.likes_count);
+  const [likesCount, setLikesCount] = useState<number>(
+    post?.likes_count ? post?.likes_count : 0
+  );
 
   const handleClick = () => {
     if (!user.token) {
@@ -116,12 +118,9 @@ const Likes: React.FC<IProps> = ({ post }) => {
         }}
       />
 
-      {post.likes_count && (
-        <>
-          <Number>{likesCount}</Number>
-          <p>Like{likesCount > 1 ? "s" : ""}</p>
-        </>
-      )}
+      <Number>{likesCount}</Number>
+      <p>Like{likesCount > 1 ? "s" : ""}</p>
+
       <LoginAlert
         key={post.id}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}

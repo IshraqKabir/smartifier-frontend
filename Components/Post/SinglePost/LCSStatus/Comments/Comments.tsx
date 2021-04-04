@@ -28,7 +28,7 @@ const Comments: React.FC<IProps> = ({ post }) => {
         }}
       />
 
-      {post.likes_count && (
+      {post.comments_count && (
         <>
           <Number>{commentsCount}</Number>
           <p>Comment{commentsCount > 1 ? "s" : ""}</p>

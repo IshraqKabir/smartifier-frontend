@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     top: 0,
     left: 0,
     right: 0,
-    maxHeight: 100,
+    height: 100,
     borderBottomRightRadius: 15,
     display: "flex",
     justifyContent: "space-between",
@@ -73,8 +73,8 @@ const Topbar: React.FC<{}> = () => {
             <Image
               src="/assets/new_logo.png"
               alt="Smartifier Logo"
-              height={110}
-              width={180}
+              height={40}
+              width={150}
             />
           </div>
           <div className={classes.pcNavItems}>
