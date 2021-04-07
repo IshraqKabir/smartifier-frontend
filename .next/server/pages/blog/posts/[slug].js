@@ -1476,15 +1476,74 @@ const Likes_LoginAlert = Object(core_["withStyles"])({
     zIndex: 20000
   }
 })(core_["Snackbar"]);
+// CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/CommentReact/Replies/Replies.tsx
+
+
+
+
+
+
+const Replies = () => {
+  const {
+    comment,
+    repliesCount,
+    setShowReply
+  } = Object(external_react_["useContext"])(CommentContext);
+
+  const handleClick = () => {
+    setShowReply(state => !state);
+  };
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Replies_Button, {
+    onClick: handleClick,
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+      src: `https://img.icons8.com/fluent-systems-regular/34/000000/comments--v2.png`,
+      style: {
+        width: "23px",
+        height: "23px",
+        marginRight: "16px",
+        alignSelf: "center",
+        backgroundColor: "lightgrey",
+        borderRadius: "50%",
+        padding: "5px",
+        cursor: "pointer"
+      }
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Replies_Number, {
+      children: repliesCount
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
+      children: repliesCount > 1 ? "Replies" : "Reply"
+    })]
+  });
+};
+
+/* harmony default export */ var Replies_Replies = (Replies);
+const Replies_Button = Object(core_["withStyles"])({
+  root: {
+    maxWidth: "240px",
+    display: "flex",
+    alignItems: "center",
+    marginRight: "16px",
+    cursor: "pointer",
+    margin: "1rem 0rem 0.3rem 0rem"
+  }
+})(core_["Box"]);
+const Replies_Number = Object(core_["withStyles"])({
+  root: {
+    display: "inline-block",
+    marginRight: 8
+  }
+})(core_["Box"]);
 // CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/CommentReact/CommentReact.tsx
 
 
 
 
 
+
+
 const CommentReact = () => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_Container, {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_Likes_Likes, {})
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentReact_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_Likes_Likes, {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Replies_Replies, {})]
   });
 };
 
@@ -1497,7 +1556,305 @@ const CommentReact_Container = Object(core_["withStyles"])({
     color: "grey"
   }
 })(core_["Box"]);
+// CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/RepliesSection/Reply/Reply.tsx
+
+
+
+
+
+const Reply = ({
+  reply
+}) => {
+  var _reply$user, _reply$user2;
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Reply_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+      src: `${reply === null || reply === void 0 ? void 0 : (_reply$user = reply.user) === null || _reply$user === void 0 ? void 0 : _reply$user.image_url}`,
+      style: {
+        height: 35,
+        width: 35,
+        borderRadius: "50%",
+        marginRight: "16px"
+      }
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ReplyTextContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(UserName, {
+        children: reply === null || reply === void 0 ? void 0 : (_reply$user2 = reply.user) === null || _reply$user2 === void 0 ? void 0 : _reply$user2.name.toLowerCase()
+      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(ReplyText, {
+        children: reply === null || reply === void 0 ? void 0 : reply.comment
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ var Reply_Reply = (Reply);
+const Reply_Container = Object(core_["withStyles"])({
+  root: {
+    marginTop: "1rem",
+    display: "flex",
+    alignItems: "center",
+    color: "#808080"
+  }
+})(core_["Box"]);
+const ReplyTextContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column"
+  }
+})(core_["Box"]);
+const UserName = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 700,
+    textTransform: "capitalize"
+  }
+})(core_["Box"]);
+const ReplyText = Object(core_["withStyles"])({
+  root: {
+    lineHeight: 1.6
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/RepliesSection/ReplyBox/ReplyBox.tsx
+
+
+
+
+
+
+
+
+const ReplyBox_MAX_CHARACTER_COUNT = 200;
+
+const ReplyBox = ({
+  commentId,
+  setReplies,
+  setComment
+}) => {
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
+  const {
+    0: reply,
+    1: setReply
+  } = Object(external_react_["useState"])("");
+  const {
+    0: isSending,
+    1: setIsSending
+  } = Object(external_react_["useState"])(false);
+  const {
+    0: showLoginAlert,
+    1: setShowLoginAlert
+  } = Object(external_react_["useState"])(false);
+  const classes = ReplyBox_useStyles({
+    reply
+  });
+
+  const handleSubmit = () => {
+    if (!user.token) {
+      showAlert();
+      return;
+    }
+
+    if (reply.length > ReplyBox_MAX_CHARACTER_COUNT) return;
+
+    if (reply.length == 0) {
+      showAlert();
+      return;
+    }
+
+    postReply();
+  };
+
+  const handleChange = e => {
+    setReply(e.target.value);
+  };
+
+  const handleEnter = e => {
+    if (e.key === "Enter" && reply.length > 0) {
+      handleSubmit();
+    }
+  };
+
+  const postReply = () => {
+    setIsSending(true);
+    external_axios_default.a.post(`${url["a" /* backend_url */]}/api/comment/reply/store`, {
+      comment_id: commentId,
+      comment: reply
+    }, {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${user.token}`
+      }
+    }).then(response => {
+      setIsSending(false);
+      setReplies(state => [response.data, ...state]);
+      setReply("");
+    });
+  };
+
+  const showAlert = () => {
+    setShowLoginAlert(true);
+    setTimeout(() => {
+      setShowLoginAlert(false);
+    }, 3000);
+  };
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ReplyBox_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+      src: user === null || user === void 0 ? void 0 : user.picture,
+      style: {
+        width: 35,
+        height: 35,
+        borderRadius: "50%",
+        marginRight: "16px"
+      }
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ReplyBox_InputContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("input", {
+        type: "text",
+        placeholder: user ? "Tell us what you think about this post!" : "Login to post a reply!",
+        value: reply,
+        onChange: handleChange,
+        onKeyDown: handleEnter,
+        style: {
+          width: "100%",
+          padding: "12px",
+          marginRight: "16px",
+          border: "1px solid black"
+        }
+      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+        className: classes.charactersCount,
+        children: `${reply.length}/${ReplyBox_MAX_CHARACTER_COUNT}`
+      })]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(ReplyBox_ImageContainer, {
+      children: isSending ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {
+        size: 25,
+        color: "inherit"
+      }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
+        src: `/assets/send_icon.svg`,
+        width: 25,
+        height: 25,
+        onClick: handleSubmit
+      })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(ReplyBox_LoginAlert, {
+      anchorOrigin: {
+        vertical: "top",
+        horizontal: "center"
+      },
+      open: showLoginAlert,
+      message: !user.token ? "Login To Post A Reply!" : reply.length == 0 ? "Reply Cannot Be Empty" : "Some Error Occurred"
+    }, commentId)]
+  });
+};
+
+/* harmony default export */ var ReplyBox_ReplyBox = (ReplyBox);
+const ReplyBox_Container = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    display: "flex",
+    marginTop: "1.5rem",
+    alignItems: "center",
+    marginBottom: "1.5rem"
+  }
+})(core_["Box"]);
+const ReplyBox_ImageContainer = Object(core_["withStyles"])({
+  root: {
+    display: "inline-flex",
+    width: 35,
+    alignItems: "center",
+    justifyContent: "space-between",
+    cursor: "pointer"
+  }
+})(core_["Box"]);
+const ReplyBox_InputContainer = Object(core_["withStyles"])({
+  root: {
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    width: "100%"
+  }
+})(core_["Box"]);
+const ReplyBox_useStyles = Object(core_["makeStyles"])({
+  charactersCount: {
+    position: "absolute",
+    bottom: -22,
+    right: 20,
+    fontSize: "0.8rem",
+    fontWeight: 700,
+    color: props => {
+      const {
+        reply
+      } = props;
+
+      if (reply.length > ReplyBox_MAX_CHARACTER_COUNT) {
+        return "red";
+      }
+
+      return "grey";
+    }
+  }
+});
+const ReplyBox_LoginAlert = Object(core_["withStyles"])({
+  root: {
+    zIndex: 20000
+  }
+})(core_["Snackbar"]);
+// CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/RepliesSection/RepliesSection.tsx
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+const RepliesSection = ({}) => {
+  const {
+    comment,
+    setComment,
+    setRepliesCount
+  } = Object(external_react_["useContext"])(CommentContext);
+  const {
+    0: replies,
+    1: setReplies
+  } = Object(external_react_["useState"])((comment === null || comment === void 0 ? void 0 : comment.replies) ? comment === null || comment === void 0 ? void 0 : comment.replies : []);
+  Object(external_react_["useEffect"])(() => {
+    setComment(state => {
+      const comment = _objectSpread({}, state);
+
+      comment.replies = [];
+      comment.replies = [...replies];
+      return comment;
+    });
+    setRepliesCount(replies.length);
+  }, [replies]);
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(RepliesSection_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(ReplyBox_ReplyBox, {
+      commentId: comment === null || comment === void 0 ? void 0 : comment.id,
+      setReplies: setReplies,
+      setComment: setComment
+    }), replies && replies.map(reply => {
+      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Reply_Reply, {
+        reply: reply
+      }, reply.id);
+    })]
+  });
+};
+
+/* harmony default export */ var RepliesSection_RepliesSection = (RepliesSection);
+const RepliesSection_Container = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    borderBottom: "1px solid grey",
+    paddingBottom: "0.5rem",
+    paddingLeft: "5rem"
+  }
+})(core_["Box"]);
 // CONCATENATED MODULE: ./Components/Post/SinglePost/CommentsSection/Comment/Comment.tsx
+
 
 
 
@@ -1506,10 +1863,22 @@ const CommentReact_Container = Object(core_["withStyles"])({
 const CommentContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
 
 const Comment = ({
-  comment
+  commentProp
 }) => {
   var _comment$user;
 
+  const {
+    0: showReply,
+    1: setShowReply
+  } = Object(external_react_["useState"])(false);
+  const {
+    0: comment,
+    1: setComment
+  } = Object(external_react_["useState"])(commentProp);
+  const {
+    0: repliesCount,
+    1: setRepliesCount
+  } = Object(external_react_["useState"])((comment === null || comment === void 0 ? void 0 : comment.replies_count) ? comment === null || comment === void 0 ? void 0 : comment.replies_count : 0);
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Comment_Container, {
     children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentContainer, {
       children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
@@ -1521,17 +1890,21 @@ const Comment = ({
           marginRight: "16px"
         }
       }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentTextContaier, {
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(UserName, {
-          children: comment === null || comment === void 0 ? void 0 : (_comment$user = comment.user) === null || _comment$user === void 0 ? void 0 : _comment$user.name
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Comment_UserName, {
+          children: comment === null || comment === void 0 ? void 0 : (_comment$user = comment.user) === null || _comment$user === void 0 ? void 0 : _comment$user.name.toLocaleLowerCase()
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentText, {
           children: comment === null || comment === void 0 ? void 0 : comment.comment
         })]
       })]
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentContext.Provider, {
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentContext.Provider, {
       value: {
-        comment: comment
+        comment: comment,
+        setComment: setComment,
+        setShowReply: setShowReply,
+        repliesCount: repliesCount,
+        setRepliesCount: setRepliesCount
       },
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_CommentReact, {})
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(CommentReact_CommentReact, {}), showReply && /*#__PURE__*/Object(jsx_runtime_["jsx"])(RepliesSection_RepliesSection, {})]
     })]
   });
 };
@@ -1539,7 +1912,7 @@ const Comment = ({
 /* harmony default export */ var Comment_Comment = (Comment);
 const Comment_Container = Object(core_["withStyles"])({
   root: {
-    borderBottom: "1px solid grey",
+    // borderBottom: "1px solid grey",
     padding: "0rem 0rem 2rem 0rem"
   }
 })(core_["Box"]);
@@ -1557,9 +1930,10 @@ const CommentTextContaier = Object(core_["withStyles"])({
     flexDirection: "column"
   }
 })(core_["Box"]);
-const UserName = Object(core_["withStyles"])({
+const Comment_UserName = Object(core_["withStyles"])({
   root: {
-    fontWeight: 700
+    fontWeight: 700,
+    textTransform: "capitalize"
   }
 })(core_["Box"]);
 const CommentText = Object(core_["withStyles"])({
@@ -1577,8 +1951,7 @@ const CommentText = Object(core_["withStyles"])({
 
 const CommentsSection = () => {
   const {
-    comments,
-    postId
+    comments
   } = Object(external_react_["useContext"])(CommentsContext);
   const {
     commentsCount
@@ -1588,8 +1961,8 @@ const CommentsSection = () => {
       children: ["Comments(", commentsCount, ")"]
     }), comments && comments.map(comment => {
       return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Comment_Comment, {
-        comment: comment
-      });
+        commentProp: comment
+      }, comment.id);
     })]
   });
 };

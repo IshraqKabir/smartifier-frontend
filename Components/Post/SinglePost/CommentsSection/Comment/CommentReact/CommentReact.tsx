@@ -9,7 +9,7 @@ const CommentReact: React.FC<IProps> = () => {
   return (
     <Container>
       <Likes />
-      {/* <Replies /> */}
+      <Replies />
     </Container>
   );
 };
