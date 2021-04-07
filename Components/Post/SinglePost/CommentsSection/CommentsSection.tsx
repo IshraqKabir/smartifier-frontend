@@ -1,24 +1,21 @@
 import { Box, withStyles } from "@material-ui/core";
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import useLocalState from "../../../../custom-hooks/useLocalState";
-import { backend_url } from "../../../../url";
+import React, { useContext } from "react";
+import IPostComment from "../../../../Models/IPostComment";
 import { CommentsContext, CommentsCountContext } from "../SinglePost";
 import Comment from "./Comment/Comment";
 
 interface IProps {}
 
-const CommentsSection = () => {
-  const { comments, postId } = useContext(CommentsContext);
+const CommentsSection: React.FC<IProps> = () => {
+  const { comments } = useContext(CommentsContext);
   const { commentsCount } = useContext(CommentsCountContext);
-
 
   return (
     <Container>
       <Heading>Comments({commentsCount})</Heading>
       {comments &&
-        comments.map((comment) => {
-          return <Comment comment={comment} />;
+        comments.map((comment: IPostComment) => {
+          return <Comment key={comment.id} commentProp={comment} />;
         })}
     </Container>
   );

@@ -1,11 +1,15 @@
 import { Avatar, Box, withStyles } from "@material-ui/core";
 import React, { useContext, useState } from "react";
+import { CommentContext } from "../../Comment";
 
 interface IProps {}
 
 const Replies: React.FC<IProps> = () => {
-  const [repliesCount, setRepliesCount] = useState<number>(5);
-  const handleClick = () => {};
+  const { comment, repliesCount, setShowReply } = useContext(CommentContext);
+
+  const handleClick = () => {
+    setShowReply((state: boolean) => !state);
+  };
 
   return (
     <Button onClick={handleClick}>
@@ -23,12 +27,8 @@ const Replies: React.FC<IProps> = () => {
         }}
       />
 
-      {repliesCount && (
-        <>
-          <Number>{repliesCount}</Number>
-          <p>{repliesCount > 1 ? "Replies" : "Reply"}</p>
-        </>
-      )}
+      <Number>{repliesCount}</Number>
+      <p>{repliesCount > 1 ? "Replies" : "Reply"}</p>
     </Button>
   );
 };
