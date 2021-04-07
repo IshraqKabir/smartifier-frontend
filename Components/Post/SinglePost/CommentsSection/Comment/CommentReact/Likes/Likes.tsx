@@ -83,7 +83,7 @@ const Likes: React.FC<IProps> = () => {
           }
         )
         .then((response) => {
-          setLikedCommentsIdsByUser((ids) =>
+          setLikedCommentsIdsByUser((ids: number[]) =>
             ids.filter((id) => id != comment.id)
           );
           setLikesCount((count) => count - 1);
