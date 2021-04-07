@@ -27,7 +27,7 @@ const BookACall: React.FC<IProps> = () => {
           width: 15,
           position: "absolute",
           top: 10,
-          left: 1,
+          left: 10,
         }}
       />
 
