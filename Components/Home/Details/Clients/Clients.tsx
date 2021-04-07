@@ -34,6 +34,8 @@ const Container = withStyles({
   root: {
     margin: "2rem 5%",
     border: "2px solid white",
+    color: "black",
+    backgroundColor: "white",
     borderTopLeftRadius: 30,
     padding: "2rem 0rem",
     display: "flex",
