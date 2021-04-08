@@ -1074,6 +1074,10 @@ const Tag = ({
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
       href: `/blog/tags/${tag.slug}/posts`,
       children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("a", {
+        style: {
+          textDecoration: "none",
+          color: "white"
+        },
         children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(TagName, {
           variant: "caption",
           children: tag.name
@@ -1211,6 +1215,9 @@ const Post = ({
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
       href: `/blog/topics/${post === null || post === void 0 ? void 0 : (_post$topic$ = post.topic[0]) === null || _post$topic$ === void 0 ? void 0 : _post$topic$.slug}/posts`,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+        style: {
+          textDecoration: "none"
+        },
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
           className: classes.topic,
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(TopicName, {
@@ -1225,6 +1232,9 @@ const Post = ({
         children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
           href: `/blog/posts/${post === null || post === void 0 ? void 0 : post.slug}`,
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+            style: {
+              textDecoration: "none"
+            },
             children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(PostTitle, {
               variant: "h5",
               children: post === null || post === void 0 ? void 0 : post.title
@@ -1509,6 +1519,9 @@ const Topic = ({
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
       href: `/blog/topics/${topic.slug}/posts`,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+        style: {
+          textDecoration: "none"
+        },
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(TopicName, {
           variant: "subtitle1",
           children: topic.name
@@ -3517,6 +3530,10 @@ const NavItem = ({
     children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
       href: `${link}`,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+        style: {
+          textDecoration: "none",
+          color: "white"
+        },
         children: title
       })
     })
@@ -3677,6 +3694,9 @@ const Login = () => {
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
           href: `/user/profile`,
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+            style: {
+              textDecoration: "none"
+            },
             children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
               className: classes.linkText,
               children: "Profile"
@@ -3697,6 +3717,9 @@ const Login = () => {
   return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {
     children: user ? Element : url ? /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
       href: url.toString(),
+      style: {
+        textDecoration: "none"
+      },
       children: Element
     }) : Element
   });
@@ -3731,6 +3754,7 @@ const Login_useStyles = Object(core_["makeStyles"])({
     fontWeight: 500,
     textTransform: "capitalize",
     margin: "0px 5px 0px 2px",
+    textDecoration: "none",
     whiteSpace: "nowrap",
     overflow: "hidden"
   },
@@ -4744,6 +4768,10 @@ const PostSuggestion = ({
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
       href: `/blog/posts/${post.slug}`,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+        style: {
+          textDecoration: "none",
+          color: "inherit"
+        },
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(LinkText, {
           children: post.title
         })

@@ -25,7 +25,7 @@ const GoogleLoginButton: React.FC<IProps> = () => {
   return (
     <Container>
       {url ? (
-        <a href={`${url}`}>
+        <a href={`${url}`} style={{ textDecoration: "none"}}>
           <GoogleButton />
         </a>
       ) : (

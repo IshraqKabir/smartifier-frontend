@@ -39,7 +39,7 @@ const NavItem: React.FC<IProps> = ({ title, link, setShowLoading }) => {
   return (
     <div className={classes.root} onClick={handleClick}>
       <Link href={`${link}`}>
-        <a>{title}</a>
+        <a style={{ textDecoration: "none", color: "white" }}>{title}</a>
       </Link>
     </div>
   );

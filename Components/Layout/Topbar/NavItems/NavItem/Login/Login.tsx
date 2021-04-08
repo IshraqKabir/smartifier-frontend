@@ -91,7 +91,7 @@ const Login: React.FC<IProps> = () => {
         >
           <div className={classes.menuItem}>
             <Link href={`/user/profile`}>
-              <a>
+              <a style={{ textDecoration: "none" }}>
                 <div className={classes.linkText}>Profile</div>
               </a>
             </Link>
@@ -106,7 +106,15 @@ const Login: React.FC<IProps> = () => {
 
   return (
     <>
-      {user ? Element : url ? <a href={url.toString()}>{Element}</a> : Element}
+      {user ? (
+        Element
+      ) : url ? (
+        <a href={url.toString()} style={{ textDecoration: "none" }}>
+          {Element}
+        </a>
+      ) : (
+        Element
+      )}
     </>
   );
 };
@@ -137,6 +145,7 @@ const useStyles = makeStyles({
     fontWeight: 500,
     textTransform: "capitalize",
     margin: "0px 5px 0px 2px",
+    textDecoration: "none",
     whiteSpace: "nowrap",
     overflow: "hidden",
   },

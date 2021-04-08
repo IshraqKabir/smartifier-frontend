@@ -16,7 +16,7 @@ const Topic: React.FC<IProps> = ({ topic, position }) => {
     <div className={classes.container}>
       <div className={classes.icon}></div>
       <Link href={`/blog/topics/${topic.slug}/posts`}>
-        <a>
+        <a style={{ textDecoration: "none" }}>
           <TopicName variant="subtitle1">{topic.name}</TopicName>
         </a>
       </Link>

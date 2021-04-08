@@ -4424,6 +4424,10 @@ const NavItem = ({
     children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
       href: `${link}`,
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+        style: {
+          textDecoration: "none",
+          color: "white"
+        },
         children: title
       })
     })
@@ -4584,6 +4588,9 @@ const Login = () => {
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(link_default.a, {
           href: `/user/profile`,
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+            style: {
+              textDecoration: "none"
+            },
             children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
               className: classes.linkText,
               children: "Profile"
@@ -4604,6 +4611,9 @@ const Login = () => {
   return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {
     children: user ? Element : url ? /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
       href: url.toString(),
+      style: {
+        textDecoration: "none"
+      },
       children: Element
     }) : Element
   });
@@ -4638,6 +4648,7 @@ const Login_useStyles = Object(core_["makeStyles"])({
     fontWeight: 500,
     textTransform: "capitalize",
     margin: "0px 5px 0px 2px",
+    textDecoration: "none",
     whiteSpace: "nowrap",
     overflow: "hidden"
   },

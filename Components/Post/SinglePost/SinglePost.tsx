@@ -78,7 +78,7 @@ const Post: React.FC<IProps> = ({ post }) => {
     <div className={classes.container}>
       {post?.topic && (
         <Link href={`/blog/topics/${post?.topic[0]?.slug}/posts`}>
-          <a>
+          <a style={{ textDecoration: "none"}}>
             <div className={classes.topic}>
               <TopicName>{post?.topic[0]?.name}</TopicName>
             </div>
