@@ -2242,7 +2242,7 @@ const Posts = ({
           content: `${post.summary}`
         }), post.featured_image && /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:image",
-          content: `${url["b" /* default */]}/${post.featured_image}`
+          content: `https://smartifier.org${post.featured_image}`
         })]
       })
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Topbar["a" /* default */], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Intro_Intro, {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
