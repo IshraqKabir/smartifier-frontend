@@ -8,7 +8,6 @@ interface IProps {}
 const BookACall: React.FC<IProps> = () => {
   return (
     <Container>
-      {/* <Title>B2B Free Session</Title> */}
       <Title>
         Seeing your brand grow is our ultimate goal and satisfaction! We firmly
         believe that with the right training, employees can transform themselves

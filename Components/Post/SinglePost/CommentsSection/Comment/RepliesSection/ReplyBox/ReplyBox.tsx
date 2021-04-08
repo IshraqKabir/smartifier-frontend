@@ -103,9 +103,7 @@ const ReplyBox: React.FC<IProps> = ({ commentId, setReplies, setComment }) => {
         <input
           type="text"
           placeholder={
-            user
-              ? "Tell us what you think about this post!"
-              : "Login to post a reply!"
+            user ? "Leave a reply to the comment!" : "Login to post a reply!"
           }
           value={reply}
           onChange={handleChange}
