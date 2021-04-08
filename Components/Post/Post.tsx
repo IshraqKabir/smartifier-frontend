@@ -11,7 +11,6 @@ import SinglePost from "./SinglePost/SinglePost";
 import IPostSuggestion from "../../Models/IPostSuggestion";
 import Head from "next/head";
 import url from "../../url";
-import { useRouter } from "next/router";
 
 const useStyles = makeStyles({
   pageContainer: {
@@ -43,14 +42,16 @@ interface IProps {
 
 const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
   const classes = useStyles();
-  const router = useRouter();
 
   return (
     <div className={classes.pageContainer}>
       <div>
         <Head>
           <title>Smartifer Blog</title>
-          <meta property="og:url" content={`https://smartifier.org/${router.pathname}`} />
+          <meta
+            property="og:url"
+            content={`https://smartifier.org/blog/posts/${post.slug}`}
+          />
           <meta property="og:type" content="article" />
           {post.title && <meta property="og:title" content={`${post.title}`} />}
           {post.summary && (

@@ -3621,7 +3621,7 @@ const Login = () => {
       children: !user && !url && "Loading..."
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
       className: classes.text,
-      children: !user && url && "Sign in with Google"
+      children: !user && url && "Sign In"
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
       className: classes.text,
       children: user && `${user.name.toLowerCase()}`

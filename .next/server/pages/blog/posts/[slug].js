@@ -2181,11 +2181,7 @@ const monthNames = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug"
 var head_ = __webpack_require__("xnum");
 var head_default = /*#__PURE__*/__webpack_require__.n(head_);
 
-// EXTERNAL MODULE: external "next/router"
-var router_ = __webpack_require__("4Q3z");
-
 // CONCATENATED MODULE: ./Components/Post/Post.tsx
-
 
 
 
@@ -2225,7 +2221,6 @@ const Posts = ({
   topPosts
 }) => {
   const classes = Post_useStyles();
-  const router = Object(router_["useRouter"])();
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
     className: classes.pageContainer,
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
@@ -2234,7 +2229,7 @@ const Posts = ({
           children: "Smartifer Blog"
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:url",
-          content: `https://smartifier.org/${router.pathname}`
+          content: `https://smartifier.org/blog/posts/${post.slug}`
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:type",
           content: "article"
@@ -4969,7 +4964,7 @@ const Login = () => {
       children: !user && !url && "Loading..."
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
       className: classes.text,
-      children: !user && url && "Sign in with Google"
+      children: !user && url && "Sign In"
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
       className: classes.text,
       children: user && `${user.name.toLowerCase()}`

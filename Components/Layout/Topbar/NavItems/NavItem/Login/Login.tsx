@@ -70,7 +70,7 @@ const Login: React.FC<IProps> = () => {
         </div>
       )}
       <p className={classes.text}>{!user && !url && "Loading..."}</p>
-      <p className={classes.text}>{!user && url && "Sign in with Google"}</p>
+      <p className={classes.text}>{!user && url && "Sign In"}</p>
       <p className={classes.text}>{user && `${user.name.toLowerCase()}`}</p>
 
       {user && (
