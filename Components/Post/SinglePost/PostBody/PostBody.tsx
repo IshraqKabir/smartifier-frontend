@@ -21,7 +21,6 @@ const options: HTMLReactParserOptions = {
       });
 
       if (image) return image;
-
     }
   },
 };
@@ -40,6 +39,9 @@ export default PostBody;
 
 const Container = withStyles({
   root: {
-    marginTop: "2rem",
+    lineHeight: 1.6,
+    fontSize: 13,
+    color: "#686868",
+    marginBlock: 5,
   },
 })(Box);
