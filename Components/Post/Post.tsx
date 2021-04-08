@@ -50,9 +50,13 @@ const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
           <title>Smartifer Blog</title>
           <meta property="og:url" content={`${url}`} />
           <meta property="og:type" content="article" />
-          <meta property="og:title" content={`${post?.title}`} />
-          <meta property="og:description" content={`${post?.summary}`} />
-          <meta property="og:image" content={`${post?.featured_image}`} />
+          {post.title && <meta property="og:title" content={`${post.title}`} />}
+          {post.summary && (
+            <meta property="og:description" content={`${post.summary}`} />
+          )}
+          {post.featured_image && (
+            <meta property="og:image" content={`${post.featured_image}`} />
+          )}
         </Head>
       </div>
       <Topbar />

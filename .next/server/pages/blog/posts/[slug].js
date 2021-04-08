@@ -780,10 +780,6 @@ const options = {
         }
       });
       if (image) return image;
-
-      if (children) {
-        console.log(children);
-      }
     }
   }
 };
@@ -2238,15 +2234,15 @@ const Posts = ({
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:type",
           content: "article"
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
+        }), post.title && /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:title",
-          content: `${post === null || post === void 0 ? void 0 : post.title}`
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
+          content: `${post.title}`
+        }), post.summary && /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:description",
-          content: `${post === null || post === void 0 ? void 0 : post.summary}`
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
+          content: `${post.summary}`
+        }), post.featured_image && /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:image",
-          content: `${post === null || post === void 0 ? void 0 : post.featured_image}`
+          content: `${post.featured_image}`
         })]
       })
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Topbar["a" /* default */], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Intro_Intro, {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
