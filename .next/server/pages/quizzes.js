@@ -3642,6 +3642,10 @@ const ShareOnFB = ({
       children: link => /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
         href: `${link}`,
         target: "_blank",
+        style: {
+          textDecoration: "none",
+          color: "white"
+        },
         children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
           children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
             src: `/assets/facebook.png`,

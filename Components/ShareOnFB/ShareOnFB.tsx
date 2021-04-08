@@ -12,7 +12,11 @@ const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
     <>
       <ShareLink link={`${link}`}>
         {(link: string) => (
-          <a href={`${link}`} target="_blank">
+          <a
+            href={`${link}`}
+            target="_blank"
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <Container>
               <Avatar
                 src={`/assets/facebook.png`}
