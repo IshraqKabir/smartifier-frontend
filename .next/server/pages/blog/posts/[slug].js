@@ -796,7 +796,10 @@ const PostBody = ({
 /* harmony default export */ var PostBody_PostBody = (PostBody);
 const Container = Object(core_["withStyles"])({
   root: {
-    marginTop: "2rem"
+    lineHeight: 1.6,
+    fontSize: 13,
+    color: "#686868",
+    marginBlock: 5
   }
 })(core_["Box"]);
 // CONCATENATED MODULE: ./Components/Post/SinglePost/PostBody/PostFeaturedImage/PostFeaturedImage.tsx
