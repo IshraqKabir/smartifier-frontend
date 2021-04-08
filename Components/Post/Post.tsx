@@ -55,7 +55,10 @@ const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
             <meta property="og:description" content={`${post.summary}`} />
           )}
           {post.featured_image && (
-            <meta property="og:image" content={`${post.featured_image}`} />
+            <meta
+              property="og:image"
+              content={`${url}/${post.featured_image}`}
+            />
           )}
         </Head>
       </div>
