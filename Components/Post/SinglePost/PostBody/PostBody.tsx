@@ -2,7 +2,7 @@ import React from "react";
 
 import parse, { HTMLReactParserOptions } from "html-react-parser";
 import PostBodyImage from "./PostBodyImage/PostBodyImage";
-import PostBodyText from "./PostBodyText/PostBodyText";
+import { Box, withStyles } from "@material-ui/core";
 
 const options: HTMLReactParserOptions = {
   replace: ({ attribs, children }: any) => {
@@ -21,14 +21,6 @@ const options: HTMLReactParserOptions = {
       });
 
       if (image) return image;
-
-      // check if text
-      if (children) {
-        if (children[0] && children[0].type === "text") {
-          const child = children[0];
-          return <PostBodyText text={child.data} />;
-        }
-      }
     }
   },
 };
@@ -40,7 +32,13 @@ interface IProps {
 const PostBody: React.FC<IProps> = ({ body }) => {
   const el = parse(`${body}`, options);
 
-  return <div>{el}</div>;
+  return <Container>{el}</Container>;
 };
 
 export default PostBody;
+
+const Container = withStyles({
+  root: {
+    marginTop: "2rem",
+  },
+})(Box);

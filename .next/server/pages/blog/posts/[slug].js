@@ -754,28 +754,6 @@ const Caption = Object(core_["withStyles"])({
     marginTop: 5
   }
 })(core_["Typography"]);
-// CONCATENATED MODULE: ./Components/Post/SinglePost/PostBody/PostBodyText/PostBodyText.tsx
-
-
-
-
-const PostBodyText = ({
-  text
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Text, {
-    children: text
-  });
-};
-
-/* harmony default export */ var PostBodyText_PostBodyText = (PostBodyText);
-const Text = Object(core_["withStyles"])({
-  root: {
-    lineHeight: 1.6,
-    fontSize: 13,
-    color: "#686868",
-    marginBlock: 5
-  }
-})(core_["Typography"]);
 // CONCATENATED MODULE: ./Components/Post/SinglePost/PostBody/PostBody.tsx
 
 
@@ -801,16 +779,7 @@ const options = {
           });
         }
       });
-      if (image) return image; // check if text
-
-      if (children) {
-        if (children[0] && children[0].type === "text") {
-          const child = children[0];
-          return /*#__PURE__*/Object(jsx_runtime_["jsx"])(PostBodyText_PostBodyText, {
-            text: child.data
-          });
-        }
-      }
+      if (image) return image;
     }
   }
 };
@@ -819,12 +788,17 @@ const PostBody = ({
   body
 }) => {
   const el = external_html_react_parser_default()(`${body}`, options);
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Container, {
     children: el
   });
 };
 
 /* harmony default export */ var PostBody_PostBody = (PostBody);
+const Container = Object(core_["withStyles"])({
+  root: {
+    marginTop: "2rem"
+  }
+})(core_["Box"]);
 // CONCATENATED MODULE: ./Components/Post/SinglePost/PostBody/PostFeaturedImage/PostFeaturedImage.tsx
 
 
@@ -1103,7 +1077,7 @@ const LoginAlert = Object(core_["withStyles"])({
 const LCSStatus = ({
   post
 }) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(LCSStatus_Container, {
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Likes_Likes, {
       post: post
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Comments_Comments, {
@@ -1123,7 +1097,7 @@ const imageStyle = {
   padding: "5px",
   cursor: "pointer"
 };
-const Container = Object(core_["withStyles"])({
+const LCSStatus_Container = Object(core_["withStyles"])({
   root: {
     width: "100%",
     padding: "8px 0",
@@ -1707,7 +1681,7 @@ const ReplyBox = ({
     }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ReplyBox_InputContainer, {
       children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("input", {
         type: "text",
-        placeholder: user ? "Tell us what you think about this post!" : "Login to post a reply!",
+        placeholder: user ? "Leave a reply to the comment!" : "Login to post a reply!",
         value: reply,
         onChange: handleChange,
         onKeyDown: handleEnter,
