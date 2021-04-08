@@ -48,7 +48,7 @@ const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
       <div>
         <Head>
           <title>Smartifer Blog</title>
-          <meta property="og:url" content={`${url}`} />
+          <meta property="og:url" content={`${window.location.href}`} />
           <meta property="og:type" content="article" />
           {post.title && <meta property="og:title" content={`${post.title}`} />}
           {post.summary && (

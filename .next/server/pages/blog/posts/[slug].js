@@ -2193,7 +2193,6 @@ var head_default = /*#__PURE__*/__webpack_require__.n(head_);
 
 
 
-
 const Post_useStyles = Object(core_["makeStyles"])({
   pageContainer: {
     width: "100vw",
@@ -2230,7 +2229,7 @@ const Posts = ({
           children: "Smartifer Blog"
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:url",
-          content: `${url["b" /* default */]}`
+          content: `${window.location.href}`
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("meta", {
           property: "og:type",
           content: "article"
