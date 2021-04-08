@@ -30,7 +30,11 @@ const BookACall: React.FC<IProps> = () => {
         }}
       />
 
-      <a href={`${texts.links.free_1_hour_session}`} target="_blank">
+      <a
+        href={`${texts.links.free_1_hour_session}`}
+        target="_blank"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
         <Button>Book Your Free 1-Hour Session</Button>
       </a>
     </Container>
