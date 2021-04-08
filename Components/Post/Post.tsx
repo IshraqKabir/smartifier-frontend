@@ -57,7 +57,7 @@ const Posts: React.FC<IProps> = ({ post, topics, topPosts }) => {
           {post.featured_image && (
             <meta
               property="og:image"
-              content={`https://smartifier.org${post.featured_image}`}
+              content={`https://admin.smartifier.org${post.featured_image}`}
             />
           )}
         </Head>
