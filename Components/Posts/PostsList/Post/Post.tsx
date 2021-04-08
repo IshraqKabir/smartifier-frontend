@@ -74,7 +74,7 @@ const Post: React.FC<IProps> = ({ post, position }) => {
   return (
     <Container>
       <Link href={`/blog/topics/${post?.topic[0]?.slug}/posts`}>
-        <a>
+        <a style={{ textDecoration: "none"}}>
           <div className={classes.topic}>
             <TopicName variant="subtitle2">{post?.topic[0]?.name}</TopicName>
           </div>
@@ -83,7 +83,7 @@ const Post: React.FC<IProps> = ({ post, position }) => {
       <div>
         <div className={classes.postTitle}>
           <Link href={`/blog/posts/${post?.slug}`}>
-            <a>
+            <a style={{ textDecoration: "none"}}>
               <PostTitle variant="h5">{post?.title}</PostTitle>
             </a>
           </Link>

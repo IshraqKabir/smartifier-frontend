@@ -47,7 +47,7 @@ const Tag: React.FC<IProps> = ({ tag, position }) => {
   return (
     <div className={classes.container}>
       <Link href={`/blog/tags/${tag.slug}/posts`}>
-        <a>
+        <a style={{ textDecoration: "none", color: "white" }}>
           <TagName variant="caption">{tag.name}</TagName>
         </a>
       </Link>

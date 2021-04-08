@@ -20,7 +20,7 @@ const PostSuggestion: React.FC<IProps> = ({ post }) => {
   return (
     <div className={classes.container}>
       <Link href={`/blog/posts/${post.slug}`}>
-        <a>
+        <a style={{ textDecoration: "none", color: "inherit" }}>
           <LinkText>{post.title}</LinkText>
         </a>
       </Link>

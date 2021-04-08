@@ -21,6 +21,10 @@ const options: HTMLReactParserOptions = {
       });
 
       if (image) return image;
+
+      if (children) {
+        console.log(children);
+      }
     }
   },
 };
