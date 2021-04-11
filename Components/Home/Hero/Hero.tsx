@@ -88,12 +88,19 @@ const Hero: React.FC<{}> = () => {
           })}
         </div>
         <div className={classes.buttons}>
-          <a href="mailto:smartifier.ac@gmail.com">
+          <a
+            href="mailto:smartifier.ac@gmail.com"
+            style={{ color: "white", textDecoration: "none" }}
+          >
             <div className={classes.button}>Talk to us</div>
           </a>
           {/* <div className={classes.button}>All Courses</div> */}
         </div>
-        <a href={links.youtube} target="_blank">
+        <a
+          href={links.youtube}
+          target="_blank"
+          style={{ color: "white", textDecoration: "none" }}
+        >
           <div
             className={`${classes.youtubeButtonsContainer} ${classes.buttons} ${classes.button}`}
           >

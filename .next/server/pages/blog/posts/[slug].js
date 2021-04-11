@@ -780,6 +780,21 @@ const options = {
         }
       });
       if (image) return image;
+
+      if (children && children[0] && children[0]["data"]) {
+        if (children[0]["data"].includes("youtube.com")) {
+          return /*#__PURE__*/Object(jsx_runtime_["jsx"])(IFramceContainer, {
+            children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("iframe", {
+              width: "60%",
+              height: "300",
+              src: `${children[0]["data"]}`,
+              title: "YouTube video player",
+              allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+              allowFullScreen: true
+            })
+          });
+        }
+      }
     }
   }
 };
@@ -800,6 +815,15 @@ const Container = Object(core_["withStyles"])({
     fontSize: 13,
     color: "#686868",
     marginBlock: 5
+  }
+})(core_["Box"]);
+const IFramceContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    margin: "1rem 0rem"
   }
 })(core_["Box"]);
 // CONCATENATED MODULE: ./Components/Post/SinglePost/PostBody/PostFeaturedImage/PostFeaturedImage.tsx

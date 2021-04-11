@@ -21,6 +21,23 @@ const options: HTMLReactParserOptions = {
       });
 
       if (image) return image;
+
+      if (children && children[0] && children[0]["data"]) {
+        if (children[0]["data"].includes("youtube.com")) {
+          return (
+            <IFramceContainer>
+              <iframe
+                width="60%"
+                height="300"
+                src={`${children[0]["data"]}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen={true}
+              />
+            </IFramceContainer>
+          );
+        }
+      }
     }
   },
 };
@@ -43,5 +60,15 @@ const Container = withStyles({
     fontSize: 13,
     color: "#686868",
     marginBlock: 5,
+  },
+})(Box);
+
+const IFramceContainer = withStyles({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    margin: "1rem 0rem",
   },
 })(Box);
