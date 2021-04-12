@@ -9,7 +9,7 @@ const UserProfile: React.FC<{}> = () => {
   return (
     <>
       <Topbar />
-      {!user.token ? (
+      {user && !user.token ? (
         <Typography variant="h4">You have to login to continue</Typography>
       ) : (
         <Profile />

@@ -1,6 +1,6 @@
 import { Box, withStyles } from "@material-ui/core";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useLocalState from "../../../custom-hooks/useLocalState";
 import IQuiz from "../../../Models/IQuiz";
 import { local_backend_url } from "../../../url";
@@ -22,6 +22,12 @@ const CheckTestStatus: React.FC<IProps> = ({ quizID }) => {
   const [user] = useLocalState("user", "");
 
   const [showTest, setShowTest] = useState<boolean>(false);
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    containerRef.current.scrollIntoView({ behaviour: "smooth" });
+  }, []);
 
   useEffect(() => {
     axios
@@ -52,10 +58,12 @@ const CheckTestStatus: React.FC<IProps> = ({ quizID }) => {
   return (
     <>
       <Topbar />
+      <div ref={containerRef} />
       <Container>
         {status == "unknown" && !isLoading && (
           <p>Some Error Occured. Please Refresh or Go Back.</p>
         )}
+
         {status == "retake" && !isLoading && !showTest && (
           <RetakePrompt
             quizID={quizID}

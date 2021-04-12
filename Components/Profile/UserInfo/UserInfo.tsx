@@ -14,11 +14,11 @@ const UserInfo: React.FC<IProps> = () => {
       <ProfilePicContainer>
         <Avatar
           alt={`${user?.name}`}
-          src={`${user.image_url}`}
+          src={`${user?.picture}`}
           style={{ width: "100%", height: "100%" }}
         />
       </ProfilePicContainer>
-      <div className={classes.userName}>{user.name.toLowerCase()}</div>
+      <div className={classes.userName}>{user?.name?.toLowerCase()}</div>
     </Container>
   );
 };

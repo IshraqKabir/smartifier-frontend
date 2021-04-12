@@ -5,7 +5,11 @@ export default function getIsChecked(
   question: IQuestion,
   answers: any
 ): boolean {
-  if (answers[question.id] && answers[question.id].includes(optionID)) {
+  if (
+    answers &&
+    answers[question.id] &&
+    answers[question.id].includes(optionID)
+  ) {
     return true;
   }
 

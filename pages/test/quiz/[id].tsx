@@ -18,7 +18,7 @@ interface IProps {
 const Post: React.FC<IProps> = ({ id }) => {
   const [user] = useLocalState("user", "");
 
-  if (!user.token) return <p>Unauthorized access</p>;
+  if (!user || !user.token) return <p>Unauthorized access</p>;
 
   return <CheckTestStatus quizID={id} />;
 };

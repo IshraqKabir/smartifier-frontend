@@ -14,13 +14,13 @@ const OptionContainer = (props) => {
   );
 
   useEffect(() => {
-    console.log(
-      `${props.option.title}:${props.option.id} is ${
-        getIsChecked(props.option.id, question, answers)
-          ? "checked"
-          : "unchecked"
-      }`
-    );
+    // console.log(
+    //   `${props.option.title}:${props.option.id} is ${
+    //     getIsChecked(props.option.id, question, answers)
+    //       ? "checked"
+    //       : "unchecked"
+    //   }`
+    // );
     setIsChecked(getIsChecked(props.option.id, question, answers));
   }, [answers]);
 
