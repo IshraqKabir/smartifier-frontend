@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-const useLocalState = (key: string, defaultValue: any) => {
+export default function useLocalState<T>(key: string, defaultValue: any) {
   const [value, setValueState] = useState(() => {
     if (process.browser) {
       return getValue(key);
@@ -45,9 +45,7 @@ const useLocalState = (key: string, defaultValue: any) => {
   };
 
   return [value, setValue];
-};
-
-export default useLocalState;
+}
 
 const getValue = (key) => {
   if (isLocalStorageWorking()) {

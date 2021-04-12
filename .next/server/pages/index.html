@@ -1,0 +1,709 @@
+<!DOCTYPE html><html lang="en"><head><meta name="theme-color" content="#556cd6"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"/><meta charSet="utf-8"/><title>Smartifier</title><meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/a52fe23451cc46f92a61.css" as="style"/><link rel="stylesheet" href="/_next/static/css/a52fe23451cc46f92a61.css" data-n-g=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main-e33e87327d282b41c000.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.017c4b60e3e1f640722e.js" as="script"/><link rel="preload" href="/_next/static/chunks/4d5d70941d46b9d023aa14607c849ff7f5328dd6.1f52a3ec41a5d5095e70.js" as="script"/><link rel="preload" href="/_next/static/chunks/7dc7c7d49937a59e91d2db59c47565bff8e73551.8c9aba2355e93ae478b7.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-1921287f4b6aca0672ab.js" as="script"/><link rel="preload" href="/_next/static/chunks/da5e837a7652c31fcda93270f468d2589a02dc37.51fb47a34ae55c161f7d.js" as="script"/><link rel="preload" href="/_next/static/chunks/1949a92850a5440f140dccda5a26668b6e270f43.7479ae8e42612b89d564.js" as="script"/><link rel="preload" href="/_next/static/chunks/00bf4502453291314613991bc7e45f49581ce41b.dd0068eedd77d8426e3a.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/index-a10f54a8982ec662e419.js" as="script"/><style id="jss-server-side">html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+strong, b {
+  font-weight: 700;
+}
+body {
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0;
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  background-color: #fff;
+}
+@media print {
+  body {
+    background-color: #fff;
+  }
+}
+body::backdrop {
+  background-color: #fff;
+}
+.MuiAvatar-root {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+}
+.MuiAvatar-colorDefault {
+  color: #fff;
+  background-color: #bdbdbd;
+}
+.MuiAvatar-rounded {
+  border-radius: 4px;
+}
+.MuiAvatar-square {
+  border-radius: 0;
+}
+.MuiAvatar-img {
+  color: transparent;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-align: center;
+  text-indent: 10000px;
+}
+.MuiAvatar-fallback {
+  width: 75%;
+  height: 75%;
+}
+
+.jss40 {}
+.jss42 {}
+.jss44 {}
+.jss45 {}
+.jss47 {}
+.jss49 {}
+.jss50 {}
+.jss51 {}
+.jss52 {}
+.jss53 {}
+.jss54 {}
+.jss56 {}
+.jss58 {}
+.jss60 {}
+.jss62 {}
+.jss64 {}
+.jss66 {}
+.jss68 {}
+.jss70 {}
+.jss72 {}
+.jss74 {}
+.jss76 {}
+.jss78 {}
+.jss79 {}
+.jss80 {}
+.jss81 {}
+.jss82 {}
+.jss83 {}
+.jss84 {}
+.jss85 {}
+.jss86 {}
+.jss87 {}
+.jss88 {}
+.jss89 {}
+.jss90 {}
+.jss92 {}
+.jss94 {}
+.jss96 {}
+.MuiTypography-root {
+  margin: 0;
+}
+.MuiTypography-body2 {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+}
+.MuiTypography-body1 {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+.MuiTypography-caption {
+  font-size: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+}
+.MuiTypography-button {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+}
+.MuiTypography-h1 {
+  font-size: 6rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.167;
+  letter-spacing: -0.01562em;
+}
+.MuiTypography-h2 {
+  font-size: 3.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.00833em;
+}
+.MuiTypography-h3 {
+  font-size: 3rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.167;
+  letter-spacing: 0em;
+}
+.MuiTypography-h4 {
+  font-size: 2.125rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
+}
+.MuiTypography-h5 {
+  font-size: 1.5rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.334;
+  letter-spacing: 0em;
+}
+.MuiTypography-h6 {
+  font-size: 1.25rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+}
+.MuiTypography-subtitle1 {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.00938em;
+}
+.MuiTypography-subtitle2 {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.57;
+  letter-spacing: 0.00714em;
+}
+.MuiTypography-overline {
+  font-size: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 2.66;
+  letter-spacing: 0.08333em;
+  text-transform: uppercase;
+}
+.MuiTypography-srOnly {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+.MuiTypography-alignLeft {
+  text-align: left;
+}
+.MuiTypography-alignCenter {
+  text-align: center;
+}
+.MuiTypography-alignRight {
+  text-align: right;
+}
+.MuiTypography-alignJustify {
+  text-align: justify;
+}
+.MuiTypography-noWrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.MuiTypography-gutterBottom {
+  margin-bottom: 0.35em;
+}
+.MuiTypography-paragraph {
+  margin-bottom: 16px;
+}
+.MuiTypography-colorInherit {
+  color: inherit;
+}
+.MuiTypography-colorPrimary {
+  color: #556cd6;
+}
+.MuiTypography-colorSecondary {
+  color: #19857b;
+}
+.MuiTypography-colorTextPrimary {
+  color: rgba(0, 0, 0, 0.87);
+}
+.MuiTypography-colorTextSecondary {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiTypography-colorError {
+  color: #ff1744;
+}
+.MuiTypography-displayInline {
+  display: inline;
+}
+.MuiTypography-displayBlock {
+  display: block;
+}
+.jss8 {
+  color: white;
+  cursor: pointer;
+  font-size: small;
+  text-transform: capitalize;
+}
+.jss8:hover {
+  font-size: 16px;
+  transition: 0.3s;
+}
+@media (max-width: 700px) {
+  .jss8 {
+    margin-right: 1rem;
+  }
+}
+  .jss7 {
+    color: white;
+    display: flex;
+    overflow: hidden;
+    font-size: small;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .jss9 {
+    cursor: pointer;
+    display: flex;
+    padding: 0.5rem 0.5rem 0.5rem 0.25rem;
+    position: relative;
+    min-width: 150px;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-between;
+  }
+  .jss10 {
+    margin: 0px 5px 0px 2px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+  .jss11 {
+    float: left;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .jss12 {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .jss13 {
+    color: #3798A7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .jss14 {
+    top: 50px;
+    color: white;
+    right: 0;
+    width: auto;
+    display: flex;
+    z-index: 1000;
+    position: absolute;
+    flex-direction: column;
+    background-color: #003085;
+  }
+  .jss15 {
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    height: 100%;
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid white;
+  }
+  .jss15:hover {
+    border-bottom: 1px solid #3798A7;
+  }
+  .jss16 {
+    color: white;
+  }
+  .jss16:hover {
+    color: #3798A7;
+  }
+  .jss17 {
+    background-color: white;
+  }
+  .jss18 {
+    color: black;
+  }
+  .jss2 {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    z-index: 4000;
+    position: fixed;
+    background: transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box;
+    align-items: center;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    justify-content: space-between;
+    border-bottom-right-radius: 15px;
+  }
+  .jss3 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    background: transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box;
+    margin-right: 100px;
+  }
+  .jss4 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss5 {
+    top: 100px;
+    left: 0;
+    color: white;
+    right: 0;
+    padding: 0.5rem 1rem;
+    z-index: 40;
+    position: fixed;
+    background-color: rgba(0, 34, 94, 0.8);
+  }
+@media (min-width: 700px) {
+  .jss5 {
+    display: none;
+  }
+}
+  .jss6 {
+    width: 60%;
+  }
+@media (max-width: 700px) {
+  .jss6 {
+    display: none;
+  }
+}
+  .jss34 {
+    position: relative;
+    background-color: inherit;
+  }
+  .jss35 {
+    width: 100vw;
+    height: 300px;
+    z-index: -1;
+    clip-path: polygon(0% 0%, 0% 100%, 15.22% 69.33%, 32.07% 92.67%, 50.33% 70.00%, 60.89% 93%, 74.63% 77.67%, 87.26% 97.33%, 100% 100%, 100% 0%);
+    background: transparent linear-gradient(180deg, #028D9ADE 0%, #8F749CE6 100%) 0% 0% no-repeat padding-box;
+  }
+  .jss36 {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    position: absolute;
+    padding-top: 50px;
+  }
+  .jss37 {
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: capitalize;
+  }
+  .jss38 {
+    top: 250px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .jss91 {
+    margin: 0rem 5% 2rem 5%;
+    display: flex;
+    padding: 1rem;
+    position: relative;
+    align-items: center;
+    line-height: 1.6;
+    border-radius: 10px 10px 10px 0px;
+    flex-direction: column;
+    background-color: white;
+  }
+  .jss93 {
+    color: #595858;
+    font-size: 1.1rem;
+    margin-left: 1rem;
+  }
+  .jss95 {
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem 4rem;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    border-radius: 50px;
+    background-color: #0380A7;
+  }
+  .jss63 {
+    color: black;
+    border: 2px solid white;
+    margin: 2rem 5%;
+    display: flex;
+    padding: 2rem 0rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-top-left-radius: 30px;
+  }
+  .jss65 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .jss67 {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+@media (max-width: 800px) {
+  .jss67 {
+    justify-content: center;
+  }
+}
+  .jss69 {
+    color: #595858;
+    margin: 4rem 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+@media (max-width: 750px) {
+  .jss69 {
+    flex-direction: column;
+  }
+}
+  .jss71 {
+    width: 24%;
+    border: 1px solid #707070;
+    display: flex;
+    padding: 1rem;
+    position: relative;
+    flex-shrink: 0;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+  }
+@media (max-width: 750px) {
+  .jss71 {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+  .jss73 {
+    color: #595858;
+    font-size: 1rem;
+    margin-top: 1rem;
+    line-height: 1.8;
+    margin-left: 1rem;
+  }
+  .jss75 {
+    display: flex;
+    overflow: hidden;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    align-items: center;
+  }
+  .jss77 {
+    font-weight: 600;
+  }
+  .jss61 {
+    color: white;
+  }
+  .jss19 {
+    color: white;
+    display: flex;
+    padding: 2rem 2rem 10rem 0rem;
+    background: transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box;
+    align-items: center;
+    justify-content: center;
+  }
+@media (max-width: 880px) {
+  .jss19 {
+    padding: 5rem 2rem 5rem 1rem;
+  }
+}
+  .jss20 {
+    font-size: small;
+    margin-top: 50px;
+  }
+  .jss21 {
+    display: flex;
+    margin-top: 40px;
+  }
+  .jss22 {
+    padding: 10px 40px 10px 40px;
+    font-size: small;
+    background: #0380A7 0% 0% no-repeat padding-box;
+    margin-right: 20px;
+    border-radius: 50px;
+  }
+  .jss23 {
+    width: 65%;
+    display: flex;
+    overflow: hidden;
+    font-size: large;
+    white-space: nowrap;
+  }
+@media (max-width: 880px) {
+  .jss23 {
+    width: 80%;
+  }
+}
+  .jss24 {
+    display: flex;
+    align-items: center;
+    margin-left: -25px;
+    margin-right: 20px;
+  }
+@media (max-width: 600px) {
+  .jss25 {
+    display: none;
+  }
+}
+  .jss26 {
+    width: 80ch;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss39 {
+    color: #5E5E5E;
+    border: 1px solid #707070;
+    cursor: pointer;
+    display: flex;
+    padding: 2rem 5rem;
+    font-size: 1.1rem;
+    background: #FFFFFFD1 0% 0% no-repeat padding-box;
+    min-height: 100px;
+    align-items: center;
+    border-radius: 94px 94px 94px 0px;
+    margin-bottom: 2rem;
+  }
+  .jss41 {
+    max-width: 80ch;
+    flex-shrink: 2;
+  }
+  .jss43 {
+    font-weight: 700;
+  }
+  .jss46 {
+    margin-top: 2rem;
+  }
+  .jss48 {
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .jss55 {
+    color: white;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #0380A7;
+    border-radius: 50px;
+  }
+  .jss57 {
+    flex-shrink: 1;
+    margin-left: 10%;
+  }
+@media (max-width: 800px) {
+  .jss57 {
+    display: none;
+  }
+}
+  .jss59 {
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    padding: 1rem 4rem 1rem 1.5rem;
+    font-size: 1.2rem;
+    background: #0380A7D4;
+    align-items: center;
+    font-weight: 400;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+  }
+  .jss27 {
+    width: 100vw;
+    position: relative;
+    background-color: #01176C;
+  }
+  .jss28 {
+    width: 100vw;
+    height: 411px;
+    z-index: -1;
+    clip-path: polygon(0% 0%, 0% 100%, 15% 80%, 30% 90%, 45% 80%, 60% 90%, 75% 75%, 90% 95%, 100% 100%, 100% 0%);
+    background: transparent linear-gradient(180deg, #028D9ADE 0%, #8F749CE6 100%) 0% 0% no-repeat padding-box;
+  }
+  .jss29 {
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+  .jss30 {
+    color: white;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .jss31 {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .jss32 {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4rem;
+  }
+  .jss33 {
+    width: 33%;
+    border: 1px solid #707070;
+    height: 300px;
+    opacity: 1;
+    min-width: 300px;
+    background: #FFFFFFDB 0% 0% no-repeat padding-box;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 45px;
+  }
+  .jss1 {
+    width: 100vw;
+    height: 1000px;
+    overflow-x: hidden;
+    background-color: #022671;
+  }</style></head><body><div id="__next"><div class="jss4"><div class="jss3"></div><div class="jss4"><div class="jss2"><div><div style="display:inline-block;max-width:100%;overflow:hidden;position:relative;box-sizing:border-box;margin:0"><div style="box-sizing:border-box;display:block;max-width:100%"><img style="max-width:100%;display:block" alt="" aria-hidden="true" role="presentation" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjQwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIvPg=="/></div><img alt="Smartifier Logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" style="visibility:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"/></div></div><div class="jss6"><div class="jss7"><div class="jss8"><a style="text-decoration:none;color:white" href="/">Home</a></div><div class="jss8"><a style="text-decoration:none;color:white" href="/quizzes">Quizzes</a></div><div class="jss8"><a style="text-decoration:none;color:white" href="/blog/posts">Blog</a></div> </div></div><div class="jss9 jss17"><div class="jss11"><svg width="20" height="20" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"></path><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"></path><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"></path><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"></path></svg></div><p class="jss10 jss18">Loading...</p><p class="jss10 jss18"></p><p class="jss10 jss18"></p></div></div><div class="jss5"><div class="jss7"><div class="jss8"><a style="text-decoration:none;color:white" href="/">Home</a></div><div class="jss8"><a style="text-decoration:none;color:white" href="/quizzes">Quizzes</a></div><div class="jss8"><a style="text-decoration:none;color:white" href="/blog/posts">Blog</a></div> </div></div></div></div><div class="jss1"><div class="jss19"><div class="jss26"><h1 class="MuiTypography-root MuiTypography-h3">Why<!-- --> <span style="color:#5AB4E2;font-weight:bold">Smartifier</span></h1><div class="jss20"><h2 class="MuiTypography-root MuiTypography-subtitle1">Why do we have a brain? A mind? A soul?</h2><h2 class="MuiTypography-root MuiTypography-subtitle1">To operate our body in the way we want. To get the experiences we desire.</h2><h2 class="MuiTypography-root MuiTypography-subtitle1">Why does a car have a cooling unit? Why does it need to be serviced every year? Because that way it will have improved performance. </h2><h2 class="MuiTypography-root MuiTypography-subtitle1">That is how we see training. The purpose of training is to improve our internal thoughts and external actions. So that we can enjoy the life we want to.</h2><h2 class="MuiTypography-root MuiTypography-subtitle1">In this 21st century, where developing soft skills have become inevitable, many companies are concerned with their employees because conventional education does not include soft skills.</h2><h2 class="MuiTypography-root MuiTypography-subtitle1">To solve this problem, Smartifier Academy has been working for 2.5 years to develop soft skills and improve performance through meta-learning skills. </h2><h2 class="MuiTypography-root MuiTypography-subtitle1">Our aim is to enhance soft skills through courses and training. By smashing the typical preachy tone of mundane training, we design and provide interactive, personalized and gamified training sessions; which improves the trainee’s performance rapidly.</h2><h2 class="MuiTypography-root MuiTypography-subtitle1">Because, ‘Your transformation is our motivation.’</h2></div><div class="jss21"><a href="mailto:smartifier.ac@gmail.com" style="color:white;text-decoration:none"><div class="jss22">Talk to us</div></a></div><a href="https://www.youtube.com/channel/UC0CbIFyEFZKQUZnamezpiHA" target="_blank" style="color:white;text-decoration:none"><div class="jss23 jss21 jss22"><div class="jss24"><div style="display:inline-block;max-width:100%;overflow:hidden;position:relative;box-sizing:border-box;margin:0"><div style="box-sizing:border-box;display:block;max-width:100%"><img style="max-width:100%;display:block" alt="" aria-hidden="true" role="presentation" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjkiIGhlaWdodD0iMjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"/></div><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" style="visibility:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"/></div></div><span class="MuiTypography-root MuiTypography-caption">Find free video tutorials on YouTube</span></div></a></div><div class="jss25"><div style="display:inline-block;max-width:100%;overflow:hidden;position:relative;box-sizing:border-box;margin:0"><div style="box-sizing:border-box;display:block;max-width:100%"><img style="max-width:100%;display:block" alt="" aria-hidden="true" role="presentation" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="/></div><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" style="visibility:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"/></div></div></div><div class="jss29"><div class="jss34"><div class="jss35"></div><div class="jss36"><div class="jss37"><h1 class="MuiTypography-root MuiTypography-h4">Message from Mentor</h1></div></div></div><div class="jss31"><div class="MuiBox-root jss40 jss39" classes="[object Object]"><div class="MuiBox-root jss42 jss41" classes="[object Object]"><div class="MuiBox-root jss44 jss43" classes="[object Object]">Hello,</div><div class="MuiBox-root jss45 jss43" classes="[object Object]">I am Md. Sohan Haidear. I am your Mentor at Smartifier Training &amp; Consultancy!</div><div class="MuiBox-root jss47 jss46" classes="[object Object]"><div class="MuiBox-root jss49 jss48" classes="[object Object]">In today’s knowledge economy, we must develop skills fast. But how? Being passionate about learning and self-development all my life, I’ve chased this question for a long time. That pursuit led me to discover the concept of &#x27;Meta-Learning&#x27; from the famous course &#x27;Learning How to Learn&#x27; on Coursera.</div><div class="MuiBox-root jss50 jss48" classes="[object Object]">It helped me progress rapidly in my career, and within a few years I had the privilege of winning 2 South Asian Digital Media Awards with the Digital Marketing team of The Daily Star.</div><div class="MuiBox-root jss51 jss48" classes="[object Object]">Instead of piling up my showcase with awards, I wanted to help others pile up their showcases with awards. I had always enjoyed teaching others. Watching them grow gave me a special satisfaction.</div><div class="MuiBox-root jss52 jss48" classes="[object Object]">From that thought, I had founded Smartifier Academy where our aim is to help people improve their performance through meta-learning skills. We are now incorporated as Smartifier Training &amp; Consultation.</div><div class="MuiBox-root jss53 jss48" classes="[object Object]">I firmly believe that every human being has unlimited potential. When you see a dream, the dream also sees you. But if you don’t take the right steps, it starts to fade away into the air.</div><div class="MuiBox-root jss54 jss48" classes="[object Object]">We don’t know everything, but we know enough to guide you towards your transformation. And we do it with a lot of happiness and passion, because your transformation is our motivation.</div></div><a href="https://forms.gle/37ysuepdrJQJn1xCA" target="_blank"><div class="MuiBox-root jss56 jss55" classes="[object Object]">Book your Need Assessment Phone Call</div></a></div><div class="MuiBox-root jss58 jss57" classes="[object Object]"><div class="MuiAvatar-root MuiAvatar-square" style="height:70%;width:70%"><img src="/assets/mentor_image.png" class="MuiAvatar-img"/></div></div></div><a href="https://www.facebook.com/smartifier.org/" target="_blank"><div class="MuiBox-root jss60 jss59" classes="[object Object]"><div class="MuiAvatar-root MuiAvatar-square" style="height:18px;width:18px;margin-left:15px;margin-right:20px"><img src="/assets/facebook.png" class="MuiAvatar-img"/></div><div>Find us on Facebook, we talk to everyone</div></div></a></div></div><div class="MuiBox-root jss62 jss61" classes="[object Object]"><div class="jss34"><div class="jss35"></div><div class="jss36"><div class="jss37"><h1 class="MuiTypography-root MuiTypography-h4"></h1></div></div></div><div class="MuiBox-root jss64 jss63" classes="[object Object]"><div class="MuiBox-root jss66 jss65" classes="[object Object]">Join our community of clients</div><div class="MuiBox-root jss68 jss67" classes="[object Object]"><div class="MuiAvatar-root MuiAvatar-square" style="width:190px;height:100%;margin:2rem 1rem 0rem 1rem"><img src="/assets/client_1.png" class="MuiAvatar-img"/></div><div class="MuiAvatar-root MuiAvatar-square" style="width:190px;height:100%;margin:2rem 1rem 0rem 1rem"><img src="/assets/client_2.svg" class="MuiAvatar-img"/></div><div class="MuiAvatar-root MuiAvatar-square" style="width:190px;height:100%;margin:2rem 1rem 0rem 1rem"><img src="/assets/client_3.jpg" class="MuiAvatar-img"/></div><div class="MuiAvatar-root MuiAvatar-square" style="width:190px;height:100%;margin:2rem 1rem 0rem 1rem"><img src="/assets/client_4.png" class="MuiAvatar-img"/></div><div class="MuiAvatar-root MuiAvatar-square" style="width:190px;height:100%;margin:2rem 1rem 0rem 1rem"><img src="/assets/client_5.png" class="MuiAvatar-img"/></div><div class="MuiAvatar-root MuiAvatar-square" style="width:190px;height:100%;margin:2rem 1rem 0rem 1rem"><img src="/assets/client_6.png" class="MuiAvatar-img"/></div><div class="MuiAvatar-root MuiAvatar-square" style="width:190px;height:100%;margin:2rem 1rem 0rem 1rem"><img src="/assets/client_7.png" class="MuiAvatar-img"/></div></div></div><div class="MuiBox-root jss70 jss69" classes="[object Object]"><div class="MuiBox-root jss72 jss71" classes="[object Object]"><div class="MuiBox-root jss74 jss73" classes="[object Object]">In this 21st century investing money in training should be the priority of the organization to develop the skillets. Smartifier Academy’s Training materials are enriched and aligned with the business goals that the benefits of this will bring organizational growth.</div><div class="MuiBox-root jss76 jss75" classes="[object Object]"><div class="MuiAvatar-root MuiAvatar-circle" style="height:50px;width:50px;margin-right:0.7rem"><img src="/assets/testimonial_1_image.jpg" class="MuiAvatar-img"/></div><div><div class="MuiBox-root jss78 jss77" classes="[object Object]">Tajdin Hassan</div><div>Head of Marketing, The Daily Star</div><div>Co-Founder of Mission Save Bangladesh</div></div></div><div class="MuiAvatar-root MuiAvatar-square" style="height:15px;width:15px;position:absolute;top:20px"><img src="/assets/straight-quotes.png" class="MuiAvatar-img"/></div></div><div class="MuiBox-root jss79 jss71" classes="[object Object]"><div class="MuiBox-root jss80 jss73" classes="[object Object]">Smartifier Academy individually identified the strengths and weaknesses of our teammates and came up with the solution so that they can perform better in their corporate life.</div><div class="MuiBox-root jss81 jss75" classes="[object Object]"><div class="MuiAvatar-root MuiAvatar-circle" style="height:50px;width:50px;margin-right:0.7rem"><img src="/assets/testimonial_2_image.jpg" class="MuiAvatar-img"/></div><div><div class="MuiBox-root jss82 jss77" classes="[object Object]">Shuvashish Roy</div><div>Digital Marketing Manager, The Daily Star</div></div></div><div class="MuiAvatar-root MuiAvatar-square" style="height:15px;width:15px;position:absolute;top:20px"><img src="/assets/straight-quotes.png" class="MuiAvatar-img"/></div></div><div class="MuiBox-root jss83 jss71" classes="[object Object]"><div class="MuiBox-root jss84 jss73" classes="[object Object]">I would like to applaud the relentless effort of Sohan &amp; his amazing Smartifier Academy Team. We look forward to more training by Smartifier Academy.</div><div class="MuiBox-root jss85 jss75" classes="[object Object]"><div class="MuiAvatar-root MuiAvatar-circle" style="height:50px;width:50px;margin-right:0.7rem"><img src="/assets/testimonial_3_image.jpg" class="MuiAvatar-img"/></div><div><div class="MuiBox-root jss86 jss77" classes="[object Object]">Amit Richard</div><div>Founder &amp; CEO, CoDesign</div></div></div><div class="MuiAvatar-root MuiAvatar-square" style="height:15px;width:15px;position:absolute;top:20px"><img src="/assets/straight-quotes.png" class="MuiAvatar-img"/></div></div><div class="MuiBox-root jss87 jss71" classes="[object Object]"><div class="MuiBox-root jss88 jss73" classes="[object Object]">21st-century communication should be the core concern for developing an international employee mindset. Thanks to Smartifier Academy.</div><div class="MuiBox-root jss89 jss75" classes="[object Object]"><div class="MuiAvatar-root MuiAvatar-circle" style="height:50px;width:50px;margin-right:0.7rem"><img src="/assets/testimonial_4_image.jpg" class="MuiAvatar-img"/></div><div><div class="MuiBox-root jss90 jss77" classes="[object Object]">Shadman Sadab</div><div>CEO, Future City Summit Hong Kong</div></div></div><div class="MuiAvatar-root MuiAvatar-square" style="height:15px;width:15px;position:absolute;top:20px"><img src="/assets/straight-quotes.png" class="MuiAvatar-img"/></div></div></div><div class="MuiBox-root jss92 jss91" classes="[object Object]"><div class="MuiBox-root jss94 jss93" classes="[object Object]">Seeing your brand grow is our ultimate goal and satisfaction! We firmly believe that with the right training, employees can transform themselves into a highly productive asset to the company. It also makes working fun and humanizes the culture. By designing and delivering interactive, ‘gamified’ and personalized training, we boost employee performance. When the employees’ performance improves, the company’s bottom line sees the positive impact. So, book your free 1-hour session now!</div><div class="MuiAvatar-root MuiAvatar-square" style="height:15px;width:15px;position:absolute;top:10px;left:10px"><img src="/assets/straight-quotes.png" class="MuiAvatar-img"/></div><a href="https://forms.gle/1pMxuWVHfzmXF1Ti8" target="_blank" style="text-decoration:none;color:inherit"><div class="MuiBox-root jss96 jss95" classes="[object Object]">Book Your Free 1-Hour Session</div></a></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/","query":{},"buildId":"Yc2xDYwvRoeipZdlmGvkx","nextExport":true,"autoExport":true,"isFallback":false}</script><script nomodule="" src="/_next/static/chunks/polyfills-86280b662315d6357ee7.js"></script><script src="/_next/static/chunks/main-e33e87327d282b41c000.js" async=""></script><script src="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" async=""></script><script src="/_next/static/chunks/framework.017c4b60e3e1f640722e.js" async=""></script><script src="/_next/static/chunks/4d5d70941d46b9d023aa14607c849ff7f5328dd6.1f52a3ec41a5d5095e70.js" async=""></script><script src="/_next/static/chunks/7dc7c7d49937a59e91d2db59c47565bff8e73551.8c9aba2355e93ae478b7.js" async=""></script><script src="/_next/static/chunks/pages/_app-1921287f4b6aca0672ab.js" async=""></script><script src="/_next/static/chunks/da5e837a7652c31fcda93270f468d2589a02dc37.51fb47a34ae55c161f7d.js" async=""></script><script src="/_next/static/chunks/1949a92850a5440f140dccda5a26668b6e270f43.7479ae8e42612b89d564.js" async=""></script><script src="/_next/static/chunks/00bf4502453291314613991bc7e45f49581ce41b.dd0068eedd77d8426e3a.js" async=""></script><script src="/_next/static/chunks/pages/index-a10f54a8982ec662e419.js" async=""></script><script src="/_next/static/Yc2xDYwvRoeipZdlmGvkx/_buildManifest.js" async=""></script><script src="/_next/static/Yc2xDYwvRoeipZdlmGvkx/_ssgManifest.js" async=""></script></body></html>
