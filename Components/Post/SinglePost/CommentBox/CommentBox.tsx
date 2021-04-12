@@ -32,7 +32,7 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
   const classes = useStyles({ comment });
 
   const handleSubmit = () => {
-    if (!user.token) {
+    if (!user?.token) {
       showAlert();
       return;
     }
@@ -68,7 +68,7 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
         {
           headers: {
             Accept: "application/json",
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user?.token}`,
           },
         }
       )
@@ -142,7 +142,7 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={showLoginAlert}
         message={
-          !user.token
+          !user?.token
             ? "Login To Post A Comment!"
             : comment.length == 0
             ? "Comment Cannot Be Empty"
