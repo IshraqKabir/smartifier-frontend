@@ -3792,7 +3792,7 @@ const Quiz = ({
   const router = Object(router_["useRouter"])();
 
   const handleClick = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       setShowLoginAlert(true);
       setTimeout(() => {
         setShowLoginAlert(false);

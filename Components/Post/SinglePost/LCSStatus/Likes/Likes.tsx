@@ -18,7 +18,7 @@ const Likes: React.FC<IProps> = ({ post }) => {
   );
 
   const handleClick = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       setShowLoginAlert(true);
       setTimeout(() => {
         setShowLoginAlert(false);
@@ -40,11 +40,11 @@ const Likes: React.FC<IProps> = ({ post }) => {
 
   useEffect(() => {
     getHasUserLikedThePost();
-    if (!user.token) setIsLikedByUser(false);
+    if (!user || !user.token) setIsLikedByUser(false);
   }, [user]);
 
   const getHasUserLikedThePost = () => {
-    if (user.token) {
+    if (user && user.token) {
       axios
         .get(`${backend_url}/api/posts/${post?.slug}/is-liked-by-user`, {
           headers: {
@@ -59,7 +59,7 @@ const Likes: React.FC<IProps> = ({ post }) => {
   };
 
   const likePost = () => {
-    if (user.token) {
+    if (user && user.token) {
       axios
         .post(
           `${backend_url}/api/post/like`,
@@ -81,7 +81,7 @@ const Likes: React.FC<IProps> = ({ post }) => {
   };
 
   const unLikePost = () => {
-    if (user.token) {
+    if (user && user.token) {
       axios
         .post(
           `${backend_url}/api/post/unlike`,
