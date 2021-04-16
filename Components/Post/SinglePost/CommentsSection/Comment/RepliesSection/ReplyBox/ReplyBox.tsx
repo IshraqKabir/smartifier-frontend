@@ -32,7 +32,7 @@ const ReplyBox: React.FC<IProps> = ({ commentId, setReplies, setComment }) => {
   const classes = useStyles({ reply });
 
   const handleSubmit = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       showAlert();
       return;
     }

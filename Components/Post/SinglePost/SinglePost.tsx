@@ -44,7 +44,7 @@ const Post: React.FC<IProps> = ({ post }) => {
   }, [user]);
 
   const getLikedCommentsIds = () => {
-    if (user.token && likedCommentsIdsByUser == "empty") {
+    if (user && user.token && likedCommentsIdsByUser == "empty") {
       axios
         .get(`${backend_url}/api/posts/${post.id}/liked-comments-ids`, {
           headers: {
@@ -78,7 +78,7 @@ const Post: React.FC<IProps> = ({ post }) => {
     <div className={classes.container}>
       {post?.topic && (
         <Link href={`/blog/topics/${post?.topic[0]?.slug}/posts`}>
-          <a style={{ textDecoration: "none"}}>
+          <a style={{ textDecoration: "none" }}>
             <div className={classes.topic}>
               <TopicName>{post?.topic[0]?.name}</TopicName>
             </div>

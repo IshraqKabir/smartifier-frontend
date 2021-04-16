@@ -23,7 +23,7 @@ const Likes: React.FC<IProps> = () => {
   );
 
   const handleClick = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       setShowLoginAlert(true);
       setTimeout(() => {
         setShowLoginAlert(false);
@@ -44,7 +44,7 @@ const Likes: React.FC<IProps> = () => {
   };
 
   const likeComment = () => {
-    if (user.token) {
+    if (user && user.token) {
       axios
         .post(
           `${backend_url}/api/comment/like`,
@@ -68,7 +68,7 @@ const Likes: React.FC<IProps> = () => {
   };
 
   const unLikeComment = () => {
-    if (user.token) {
+    if (user && user.token) {
       axios
         .post(
           `${backend_url}/api/comment/unlike`,

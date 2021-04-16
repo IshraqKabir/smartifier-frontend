@@ -975,7 +975,7 @@ const Likes = ({
   } = Object(external_react_["useState"])((post === null || post === void 0 ? void 0 : post.likes_count) ? post === null || post === void 0 ? void 0 : post.likes_count : 0);
 
   const handleClick = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       setShowLoginAlert(true);
       setTimeout(() => {
         setShowLoginAlert(false);
@@ -995,11 +995,11 @@ const Likes = ({
   }, []);
   Object(external_react_["useEffect"])(() => {
     getHasUserLikedThePost();
-    if (!user.token) setIsLikedByUser(false);
+    if (!user || !user.token) setIsLikedByUser(false);
   }, [user]);
 
   const getHasUserLikedThePost = () => {
-    if (user.token) {
+    if (user && user.token) {
       external_axios_default.a.get(`${url["a" /* backend_url */]}/api/posts/${post === null || post === void 0 ? void 0 : post.slug}/is-liked-by-user`, {
         headers: {
           Accept: "application/json",
@@ -1012,7 +1012,7 @@ const Likes = ({
   };
 
   const likePost = () => {
-    if (user.token) {
+    if (user && user.token) {
       external_axios_default.a.post(`${url["a" /* backend_url */]}/api/post/like`, {
         post_id: post === null || post === void 0 ? void 0 : post.id
       }, {
@@ -1028,7 +1028,7 @@ const Likes = ({
   };
 
   const unLikePost = () => {
-    if (user.token) {
+    if (user && user.token) {
       external_axios_default.a.post(`${url["a" /* backend_url */]}/api/post/unlike`, {
         post_id: post === null || post === void 0 ? void 0 : post.id
       }, {
@@ -1372,7 +1372,7 @@ const Likes_Likes_Likes = () => {
   } = Object(external_react_["useContext"])(CommentsContext);
 
   const handleClick = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       setShowLoginAlert(true);
       setTimeout(() => {
         setShowLoginAlert(false);
@@ -1393,7 +1393,7 @@ const Likes_Likes_Likes = () => {
   };
 
   const likeComment = () => {
-    if (user.token) {
+    if (user && user.token) {
       external_axios_default.a.post(`${url["a" /* backend_url */]}/api/comment/like`, {
         comment_id: comment === null || comment === void 0 ? void 0 : comment.id
       }, {
@@ -1411,7 +1411,7 @@ const Likes_Likes_Likes = () => {
   };
 
   const unLikeComment = () => {
-    if (user.token) {
+    if (user && user.token) {
       external_axios_default.a.post(`${url["a" /* backend_url */]}/api/comment/unlike`, {
         comment_id: comment === null || comment === void 0 ? void 0 : comment.id
       }, {
@@ -1647,7 +1647,7 @@ const ReplyBox = ({
   });
 
   const handleSubmit = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       showAlert();
       return;
     }
@@ -2026,7 +2026,7 @@ const Post = ({
   }, [user]);
 
   const getLikedCommentsIds = () => {
-    if (user.token && likedCommentsIdsByUser == "empty") {
+    if (user && user.token && likedCommentsIdsByUser == "empty") {
       external_axios_default.a.get(`${url["a" /* backend_url */]}/api/posts/${post.id}/liked-comments-ids`, {
         headers: {
           Accept: "application/json",

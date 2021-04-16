@@ -29,7 +29,7 @@ const Quiz: React.FC<IProps> = ({ quiz }) => {
   const router = useRouter();
 
   const handleClick = () => {
-    if (!user.token) {
+    if (!user || !user.token) {
       setShowLoginAlert(true);
       setTimeout(() => {
         setShowLoginAlert(false);
