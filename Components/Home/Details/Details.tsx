@@ -1,6 +1,8 @@
 import { Box, withStyles } from "@material-ui/core";
 import React from "react";
 import PageTitle from "../../PageTitle/PageTitle";
+import FindUsOnFB from "../Intro/FindUsOnFB/FindUsOnFB";
+import MentorIntro from "../Intro/MentorIntro/MentorIntro";
 import BookACall from "./BookACall/BookACall";
 import Clients from "./Clients/Clients";
 import Testimonials from "./Testimonials/Testimonials";
@@ -12,6 +14,8 @@ const Details: React.FC<IProps> = () => {
     <Container>
       <PageTitle title="" />
       <Clients />
+      <MentorIntro />
+      <FindUsOnFB />
       <Testimonials />
       <BookACall />
     </Container>

@@ -51,6 +51,7 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   awe: {
+    marginTop: "-5rem",
     ["@media (max-width: 600px)"]: {
       display: "none",
     },
@@ -118,7 +119,7 @@ const Hero: React.FC<{}> = () => {
         </a>
       </div>
       <div className={classes.awe}>
-        <Image src="/assets/awe.png" width={400} height={400} />
+        <Image src="/assets/career_progress.png" width={400} height={400} />
         {/* <Image src="/assets/IMG_2093.JPG" width={400} height={400} /> */}
       </div>
     </div>
