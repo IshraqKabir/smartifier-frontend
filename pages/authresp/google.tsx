@@ -68,12 +68,14 @@ const Google: React.FC<IProps> = () => {
               })
               .catch((error) => {
                 setUser("");
-                window.history.back();
+                // window.history.back();
+                console.log(error);
               });
           })
           .catch((error) => {
             setUser("");
-            window.history.back();
+            console.log(error);
+            // window.history.back();
           });
       });
     }

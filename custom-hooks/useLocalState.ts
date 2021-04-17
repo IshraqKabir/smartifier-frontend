@@ -16,11 +16,13 @@ export default function useLocalState<T>(key: string, defaultValue: any) {
     };
     window.addEventListener("storage", listener);
 
-    setInterval(() => {
-      if (JSON.stringify(getCookie(key)) != JSON.stringify(value)) {
-        setValueState(getCookie(key));
-      }
-    }, 500);
+    if (!isLocalStorageWorking()) {
+      setInterval(() => {
+        if (JSON.stringify(getCookie(key)) != JSON.stringify(value)) {
+          setValueState(getCookie(key));
+        }
+      }, 500);
+    }
 
     return () => {
       window.removeEventListener("storage", listener);
@@ -37,8 +39,11 @@ export default function useLocalState<T>(key: string, defaultValue: any) {
         value = newValue;
       }
 
-      setCookie(key, value);
-      localStorage.setItem(key, JSON.stringify(value));
+      if (isLocalStorageWorking()) {
+        localStorage.setItem(key, JSON.stringify(value));
+      } else {
+        setCookie(key, value);
+      }
 
       return value;
     });

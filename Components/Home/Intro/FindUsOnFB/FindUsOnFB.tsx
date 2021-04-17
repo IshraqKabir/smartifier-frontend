@@ -29,10 +29,11 @@ const Container = withStyles({
   root: {
     background: "#0380A7D4",
     padding: "1rem 4rem 1rem 1.5rem",
+    margin: "0rem 5%",
     cursor: "pointer",
     color: "white",
+    marginTop: "2rem",
     borderRadius: 50,
-    marginBottom: "2rem",
     display: "inline-flex",
     alignItems: "center",
     fontWeight: 400,

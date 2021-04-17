@@ -23,7 +23,6 @@ const HomeComponent: React.FC<{}> = () => {
       <Topbar />
       <div className={classes.root}>
         <Hero />
-        <Intro />
         <Details />
       </div>
     </>

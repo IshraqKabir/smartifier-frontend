@@ -10,7 +10,7 @@ const texts = {
     `Because, ‘Your transformation is our motivation.’`,
   ],
 
-  message_from_mentor_title: `I am Md. Sohan Haidear. I am your Mentor at Smartifier Training & Consultancy!`,
+  message_from_mentor_title: `I am Md. Sohan Haidear. I am your Mentor at Smartifier Training & Consultation!`,
   message_from_mentor_messages: [
     `In today’s knowledge economy, we must develop skills fast. But how? Being passionate about learning and self-development all my life, I’ve chased this question for a long time. That pursuit led me to discover the concept of 'Meta-Learning' from the famous course 'Learning How to Learn' on Coursera.`,
     `It helped me progress rapidly in my career, and within a few years I had the privilege of winning 2 South Asian Digital Media Awards with the Digital Marketing team of The Daily Star.`,

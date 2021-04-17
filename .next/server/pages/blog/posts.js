@@ -967,11 +967,15 @@ function useLocalState(key, defaultValue) {
     };
 
     window.addEventListener("storage", listener);
-    setInterval(() => {
-      if (JSON.stringify(getCookie(key)) != JSON.stringify(value)) {
-        setValueState(getCookie(key));
-      }
-    }, 500);
+
+    if (!isLocalStorageWorking()) {
+      setInterval(() => {
+        if (JSON.stringify(getCookie(key)) != JSON.stringify(value)) {
+          setValueState(getCookie(key));
+        }
+      }, 500);
+    }
+
     return () => {
       window.removeEventListener("storage", listener);
     };
@@ -987,8 +991,12 @@ function useLocalState(key, defaultValue) {
         value = newValue;
       }
 
-      setCookie(key, value);
-      localStorage.setItem(key, JSON.stringify(value));
+      if (isLocalStorageWorking()) {
+        localStorage.setItem(key, JSON.stringify(value));
+      } else {
+        setCookie(key, value);
+      }
+
       return value;
     });
   };
@@ -4005,8 +4013,8 @@ const Topbar = () => {
           children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
             src: "/assets/new_logo.png",
             alt: "Smartifier Logo",
-            height: 40,
-            width: 150
+            height: 45,
+            width: 135
           })
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
           className: classes.pcNavItems,

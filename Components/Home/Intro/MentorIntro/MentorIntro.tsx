@@ -38,12 +38,14 @@ export default MentorIntro;
 
 const Container = withStyles({
   root: {
-    color: "#5E5E5E",
-    background: "#FFFFFFD1 0% 0% no-repeat padding-box",
+    color: "#595858",
+    // background: "#FFFFFFD1 0% 0% no-repeat padding-box",
+    background: "white",
     minHeight: 100,
+    margin: "4rem 5%",
     border: "1px solid #707070",
-    borderRadius: "94px 94px 94px 0px",
-    padding: "2rem 5rem",
+    borderRadius: "20px 0px 20px 0px",
+    padding: "2rem 3rem",
     display: "flex",
     alignItems: "center",
     fontSize: "1.1rem",
@@ -73,7 +75,6 @@ const MessageContainer = withStyles({
 
 const Message = withStyles({
   root: {
-    fontWeight: 500,
     marginBottom: "1rem",
     lineHeight: 1.6,
   },
