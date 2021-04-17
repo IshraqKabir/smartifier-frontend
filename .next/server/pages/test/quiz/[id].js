@@ -480,7 +480,8 @@ const Timer = ({
     1: setPercentage
   } = Object(external_react_["useState"])(getPercentage(start_time, duration));
   const classes = useStyles({
-    percentage
+    percentage,
+    secondsRemaining
   });
   Object(external_react_["useEffect"])(() => {
     setInterval(() => {
@@ -522,12 +523,21 @@ const Container = Object(core_["withStyles"])({
     }
   }
 })(core_["Box"]);
+const MINUTE_LEFT_FOR_WARNING = 1;
 const useStyles = Object(core_["makeStyles"])({
   loader: {
     display: "relative",
-    // background:
-    //   "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box",
-    backgroundColor: "#209434",
+    backgroundColor: props => {
+      const {
+        secondsRemaining
+      } = props;
+
+      if (secondsRemaining <= MINUTE_LEFT_FOR_WARNING * 60) {
+        return "#cc3300";
+      }
+
+      return "#209434";
+    },
     opacity: 1,
     width: props => {
       const {
