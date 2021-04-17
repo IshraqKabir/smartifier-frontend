@@ -1,10 +1,9 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 import useStartTest from "./useStartTest";
 import { Box, CircularProgress, withStyles } from "@material-ui/core";
 import PageTitle from "../PageTitle/PageTitle";
-import Topbar from "../Layout/Topbar/Topbar";
-import Timer from "./Timer/Timer";
+import Timer, { getTimeRemainingInSeconds } from "./Timer/Timer";
 import Questions from "../Questions/Questions";
 import useLocalState from "../../custom-hooks/useLocalState";
 import IQuestion from "../../Models/IQuestion";
@@ -26,6 +25,15 @@ const QuizTest: React.FC<IProps> = ({ id, status }) => {
     `${user.email}-quiz${id}-answers`,
     {}
   );
+
+  const [secondsRemaining, setSecondsRemaining] = useState<number>(() => {
+    if (!test) return 600;
+
+    return getTimeRemainingInSeconds(
+      test?.created_at,
+      test?.quiz?.duration.toString()
+    );
+  });
 
   if (isError) return <p>Sorry some error occured. Please refresh the page.</p>;
 
@@ -74,7 +82,12 @@ const QuizTest: React.FC<IProps> = ({ id, status }) => {
         {isLoading && <CircularProgress />}
       </PageTitle>
       {test && !isLoading && (
-        <Timer start_time={test.created_at} duration={test?.quiz?.duration} />
+        <Timer
+          start_time={test.created_at}
+          duration={test?.quiz?.duration}
+          secondsRemaining={secondsRemaining}
+          setSecondsRemaining={setSecondsRemaining}
+        />
       )}
       {test && !isLoading && test?.quiz.test_questions && (
         <AnswersContext.Provider
@@ -92,6 +105,7 @@ const QuizTest: React.FC<IProps> = ({ id, status }) => {
         answers={answers}
         test_id={test.id}
         setAnswersState={setAnswersState}
+        secondsRemaining={secondsRemaining}
       />
     </Container>
   );

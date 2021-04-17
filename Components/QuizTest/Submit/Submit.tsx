@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -78,9 +78,15 @@ interface IProps {
   answers: any;
   test_id: number;
   setAnswersState: (answers: any) => void;
+  secondsRemaining: number;
 }
 
-const Submit: React.FC<IProps> = ({ answers, test_id, setAnswersState }) => {
+const Submit: React.FC<IProps> = ({
+  answers,
+  test_id,
+  setAnswersState,
+  secondsRemaining,
+}) => {
   const [user] = useLocalState("user", "");
   const [open, setOpen] = useState<boolean>(false);
 
@@ -114,6 +120,14 @@ const Submit: React.FC<IProps> = ({ answers, test_id, setAnswersState }) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const ONE_SECOND: number = 1;
+
+  useEffect(() => {
+    if (secondsRemaining <= ONE_SECOND && answers) {
+      handleSubmit();
+    }
+  }, [secondsRemaining]);
 
   return (
     <div>

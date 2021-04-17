@@ -4,13 +4,16 @@ import React, { useEffect, useState } from "react";
 interface IProps {
   start_time: string;
   duration: string;
+  secondsRemaining: number;
+  setSecondsRemaining: Function;
 }
 
-const Timer: React.FC<IProps> = ({ start_time, duration }) => {
-  const [secondsRemaining, setSecondsRemaining] = useState<number>(
-    getTimeRemainingInSeconds(start_time, duration)
-  );
-
+const Timer: React.FC<IProps> = ({
+  start_time,
+  duration,
+  secondsRemaining,
+  setSecondsRemaining,
+}) => {
   const [timeRemaining, setTimeRemaing] = useState<string>("");
   const [percentage, setPercentage] = useState<number>(
     getPercentage(start_time, duration)
@@ -95,7 +98,7 @@ const Time = withStyles({
   },
 })(Typography);
 
-function getTimeRemainingInSeconds(
+export function getTimeRemainingInSeconds(
   start_time: string,
   duration: string
 ): number {

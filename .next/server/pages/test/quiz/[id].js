@@ -465,12 +465,10 @@ var PageTitle = __webpack_require__("/Cw6");
 
 const Timer = ({
   start_time,
-  duration
+  duration,
+  secondsRemaining,
+  setSecondsRemaining
 }) => {
-  const {
-    0: secondsRemaining,
-    1: setSecondsRemaining
-  } = Object(external_react_["useState"])(getTimeRemainingInSeconds(start_time, duration));
   const {
     0: timeRemaining,
     1: setTimeRemaing
@@ -553,7 +551,6 @@ const Time = Object(core_["withStyles"])({
     opacity: 1
   }
 })(core_["Typography"]);
-
 function getTimeRemainingInSeconds(start_time, duration) {
   const totalDurationInSeconds = getSecondsFromDuration(duration);
   const start = new Date(`${start_time}`);
@@ -1400,7 +1397,8 @@ const WarningButton = Object(styles_["withStyles"])({
 const Submit = ({
   answers,
   test_id,
-  setAnswersState
+  setAnswersState,
+  secondsRemaining
 }) => {
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const {
@@ -1432,6 +1430,12 @@ const Submit = ({
     setOpen(false);
   };
 
+  const ONE_SECOND = 1;
+  Object(external_react_["useEffect"])(() => {
+    if (secondsRemaining <= ONE_SECOND && answers) {
+      handleSubmit();
+    }
+  }, [secondsRemaining]);
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("br", {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(SubmitButton, {
       variant: "outlined",
@@ -1478,7 +1482,7 @@ const QuizTest = ({
   id,
   status
 }) => {
-  var _test$quiz;
+  var _test$quiz2;
 
   const {
     test,
@@ -1487,6 +1491,15 @@ const QuizTest = ({
   } = useStartTest(id, status);
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const [answers, setAnswersState] = Object(useLocalState["a" /* default */])(`${user.email}-quiz${id}-answers`, {});
+  const {
+    0: secondsRemaining,
+    1: setSecondsRemaining
+  } = Object(external_react_["useState"])(() => {
+    var _test$quiz;
+
+    if (!test) return 600;
+    return getTimeRemainingInSeconds(test === null || test === void 0 ? void 0 : test.created_at, test === null || test === void 0 ? void 0 : (_test$quiz = test.quiz) === null || _test$quiz === void 0 ? void 0 : _test$quiz.duration.toString());
+  });
   if (isError) return /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
     children: "Sorry some error occured. Please refresh the page."
   });
@@ -1535,7 +1548,9 @@ const QuizTest = ({
       children: isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {})
     }), test && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Timer_Timer, {
       start_time: test.created_at,
-      duration: test === null || test === void 0 ? void 0 : (_test$quiz = test.quiz) === null || _test$quiz === void 0 ? void 0 : _test$quiz.duration
+      duration: test === null || test === void 0 ? void 0 : (_test$quiz2 = test.quiz) === null || _test$quiz2 === void 0 ? void 0 : _test$quiz2.duration,
+      secondsRemaining: secondsRemaining,
+      setSecondsRemaining: setSecondsRemaining
     }), test && !isLoading && (test === null || test === void 0 ? void 0 : test.quiz.test_questions) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(AnswersContext.Provider, {
       value: {
         answers,
@@ -1552,7 +1567,8 @@ const QuizTest = ({
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit_Submit, {
       answers: answers,
       test_id: test.id,
-      setAnswersState: setAnswersState
+      setAnswersState: setAnswersState,
+      secondsRemaining: secondsRemaining
     })]
   });
 };
