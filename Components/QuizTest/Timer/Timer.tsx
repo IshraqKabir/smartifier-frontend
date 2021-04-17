@@ -16,7 +16,7 @@ const Timer: React.FC<IProps> = ({ start_time, duration }) => {
     getPercentage(start_time, duration)
   );
 
-  const classes = useStyles({ percentage });
+  const classes = useStyles({ percentage, secondsRemaining });
 
   useEffect(() => {
     setInterval(() => {
@@ -56,18 +56,31 @@ const Container = withStyles({
     fontWeight: "bold",
     ["@media (max-width: 700px)"]: {
       top: 135,
-    }
+    },
   },
 })(Box);
+
+const MINUTE_LEFT_FOR_WARNING: number = 1;
+
+interface IStyleProp {
+  percentage: number;
+  secondsRemaining: number;
+}
 
 const useStyles = makeStyles({
   loader: {
     display: "relative",
-    // background:
-    //   "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box",
-    backgroundColor: "#209434",
+    backgroundColor: (props: IStyleProp) => {
+      const { secondsRemaining } = props;
+
+      if (secondsRemaining <= MINUTE_LEFT_FOR_WARNING * 60) {
+        return "#cc3300";
+      }
+
+      return "#209434";
+    },
     opacity: 1,
-    width: (props: { percentage: number }) => {
+    width: (props: IStyleProp) => {
       const { percentage } = props;
 
       return `${percentage}%`;
