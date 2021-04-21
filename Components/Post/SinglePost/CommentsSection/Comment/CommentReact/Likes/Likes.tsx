@@ -2,6 +2,7 @@ import { Avatar, Box, Snackbar, withStyles } from "@material-ui/core";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import useLocalState from "../../../../../../../custom-hooks/useLocalState";
+import useLoginAlert from "../../../../../../../custom-hooks/useLoginAlert";
 import { backend_url } from "../../../../../../../url";
 import { CommentsContext } from "../../../../SinglePost";
 
@@ -13,7 +14,7 @@ const Likes: React.FC<IProps> = () => {
   const { comment } = useContext(CommentContext);
 
   const [user] = useLocalState("user", "");
-  const [showLoginAlert, setShowLoginAlert] = useState<boolean>(false);
+  const { showLoginAlert, handleClickWhenLoggedOut } = useLoginAlert();
   const [likesCount, setLikesCount] = useState<number>(
     comment.likes_count ? comment.likes_count : 0
   );
@@ -24,10 +25,7 @@ const Likes: React.FC<IProps> = () => {
 
   const handleClick = () => {
     if (!user || !user.token) {
-      setShowLoginAlert(true);
-      setTimeout(() => {
-        setShowLoginAlert(false);
-      }, 3000);
+      handleClickWhenLoggedOut();
       return;
     }
 

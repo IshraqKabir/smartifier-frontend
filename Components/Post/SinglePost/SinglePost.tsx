@@ -215,13 +215,6 @@ const ReadTime = withStyles({
   },
 })(Typography);
 
-const PostDivider = withStyles({
-  root: {
-    marginTop: 10,
-    marginBottom: 20,
-  },
-})(Divider);
-
 const PostDate = withStyles({
   root: {
     color: "#C5C5C5",

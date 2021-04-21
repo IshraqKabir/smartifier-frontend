@@ -89,6 +89,7 @@ const Submit: React.FC<IProps> = ({
 }) => {
   const [user] = useLocalState("user", "");
   const [open, setOpen] = useState<boolean>(false);
+  const [isSubmitted, setIsSubmitted]  = useState<boolean>(false)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -124,8 +125,9 @@ const Submit: React.FC<IProps> = ({
   const ONE_SECOND: number = 1;
 
   useEffect(() => {
-    if (secondsRemaining <= ONE_SECOND && answers) {
+    if (secondsRemaining <= ONE_SECOND && answers && !isSubmitted) {
       handleSubmit();
+      setIsSubmitted(true)
     }
   }, [secondsRemaining]);
 

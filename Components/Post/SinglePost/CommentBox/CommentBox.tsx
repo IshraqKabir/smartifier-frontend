@@ -13,6 +13,7 @@ import Image from "next/image";
 import axios from "axios";
 import { backend_url } from "../../../../url";
 import { CommentsContext, CommentsCountContext } from "../SinglePost";
+import useLoginAlert from "../../../../custom-hooks/useLoginAlert";
 
 interface IProps {
   postId: string;
@@ -24,7 +25,7 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
   const [user] = useLocalState("user", "");
   const [comment, setComment] = useState<string>("");
   const [isSending, setIsSending] = useState<boolean>(false);
-  const [showLoginAlert, setShowLoginAlert] = useState<boolean>(false);
+  const { showLoginAlert, handleClickWhenLoggedOut } = useLoginAlert();
 
   const { setCommentsCount } = useContext(CommentsCountContext);
   const { setComments } = useContext(CommentsContext);
@@ -33,13 +34,13 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
 
   const handleSubmit = () => {
     if (!user?.token) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
     if (comment.length > MAX_CHARACTER_COUNT) return;
     if (comment.length == 0) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
@@ -82,13 +83,6 @@ const CommentBox: React.FC<IProps> = ({ postId }) => {
 
         setComment("");
       });
-  };
-
-  const showAlert = () => {
-    setShowLoginAlert(true);
-    setTimeout(() => {
-      setShowLoginAlert(false);
-    }, 3000);
   };
 
   return (
