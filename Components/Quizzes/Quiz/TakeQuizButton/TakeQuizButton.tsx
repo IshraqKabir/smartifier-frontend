@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import useLocalState from "../../../../custom-hooks/useLocalState";
 import useLoginAlert from "../../../../custom-hooks/useLoginAlert";
 import IQuiz from "../../../../Models/IQuiz";
+import QuizInfoModal from "./QuizInfoModal/QuizInfoModal";
+import useTakeQuizButton from "./useTakeQuizButton";
 
 interface IProps {
   quiz: IQuiz;
@@ -11,6 +13,8 @@ interface IProps {
 
 const TakeQuizButton: React.FC<IProps> = ({ quiz }) => {
   const { showLoginAlert, close, handleClickWhenLoggedOut } = useLoginAlert();
+
+  const { isModalOpen, openModal, closeModal } = useTakeQuizButton();
 
   const [user] = useLocalState("user", "");
 
@@ -22,7 +26,8 @@ const TakeQuizButton: React.FC<IProps> = ({ quiz }) => {
       return;
     }
 
-    router.push(`/test/quiz/${quiz.id}`);
+    openModal();
+    // router.push(`/test/quiz/${quiz.id}`);
   };
 
   return (
@@ -34,6 +39,12 @@ const TakeQuizButton: React.FC<IProps> = ({ quiz }) => {
         open={showLoginAlert}
         onClose={close}
         message="Please Login To Take The Quiz."
+      />
+      <QuizInfoModal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        quizTitle={quiz?.title}
+        quizId={quiz?.id}
       />
     </div>
   );
