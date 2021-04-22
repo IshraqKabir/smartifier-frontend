@@ -1,5 +1,10 @@
 import React from "react";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  withStyles,
+} from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -10,6 +15,7 @@ import Slide from "@material-ui/core/Slide";
 import { TransitionProps } from "@material-ui/core/transitions";
 import zIndexes from "../../../../../theme/zIndexes";
 import QuizInfo from "./QuizInfo/QuizInfo";
+import { Box } from "@material-ui/core";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & { children?: React.ReactElement },
@@ -52,11 +58,23 @@ export default function QuizInfoModal({
           </Toolbar>
         </AppBar>
         {/*  */}
-        <QuizInfo quizId={quizId} />
+        <InnerContainer>
+          <QuizInfo quizId={quizId} />
+        </InnerContainer>
       </Dialog>
     </div>
   );
 }
+
+const InnerContainer = withStyles({
+  root: {
+    width: "100vw",
+    height: "100vh",
+    overflowX: "hidden",
+    overflowY: "scroll",
+    backgroundColor: "#f0f2f5",
+  },
+})(Box);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

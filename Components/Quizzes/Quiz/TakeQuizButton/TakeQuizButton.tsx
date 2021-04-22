@@ -18,8 +18,6 @@ const TakeQuizButton: React.FC<IProps> = ({ quiz }) => {
 
   const [user] = useLocalState("user", "");
 
-  const router = useRouter();
-
   const handleClick = () => {
     if (!user) {
       handleClickWhenLoggedOut();
@@ -27,7 +25,6 @@ const TakeQuizButton: React.FC<IProps> = ({ quiz }) => {
     }
 
     openModal();
-    // router.push(`/test/quiz/${quiz.id}`);
   };
 
   return (
