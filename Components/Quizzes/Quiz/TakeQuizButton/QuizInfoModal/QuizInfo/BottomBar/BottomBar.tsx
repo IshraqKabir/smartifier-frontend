@@ -4,19 +4,28 @@ import useBottomBar from "./useBottomBar";
 
 interface IProps {
   testStatus: TTestStatus;
+  quizId: number;
 }
 
-export default function BottomBar({ testStatus }: IProps) {
-  const { buttonText } = useBottomBar(testStatus);
+export default function BottomBar({ testStatus, quizId }: IProps) {
+  const { buttonText, startTest } = useBottomBar(testStatus);
 
   return (
     <Container>
-      {testStatus !== "highest_attempt_count_reached" && (
-        <Button>
+      {testStatus !== "highest_attempt_count_reached" ? (
+        <Button
+          onClick={() => {
+            startTest(quizId);
+          }}
+        >
           <ButtonText variant="subtitle1" color="inherit">
             {buttonText}
           </ButtonText>
         </Button>
+      ) : (
+        <ButtonText color="error">
+          You have already reached the highest attempt count.
+        </ButtonText>
       )}
     </Container>
   );

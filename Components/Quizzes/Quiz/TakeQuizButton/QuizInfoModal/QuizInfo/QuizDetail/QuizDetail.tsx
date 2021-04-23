@@ -27,7 +27,7 @@ export default function QuizDetail({ quizInfo }) {
           style={{ height: 100, width: 100 }}
         />
       </ImageContainer>
-      {/* <Title variant="h5">{quizInfo?.title?.toLowerCase()}</Title> */}
+      <Title variant="h5">{quizInfo?.title?.toLowerCase()}</Title>
       <Description variant="subtitle1">
         {quizInfo?.description?.toLowerCase()}
       </Description>

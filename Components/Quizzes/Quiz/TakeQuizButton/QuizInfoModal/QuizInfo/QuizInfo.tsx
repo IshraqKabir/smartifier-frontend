@@ -16,6 +16,10 @@ export default function QuizInfo({ quizId }: IProps) {
   const showUserDetail: boolean =
     testStatus === "retake" || testStatus === "highest_attempt_count_reached";
 
+  const quizOrAssessment: "quiz" | "assessment" = quizInfo?.is_assessment
+    ? "assessment"
+    : "quiz";
+
   return (
     <Container>
       {isLoading && (
@@ -25,12 +29,16 @@ export default function QuizInfo({ quizId }: IProps) {
       )}
       <QuizDetail quizInfo={quizInfo} />
 
-      {showUserDetail && <UserDetail userInfo={userInfo} />}
+      {showUserDetail && (
+        <UserDetail userInfo={userInfo} quizOrAssessment={quizOrAssessment} />
+      )}
       <BeforeYouStart
-        quizOrAssessment={quizInfo?.is_assessment ? "assessment" : "quiz"}
+        quizOrAssessment={quizOrAssessment}
         highestAttemptCount={quizInfo?.highest_attempt_count}
       />
-      <BottomBar testStatus={testStatus} />
+      {!isLoading && (
+        <BottomBar testStatus={testStatus} quizId={quizInfo?.id} />
+      )}
     </Container>
   );
 }
