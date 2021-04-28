@@ -1,10 +1,9 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useLocalState from "../../../../../../custom-hooks/useLocalState";
 import IQuiz from "../../../../../../Models/IQuiz";
 import TTestStatus from "../../../../../../Models/TTestStatus";
 import getQuizInfo from "../../../../../../repository/QuizInfo/getQuizInfo";
-
-
 
 export default function useQuizInfo(quizId: number) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -13,6 +12,8 @@ export default function useQuizInfo(quizId: number) {
   const [userInfo, setUserInfo] = useState<any>({});
   const [user] = useLocalState("user", "");
 
+  const router = useRouter();
+
   useEffect(() => {
     fetchQuizInfo();
   }, []);
@@ -20,6 +21,12 @@ export default function useQuizInfo(quizId: number) {
   const fetchQuizInfo = async () => {
     setIsLoading(true);
     const response = await getQuizInfo(quizId, user?.token);
+
+    if (response?.test_status === "ongoing") {
+      router.push(`/test/quiz/${quizId}`);
+      return;
+    }
+
     setIsLoading(false);
 
     const _testStatus = response?.test_status;

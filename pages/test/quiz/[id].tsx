@@ -1,5 +1,7 @@
+import { Typography } from "@material-ui/core";
 import { GetServerSideProps } from "next";
-import CheckTestStatus from "../../../Components/QuizTest/CheckTestStatus/CheckTestStatus";
+import Topbar from "../../../Components/Layout/Topbar/Topbar";
+
 import QuizTest from "../../../Components/QuizTest/QuizTest";
 import useLocalState from "../../../custom-hooks/useLocalState";
 
@@ -7,20 +9,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params;
 
   return {
-    props: { id },
+    props: { quizId: id },
   };
 };
 
 interface IProps {
-  id: number;
+  quizId: number;
 }
 
-const Post: React.FC<IProps> = ({ id }) => {
+const Page: React.FC<IProps> = ({ quizId }) => {
   const [user] = useLocalState("user", "");
 
-  if (!user || !user.token) return <p>Unauthorized access</p>;
-
-  return <CheckTestStatus quizID={id} />;
+  return (
+    <>
+      <Topbar />
+      {!user ? (
+        <Typography variant="h6" color="error">
+          Please Login To Continue
+        </Typography>
+      ) : (
+        <QuizTest quizId={quizId} />
+      )}
+    </>
+  );
 };
 
-export default Post;
+export default Page;

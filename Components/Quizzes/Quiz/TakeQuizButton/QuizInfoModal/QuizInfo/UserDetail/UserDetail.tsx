@@ -23,8 +23,8 @@ export default function UserDetail({ userInfo, quizOrAssessment }) {
           <SingleUserDetail>
             <InfoOutlined />
             <UserDetailText>
-              You have attempted the quiz <b>{userInfo?.attempts_count}</b>{" "}
-              times.
+              You have attempted the quiz <b>{userInfo?.attempts_count}</b> time
+              {`${userInfo?.attempts_count == 1 ? "" : "s"}`}.
             </UserDetailText>
           </SingleUserDetail>
         )}

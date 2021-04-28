@@ -33,7 +33,8 @@ export default function QuizDetail({ quizInfo }) {
       </Description>
       {quizInfo?.test_taker_count != null && (
         <TestTakerCount variant="subtitle2">
-          <b>{quizInfo?.test_taker_count}</b> people{" "}
+          <b>{quizInfo?.test_taker_count}</b>{" "}
+          {quizInfo?.test_taker_count == 1 ? "person" : "people"}{" "}
           {quizInfo?.test_taker_count == 1 ? "has" : "have"} taken the{" "}
           {quizOrAssessment}
         </TestTakerCount>

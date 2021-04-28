@@ -19,5 +19,5 @@ export default interface IQuiz {
   passing_percentage: number;
   is_featured: boolean;
   image: IImage;
-  test_questions: IQuestion[];
+  questions?: IQuestion[];
 }

@@ -1,7 +1,10 @@
 import axios from "axios";
 import { backend_url } from "../../url";
 
-export default async function getQuizInfo(quizId: number, token: string) {
+export default async function startResumeOrRetakeTest(
+  quizId: number,
+  token: string
+) {
   const quizInfo = await axios
     .get(`${backend_url}/api/quiz-test/${quizId}/get-info`, {
       headers: {

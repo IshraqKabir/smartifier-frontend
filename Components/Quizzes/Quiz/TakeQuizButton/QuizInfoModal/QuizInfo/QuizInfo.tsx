@@ -48,6 +48,7 @@ const Container = withStyles({
     padding: "1rem",
     display: "flex",
     flexDirection: "column",
+    paddingBottom: "5rem",
   },
 })(Box);
 

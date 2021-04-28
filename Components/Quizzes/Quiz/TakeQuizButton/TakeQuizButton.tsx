@@ -67,4 +67,3 @@ const LoginAlert = withStyles({
     zIndex: 20000,
   },
 })(Snackbar);
-
