@@ -3720,11 +3720,7 @@ var Topbar = __webpack_require__("gMP8");
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
 
-// EXTERNAL MODULE: external "@material-ui/icons"
-var icons_ = __webpack_require__("2kat");
-
 // CONCATENATED MODULE: ./Components/QuizTestResult/TestInfo/TestInfo.tsx
-
 
 
 
@@ -3732,13 +3728,39 @@ function TestInfo({
   test,
   quiz
 }) {
-  const assessmentOrQuiz = (quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) ? "Assessment" : "Quiz";
+  const assessmentOrQuiz = (quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) ? "assessment" : "quiz"; // const passedText = `Congratulations! You have passed the quiz on
+  // ‘______________’. Do remember to share your badge on social
+  // media for personal branding.`;
+
+  const passedText = `Congratulations! You have passed the ${assessmentOrQuiz} on
+  ‘${quiz === null || quiz === void 0 ? void 0 : quiz.title}’.`;
+  const failedText = `Thank you for participating in the quiz on
+  ‘${quiz === null || quiz === void 0 ? void 0 : quiz.title}’! Please retake the quiz and try to get your
+  badge by scoring more than ${quiz === null || quiz === void 0 ? void 0 : quiz.passing_percentage}% marks.`;
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Title, {
-      variant: "h6",
+      variant: "h5",
       children: `${quiz === null || quiz === void 0 ? void 0 : quiz.title} ${assessmentOrQuiz}`
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Divider, {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(HasPassedText, {
-      children: (test === null || test === void 0 ? void 0 : test.has_passed) ? `Congrats, you have passed the ${icons_["AssessmentTwoTone"]}` : `Sorry,`
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Divider, {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ScoreContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["Typography"], {
+        variant: "subtitle1",
+        children: ["Score: ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+          children: `${test === null || test === void 0 ? void 0 : test.percentage}%`
+        })]
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["Typography"], {
+        variant: "subtitle1",
+        children: ["Total Questions: ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+          children: `${quiz === null || quiz === void 0 ? void 0 : quiz.total_questions_count}`
+        })]
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["Typography"], {
+        variant: "subtitle1",
+        children: ["Right Answers: ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+          children: `${test === null || test === void 0 ? void 0 : test.correct_answers_count}`
+        })]
+      })]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(HasPassedText, {
+      variant: "subtitle1",
+      children: (test === null || test === void 0 ? void 0 : test.has_passed) ? passedText : failedText
     })]
   });
 }
@@ -3746,7 +3768,7 @@ const Container = Object(core_["withStyles"])({
   root: {
     width: "100%",
     border: "1px solid #e6e6e4",
-    borderRadius: "5px 5px 0px 0px",
+    borderRadius: "7px 7px 0px 0px",
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
@@ -3769,9 +3791,23 @@ const Divider = Object(core_["withStyles"])({
 const HasPassedText = Object(core_["withStyles"])({
   root: {
     fontWeight: 500,
-    margin: "1rem"
+    margin: "1rem 0",
+    textAlign: "center"
   }
 })(core_["Typography"]);
+const ScoreContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "1rem 0",
+    padding: "1rem",
+    border: "1px solid lightgray",
+    borderRadius: 7,
+    width: "min(600px, 97%)"
+  }
+})(core_["Box"]);
 // EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
 var useLocalState = __webpack_require__("PhsX");
 

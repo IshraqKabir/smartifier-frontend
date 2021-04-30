@@ -21,4 +21,5 @@ export default interface IQuiz {
   is_featured: boolean;
   image: IImage;
   questions?: IQuestion[];
+  total_questions_count?: number;
 }
