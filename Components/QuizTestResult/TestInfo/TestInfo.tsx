@@ -1,5 +1,4 @@
 import { Box, Typography, withStyles } from "@material-ui/core";
-import { AssessmentTwoTone } from "@material-ui/icons";
 import IQuiz from "../../../Models/IQuiz";
 import ITest from "../../../Models/ITest";
 
@@ -9,16 +8,36 @@ interface IProps {
 }
 
 export default function TestInfo({ test, quiz }: IProps) {
-  const assessmentOrQuiz = quiz?.is_assessment ? "Assessment" : "Quiz";
+  const assessmentOrQuiz = quiz?.is_assessment ? "assessment" : "quiz";
+
+  // const passedText = `Congratulations! You have passed the quiz on
+  // ‘______________’. Do remember to share your badge on social
+  // media for personal branding.`;
+
+  const passedText = `Congratulations! You have passed the ${assessmentOrQuiz} on
+  ‘${quiz?.title}’.`;
+
+  const failedText = `Thank you for participating in the quiz on
+  ‘${quiz?.title}’! Please retake the quiz and try to get your
+  badge by scoring more than ${quiz?.passing_percentage}% marks.`;
 
   return (
     <Container>
-      <Title variant="h6">{`${quiz?.title} ${assessmentOrQuiz}`}</Title>
+      <Title variant="h5">{`${quiz?.title} ${assessmentOrQuiz}`}</Title>
       <Divider />
-      <HasPassedText>
-        {test?.has_passed
-          ? `Congrats, you have passed the ${AssessmentTwoTone}`
-          : `Sorry,`}
+      <ScoreContainer>
+        <Typography variant="subtitle1">
+          Score: <b>{`${test?.percentage}%`}</b>
+        </Typography>
+        <Typography variant="subtitle1">
+          Total Questions: <b>{`${quiz?.total_questions_count}`}</b>
+        </Typography>
+        <Typography variant="subtitle1">
+          Right Answers: <b>{`${test?.correct_answers_count}`}</b>
+        </Typography>
+      </ScoreContainer>
+      <HasPassedText variant="subtitle1">
+        {test?.has_passed ? passedText : failedText}
       </HasPassedText>
     </Container>
   );
@@ -28,7 +47,7 @@ const Container = withStyles({
   root: {
     width: "100%",
     border: "1px solid #e6e6e4",
-    borderRadius: "5px 5px 0px 0px",
+    borderRadius: "7px 7px 0px 0px",
     backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
@@ -54,6 +73,21 @@ const Divider = withStyles({
 const HasPassedText = withStyles({
   root: {
     fontWeight: 500,
-    margin: "1rem",
+    margin: "1rem 0",
+    textAlign: "center",
   },
 })(Typography);
+
+const ScoreContainer = withStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "1rem 0",
+    padding: "1rem",
+    border: "1px solid lightgray",
+    borderRadius: 7,
+    width: "min(600px, 97%)",
+  },
+})(Box);

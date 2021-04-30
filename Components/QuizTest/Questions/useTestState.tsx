@@ -175,8 +175,7 @@ export default function useTestState(
     }
 
     setAnswersState({});
-    window.location.href = `/user/profile`;
-    // window.location.href = `/test/${test?.id}/result`;
+    window.location.href = `/test/${test?.id}/result`;
     setIsSubmitting(false);
   }
 

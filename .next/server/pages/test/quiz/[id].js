@@ -983,8 +983,7 @@ function useTestState(quizId, questions, test, duration) {
     }
 
     setAnswersState({});
-    window.location.href = `/user/profile`; // window.location.href = `/test/${test?.id}/result`;
-
+    window.location.href = `/test/${test === null || test === void 0 ? void 0 : test.id}/result`;
     setIsSubmitting(false);
   }
 
