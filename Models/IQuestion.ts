@@ -12,7 +12,7 @@ export default interface IQuestion {
     | "checkboxes"
     | "short_paragraph"
     | "long_paragraph";
-  options: IOption[];
+  options?: IOption[];
   chosenOption?: IOption;
   style: number;
 }

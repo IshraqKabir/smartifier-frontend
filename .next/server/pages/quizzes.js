@@ -410,6 +410,13 @@ function normalizeLocalePath(pathname, locales) {
 
 /***/ }),
 
+/***/ "4151":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/AppBar");
+
+/***/ }),
+
 /***/ "4Q3z":
 /***/ (function(module, exports) {
 
@@ -577,6 +584,13 @@ module.exports = _objectWithoutPropertiesLoose;
 
 /***/ }),
 
+/***/ "9Pu4":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
 /***/ "9a6F":
 /***/ (function(module, exports) {
 
@@ -596,6 +610,13 @@ module.exports = require("next/dist/next-server/server/image-config.js");
 
 module.exports = __webpack_require__("dQHF")
 
+
+/***/ }),
+
+/***/ "EmCc":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/IconButton");
 
 /***/ }),
 
@@ -626,6 +647,13 @@ const local_backend_url = "https://admin.smartifier.org";
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/core");
+
+/***/ }),
+
+/***/ "Ms0O":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Toolbar");
 
 /***/ }),
 
@@ -991,63 +1019,7 @@ const setCookie = (key, value) => {
 const getCookie = key => {
   const result = js_cookie__WEBPACK_IMPORTED_MODULE_1___default.a.get(JSON.stringify(key));
   return result ? JSON.parse(result) : result;
-}; // function useLocalState<T>(key: string, defaultValue: T) {
-//   const [value, setValue] = useState(() => {
-//     if (isLocalStorageWorking() == false) {
-//       return getCookie(key);
-//     }
-//     let result = null;
-//     if (process.browser) {
-//       const storedValue = localStorage.getItem(key)
-//         ? JSON.parse(localStorage.getItem(key))
-//         : localStorage.getItem(key);
-//       if (!storedValue) {
-//         result = defaultValue;
-//       }
-//       result = storedValue === null ? defaultValue : storedValue;
-//     } else {
-//       result = defaultValue;
-//     }
-//     return result;
-//   });
-//   useEffect(() => {
-//     const listener = (e) => {
-//       if (e.storageArea === localStorage && e.key === key) {
-//         setValue(JSON.parse(e.newValue));
-//       }
-//     };
-//     window.addEventListener("storage", listener);
-//     return () => {
-//       window.removeEventListener("storage", listener);
-//     };
-//   }, [key]);
-//   const setValueInLocalStorage = (newValue) => {
-//     setValue((currentValue) => {
-//       let value = null;
-//       if (typeof newValue === "function") {
-//         setCookie(key, newValue(currentValue));
-//         value = newValue(currentValue);
-//       } else {
-//         setCookie(key, newValue);
-//         value = newValue;
-//       }
-//       // const result =
-//       //   typeof newValue === "function" ? newValue(currentValue) : newValue;
-//       // localStorage.setItem(key, JSON.stringify(result));
-//       return value;
-//     });
-//   };
-//   useEffect(() => {
-//     const storedValue = JSON.parse(localStorage.getItem(key));
-//     if (storedValue) {
-//       setValueInLocalStorage(storedValue);
-//     } else {
-//       setValueInLocalStorage(value);
-//     }
-//   }, []);
-//   return [value, setValueInLocalStorage];
-// }
-// export default useLocalState;
+};
 
 /***/ }),
 
@@ -1069,6 +1041,26 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
+
+/***/ }),
+
+/***/ "TrRe":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  normal: 50,
+  high: 100,
+  higher: 150,
+  highest: 200
+});
+
+/***/ }),
+
+/***/ "UVoM":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Typography");
 
 /***/ }),
 
@@ -2844,6 +2836,13 @@ Router.events = (0, _mitt.default)();
 
 /***/ }),
 
+/***/ "fEgT":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Dialog");
+
+/***/ }),
+
 /***/ "fcRV":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3338,7 +3337,11 @@ const GoogleLogo = () => {
     })]
   });
 };
+// EXTERNAL MODULE: ./theme/zIndexes.tsx
+var zIndexes = __webpack_require__("TrRe");
+
 // CONCATENATED MODULE: ./Components/Layout/Topbar/Topbar.tsx
+
 
 
 
@@ -3359,7 +3362,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     alignItems: "center",
     paddingLeft: "2.5%",
     paddingRight: "2.5%",
-    zIndex: 4000,
+    zIndex: zIndexes["a" /* default */].normal,
     background: "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box"
   },
   placeholder: {
@@ -3533,6 +3536,20 @@ function parseRelativeUrl(url, base) {
 
 /***/ }),
 
+/***/ "j08L":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/icons/Close");
+
+/***/ }),
+
+/***/ "mz+e":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Slide");
+
+/***/ }),
+
 /***/ "nOHt":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3700,6 +3717,7 @@ var jsx_runtime_ = __webpack_require__("F5FC");
 
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
+var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 
 // EXTERNAL MODULE: external "axios"
 var external_axios_ = __webpack_require__("zr5I");
@@ -3713,12 +3731,6 @@ var core_ = __webpack_require__("KKbo");
 
 // EXTERNAL MODULE: ./Components/PageTitle/PageTitle.tsx
 var PageTitle = __webpack_require__("/Cw6");
-
-// EXTERNAL MODULE: external "next/router"
-var router_ = __webpack_require__("4Q3z");
-
-// EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
-var useLocalState = __webpack_require__("PhsX");
 
 // EXTERNAL MODULE: external "react-facebook-share-link"
 var external_react_facebook_share_link_ = __webpack_require__("9a6F");
@@ -3777,8 +3789,683 @@ const Container = Object(core_["withStyles"])({
     color: "inherit"
   }
 })(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Quizzes/Quiz/Quiz.tsx
+// EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
+var useLocalState = __webpack_require__("PhsX");
 
+// EXTERNAL MODULE: ./custom-hooks/useLoginAlert.tsx
+var useLoginAlert = __webpack_require__("opRA");
+
+// EXTERNAL MODULE: external "@material-ui/core/styles"
+var styles_ = __webpack_require__("9Pu4");
+
+// EXTERNAL MODULE: external "@material-ui/core/Dialog"
+var Dialog_ = __webpack_require__("fEgT");
+var Dialog_default = /*#__PURE__*/__webpack_require__.n(Dialog_);
+
+// EXTERNAL MODULE: external "@material-ui/core/AppBar"
+var AppBar_ = __webpack_require__("4151");
+var AppBar_default = /*#__PURE__*/__webpack_require__.n(AppBar_);
+
+// EXTERNAL MODULE: external "@material-ui/core/Toolbar"
+var Toolbar_ = __webpack_require__("Ms0O");
+var Toolbar_default = /*#__PURE__*/__webpack_require__.n(Toolbar_);
+
+// EXTERNAL MODULE: external "@material-ui/core/IconButton"
+var IconButton_ = __webpack_require__("EmCc");
+var IconButton_default = /*#__PURE__*/__webpack_require__.n(IconButton_);
+
+// EXTERNAL MODULE: external "@material-ui/core/Typography"
+var Typography_ = __webpack_require__("UVoM");
+var Typography_default = /*#__PURE__*/__webpack_require__.n(Typography_);
+
+// EXTERNAL MODULE: external "@material-ui/icons/Close"
+var Close_ = __webpack_require__("j08L");
+var Close_default = /*#__PURE__*/__webpack_require__.n(Close_);
+
+// EXTERNAL MODULE: external "@material-ui/core/Slide"
+var Slide_ = __webpack_require__("mz+e");
+var Slide_default = /*#__PURE__*/__webpack_require__.n(Slide_);
+
+// EXTERNAL MODULE: ./theme/zIndexes.tsx
+var zIndexes = __webpack_require__("TrRe");
+
+// EXTERNAL MODULE: external "next/router"
+var router_ = __webpack_require__("4Q3z");
+
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfo/BottomBar/useBottomBar.tsx
+
+
+function useBottomBar(testStatus) {
+  const {
+    0: buttonText,
+    1: setButtonText
+  } = Object(external_react_["useState"])("start");
+  const router = Object(router_["useRouter"])();
+  Object(external_react_["useEffect"])(() => {
+    if (testStatus === "retake") {
+      setButtonText("retake");
+    } else {
+      setButtonText("start");
+    }
+  }, [testStatus]);
+
+  const startTest = quizId => {
+    if (!quizId || buttonText === "loading") return;
+
+    if (testStatus === "new_test" || testStatus === "ongoing" || testStatus === "retake") {
+      router.push(`/test/quiz/${quizId}`);
+      setButtonText("loading");
+    }
+  };
+
+  return {
+    buttonText,
+    startTest
+  };
+}
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfo/BottomBar/BottomBar.tsx
+
+
+
+function BottomBar({
+  testStatus,
+  quizId
+}) {
+  const {
+    buttonText,
+    startTest
+  } = useBottomBar(testStatus);
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(BottomBar_Container, {
+    children: testStatus !== "highest_attempt_count_reached" ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button, {
+      onClick: () => {
+        startTest(quizId);
+      },
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ButtonText, {
+        variant: "subtitle1",
+        color: "inherit",
+        children: buttonText
+      })
+    }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])(ButtonText, {
+      color: "error",
+      children: "You have already reached the highest attempt count."
+    })
+  });
+}
+const BottomBar_Container = Object(core_["withStyles"])({
+  root: {
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: "1rem",
+    backgroundColor: "#f0f2f5",
+    borderTop: "1px solid lightgray"
+  }
+})(core_["Box"]);
+const Button = Object(core_["withStyles"])({
+  root: {
+    float: "right",
+    color: "white",
+    backgroundColor: "#0e62cb",
+    padding: "0.4rem 1rem",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#09448e"
+    }
+  }
+})(core_["Box"]);
+const ButtonText = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    textTransform: "capitalize"
+  }
+})(core_["Typography"]);
+// CONCATENATED MODULE: ./repository/QuizInfo/getQuizInfo.tsx
+
+
+async function startResumeOrRetakeTest(quizId, token) {
+  const quizInfo = await external_axios_default.a.get(`${url["a" /* backend_url */]}/api/quiz-test/${quizId}/get-info`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then(response => {
+    return response.data;
+  });
+  return quizInfo;
+}
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfo/useQuizInfo.ts
+
+
+
+
+function useQuizInfo(quizId) {
+  const {
+    0: isLoading,
+    1: setIsLoading
+  } = Object(external_react_["useState"])(false);
+  const {
+    0: testStatus,
+    1: setTestStatus
+  } = Object(external_react_["useState"])("unknown");
+  const {
+    0: quizInfo,
+    1: setQuizInfo
+  } = Object(external_react_["useState"])({});
+  const {
+    0: userInfo,
+    1: setUserInfo
+  } = Object(external_react_["useState"])({});
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
+  const router = Object(router_["useRouter"])();
+  Object(external_react_["useEffect"])(() => {
+    fetchQuizInfo();
+  }, []);
+
+  const fetchQuizInfo = async () => {
+    setIsLoading(true);
+    const response = await startResumeOrRetakeTest(quizId, user === null || user === void 0 ? void 0 : user.token);
+
+    if ((response === null || response === void 0 ? void 0 : response.test_status) === "ongoing") {
+      router.push(`/test/quiz/${quizId}`);
+      return;
+    }
+
+    setIsLoading(false);
+
+    const _testStatus = response === null || response === void 0 ? void 0 : response.test_status;
+
+    if (_testStatus !== "new_test" && _testStatus !== "retake" && _testStatus !== "highest_attempt_count_reached" && _testStatus !== "ongoing") {
+      setTestStatus("unknown");
+      return;
+    }
+
+    setTestStatus(response === null || response === void 0 ? void 0 : response.test_status);
+    setQuizInfo(response === null || response === void 0 ? void 0 : response.quiz_info);
+    setUserInfo(response === null || response === void 0 ? void 0 : response.user_info);
+    console.log(response);
+  };
+
+  return {
+    testStatus,
+    quizInfo,
+    userInfo,
+    isLoading
+  };
+}
+// EXTERNAL MODULE: external "@material-ui/icons"
+var icons_ = __webpack_require__("2kat");
+
+// CONCATENATED MODULE: ./UtilFunctions/getFormattedTime.tsx
+function getFormattedTime(time) {
+  let hours = 0,
+      minutes = 0,
+      seconds = 0;
+  if (time == null) return {
+    hours,
+    minutes,
+    seconds
+  };
+  const times = time === null || time === void 0 ? void 0 : time.split(":");
+  seconds = parseInt(times[(times === null || times === void 0 ? void 0 : times.length) - 1]);
+
+  if (times.length > 1) {
+    minutes = parseInt(times[(times === null || times === void 0 ? void 0 : times.length) - 2]);
+  }
+
+  if (times.length > 2) {
+    hours = parseInt(times[(times === null || times === void 0 ? void 0 : times.length) - 3]);
+  }
+
+  return {
+    hours,
+    minutes,
+    seconds
+  };
+}
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfo/QuizDetail/QuizDetail.tsx
+
+
+
+
+
+
+
+function QuizDetail({
+  quizInfo
+}) {
+  var _quizInfo$title, _quizInfo$description;
+
+  const times = getFormattedTime(quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.duration);
+  const quizOrAssessment = (quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.is_assessment) ? "assessment" : "quiz";
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(ImageContainer, {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+        src: `${url["a" /* backend_url */]}/storage/${quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.image_link}`,
+        variant: "square",
+        style: {
+          height: 100,
+          width: 100
+        }
+      })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Title, {
+      variant: "h5",
+      children: quizInfo === null || quizInfo === void 0 ? void 0 : (_quizInfo$title = quizInfo.title) === null || _quizInfo$title === void 0 ? void 0 : _quizInfo$title.toLowerCase()
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Description, {
+      variant: "subtitle1",
+      children: quizInfo === null || quizInfo === void 0 ? void 0 : (_quizInfo$description = quizInfo.description) === null || _quizInfo$description === void 0 ? void 0 : _quizInfo$description.toLowerCase()
+    }), (quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.test_taker_count) != null && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(TestTakerCount, {
+      variant: "subtitle2",
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+        children: quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.test_taker_count
+      }), " ", (quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.test_taker_count) == 1 ? "person" : "people", " ", (quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.test_taker_count) == 1 ? "has" : "have", " taken the", " ", quizOrAssessment]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizDetailContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(SingleQuizDetail, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["QuestionAnswerOutlined"], {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizDetailText, {
+          variant: "subtitle1",
+          children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+            children: quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.questions_count
+          }), " questions"]
+        })]
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(SingleQuizDetail, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["QueryBuilder"], {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizDetailText, {
+          variant: "subtitle1",
+          children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+            children: `${(times === null || times === void 0 ? void 0 : times.hours) ? (times === null || times === void 0 ? void 0 : times.hours) > 1 ? (times === null || times === void 0 ? void 0 : times.hours) + " hours" : (times === null || times === void 0 ? void 0 : times.hours) + " hour" : ""} ${(times === null || times === void 0 ? void 0 : times.minutes) ? (times === null || times === void 0 ? void 0 : times.minutes) > 1 ? (times === null || times === void 0 ? void 0 : times.minutes) + " minutes" : (times === null || times === void 0 ? void 0 : times.minutes) + " minute" : ""} ${(times === null || times === void 0 ? void 0 : times.seconds) ? (times === null || times === void 0 ? void 0 : times.seconds) > 1 ? (times === null || times === void 0 ? void 0 : times.seconds) + " seconds" : (times === null || times === void 0 ? void 0 : times.seconds) + " second" : ""}`
+          }), " ", "to complete the ", quizOrAssessment]
+        })]
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(SingleQuizDetail, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["DoneAllOutlined"], {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizDetailText, {
+          variant: "subtitle1",
+          children: ["Score atleast ", /*#__PURE__*/Object(jsx_runtime_["jsxs"])("b", {
+            children: [quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.passing_percentage, "%"]
+          }), " to pass the", " ", quizOrAssessment]
+        })]
+      })]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Divider"], {})]
+  });
+}
+const Title = Object(core_["withStyles"])({
+  root: {
+    margin: "1rem 0 0 0",
+    textTransform: "capitalize",
+    fontWeight: 600
+  }
+})(core_["Typography"]);
+const Description = Object(core_["withStyles"])({
+  root: {
+    margin: "0.2rem 0",
+    textTransform: "capitalize"
+  }
+})(core_["Typography"]);
+const TestTakerCount = Object(core_["withStyles"])({
+  root: {
+    color: "gray"
+  }
+})(core_["Typography"]);
+const ImageContainer = Object(core_["withStyles"])({
+  root: {}
+})(core_["Box"]);
+const QuizDetailContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    margin: "1rem 0"
+  }
+})(core_["Box"]);
+const SingleQuizDetail = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    alignItems: "center"
+  }
+})(core_["Box"]);
+const QuizDetailText = Object(core_["withStyles"])({
+  root: {
+    margin: "0 0 0 0.5rem",
+    whiteSpace: "nowrap"
+  }
+})(core_["Typography"]);
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfo/BeforeYouStart/BeforeYouStart.tsx
+
+
+
+function BeforeYouStart({
+  quizOrAssessment,
+  highestAttemptCount
+}) {
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(BeforeYouStart_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Heading, {
+      variant: "h6",
+      children: "Before You Start"
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("ul", {
+      style: {
+        margin: "0 0.8rem"
+      },
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("li", {
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Point, {
+          children: "The answers will be automatically submitted when time finishes."
+        })
+      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("li", {
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Point, {
+          children: "Don't forget to share your result after completion!"
+        })
+      })]
+    })]
+  });
+}
+const BeforeYouStart_Container = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column"
+  }
+})(core_["Box"]);
+const Heading = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    margin: "0.5rem 0"
+  }
+})(core_["Typography"]);
+const Point = Object(core_["withStyles"])({
+  root: {}
+})(core_["Typography"]);
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfo/UserDetail/UserDetail.tsx
+
+
+
+
+function UserDetail({
+  userInfo,
+  quizOrAssessment
+}) {
+  var _userInfo$best_attemp, _userInfo$best_attemp2, _userInfo$best_attemp3, _userInfo$best_attemp4, _userInfo$best_attemp5;
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(UserDetail_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(UserDetail_Heading, {
+      variant: "h6",
+      children: "Your Attempts"
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(UserDetailContainer, {
+      children: [(userInfo === null || userInfo === void 0 ? void 0 : userInfo.attempts_count) && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(SingleUserDetail, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["InfoOutlined"], {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(UserDetailText, {
+          children: ["You have attempted the quiz ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+            children: userInfo === null || userInfo === void 0 ? void 0 : userInfo.attempts_count
+          }), " time", `${(userInfo === null || userInfo === void 0 ? void 0 : userInfo.attempts_count) == 1 ? "" : "s"}`, "."]
+        })]
+      }), (userInfo === null || userInfo === void 0 ? void 0 : (_userInfo$best_attemp = userInfo.best_attempt) === null || _userInfo$best_attemp === void 0 ? void 0 : _userInfo$best_attemp.percentage) != null && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(SingleUserDetail, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["BarChartOutlined"], {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(UserDetailText, {
+          children: ["Your best score for this ", quizOrAssessment, " is", " ", /*#__PURE__*/Object(jsx_runtime_["jsxs"])("b", {
+            children: [userInfo === null || userInfo === void 0 ? void 0 : (_userInfo$best_attemp2 = userInfo.best_attempt) === null || _userInfo$best_attemp2 === void 0 ? void 0 : _userInfo$best_attemp2.percentage, "%"]
+          }), "."]
+        })]
+      }), (userInfo === null || userInfo === void 0 ? void 0 : (_userInfo$best_attemp3 = userInfo.best_attempt) === null || _userInfo$best_attemp3 === void 0 ? void 0 : _userInfo$best_attemp3.has_passed) != null && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(SingleUserDetail, {
+        children: [(userInfo === null || userInfo === void 0 ? void 0 : (_userInfo$best_attemp4 = userInfo.best_attempt) === null || _userInfo$best_attemp4 === void 0 ? void 0 : _userInfo$best_attemp4.has_passed) ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["CheckCircleOutline"], {}) : /*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["WarningOutlined"], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(UserDetailText, {
+          children: (userInfo === null || userInfo === void 0 ? void 0 : (_userInfo$best_attemp5 = userInfo.best_attempt) === null || _userInfo$best_attemp5 === void 0 ? void 0 : _userInfo$best_attemp5.has_passed) ? `You have already passed this ${quizOrAssessment}!` : `You have not passed this ${quizOrAssessment} yet.`
+        })]
+      })]
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Divider"], {})]
+  });
+}
+const UserDetail_Container = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column"
+  }
+})(core_["Box"]);
+const UserDetail_Heading = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    margin: "0.5rem 0 0 0"
+  }
+})(core_["Typography"]);
+const UserDetailContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    margin: "1rem 0"
+  }
+})(core_["Box"]);
+const SingleUserDetail = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    margin: "0.3rem 0"
+  }
+})(core_["Box"]);
+const UserDetailText = Object(core_["withStyles"])({
+  root: {
+    margin: "0 0 0 0.5rem",
+    whiteSpace: "nowrap"
+  }
+})(core_["Typography"]);
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfo/QuizInfo.tsx
+
+
+
+
+
+
+
+
+function QuizInfo({
+  quizId
+}) {
+  const {
+    testStatus,
+    quizInfo,
+    userInfo,
+    isLoading
+  } = useQuizInfo(quizId);
+  const showUserDetail = testStatus === "retake" || testStatus === "highest_attempt_count_reached";
+  const quizOrAssessment = (quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.is_assessment) ? "assessment" : "quiz";
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizInfo_Container, {
+    children: [isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(LoadingContainer, {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {
+        color: "primary"
+      })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizDetail, {
+      quizInfo: quizInfo
+    }), showUserDetail && /*#__PURE__*/Object(jsx_runtime_["jsx"])(UserDetail, {
+      userInfo: userInfo,
+      quizOrAssessment: quizOrAssessment
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(BeforeYouStart, {
+      quizOrAssessment: quizOrAssessment,
+      highestAttemptCount: quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.highest_attempt_count
+    }), !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(BottomBar, {
+      testStatus: testStatus,
+      quizId: quizInfo === null || quizInfo === void 0 ? void 0 : quizInfo.id
+    })]
+  });
+}
+const QuizInfo_Container = Object(core_["withStyles"])({
+  root: {
+    padding: "1rem",
+    display: "flex",
+    flexDirection: "column",
+    paddingBottom: "5rem"
+  }
+})(core_["Box"]);
+const LoadingContainer = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/QuizInfoModal/QuizInfoModal.tsx
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+const QuizInfoModal_Transition = /*#__PURE__*/external_react_default.a.forwardRef(function Transition(props, ref) {
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Slide_default.a, _objectSpread({
+    direction: "up",
+    ref: ref
+  }, props));
+});
+function QuizInfoModal({
+  isModalOpen,
+  closeModal,
+  quizTitle,
+  quizId: quizId
+}) {
+  const classes = useStyles();
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+    style: {
+      zIndex: zIndexes["a" /* default */].highest
+    },
+    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Dialog_default.a, {
+      fullScreen: true,
+      open: isModalOpen,
+      onClose: closeModal,
+      TransitionComponent: QuizInfoModal_Transition,
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(AppBar_default.a, {
+        className: classes.appBar,
+        children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Toolbar_default.a, {
+          children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Typography_default.a, {
+            variant: "h6",
+            className: classes.title,
+            children: quizTitle.toLocaleLowerCase()
+          }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(IconButton_default.a, {
+            color: "inherit",
+            onClick: closeModal,
+            "aria-label": "close",
+            children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Close_default.a, {})
+          })]
+        })
+      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(InnerContainer, {
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizInfo, {
+          quizId: quizId
+        })
+      })]
+    })
+  });
+}
+const InnerContainer = Object(styles_["withStyles"])({
+  root: {
+    width: "100vw",
+    height: "100vh",
+    overflowX: "hidden",
+    overflowY: "scroll",
+    backgroundColor: "#f0f2f5"
+  }
+})(core_["Box"]);
+const useStyles = Object(styles_["makeStyles"])(theme => Object(styles_["createStyles"])({
+  appBar: {
+    position: "relative",
+    background: "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box"
+  },
+  title: {
+    flex: 1,
+    textTransform: "capitalize"
+  }
+}));
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/useTakeQuizButton.tsx
+
+function useTakeQuizButton() {
+  const {
+    0: isModalOpen,
+    1: setIsModalOpen
+  } = Object(external_react_["useState"])(false);
+
+  const openModal = () => setIsModalOpen(true);
+
+  const closeModal = () => setIsModalOpen(false);
+
+  return {
+    isModalOpen,
+    openModal,
+    closeModal
+  };
+}
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/TakeQuizButton/TakeQuizButton.tsx
+
+
+
+
+
+
+
+
+
+const TakeQuizButton = ({
+  quiz
+}) => {
+  const {
+    showLoginAlert,
+    close,
+    handleClickWhenLoggedOut
+  } = Object(useLoginAlert["a" /* default */])();
+  const {
+    isModalOpen,
+    openModal,
+    closeModal
+  } = useTakeQuizButton();
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
+
+  const handleClick = () => {
+    if (!user) {
+      handleClickWhenLoggedOut();
+      return;
+    }
+
+    openModal();
+  };
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(TakeQuizButton_Button, {
+      onClick: () => handleClick(),
+      children: "Take the Quiz"
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(LoginAlert, {
+      anchorOrigin: {
+        vertical: "top",
+        horizontal: "center"
+      },
+      open: showLoginAlert,
+      onClose: close,
+      message: "Please Login To Take The Quiz."
+    }, quiz.id), /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizInfoModal, {
+      isModalOpen: isModalOpen,
+      closeModal: closeModal,
+      quizTitle: quiz === null || quiz === void 0 ? void 0 : quiz.title,
+      quizId: quiz === null || quiz === void 0 ? void 0 : quiz.id
+    })]
+  });
+};
+
+/* harmony default export */ var TakeQuizButton_TakeQuizButton = (TakeQuizButton);
+const TakeQuizButton_Button = Object(core_["withStyles"])({
+  root: {
+    maxWidth: 400,
+    marginTop: 20,
+    cursor: "pointer",
+    width: "100%",
+    padding: "10px 0px",
+    borderRadius: 10,
+    textAlign: "center",
+    background: "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box"
+  }
+})(core_["Box"]);
+const LoginAlert = Object(core_["withStyles"])({
+  root: {
+    zIndex: 20000
+  }
+})(core_["Snackbar"]);
+// CONCATENATED MODULE: ./Components/Quizzes/Quiz/Quiz.tsx
 
 
 
@@ -3792,25 +4479,6 @@ const Quiz = ({
 }) => {
   var _quiz$image;
 
-  const {
-    0: showLoginAlert,
-    1: setShowLoginAlert
-  } = Object(external_react_["useState"])(false);
-  const [user] = Object(useLocalState["a" /* default */])("user", "");
-  const router = Object(router_["useRouter"])();
-
-  const handleClick = () => {
-    if (!user || !user.token) {
-      setShowLoginAlert(true);
-      setTimeout(() => {
-        setShowLoginAlert(false);
-      }, 3000);
-      return;
-    }
-
-    router.push(`/test/quiz/${quiz.id}`);
-  };
-
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Quiz_Container, {
     children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
       src: `${url["a" /* backend_url */]}/storage/${quiz === null || quiz === void 0 ? void 0 : (_quiz$image = quiz.image) === null || _quiz$image === void 0 ? void 0 : _quiz$image.image_link}`,
@@ -3820,27 +4488,18 @@ const Quiz = ({
         height: 90
       }
     }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(TitleButtonContainer, {
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Title, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Quiz_Title, {
         variant: "h6",
         children: quiz.title
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button, {
-        onClick: () => handleClick(),
-        children: "Take the Quiz"
+      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(TakeQuizButton_TakeQuizButton, {
+        quiz: quiz
       })]
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(FBShareContainer, {
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ShareOnFB_ShareOnFB, {
         link: `${url["b" /* default */]}/share/fb/quizzes/${quiz.id}`,
         title: "Share this on Facebook"
       })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(LoginAlert, {
-      anchorOrigin: {
-        vertical: "top",
-        horizontal: "center"
-      },
-      open: showLoginAlert,
-      onClose: () => setShowLoginAlert(false),
-      message: "Please Login To Take The Quiz."
-    }, quiz.id)]
+    })]
   });
 };
 
@@ -3869,21 +4528,9 @@ const TitleButtonContainer = Object(core_["withStyles"])({
     marginLeft: 50
   }
 })(core_["Box"]);
-const Title = Object(core_["withStyles"])({
+const Quiz_Title = Object(core_["withStyles"])({
   root: {}
 })(core_["Typography"]);
-const Button = Object(core_["withStyles"])({
-  root: {
-    maxWidth: 400,
-    marginTop: 20,
-    cursor: "pointer",
-    width: "100%",
-    padding: "10px 0px",
-    borderRadius: 10,
-    textAlign: "center",
-    background: "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box"
-  }
-})(core_["Box"]);
 const FBShareContainer = Object(core_["withStyles"])({
   root: {
     position: "absolute",
@@ -3891,11 +4538,6 @@ const FBShareContainer = Object(core_["withStyles"])({
     bottom: 10
   }
 })(core_["Box"]);
-const LoginAlert = Object(core_["withStyles"])({
-  root: {
-    zIndex: 20000
-  }
-})(core_["Snackbar"]);
 // EXTERNAL MODULE: ./Components/Layout/Topbar/Topbar.tsx + 3 modules
 var Topbar = __webpack_require__("gMP8");
 
@@ -3969,6 +4611,42 @@ const quizzes_Quizzes = ({
 };
 
 /* harmony default export */ var pages_quizzes = __webpack_exports__["default"] = (quizzes_Quizzes);
+
+/***/ }),
+
+/***/ "opRA":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const useLoginAlert = () => {
+  const {
+    0: showLoginAlert,
+    1: setShowLoginAlert
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  const handleClickWhenLoggedOut = () => {
+    setShowLoginAlert(true);
+    setTimeout(() => {
+      setShowLoginAlert(false);
+    }, 3000);
+  };
+
+  const close = () => {
+    setShowLoginAlert(false);
+  };
+
+  return {
+    showLoginAlert,
+    close,
+    handleClickWhenLoggedOut
+  };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (useLoginAlert);
 
 /***/ }),
 

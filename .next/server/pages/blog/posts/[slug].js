@@ -948,7 +948,11 @@ const Comments_Number = Object(core_["withStyles"])({
 // EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
 var useLocalState = __webpack_require__("PhsX");
 
+// EXTERNAL MODULE: ./custom-hooks/useLoginAlert.tsx
+var useLoginAlert = __webpack_require__("opRA");
+
 // CONCATENATED MODULE: ./Components/Post/SinglePost/LCSStatus/Likes/Likes.tsx
+
 
 
 
@@ -962,9 +966,9 @@ const Likes = ({
 }) => {
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const {
-    0: showLoginAlert,
-    1: setShowLoginAlert
-  } = Object(external_react_["useState"])(false);
+    showLoginAlert,
+    handleClickWhenLoggedOut
+  } = Object(useLoginAlert["a" /* default */])();
   const {
     0: isLikedByUser,
     1: setIsLikedByUser
@@ -976,10 +980,7 @@ const Likes = ({
 
   const handleClick = () => {
     if (!user || !user.token) {
-      setShowLoginAlert(true);
-      setTimeout(() => {
-        setShowLoginAlert(false);
-      }, 3000);
+      handleClickWhenLoggedOut();
       return;
     }
 
@@ -1163,6 +1164,7 @@ var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
 
 
 
+
 const MAX_CHARACTER_COUNT = 200;
 
 const CommentBox = ({
@@ -1178,9 +1180,9 @@ const CommentBox = ({
     1: setIsSending
   } = Object(external_react_["useState"])(false);
   const {
-    0: showLoginAlert,
-    1: setShowLoginAlert
-  } = Object(external_react_["useState"])(false);
+    showLoginAlert,
+    handleClickWhenLoggedOut
+  } = Object(useLoginAlert["a" /* default */])();
   const {
     setCommentsCount
   } = Object(external_react_["useContext"])(CommentsCountContext);
@@ -1193,14 +1195,14 @@ const CommentBox = ({
 
   const handleSubmit = () => {
     if (!(user === null || user === void 0 ? void 0 : user.token)) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
     if (comment.length > MAX_CHARACTER_COUNT) return;
 
     if (comment.length == 0) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
@@ -1235,13 +1237,6 @@ const CommentBox = ({
       });
       setComment("");
     });
-  };
-
-  const showAlert = () => {
-    setShowLoginAlert(true);
-    setTimeout(() => {
-      setShowLoginAlert(false);
-    }, 3000);
   };
 
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CommentBox_Container, {
@@ -1353,15 +1348,16 @@ const CommentBox_LoginAlert = Object(core_["withStyles"])({
 
 
 
+
 const Likes_Likes_Likes = () => {
   const {
     comment
   } = Object(external_react_["useContext"])(CommentContext);
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const {
-    0: showLoginAlert,
-    1: setShowLoginAlert
-  } = Object(external_react_["useState"])(false);
+    showLoginAlert,
+    handleClickWhenLoggedOut
+  } = Object(useLoginAlert["a" /* default */])();
   const {
     0: likesCount,
     1: setLikesCount
@@ -1373,10 +1369,7 @@ const Likes_Likes_Likes = () => {
 
   const handleClick = () => {
     if (!user || !user.token) {
-      setShowLoginAlert(true);
-      setTimeout(() => {
-        setShowLoginAlert(false);
-      }, 3000);
+      handleClickWhenLoggedOut();
       return;
     }
 
@@ -1622,6 +1615,7 @@ const ReplyText = Object(core_["withStyles"])({
 
 
 
+
 const ReplyBox_MAX_CHARACTER_COUNT = 200;
 
 const ReplyBox = ({
@@ -1639,23 +1633,23 @@ const ReplyBox = ({
     1: setIsSending
   } = Object(external_react_["useState"])(false);
   const {
-    0: showLoginAlert,
-    1: setShowLoginAlert
-  } = Object(external_react_["useState"])(false);
+    showLoginAlert,
+    handleClickWhenLoggedOut
+  } = Object(useLoginAlert["a" /* default */])();
   const classes = ReplyBox_useStyles({
     reply
   });
 
   const handleSubmit = () => {
     if (!user || !user.token) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
     if (reply.length > ReplyBox_MAX_CHARACTER_COUNT) return;
 
     if (reply.length == 0) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
@@ -1687,13 +1681,6 @@ const ReplyBox = ({
       setReplies(state => [response.data, ...state]);
       setReply("");
     });
-  };
-
-  const showAlert = () => {
-    setShowLoginAlert(true);
-    setTimeout(() => {
-      setShowLoginAlert(false);
-    }, 3000);
   };
 
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ReplyBox_Container, {
@@ -2190,12 +2177,6 @@ const ReadTime = Object(core_["withStyles"])({
     marginTop: 10
   }
 })(core_["Typography"]);
-const PostDivider = Object(core_["withStyles"])({
-  root: {
-    marginTop: 10,
-    marginBottom: 20
-  }
-})(core_["Divider"]);
 const PostDate = Object(core_["withStyles"])({
   root: {
     color: "#C5C5C5",
@@ -2303,7 +2284,6 @@ const getServerSideProps = async context => {
   const topics = [...topicsRes.data];
   const topPostsRes = await external_axios_default.a.get(`${url["c" /* local_backend_url */]}/canvas-blog/api/posts/top-by-views?post_count=10`);
   const topPosts = [...topPostsRes.data];
-  console.log(post);
   return {
     props: {
       post,
@@ -2698,63 +2678,7 @@ const setCookie = (key, value) => {
 const getCookie = key => {
   const result = js_cookie__WEBPACK_IMPORTED_MODULE_1___default.a.get(JSON.stringify(key));
   return result ? JSON.parse(result) : result;
-}; // function useLocalState<T>(key: string, defaultValue: T) {
-//   const [value, setValue] = useState(() => {
-//     if (isLocalStorageWorking() == false) {
-//       return getCookie(key);
-//     }
-//     let result = null;
-//     if (process.browser) {
-//       const storedValue = localStorage.getItem(key)
-//         ? JSON.parse(localStorage.getItem(key))
-//         : localStorage.getItem(key);
-//       if (!storedValue) {
-//         result = defaultValue;
-//       }
-//       result = storedValue === null ? defaultValue : storedValue;
-//     } else {
-//       result = defaultValue;
-//     }
-//     return result;
-//   });
-//   useEffect(() => {
-//     const listener = (e) => {
-//       if (e.storageArea === localStorage && e.key === key) {
-//         setValue(JSON.parse(e.newValue));
-//       }
-//     };
-//     window.addEventListener("storage", listener);
-//     return () => {
-//       window.removeEventListener("storage", listener);
-//     };
-//   }, [key]);
-//   const setValueInLocalStorage = (newValue) => {
-//     setValue((currentValue) => {
-//       let value = null;
-//       if (typeof newValue === "function") {
-//         setCookie(key, newValue(currentValue));
-//         value = newValue(currentValue);
-//       } else {
-//         setCookie(key, newValue);
-//         value = newValue;
-//       }
-//       // const result =
-//       //   typeof newValue === "function" ? newValue(currentValue) : newValue;
-//       // localStorage.setItem(key, JSON.stringify(result));
-//       return value;
-//     });
-//   };
-//   useEffect(() => {
-//     const storedValue = JSON.parse(localStorage.getItem(key));
-//     if (storedValue) {
-//       setValueInLocalStorage(storedValue);
-//     } else {
-//       setValueInLocalStorage(value);
-//     }
-//   }, []);
-//   return [value, setValueInLocalStorage];
-// }
-// export default useLocalState;
+};
 
 /***/ }),
 
@@ -2776,6 +2700,19 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
+
+/***/ }),
+
+/***/ "TrRe":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  normal: 50,
+  high: 100,
+  higher: 150,
+  highest: 200
+});
 
 /***/ }),
 
@@ -5252,7 +5189,11 @@ const GoogleLogo = () => {
     })]
   });
 };
+// EXTERNAL MODULE: ./theme/zIndexes.tsx
+var zIndexes = __webpack_require__("TrRe");
+
 // CONCATENATED MODULE: ./Components/Layout/Topbar/Topbar.tsx
+
 
 
 
@@ -5273,7 +5214,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     alignItems: "center",
     paddingLeft: "2.5%",
     paddingRight: "2.5%",
-    zIndex: 4000,
+    zIndex: zIndexes["a" /* default */].normal,
     background: "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box"
   },
   placeholder: {
@@ -5610,6 +5551,42 @@ function makePublicRouterInstance(router) {
 /***/ (function(module, exports) {
 
 module.exports = require("@material-ui/icons/KeyboardArrowRight");
+
+/***/ }),
+
+/***/ "opRA":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const useLoginAlert = () => {
+  const {
+    0: showLoginAlert,
+    1: setShowLoginAlert
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  const handleClickWhenLoggedOut = () => {
+    setShowLoginAlert(true);
+    setTimeout(() => {
+      setShowLoginAlert(false);
+    }, 3000);
+  };
+
+  const close = () => {
+    setShowLoginAlert(false);
+  };
+
+  return {
+    showLoginAlert,
+    close,
+    handleClickWhenLoggedOut
+  };
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (useLoginAlert);
 
 /***/ }),
 

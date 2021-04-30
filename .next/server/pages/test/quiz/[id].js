@@ -93,84 +93,6 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/Cw6":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("F5FC");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("KKbo");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-
-const useStyles = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["makeStyles"])({
-  outerContainer: {
-    backgroundColor: "inherit",
-    position: "relative"
-  },
-  polygonBackground: {
-    width: "100vw",
-    height: 300,
-    background: "transparent linear-gradient(180deg, #028D9ADE 0%, #8F749CE6 100%) 0% 0% no-repeat padding-box",
-    clipPath: "polygon(0% 0%, 0% 100%, 15.22% 69.33%, 32.07% 92.67%, 50.33% 70.00%, 60.89% 93%, 74.63% 77.67%, 87.26% 97.33%, 100% 100%, 100% 0%)",
-    zIndex: -1
-  },
-  container: {
-    width: "100vw",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    paddingTop: 50
-  },
-  titleContainer: {
-    color: "white",
-    textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    textTransform: "capitalize"
-  },
-  mainContainer: {
-    position: "absolute",
-    top: 250,
-    left: 0,
-    paddingLeft: "5%",
-    paddingRight: "5%",
-    width: "100%"
-  }
-});
-
-const PageTitle = ({
-  title,
-  children = null
-}) => {
-  const classes = useStyles();
-  return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])("div", {
-    className: classes.outerContainer,
-    children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
-      className: classes.polygonBackground
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
-      className: classes.container,
-      children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])("div", {
-        className: classes.titleContainer,
-        children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Typography"], {
-          variant: "h4",
-          component: "h1",
-          children: title
-        }), children]
-      })
-    })]
-  });
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (PageTitle);
-
-/***/ }),
-
 /***/ "/jkW":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -395,162 +317,694 @@ var jsx_runtime_ = __webpack_require__("F5FC");
 // EXTERNAL MODULE: external "@material-ui/core"
 var core_ = __webpack_require__("KKbo");
 
-// EXTERNAL MODULE: external "axios"
-var external_axios_ = __webpack_require__("zr5I");
-var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
+// EXTERNAL MODULE: ./Components/Layout/Topbar/Topbar.tsx + 3 modules
+var Topbar = __webpack_require__("gMP8");
 
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
 
+// EXTERNAL MODULE: ./url.js
+var url = __webpack_require__("Gw4m");
+
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/Question/Options/Option/useOption.tsx
+
+function useOption(optionId, question, answers, setAnswers) {
+  const {
+    0: isChecked,
+    1: setIsChecked
+  } = Object(external_react_["useState"])(getIsOptionChecked(optionId, question, answers));
+  Object(external_react_["useEffect"])(() => {
+    setIsChecked(getIsOptionChecked(optionId, question, answers));
+  }, [answers]);
+
+  const handleClick = () => {
+    setAnswers(optionId, question);
+  };
+
+  return {
+    isChecked,
+    handleClick
+  };
+}
+
+function getIsOptionChecked(optionId, question, answers) {
+  var _answers$question$id;
+
+  if (!answers) {
+    return false;
+  }
+
+  if (!answers[question === null || question === void 0 ? void 0 : question.id]) {
+    return false;
+  }
+
+  if (!Array.isArray(answers[question === null || question === void 0 ? void 0 : question.id])) {
+    return false;
+  }
+
+  let checked = false;
+  (_answers$question$id = answers[question === null || question === void 0 ? void 0 : question.id]) === null || _answers$question$id === void 0 ? void 0 : _answers$question$id.forEach(option => {
+    if ((option === null || option === void 0 ? void 0 : option.optionId) == optionId) {
+      checked = true;
+    }
+  });
+  return checked;
+}
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/Question/Options/Option/Option.tsx
+
+
+
+
+
+
+
+
+function Option({
+  option
+}) {
+  var _option$image, _option$image2;
+
+  const {
+    answers,
+    setAnswers
+  } = Object(external_react_["useContext"])(QuizTestStateContext);
+  const {
+    question
+  } = Object(external_react_["useContext"])(QuestionContext);
+  const {
+    isChecked,
+    handleClick
+  } = useOption(option === null || option === void 0 ? void 0 : option.id, question, answers, setAnswers);
+  const shouldCenter = (option === null || option === void 0 ? void 0 : option.image) != null ? true : false;
+  const classes = useStyles({
+    shouldCenter
+  });
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+    className: classes.container,
+    onClick: handleClick,
+    children: [(question === null || question === void 0 ? void 0 : question.answer_type) === "multiple_choice" && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Radio"], {
+      checked: isChecked
+    }), (question === null || question === void 0 ? void 0 : question.answer_type) === "checkboxes" && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Checkbox"], {
+      checked: isChecked
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+      className: classes.titleAndImageContainer,
+      children: [(option === null || option === void 0 ? void 0 : option.title) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Title, {
+        children: option === null || option === void 0 ? void 0 : option.title
+      }), (option === null || option === void 0 ? void 0 : (_option$image = option.image) === null || _option$image === void 0 ? void 0 : _option$image.image_link) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+        src: `${url["a" /* backend_url */]}/storage/${option === null || option === void 0 ? void 0 : (_option$image2 = option.image) === null || _option$image2 === void 0 ? void 0 : _option$image2.image_link}`,
+        variant: "square",
+        style: {
+          height: 200,
+          width: 200,
+          margin: "0.2rem 0"
+        }
+      })]
+    })]
+  });
+}
+const useStyles = Object(core_["makeStyles"])({
+  container: {
+    borderTop: "1px solid gray",
+    padding: "0.1rem 0rem",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer"
+  },
+  titleAndImageContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: ({
+      shouldCenter
+    }) => {
+      return shouldCenter ? "center" : "";
+    }
+  }
+});
+const Title = Object(core_["withStyles"])({
+  root: {}
+})(core_["Typography"]);
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/Question/Options/TextAnswer/useTextAnswer.tsx
+
+function useTextAnswer(question, answers, setAnswers) {
+  const {
+    0: text,
+    1: setText
+  } = Object(external_react_["useState"])(getTextValue());
+
+  function getTextValue() {
+    var _answers$$;
+
+    if (!answers || !answers[`${question === null || question === void 0 ? void 0 : question.id}`] || !answers[`${question === null || question === void 0 ? void 0 : question.id}`][0]) {
+      return "";
+    }
+
+    return (_answers$$ = answers[`${question === null || question === void 0 ? void 0 : question.id}`][0]) === null || _answers$$ === void 0 ? void 0 : _answers$$.text;
+  }
+
+  function handleChange(e) {
+    var _e$target, _question$options$, _e$target2;
+
+    setText(e === null || e === void 0 ? void 0 : (_e$target = e.target) === null || _e$target === void 0 ? void 0 : _e$target.value);
+    setAnswers(question === null || question === void 0 ? void 0 : (_question$options$ = question.options[0]) === null || _question$options$ === void 0 ? void 0 : _question$options$.id, question, e === null || e === void 0 ? void 0 : (_e$target2 = e.target) === null || _e$target2 === void 0 ? void 0 : _e$target2.value);
+  }
+
+  return {
+    text,
+    handleChange
+  };
+}
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/Question/Options/TextAnswer/TextAnswer.tsx
+
+
+
+
+
+
+function TextAnswer({}) {
+  const {
+    answers,
+    setAnswers
+  } = Object(external_react_["useContext"])(QuizTestStateContext);
+  const {
+    question
+  } = Object(external_react_["useContext"])(QuestionContext);
+  const {
+    text,
+    handleChange
+  } = useTextAnswer(question, answers, setAnswers);
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Container, {
+    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["TextField"], {
+      id: `${question === null || question === void 0 ? void 0 : question.id}-value`,
+      label: "Answer",
+      variant: "outlined",
+      value: text,
+      onChange: handleChange,
+      fullWidth: true
+    })
+  });
+}
+const Container = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    paddingTop: "1rem"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/Question/Options/Options.tsx
+
+
+
+
+
+
+
+function Options({}) {
+  const {
+    question
+  } = Object(external_react_["useContext"])(QuestionContext);
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Options_Container, {
+    children: [(question === null || question === void 0 ? void 0 : question.options) && (question === null || question === void 0 ? void 0 : question.answer_type) != "short_paragraph" && (question === null || question === void 0 ? void 0 : question.options.map(option => {
+      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Option, {
+        option: option
+      }, option === null || option === void 0 ? void 0 : option.id);
+    })), (question === null || question === void 0 ? void 0 : question.answer_type) == "short_paragraph" && /*#__PURE__*/Object(jsx_runtime_["jsx"])(TextAnswer, {})]
+  });
+}
+const Options_Container = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#eef3f7",
+    marginTop: "0.5rem",
+    padding: "0 0.5rem"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/Question/Question.tsx
+
+
+
+
+
+
+
+function Question({}) {
+  var _question$image, _question$image2;
+
+  const {
+    question
+  } = Object(external_react_["useContext"])(QuestionContext);
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Question_Container, {
+    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuestionContainer, {
+      children: [(question === null || question === void 0 ? void 0 : question.question) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionTitle, {
+        variant: "subtitle1",
+        children: `Q. ${question === null || question === void 0 ? void 0 : question.question}`
+      }), (question === null || question === void 0 ? void 0 : (_question$image = question.image) === null || _question$image === void 0 ? void 0 : _question$image.image_link) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+        src: `${url["a" /* backend_url */]}/storage/${question === null || question === void 0 ? void 0 : (_question$image2 = question.image) === null || _question$image2 === void 0 ? void 0 : _question$image2.image_link}`,
+        variant: "square",
+        style: {
+          height: 200,
+          width: 200,
+          margin: "0.2rem 0"
+        }
+      }), (question === null || question === void 0 ? void 0 : question.options) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Options, {})]
+    })
+  });
+}
+const Question_Container = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    height: "50vh",
+    overflowY: "scroll",
+    overflowX: "hidden"
+  }
+})(core_["Box"]);
+const QuestionTitle = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    padding: "0 0.5rem"
+  }
+})(core_["Typography"]);
+const QuestionContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/useSingleQuestion.tsx
+
+function useSingleQuestion(index, currentQuestionIndex) {
+  const {
+    0: isVisible,
+    1: setIsVisible
+  } = Object(external_react_["useState"])(index == currentQuestionIndex);
+  const {
+    0: direction,
+    1: setDirection
+  } = Object(external_react_["useState"])("right");
+  Object(external_react_["useEffect"])(() => {
+    if (currentQuestionIndex > index) {
+      setDirection("right");
+    } else if (currentQuestionIndex < index) {
+      setDirection("left");
+    }
+
+    setIsVisible(index == currentQuestionIndex);
+  }, [currentQuestionIndex]);
+  return {
+    isVisible,
+    direction
+  };
+}
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/SingleQuestion/SingleQuestion.tsx
+
+
+
+
+
+
+const QuestionContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
+function SingleQuestion({
+  question,
+  index
+}) {
+  const {
+    currentQuestionIndex
+  } = Object(external_react_["useContext"])(QuizTestStateContext);
+  const {
+    isVisible,
+    direction
+  } = useSingleQuestion(index, currentQuestionIndex);
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Fade"], {
+    in: isVisible,
+    timeout: 250,
+    children: isVisible ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(SingleQuestion_Container, {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionContext.Provider, {
+        value: {
+          question
+        },
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Question, {})
+      })
+    }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {})
+  });
+}
+const SingleQuestion_Container = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    padding: "0.5rem 1rem",
+    transition: "1s"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/QuestionBottomBar/QuestionCountAndTimer/QuestionCountAndTimer.tsx
+
+
+
+
+
+function QuestionCountAndTimer() {
+  const {
+    questionCount,
+    currentQuestionIndex,
+    timeRemaining,
+    secondsRemaining
+  } = Object(external_react_["useContext"])(QuizTestStateContext);
+  const classes = QuestionCountAndTimer_useStyles({
+    secondsRemaining
+  });
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuestionCountAndTimer_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionCount, {
+      variant: "subtitle2",
+      children: `Q.${currentQuestionIndex + 1}/${questionCount}`
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(TimeRemaining, {
+      variant: "subtitle2",
+      className: classes.timeRemaining,
+      children: timeRemaining
+    })]
+  });
+}
+const QuestionCountAndTimer_Container = Object(core_["withStyles"])({
+  root: {
+    float: "left",
+    display: "flex",
+    alignItems: "center"
+  }
+})(core_["Box"]);
+const QuestionCount = Object(core_["withStyles"])({
+  root: {
+    marginRight: "1rem",
+    fontWeight: 600
+  }
+})(core_["Typography"]);
+const TimeRemaining = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600
+  }
+})(core_["Typography"]);
+const QuestionCountAndTimer_useStyles = Object(core_["makeStyles"])({
+  timeRemaining: {
+    color: ({
+      secondsRemaining
+    }) => {
+      return secondsRemaining > 60 ? "black" : "red";
+    }
+  }
+});
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/QuestionBottomBar/QuestionBottomBar.tsx
+
+
+
+
+
+
+function QuestionBottomBar({}) {
+  const {
+    goToNextQuestion,
+    goToPreviousQuestion,
+    showNext,
+    showPrevious
+  } = Object(external_react_["useContext"])(QuizTestStateContext);
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuestionBottomBar_Container, {
+    children: [showNext && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button, {
+      onClick: goToNextQuestion,
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ButtonText, {
+        variant: "caption",
+        color: "inherit",
+        children: "Next"
+      })
+    }), showPrevious && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button, {
+      onClick: goToPreviousQuestion,
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ButtonText, {
+        variant: "caption",
+        color: "inherit",
+        children: "Prev"
+      })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionCountAndTimer, {})]
+  });
+}
+const QuestionBottomBar_Container = Object(core_["withStyles"])({
+  root: {
+    backgroundColor: "#f0f2f5",
+    padding: "0.5rem"
+  }
+})(core_["Box"]);
+const Button = Object(core_["withStyles"])({
+  root: {
+    float: "right",
+    color: "white",
+    backgroundColor: "#0e62cb",
+    padding: "0.2rem",
+    margin: "auto 0.2rem",
+    borderRadius: 5,
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#09448e"
+    }
+  }
+})(core_["Box"]);
+const ButtonText = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    textTransform: "capitalize"
+  }
+})(core_["Typography"]);
 // EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
 var useLocalState = __webpack_require__("PhsX");
 
-// EXTERNAL MODULE: ./url.js
-var url_0 = __webpack_require__("Gw4m");
+// EXTERNAL MODULE: external "axios"
+var external_axios_ = __webpack_require__("zr5I");
+var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
 
-// EXTERNAL MODULE: ./Components/Layout/Topbar/Topbar.tsx + 3 modules
-var Topbar = __webpack_require__("gMP8");
-
-// CONCATENATED MODULE: ./Components/QuizTest/useStartTest.ts
+// CONCATENATED MODULE: ./repository/QuizTest/submitTest.tsx
 
 
-
-
-function useStartTest(id, status) {
-  const [user] = Object(useLocalState["a" /* default */])("user", "");
-  const {
-    0: test,
-    1: setTest
-  } = Object(external_react_["useState"])();
-  const {
-    0: isLoading,
-    1: setIsLoading
-  } = Object(external_react_["useState"])(true);
-  const {
-    0: isError,
-    1: setIsError
-  } = Object(external_react_["useState"])(true);
-  Object(external_react_["useEffect"])(() => {
-    if (status == "unknown") return;
-    const url = `${url_0["c" /* local_backend_url */]}/api/quiz-test/${status == "new_test" ? "start" : status == "ongoing" ? "resume" : "retake"}`;
-    external_axios_default.a.post(url, {
-      quiz_id: id
-    }, {
-      headers: {
-        Accept: "Application/json",
-        Authorization: `Bearer ${user.token}`
-      }
-    }).then(response => {
-      setTest(response.data);
-      setIsLoading(false);
-      setIsError(false);
-    }).catch(() => {
-      setIsLoading(false);
-      setIsError(true);
-    });
-  }, []);
-  return {
-    test,
-    isLoading,
-    isError
-  };
+async function submitTest(testId, answers, token) {
+  if (!answers) return;
+  const response = await external_axios_default.a.post(`${url["c" /* local_backend_url */]}/api/quiz-test/answers/store`, {
+    test_id: testId,
+    options: answers
+  }, {
+    headers: {
+      Accept: "Application/json",
+      Authorization: `Bearer ${token}`
+    }
+  }).then(response => {
+    return response.data;
+  }).catch(() => {
+    return {
+      error: "network error"
+    };
+  });
+  return response;
 }
-// EXTERNAL MODULE: ./Components/PageTitle/PageTitle.tsx
-var PageTitle = __webpack_require__("/Cw6");
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/useTestState.tsx
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-// CONCATENATED MODULE: ./Components/QuizTest/Timer/Timer.tsx
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
-const Timer = ({
-  start_time,
-  duration,
-  secondsRemaining,
-  setSecondsRemaining
-}) => {
+function useTestState(quizId, questions, test, duration) {
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
+  const [answers, setAnswersState] = Object(useLocalState["a" /* default */])(`${user === null || user === void 0 ? void 0 : user.email}-test${test === null || test === void 0 ? void 0 : test.id}-answers`, {});
+  const {
+    0: currentQuestionIndex,
+    1: setCurrentQuestionIndex
+  } = Object(external_react_["useState"])(0);
+  const {
+    0: progress,
+    1: setProgress
+  } = Object(external_react_["useState"])(getProgress());
+  const {
+    0: secondsRemaining,
+    1: setSecondsRemaining
+  } = Object(external_react_["useState"])(() => {
+    if (!test) return 600;
+    return getTimeRemainingInSeconds(test === null || test === void 0 ? void 0 : test.created_at, duration.toString());
+  });
   const {
     0: timeRemaining,
     1: setTimeRemaing
   } = Object(external_react_["useState"])("");
   const {
-    0: percentage,
-    1: setPercentage
-  } = Object(external_react_["useState"])(getPercentage(start_time, duration));
-  const classes = useStyles({
-    percentage,
-    secondsRemaining
-  });
+    0: showSubmitButton,
+    1: setShowSubmitButton
+  } = Object(external_react_["useState"])(false);
+  const {
+    0: isSubmitting,
+    1: setIsSubmitting
+  } = Object(external_react_["useState"])(false);
   Object(external_react_["useEffect"])(() => {
     setInterval(() => {
-      setSecondsRemaining(getTimeRemainingInSeconds(start_time, duration));
+      setSecondsRemaining(getTimeRemainingInSeconds(test === null || test === void 0 ? void 0 : test.created_at, duration));
     }, 500);
   }, []);
   Object(external_react_["useEffect"])(() => {
     if (secondsRemaining <= 0) {
+      handleSubmit();
       setTimeRemaing("Test Finished");
     } else {
-      setPercentage(getPercentage(start_time, duration));
       setTimeRemaing(parseSecondsToClock(secondsRemaining));
     }
   }, [secondsRemaining]);
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Container, {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      className: classes.loader,
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Time, {
-        variant: "h6",
-        children: `${timeRemaining}`
-      })
-    })
-  });
-};
+  Object(external_react_["useEffect"])(() => {
+    setProgress(getProgress());
 
-/* harmony default export */ var Timer_Timer = (Timer);
-const Container = Object(core_["withStyles"])({
-  root: {
-    position: "fixed",
-    top: 100,
-    zIndex: 4000,
-    left: 0,
-    textAlign: "center",
-    right: 0,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    ["@media (max-width: 700px)"]: {
-      top: 135
+    if (currentQuestionIndex == (questions === null || questions === void 0 ? void 0 : questions.length) - 1) {
+      setShowSubmitButton(true);
+    } else {
+      setShowSubmitButton(false);
     }
-  }
-})(core_["Box"]);
-const MINUTE_LEFT_FOR_WARNING = 1;
-const useStyles = Object(core_["makeStyles"])({
-  loader: {
-    display: "relative",
-    backgroundColor: props => {
-      const {
-        secondsRemaining
-      } = props;
+  }, [currentQuestionIndex]);
 
-      if (secondsRemaining <= MINUTE_LEFT_FOR_WARNING * 60) {
-        return "#cc3300";
+  const setAnswers = (optionId, question, text) => {
+    setAnswersState(state => {
+      let tempAnswers = _objectSpread({}, state);
+
+      if (question.answer_type === "multiple_choice") {
+        const options = tempAnswers[`${question === null || question === void 0 ? void 0 : question.id}`];
+
+        if (!options || Array.isArray(options) && !options[0]) {
+          tempAnswers = _objectSpread(_objectSpread({}, state), {}, {
+            [`${question === null || question === void 0 ? void 0 : question.id}`]: [{
+              optionId: optionId
+            }]
+          });
+        }
+
+        if (options && Array.isArray(options) && options[0]) {
+          var _options$;
+
+          if (((_options$ = options[0]) === null || _options$ === void 0 ? void 0 : _options$.optionId) == optionId) {
+            tempAnswers = _objectSpread(_objectSpread({}, state), {}, {
+              [`${question === null || question === void 0 ? void 0 : question.id}`]: []
+            });
+          } else {
+            tempAnswers = _objectSpread(_objectSpread({}, state), {}, {
+              [`${question === null || question === void 0 ? void 0 : question.id}`]: [{
+                optionId: optionId
+              }]
+            });
+          }
+        }
+      } else if ((question === null || question === void 0 ? void 0 : question.answer_type) === "checkboxes") {
+        const options = tempAnswers[`${question === null || question === void 0 ? void 0 : question.id}`];
+
+        if (!options || Array.isArray(options) && !options[0]) {
+          tempAnswers = _objectSpread(_objectSpread({}, state), {}, {
+            [`${question === null || question === void 0 ? void 0 : question.id}`]: [{
+              optionId: optionId
+            }]
+          });
+        }
+
+        if (options && Array.isArray(options)) {
+          let includes = false;
+          options === null || options === void 0 ? void 0 : options.forEach(option => {
+            if ((option === null || option === void 0 ? void 0 : option.optionId) == optionId) {
+              includes = true;
+            }
+          });
+
+          if (includes) {
+            tempAnswers = _objectSpread(_objectSpread({}, state), {}, {
+              [`${question === null || question === void 0 ? void 0 : question.id}`]: options === null || options === void 0 ? void 0 : options.filter(option => {
+                return (option === null || option === void 0 ? void 0 : option.optionId) != optionId;
+              })
+            });
+          } else {
+            tempAnswers = _objectSpread(_objectSpread({}, state), {}, {
+              [`${question === null || question === void 0 ? void 0 : question.id}`]: [...options, {
+                optionId: optionId
+              }]
+            });
+          }
+        }
+      } else if ((question === null || question === void 0 ? void 0 : question.answer_type) === "short_paragraph") {
+        if (!text) return _objectSpread({}, tempAnswers);
+        tempAnswers = _objectSpread(_objectSpread({}, state), {}, {
+          [`${question === null || question === void 0 ? void 0 : question.id}`]: [{
+            optionId: optionId,
+            text: text
+          }]
+        });
       }
 
-      return "#209434";
-    },
-    opacity: 1,
-    width: props => {
-      const {
-        percentage
-      } = props;
-      return `${percentage}%`;
+      return _objectSpread({}, tempAnswers);
+    });
+  };
+
+  const goToNextQuestion = () => {
+    if (currentQuestionIndex >= (questions === null || questions === void 0 ? void 0 : questions.length) - 1) return;
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  };
+
+  const goToPreviousQuestion = () => {
+    if (currentQuestionIndex <= 0) return;
+    setCurrentQuestionIndex(currentQuestionIndex - 1);
+  };
+
+  const showPrevious = currentQuestionIndex != 0;
+  const showNext = currentQuestionIndex < (questions === null || questions === void 0 ? void 0 : questions.length) - 1;
+
+  function getProgress() {
+    if ((questions === null || questions === void 0 ? void 0 : questions.length) == 0) return 100;
+    return (currentQuestionIndex + 1) * 100 / (questions === null || questions === void 0 ? void 0 : questions.length);
+  }
+
+  async function handleSubmit() {
+    var _Object$values;
+
+    if (!answers) alert("Not enough answers to submit!");
+    setIsSubmitting(true);
+    const processedAnswers = [];
+    (_Object$values = Object.values(answers)) === null || _Object$values === void 0 ? void 0 : _Object$values.forEach(answer => {
+      if (answer && Array.isArray(answer)) {
+        answer === null || answer === void 0 ? void 0 : answer.forEach(option => {
+          if (option === null || option === void 0 ? void 0 : option.optionId) {
+            processedAnswers.push({
+              optionId: option === null || option === void 0 ? void 0 : option.optionId,
+              text: (option === null || option === void 0 ? void 0 : option.text) ? option === null || option === void 0 ? void 0 : option.text : ""
+            });
+          }
+        });
+      }
+    });
+    const response = await submitTest(test === null || test === void 0 ? void 0 : test.id, processedAnswers, user === null || user === void 0 ? void 0 : user.token);
+
+    if (response.error || response == "error") {
+      alert("Something went wrong. Please refresh and submit the test.");
+      return;
     }
+
+    setAnswersState({});
+    window.location.href = `/user/profile`; // window.location.href = `/test/${test?.id}/result`;
+
+    setIsSubmitting(false);
   }
-});
-const Time = Object(core_["withStyles"])({
-  root: {
-    color: "white",
-    opacity: 1
-  }
-})(core_["Typography"]);
+
+  return {
+    answers,
+    setAnswers,
+    progress,
+    currentQuestionIndex,
+    goToNextQuestion,
+    goToPreviousQuestion,
+    showPrevious,
+    showNext,
+    timeRemaining,
+    secondsRemaining,
+    showSubmitButton,
+    isSubmitting,
+    handleSubmit
+  };
+}
+
 function getTimeRemainingInSeconds(start_time, duration) {
   const totalDurationInSeconds = getSecondsFromDuration(duration);
   const start = new Date(`${start_time}`);
@@ -575,734 +1029,39 @@ function parseSecondsToClock(secondsRemaining) {
   const seconds = Math.floor(secondsRemaining % 60);
   return `${mins < 10 ? `0${mins}` : mins}:${seconds < 10 ? `0${seconds}` : seconds}`;
 }
-
-function getPercentage(start_time, duration) {
-  const totalDurationInSeconds = getSecondsFromDuration(duration);
-  const start = new Date(`${start_time}`);
-  const now = new Date();
-  const end = new Date(`${start_time}`);
-  end.setTime(start.getTime() + totalDurationInSeconds * 1000);
-  const percentage = (now.getTime() - start.getTime()) / (totalDurationInSeconds * 10);
-  return percentage + 1;
-}
-// CONCATENATED MODULE: ./UtilFunctions/getIsChecked.ts
-function getIsChecked(optionID, question, answers) {
-  if (answers && answers[question.id] && answers[question.id].includes(optionID)) {
-    return true;
-  }
-
-  return false;
-}
-// CONCATENATED MODULE: ./Components/Question/OptionContainer/OptionContainer.tsx
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/QuestionsProgressBar/QuestionsProgressBar.tsx
 
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-const OptionContainer = props => {
-  const {
-    answers,
-    setAnswers
-  } = Object(external_react_["useContext"])(AnswersContext);
-  const {
-    question
-  } = Object(external_react_["useContext"])(QuestionContext);
-  const {
-    0: isChecked,
-    1: setIsChecked
-  } = Object(external_react_["useState"])(getIsChecked(props.option.id, question, answers));
-  Object(external_react_["useEffect"])(() => {
-    // console.log(
-    //   `${props.option.title}:${props.option.id} is ${
-    //     getIsChecked(props.option.id, question, answers)
-    //       ? "checked"
-    //       : "unchecked"
-    //   }`
-    // );
-    setIsChecked(getIsChecked(props.option.id, question, answers));
-  }, [answers]);
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(OptionContainer_Container, {
-    onClick: () => setAnswers(props.option.id, question),
-    children: /*#__PURE__*/Object(external_react_["cloneElement"])(props.children, _objectSpread(_objectSpread({}, props), {}, {
-      isChecked
-    }))
-  });
-};
-
-/* harmony default export */ var OptionContainer_OptionContainer = (OptionContainer);
-const OptionContainer_Container = Object(core_["withStyles"])({
-  root: {
-    margin: 0,
-    padding: 0,
-    height: "100%"
-  }
-})(core_["Box"]);
-// EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__("Aiso");
-var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
-
-// CONCATENATED MODULE: ./Components/Question/Style1/Option/Option.tsx
-
-
-
-
-
-
-
-const Option = ({
-  option,
-  position,
-  isChecked
-}) => {
-  const classes = Option_useStyles({
-    isChecked
-  });
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-    className: classes.container,
-    children: [option.image && /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      className: classes.imageContainer,
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
-        alt: "image",
-        src: `${url_0["c" /* local_backend_url */]}/storage/${option.image.image_link}`,
-        height: "100%",
-        width: "100%",
-        layout: "responsive"
-      })
-    }), option.title && /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-      className: classes.textContainer,
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-        className: classes.optionButton
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-        children: `${String.fromCharCode(position + 64)}. ${option.title}`
-      })]
-    })]
-  });
-};
-
-/* harmony default export */ var Option_Option = (Option);
-const Option_useStyles = Object(core_["makeStyles"])({
-  container: {
-    display: "flex",
-    alignItems: "center",
-    marginBottom: "1rem",
-    cursor: "pointer"
-  },
-  imageContainer: {
-    height: 120,
-    width: 120,
-    borderRadius: 5,
-    marginRight: "2rem",
-    overflow: "hidden",
-    flexShrink: 0,
-    border: props => {
-      return props.isChecked ? "5px solid #209434" : "none";
-    }
-  },
-  textContainer: {
-    background: props => {
-      return props.isChecked ? "#209434" : "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box";
-    },
-    width: "100%",
-    padding: "1rem 1rem",
-    borderRadius: 10,
-    display: "flex",
-    alignItems: "center"
-  },
-  optionButton: {
-    padding: props => {
-      return props.isChecked ? "0.5rem" : "0.7rem";
-    },
-    backgroundColor: props => {
-      return props.isChecked ? "white" : "#17ABC2";
-    },
-    borderRadius: "50%",
-    overflow: "hidden",
-    marginRight: "1rem",
-    border: props => {
-      return props.isChecked ? "5px solid #17ABC2" : "none";
-    }
-  }
-});
-// CONCATENATED MODULE: ./Components/Question/Style1/Options/Options.tsx
-
-
-
-
-
-
-const Options = ({
-  options
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Options_Container, {
-    children: options && options.map((option, index) => {
-      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(OptionContainer_OptionContainer, {
-        option: option,
-        position: index + 1,
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Option_Option, {
-          option: option,
-          position: index + 1
-        })
-      }, option.id);
-    })
-  });
-};
-
-/* harmony default export */ var Options_Options = (Options);
-const Options_Container = Object(core_["withStyles"])({
-  root: {
-    marginTop: "2rem"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style1/Title/Title.tsx
-
-
-
-
-
-
-
-const Title = ({
-  title,
-  image,
-  position
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Title_Container, {
-    children: [image && /*#__PURE__*/Object(jsx_runtime_["jsx"])(ImageContainer, {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(image_default.a, {
-        alt: "image",
-        src: `${url_0["c" /* local_backend_url */]}/storage/${image.image_link}`,
-        height: "100%",
-        width: "100%",
-        layout: "responsive"
-      })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(TextContainer, {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-        children: `${position}.${title}`
-      })
-    })]
-  });
-};
-
-/* harmony default export */ var Title_Title = (Title);
-const Title_Container = Object(core_["withStyles"])({
-  root: {
-    width: "100%",
-    display: "flex"
-  }
-})(core_["Box"]);
-const ImageContainer = Object(core_["withStyles"])({
-  root: {
-    height: 100,
-    width: 100,
-    borderRadius: 5,
-    marginRight: "2rem",
-    overflow: "hidden",
-    flexShrink: 0
-  }
-})(core_["Box"]);
-const TextContainer = Object(core_["withStyles"])({
-  root: {
-    maxWidth: "75ch"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style1/Style1.tsx
-
-
-
-
-
-
-
-const Style1 = ({
-  question,
-  position
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Style1_Container, {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Title_Title, {
-      title: question.question,
-      image: question.image,
-      position: position
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Options_Options, {
-      options: question.options
-    })]
-  });
-};
-
-/* harmony default export */ var Style1_Style1 = (Style1);
-const Style1_Container = Object(core_["withStyles"])({
-  root: {
-    display: "flex",
-    flexDirection: "column"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style2/Option/Option.tsx
-
-
-
-
-
-const Option_Option_Option = ({
-  option,
-  position,
-  isChecked
-}) => {
-  const classes = Option_Option_useStyles({
-    isChecked
+function QuestionsProgressBar({
+  progress
+}) {
+  const classes = QuestionsProgressBar_useStyles({
+    progress
   });
   return /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-    className: classes.container,
-    children: option.title && /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-      className: classes.textContainer,
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-        className: classes.optionButton
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-        children: `${String.fromCharCode(position + 64)}. ${option.title}`
-      })]
+    className: classes === null || classes === void 0 ? void 0 : classes.container,
+    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+      className: classes === null || classes === void 0 ? void 0 : classes.progress
     })
   });
-};
-
-/* harmony default export */ var Style2_Option_Option = (Option_Option_Option);
-const Option_Option_useStyles = Object(core_["makeStyles"])({
+}
+const QuestionsProgressBar_useStyles = Object(core_["makeStyles"])({
   container: {
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    margin: "0.3rem 0rem",
-    marginBottom: "2rem",
-    width: "100%"
-  },
-  textContainer: {
-    background: props => {
-      return props.isChecked ? "#209434" : "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box";
-    },
     width: "100%",
-    padding: "1rem 1rem",
-    borderRadius: 10,
-    display: "flex",
-    alignItems: "center"
+    backgroundColor: "#d7d7dc",
+    margin: 0
   },
-  optionButton: {
-    padding: props => {
-      return props.isChecked ? "0.5rem" : "0.7rem";
+  progress: {
+    width: ({
+      progress
+    }) => {
+      return `${progress}%`;
     },
-    backgroundColor: props => {
-      return props.isChecked ? "white" : "#17ABC2";
-    },
-    borderRadius: "50%",
-    overflow: "hidden",
-    marginRight: "1rem",
-    border: props => {
-      return props.isChecked ? "5px solid #17ABC2" : "none";
-    }
+    padding: "0.5rem 0",
+    transition: "width 0.5s ease-in-out",
+    background: "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box"
   }
 });
-const Option_Container = Object(core_["withStyles"])({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    margin: "0.3rem 0rem",
-    marginBottom: "2rem",
-    width: "100%"
-  }
-})(core_["Box"]);
-const Option_TextContainer = Object(core_["withStyles"])({
-  root: {
-    background: "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box",
-    width: "100%",
-    padding: "1rem 1rem",
-    borderRadius: 10,
-    display: "flex",
-    alignItems: "center"
-  }
-})(core_["Box"]);
-const OptionButton = Object(core_["withStyles"])({
-  root: {
-    padding: "0.7rem",
-    backgroundColor: "#17ABC2",
-    borderRadius: "50%",
-    overflow: "hidden",
-    marginRight: "1rem"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style2/Options/Options.tsx
-
-
-
-
-
-
-const Options_Options_Options = ({
-  options
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {
-    children: options && options.map((option, index) => {
-      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(OptionContainer_OptionContainer, {
-        option: option,
-        position: index + 1,
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style2_Option_Option, {
-          option: option,
-          position: index + 1
-        }, option.id)
-      }, option.id);
-    })
-  });
-};
-
-/* harmony default export */ var Style2_Options_Options = (Options_Options_Options);
-// CONCATENATED MODULE: ./Components/Question/Style2/Title/Title.tsx
-
-
-
-
-const Title_Title_Title = ({
-  title,
-  image,
-  position
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Title_Title_Container, {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Title_TextContainer, {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-        children: `${position}.${title}`
-      })
-    })
-  });
-};
-
-/* harmony default export */ var Style2_Title_Title = (Title_Title_Title);
-const Title_Title_Container = Object(core_["withStyles"])({
-  root: {
-    width: "100%",
-    display: "flex",
-    marginBottom: "2rem"
-  }
-})(core_["Box"]);
-const Title_TextContainer = Object(core_["withStyles"])({
-  root: {
-    maxWidth: "75ch"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style2/Style2.tsx
-
-
-
-
-
-
-
-const Style2 = ({
-  question,
-  position
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Style2_Container, {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Style2_Title_Title, {
-      title: question.question,
-      image: question.image,
-      position: position
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style2_Options_Options, {
-      options: question.options
-    })]
-  });
-};
-
-/* harmony default export */ var Style2_Style2 = (Style2);
-const Style2_Container = Object(core_["withStyles"])({
-  root: {
-    display: "flex",
-    flexDirection: "column"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style3/Option/Option.tsx
-
-
-
-
-
-
-const Style3_Option_Option_Option = ({
-  option,
-  position,
-  isChecked
-}) => {
-  const classes = Style3_Option_Option_useStyles({
-    isChecked
-  });
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-    className: classes.container,
-    children: [option.image && /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      className: classes.imageContainer,
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
-        alt: `${option.title}`,
-        src: `${url_0["c" /* local_backend_url */]}/storage/${option.image.image_link}`,
-        style: {
-          width: "100%",
-          height: "100%"
-        },
-        variant: "square"
-      })
-    }), option.title && /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      className: classes.textContainer,
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-        children: `${String.fromCharCode(position + 64)}. ${option.title}`
-      })
-    })]
-  });
-};
-
-/* harmony default export */ var Style3_Option_Option = (Style3_Option_Option_Option);
-const Style3_Option_Option_useStyles = Object(core_["makeStyles"])({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    maxWidth: "25vw",
-    minWidth: 200,
-    height: "100%",
-    cursor: "pointer",
-    background: "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box",
-    borderRadius: 10,
-    overflow: "hidden",
-    marginTop: "1rem",
-    ["@media (max-width: 600px)"]: {
-      maxWidth: "100%"
-    },
-    border: props => {
-      return props.isChecked ? "5px solid #209434" : "none";
-    }
-  },
-  imageContainer: {
-    width: "100%"
-  },
-  textContainer: {
-    textAlign: "center",
-    padding: "1rem 2rem"
-  }
-});
-// CONCATENATED MODULE: ./Components/Question/Style3/Options/Options.tsx
-
-
-
-
-
-
-const Style3_Options_Options_Options = ({
-  options
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Options_Options_Container, {
-    children: options && options.map((option, index) => {
-      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(OptionContainer_OptionContainer, {
-        option: option,
-        position: index + 1,
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style3_Option_Option, {
-          option: option,
-          position: index + 1
-        }, option.id)
-      }, option.id);
-    })
-  });
-};
-
-/* harmony default export */ var Style3_Options_Options = (Style3_Options_Options_Options);
-const Options_Options_Container = Object(core_["withStyles"])({
-  root: {
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style3/Title/Title.tsx
-
-
-
-
-const Style3_Title_Title_Title = ({
-  title,
-  image,
-  position
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style3_Title_Title_Container, {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Title_Title_TextContainer, {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-        variant: "h6",
-        children: `${position}.${title}`
-      })
-    })
-  });
-};
-
-/* harmony default export */ var Style3_Title_Title = (Style3_Title_Title_Title);
-const Style3_Title_Title_Container = Object(core_["withStyles"])({
-  root: {
-    width: "100%",
-    display: "flex"
-  }
-})(core_["Box"]);
-const Title_Title_TextContainer = Object(core_["withStyles"])({
-  root: {
-    maxWidth: "75ch"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Style3/Style3.tsx
-
-
-
-
-
-
-
-const Style3 = ({
-  question,
-  position
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Style3_Container, {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Style3_Title_Title, {
-      title: question.question,
-      image: question.image,
-      position: position
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style3_Options_Options, {
-      options: question.options
-    })]
-  });
-};
-
-/* harmony default export */ var Style3_Style3 = (Style3);
-const Style3_Container = Object(core_["withStyles"])({
-  root: {
-    display: "flex",
-    flexDirection: "column"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Question/Question.tsx
-
-
-
-
-
-
-
-
-
-const Question = ({
-  question,
-  position
-}) => {
-  let style = null;
-
-  switch (question.style) {
-    case 1:
-      style = /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style1_Style1, {
-        question: question,
-        position: position
-      });
-      break;
-
-    case 2:
-      style = /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style2_Style2, {
-        question: question,
-        position: position
-      });
-      break;
-
-    case 3:
-      style = /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style3_Style3, {
-        question: question,
-        position: position
-      });
-      break;
-
-    default:
-      style = /*#__PURE__*/Object(jsx_runtime_["jsx"])(Style1_Style1, {
-        question: question,
-        position: position
-      });
-      break;
-  }
-
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Question_Container, {
-      children: [question.answer_type === "checkboxes" && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-        variant: "caption",
-        children: "* More than one answer may be correct."
-      }), style]
-    })
-  });
-};
-
-/* harmony default export */ var Question_Question = (Question);
-const Question_Container = Object(core_["withStyles"])({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    padding: "2rem 5rem",
-    background: "transparent linear-gradient(180deg, #966BC2 0%, #437BBE6E 100%) 0% 0% no-repeat padding-box",
-    borderRadius: 20,
-    minHeight: 150,
-    marginBottom: "2rem",
-    width: "80%",
-    ["@media (max-width: 1000px)"]: {
-      width: "90%",
-      padding: "2rem 3rem"
-    },
-    ["@media (max-width: 800px)"]: {
-      width: "100%",
-      padding: "2rem 1rem"
-    }
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/Questions/Questions.tsx
-
-
-
-
-const QuestionContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
-
-const Questions = ({
-  questions
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Questions_Container, {
-    children: questions && questions.map((question, index) => {
-      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionContext.Provider, {
-        value: {
-          questionID: question.id,
-          answerType: question.answer_type,
-          question: question
-        },
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Question_Question, {
-          question: question,
-          position: index + 1
-        })
-      }, question.id);
-    })
-  });
-};
-
-/* harmony default export */ var Questions_Questions = (Questions);
-const Questions_Container = Object(core_["withStyles"])({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    padding: "2rem 4rem 0.5rem 4rem",
-    ["@media (max-width: 1000px)"]: {
-      padding: "2rem 2rem"
-    },
-    ["@media (max-width: 800px)"]: {
-      padding: "2rem 1rem"
-    }
-  }
-})(core_["Box"]);
 // EXTERNAL MODULE: external "@material-ui/core/styles"
 var styles_ = __webpack_require__("9Pu4");
 
@@ -1310,348 +1069,81 @@ var styles_ = __webpack_require__("9Pu4");
 var Button_ = __webpack_require__("Wh1t");
 var Button_default = /*#__PURE__*/__webpack_require__.n(Button_);
 
-// EXTERNAL MODULE: external "@material-ui/core/Dialog"
-var Dialog_ = __webpack_require__("fEgT");
-var Dialog_default = /*#__PURE__*/__webpack_require__.n(Dialog_);
+// CONCATENATED MODULE: ./Components/QuizTest/Submit/useSubmit.tsx
 
-// CONCATENATED MODULE: ./Components/QuizTest/Submit/Submit.tsx
-
-
-
-
-
-
-
-
-
-
-
-function SimpleDialog(props) {
-  const {
-    onClose,
-    open,
-    handleSubmit
-  } = props;
-  const {
-    0: isSubmitting,
-    1: setIsSubmitting
-  } = Object(external_react_["useState"])(false);
-
-  const handleClose = () => {
-    onClose();
-  };
-
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Dialog_default.a, {
-    onClose: handleClose,
-    "aria-labelledby": "simple-dialog-title",
-    open: open,
-    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(DialogueContaier, {
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit_Title, {
-        children: "Are you sure you want to submit the test?"
-      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ButtonsContainer, {
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(WarningButton, {
-          onClick: () => {
-            // if (!isSubmitting)
-            handleSubmit();
-            setIsSubmitting(true);
-          },
-          children: isSubmitting ? "Submitting..." : "Yes"
-        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button_default.a, {
-          onClick: handleClose,
-          children: "No"
-        })]
-      })]
-    })
-  });
-}
-
-const DialogueContaier = Object(styles_["withStyles"])({
-  root: {
-    padding: "2rem"
-  }
-})(core_["Box"]);
-const Submit_Title = Object(styles_["withStyles"])({
-  root: {
-    fontWeight: 600,
-    fontSize: "1.3rem",
-    margin: "1rem auto"
-  }
-})(core_["Box"]);
-const ButtonsContainer = Object(styles_["withStyles"])({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-around"
-  }
-})(core_["Box"]);
-const WarningButton = Object(styles_["withStyles"])({
-  root: {
-    backgroundColor: "red",
-    color: "white",
-    "&:hover": {
-      color: "red"
-    }
-  }
-})(Button_default.a);
-
-const Submit = ({
-  answers,
-  test_id,
-  setAnswersState,
-  secondsRemaining
-}) => {
-  const [user] = Object(useLocalState["a" /* default */])("user", "");
+function useSubmit() {
   const {
     0: open,
     1: setOpen
   } = Object(external_react_["useState"])(false);
 
-  const handleClickOpen = () => {
+  const handleOpen = () => {
     setOpen(true);
-  };
-
-  const handleSubmit = () => {
-    external_axios_default.a.post(`${url_0["c" /* local_backend_url */]}/api/quiz-test/answers/store`, {
-      test_id: test_id,
-      options: answers
-    }, {
-      headers: {
-        Accept: "Application/json",
-        Authorization: `Bearer ${user.token}`
-      }
-    }).then(response => {
-      console.log(response.data);
-      setAnswersState({});
-      window.location.href = "/user/profile";
-    }).catch(() => {});
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const ONE_SECOND = 1;
-  Object(external_react_["useEffect"])(() => {
-    if (secondsRemaining <= ONE_SECOND && answers) {
-      handleSubmit();
-    }
-  }, [secondsRemaining]);
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("br", {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(SubmitButton, {
-      variant: "outlined",
-      onClick: handleClickOpen,
-      children: "Submit"
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(SimpleDialog, {
-      open: open,
-      onClose: handleClose,
-      handleSubmit: handleSubmit
-    })]
-  });
-};
-
-/* harmony default export */ var Submit_Submit = (Submit);
-const SubmitButton = Object(styles_["withStyles"])({
-  root: {
-    color: "white",
-    border: "1px solid white",
-    marginBottom: "2rem"
-  }
-})(Button_default.a);
-// CONCATENATED MODULE: ./Components/QuizTest/QuizTest.tsx
-
-
-
-function QuizTest_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function QuizTest_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { QuizTest_ownKeys(Object(source), true).forEach(function (key) { QuizTest_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { QuizTest_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function QuizTest_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-
-
-
-
-const QuizIDContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
-const AnswersContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
-
-const QuizTest = ({
-  id,
-  status
-}) => {
-  var _test$quiz2;
-
-  const {
-    test,
-    isLoading,
-    isError
-  } = useStartTest(id, status);
-  const [user] = Object(useLocalState["a" /* default */])("user", "");
-  const [answers, setAnswersState] = Object(useLocalState["a" /* default */])(`${user.email}-quiz${id}-answers`, {});
-  const {
-    0: secondsRemaining,
-    1: setSecondsRemaining
-  } = Object(external_react_["useState"])(() => {
-    var _test$quiz;
-
-    if (!test) return 600;
-    return getTimeRemainingInSeconds(test === null || test === void 0 ? void 0 : test.created_at, test === null || test === void 0 ? void 0 : (_test$quiz = test.quiz) === null || _test$quiz === void 0 ? void 0 : _test$quiz.duration.toString());
-  });
-  if (isError) return /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
-    children: "Sorry some error occured. Please refresh the page."
-  });
-
-  const setAnswers = (optionID, question) => {
-    setAnswersState(state => {
-      let tempAnswers = QuizTest_objectSpread({}, state);
-
-      if (question.answer_type === "multiple_choice") {
-        const options = tempAnswers[`${question.id}`];
-
-        if (options && options.includes(optionID)) {
-          tempAnswers = QuizTest_objectSpread(QuizTest_objectSpread({}, state), {}, {
-            [`${question.id}`]: []
-          });
-        } else {
-          tempAnswers = QuizTest_objectSpread(QuizTest_objectSpread({}, state), {}, {
-            [`${question.id}`]: [optionID]
-          });
-        }
-      } else if (question.answer_type === "checkboxes") {
-        const options = tempAnswers[`${question.id}`];
-
-        if (options && options.includes(optionID)) {
-          tempAnswers = QuizTest_objectSpread(QuizTest_objectSpread({}, state), {}, {
-            [`${question.id}`]: options.filter(option => option != optionID)
-          });
-        } else if (options && !options.includes(optionID)) {
-          tempAnswers = QuizTest_objectSpread(QuizTest_objectSpread({}, state), {}, {
-            [`${question.id}`]: [...options, optionID]
-          });
-        } else {
-          tempAnswers = QuizTest_objectSpread(QuizTest_objectSpread({}, state), {}, {
-            [`${question.id}`]: [optionID]
-          });
-        }
-      }
-
-      return QuizTest_objectSpread({}, tempAnswers);
-    });
-  };
-
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizTest_Container, {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(PageTitle["a" /* default */], {
-      title: isLoading ? "Starting Test..." : test.quiz.title,
-      children: isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {})
-    }), test && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Timer_Timer, {
-      start_time: test.created_at,
-      duration: test === null || test === void 0 ? void 0 : (_test$quiz2 = test.quiz) === null || _test$quiz2 === void 0 ? void 0 : _test$quiz2.duration,
-      secondsRemaining: secondsRemaining,
-      setSecondsRemaining: setSecondsRemaining
-    }), test && !isLoading && (test === null || test === void 0 ? void 0 : test.quiz.test_questions) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(AnswersContext.Provider, {
-      value: {
-        answers,
-        setAnswers
-      },
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizIDContext.Provider, {
-        value: {
-          quizID: id
-        },
-        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(Questions_Questions, {
-          questions: test.quiz.test_questions
-        })
-      })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit_Submit, {
-      answers: answers,
-      test_id: test.id,
-      setAnswersState: setAnswersState,
-      secondsRemaining: secondsRemaining
-    })]
-  });
-};
-
-/* harmony default export */ var QuizTest_QuizTest = (QuizTest);
-const QuizTest_Container = Object(core_["withStyles"])({
-  root: {
-    width: "100vw",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    backgroundColor: "#5D00A5",
-    minHeight: "100vh",
-    color: "white"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/QuizTest/CheckTestStatus/RetakePrompt/RetakeDialogue/RetakeDialogue.tsx
-
-
-
-
-
-const RetakeDialogue = props => {
-  const {
-    onClose,
+  return {
     open,
-    handleSubmit
-  } = props;
-  const {
-    0: isSubmitting,
-    1: setIsSubmitting
-  } = Object(external_react_["useState"])(false);
-
-  const handleClose = () => {
-    onClose();
+    handleOpen,
+    handleClose
   };
+}
+// CONCATENATED MODULE: ./Components/QuizTest/Submit/SubmitDialog/SubmitDialog.tsx
 
+
+
+
+
+function SubmitDialog({
+  onClose,
+  open
+}) {
+  const {
+    isSubmitting,
+    handleSubmit
+  } = Object(external_react_["useContext"])(QuizTestStateContext);
   return /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Dialog"], {
-    onClose: handleClose,
-    "aria-labelledby": "Retake Dialog",
+    onClose: onClose,
+    "aria-labelledby": "simple-dialog-title",
     open: open,
-    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(RetakeDialogue_DialogueContaier, {
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeDialogue_Title, {
-        children: "Are you sure you want to retake the test?"
-      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(WarningText, {
-        children: "*Your previous answers will be deleted if you retake the test."
-      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(RetakeDialogue_ButtonsContainer, {
-        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeDialogue_WarningButton, {
-          onClick: () => {
-            setIsSubmitting(true);
-            handleSubmit();
-          },
-          children: isSubmitting ? "Loading..." : "Retake"
+    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(DialogueContaier, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(SubmitDialog_Title, {
+        children: "Are you sure you want to submit the test?"
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ButtonsContainer, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(WarningButton, {
+          onClick: handleSubmit,
+          children: isSubmitting ? "Submitting..." : "Yes"
         }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Button"], {
-          onClick: handleClose,
+          onClick: onClose,
           children: "No"
         })]
       })]
     })
   });
-};
-
-/* harmony default export */ var RetakeDialogue_RetakeDialogue = (RetakeDialogue);
-const RetakeDialogue_DialogueContaier = Object(core_["withStyles"])({
+}
+const DialogueContaier = Object(core_["withStyles"])({
   root: {
     padding: "2rem"
   }
 })(core_["Box"]);
-const RetakeDialogue_Title = Object(core_["withStyles"])({
+const SubmitDialog_Title = Object(core_["withStyles"])({
   root: {
     fontWeight: 600,
     fontSize: "1.3rem",
     margin: "1rem auto"
   }
 })(core_["Box"]);
-const RetakeDialogue_ButtonsContainer = Object(core_["withStyles"])({
+const ButtonsContainer = Object(core_["withStyles"])({
   root: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-around"
   }
 })(core_["Box"]);
-const RetakeDialogue_WarningButton = Object(core_["withStyles"])({
+const WarningButton = Object(core_["withStyles"])({
   root: {
     backgroundColor: "red",
     color: "white",
@@ -1660,211 +1152,242 @@ const RetakeDialogue_WarningButton = Object(core_["withStyles"])({
     }
   }
 })(core_["Button"]);
-const WarningText = Object(core_["withStyles"])({
-  root: {
-    fontSize: "0.8rem",
-    fontWeight: 600,
-    marginBottom: "1rem",
-    color: "red"
-  }
-})(core_["Box"]);
-// CONCATENATED MODULE: ./Components/QuizTest/CheckTestStatus/RetakePrompt/RetakePrompt.tsx
+// CONCATENATED MODULE: ./Components/QuizTest/Submit/Submit.tsx
 
 
 
 
 
 
-const RetakePrompt = ({
-  quizID,
-  percentage,
-  quiz,
-  setShowTest
-}) => {
+
+function Submit() {
   const {
-    0: promptOpen,
-    1: setPromptOpen
-  } = Object(external_react_["useState"])(false);
-
-  const handleClickRetake = () => {
-    setPromptOpen(true);
-  };
-
-  const handleClose = () => {
-    setPromptOpen(false);
-  };
-
-  const handleSubmit = () => {
-    setShowTest(true);
-    handleClose();
-  };
-
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(RetakePrompt_Container, {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakePrompt_ImageContainer, {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
-        alt: `${quiz.title}`,
-        src: `${quiz.image_link}`,
-        style: {
-          height: "90px",
-          width: "90px"
-        }
-      })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(TitleAndScoreContainer, {
-      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakePrompt_Title, {
-        children: `You have already attempted "${quiz.title}" and attained ${percentage.toFixed(2)}% marks.`
-      }), quiz.retake && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button, {
-        onClick: handleClickRetake,
-        children: "Retake Test"
-      })]
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeDialogue_RetakeDialogue, {
-      open: promptOpen,
-      onClose: handleClose,
-      handleSubmit: handleSubmit
+    open,
+    handleOpen,
+    handleClose
+  } = useSubmit();
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])("br", {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(SubmitButton, {
+      variant: "outlined",
+      fullWidth: true,
+      onClick: handleOpen,
+      children: "Submit"
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(SubmitDialog, {
+      open: open,
+      onClose: handleClose
     })]
   });
-};
+}
+const SubmitButton = Object(styles_["withStyles"])({
+  root: {
+    color: "#0f3a86",
+    border: "1px solid #0f3a86",
+    marginBottom: "2rem",
+    marginTop: "0.5rem"
+  }
+})(Button_default.a);
+// CONCATENATED MODULE: ./Components/QuizTest/Questions/Questions.tsx
 
-/* harmony default export */ var RetakePrompt_RetakePrompt = (RetakePrompt);
-const RetakePrompt_Container = Object(core_["withStyles"])({
+
+
+
+
+
+
+
+
+const QuizTestStateContext = /*#__PURE__*/Object(external_react_["createContext"])(null);
+function Questions({
+  quizTitle,
+  questions,
+  isAssessment,
+  quizId,
+  test,
+  duration
+}) {
+  const {
+    answers,
+    setAnswers,
+    currentQuestionIndex,
+    goToNextQuestion,
+    goToPreviousQuestion,
+    progress,
+    showPrevious,
+    showNext,
+    timeRemaining,
+    secondsRemaining,
+    showSubmitButton,
+    isSubmitting,
+    handleSubmit
+  } = useTestState(quizId, questions, test, duration);
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizTestStateContext.Provider, {
+    value: {
+      answers,
+      setAnswers,
+      currentQuestionIndex,
+      goToNextQuestion,
+      goToPreviousQuestion,
+      showPrevious,
+      showNext,
+      questionCount: questions === null || questions === void 0 ? void 0 : questions.length,
+      timeRemaining,
+      secondsRemaining,
+      isSubmitting,
+      handleSubmit
+    },
+    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(OuterContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuestionsContainer, {
+        children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Header, {
+          children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
+            variant: "h6",
+            color: "inherit",
+            children: `${quizTitle} ${isAssessment ? "assessment" : "quiz"}`
+          })
+        }), questions && (questions === null || questions === void 0 ? void 0 : questions.map((question, index) => {
+          return /*#__PURE__*/Object(jsx_runtime_["jsx"])(SingleQuestion, {
+            index: index,
+            question: question
+          }, question === null || question === void 0 ? void 0 : question.id);
+        })), /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionsProgressBar, {
+          progress: progress
+        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionBottomBar, {})]
+      }), showSubmitButton && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Submit, {})]
+    })
+  });
+}
+const QuestionsContainer = Object(core_["withStyles"])({
   root: {
-    width: "70%",
-    padding: "2rem 1rem",
-    display: "flex",
-    alignItems: "center",
-    color: "white",
-    marginTop: "2rem",
+    backgroundColor: "inherit",
+    width: "100%",
     borderRadius: 5,
-    minHeight: 100,
-    background: "transparent linear-gradient(180deg, #966BC2 0%, #437BBE6E 100%) 0% 0% no-repeat padding-box"
-  }
-})(core_["Box"]);
-const RetakePrompt_ImageContainer = Object(core_["withStyles"])({
-  root: {
-    margin: "0rem 1rem 0rem 3rem"
-  }
-})(core_["Box"]);
-const TitleAndScoreContainer = Object(core_["withStyles"])({
-  root: {
+    overflow: "hidden",
+    boxShadow: "0px 0px 8px 0px #2b579a",
     display: "flex",
     flexDirection: "column"
   }
 })(core_["Box"]);
-const RetakePrompt_Title = Object(core_["withStyles"])({
+const OuterContainer = Object(core_["withStyles"])({
   root: {
-    fontWeight: 700,
-    fontSize: "1.2rem"
+    width: "min(97%, 700px)",
+    display: "flex",
+    flexDirection: "column"
   }
 })(core_["Box"]);
-const Button = Object(core_["withStyles"])({
+const Header = Object(core_["withStyles"])({
   root: {
-    maxWidth: 400,
-    marginTop: 20,
-    cursor: "pointer",
     width: "100%",
-    padding: "10px 0px",
-    borderRadius: 10,
     textAlign: "center",
-    background: "transparent linear-gradient(180deg, #995FD4 0%, #1F29356E 100%) 0% 0% no-repeat padding-box"
+    color: "white",
+    padding: "0.5rem 0",
+    background: "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box",
+    textTransform: "capitalize"
   }
 })(core_["Box"]);
-// CONCATENATED MODULE: ./Components/QuizTest/CheckTestStatus/CheckTestStatus.tsx
+// CONCATENATED MODULE: ./repository/QuizTest/startTest.tsx
+
+
+async function startTest(quizId, token) {
+  if (!quizId) return;
+  const quizStatus = await external_axios_default.a.post(`${url["a" /* backend_url */]}/api/quiz-test/start`, {
+    quiz_id: quizId
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then(response => {
+    return response.data;
+  });
+  return quizStatus;
+}
+// CONCATENATED MODULE: ./Components/QuizTest/useQuizTest.tsx
 
 
 
-
-
-
-
-
-
-
-
-
-const CheckTestStatus = ({
-  quizID
-}) => {
-  const {
-    0: status,
-    1: setStatus
-  } = Object(external_react_["useState"])("unknown");
-  const {
-    0: percentage,
-    1: setPercentage
-  } = Object(external_react_["useState"])(0);
-  const {
-    0: quiz,
-    1: setQuiz
-  } = Object(external_react_["useState"])(null);
+function useQuizTest(quizId) {
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
   const {
     0: isLoading,
     1: setIsLoading
-  } = Object(external_react_["useState"])(true);
-  const [user] = Object(useLocalState["a" /* default */])("user", "");
-  const {
-    0: showTest,
-    1: setShowTest
   } = Object(external_react_["useState"])(false);
-  const containerRef = Object(external_react_["useRef"])(null);
+  const {
+    0: testStatus,
+    1: setTestStatus
+  } = Object(external_react_["useState"])("");
+  const {
+    0: quiz,
+    1: setQuiz
+  } = Object(external_react_["useState"])();
+  const {
+    0: test,
+    1: setTest
+  } = Object(external_react_["useState"])();
   Object(external_react_["useEffect"])(() => {
-    containerRef.current.scrollIntoView({
-      behaviour: "smooth"
-    });
+    if (!user || !(user === null || user === void 0 ? void 0 : user.token)) return;
+    fetchStartTest();
   }, []);
-  Object(external_react_["useEffect"])(() => {
-    external_axios_default.a.get(`${url_0["c" /* local_backend_url */]}/api/quiz-test/${quizID}/check-status`, {
-      headers: {
-        Accept: "Application/json",
-        Authorization: `Bearer ${user.token}`
-      }
-    }).then(response => {
-      setStatus(response.data.status);
 
-      if (response.data.status == "retake") {
-        setPercentage(response.data.percentage);
-        setQuiz(response.data.quiz);
-      } else if (response.data.status == "ongoing") {
-        setStatus("ongoing");
-        setShowTest(true);
-      } else if (response.data.status == "new_test") {
-        setStatus("new_test");
-        setShowTest(true);
-      }
+  const fetchStartTest = async () => {
+    setIsLoading(true);
+    const response = await startTest(quizId, user === null || user === void 0 ? void 0 : user.token);
+    setTestStatus(response === null || response === void 0 ? void 0 : response.status);
+    setQuiz(response === null || response === void 0 ? void 0 : response.quiz);
+    setTest(response === null || response === void 0 ? void 0 : response.test);
+    setIsLoading(false);
+  };
 
-      setIsLoading(false);
-    });
-  }, []);
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(jsx_runtime_["Fragment"], {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Topbar["a" /* default */], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      ref: containerRef
-    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(CheckTestStatus_Container, {
-      children: [status == "unknown" && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
-        children: "Some Error Occured. Please Refresh or Go Back."
-      }), status == "retake" && !isLoading && !showTest && /*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakePrompt_RetakePrompt, {
-        quizID: quizID,
-        percentage: percentage,
-        quiz: quiz,
-        setShowTest: () => setShowTest(true)
-      }), showTest && !isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizTest_QuizTest, {
-        id: quizID,
-        status: status
-      })]
+  return {
+    isLoading,
+    testStatus,
+    quiz,
+    test
+  };
+}
+// CONCATENATED MODULE: ./Components/QuizTest/QuizTest.tsx
+
+
+
+
+
+function QuizTest({
+  quizId
+}) {
+  const {
+    quiz,
+    test,
+    testStatus,
+    isLoading
+  } = useQuizTest(quizId);
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuizTest_Container, {
+    children: [isLoading && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {}), testStatus === "highest_attempt_count_reached" && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
+      variant: "h6",
+      color: "error",
+      children: "You have reached the highest attempt count."
+    }), !isLoading && testStatus !== "highest_attempt_count_reached" && quiz && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Questions, {
+      questions: quiz === null || quiz === void 0 ? void 0 : quiz.questions,
+      quizTitle: quiz === null || quiz === void 0 ? void 0 : quiz.title,
+      isAssessment: (quiz === null || quiz === void 0 ? void 0 : quiz.assessment) !== null ? quiz.assessment : false,
+      quizId: quiz === null || quiz === void 0 ? void 0 : quiz.id,
+      duration: quiz === null || quiz === void 0 ? void 0 : quiz.duration,
+      test: test
     })]
   });
-};
-
-/* harmony default export */ var CheckTestStatus_CheckTestStatus = (CheckTestStatus);
-const CheckTestStatus_Container = Object(core_["withStyles"])({
+}
+const QuizTest_Container = Object(core_["withStyles"])({
   root: {
-    width: "100vw",
     display: "flex",
+    width: "100vw",
+    minHeight: "calc(100vh - 100px)",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "#5D00A5",
-    minHeight: "100vh",
-    color: "white"
+    padding: "5rem 0rem 0rem 0rem",
+    backgroundColor: "#f0f2f5"
   }
 })(core_["Box"]);
 // CONCATENATED MODULE: ./pages/test/quiz/[id].tsx
+
+
+
+
 
 
 
@@ -1874,24 +1397,27 @@ const getServerSideProps = async context => {
   } = context.params;
   return {
     props: {
-      id
+      quizId: id
     }
   };
 };
 
-const Post = ({
-  id
+const Page = ({
+  quizId
 }) => {
   const [user] = Object(useLocalState["a" /* default */])("user", "");
-  if (!user || !user.token) return /*#__PURE__*/Object(jsx_runtime_["jsx"])("p", {
-    children: "Unauthorized access"
-  });
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(CheckTestStatus_CheckTestStatus, {
-    quizID: id
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(jsx_runtime_["Fragment"], {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Topbar["a" /* default */], {}), !user ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
+      variant: "h6",
+      color: "error",
+      children: "Please Login To Continue"
+    }) : /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuizTest, {
+      quizId: quizId
+    })]
   });
 };
 
-/* harmony default export */ var _id_ = __webpack_exports__["default"] = (Post);
+/* harmony default export */ var _id_ = __webpack_exports__["default"] = (Page);
 
 /***/ }),
 
@@ -2507,63 +2033,7 @@ const setCookie = (key, value) => {
 const getCookie = key => {
   const result = js_cookie__WEBPACK_IMPORTED_MODULE_1___default.a.get(JSON.stringify(key));
   return result ? JSON.parse(result) : result;
-}; // function useLocalState<T>(key: string, defaultValue: T) {
-//   const [value, setValue] = useState(() => {
-//     if (isLocalStorageWorking() == false) {
-//       return getCookie(key);
-//     }
-//     let result = null;
-//     if (process.browser) {
-//       const storedValue = localStorage.getItem(key)
-//         ? JSON.parse(localStorage.getItem(key))
-//         : localStorage.getItem(key);
-//       if (!storedValue) {
-//         result = defaultValue;
-//       }
-//       result = storedValue === null ? defaultValue : storedValue;
-//     } else {
-//       result = defaultValue;
-//     }
-//     return result;
-//   });
-//   useEffect(() => {
-//     const listener = (e) => {
-//       if (e.storageArea === localStorage && e.key === key) {
-//         setValue(JSON.parse(e.newValue));
-//       }
-//     };
-//     window.addEventListener("storage", listener);
-//     return () => {
-//       window.removeEventListener("storage", listener);
-//     };
-//   }, [key]);
-//   const setValueInLocalStorage = (newValue) => {
-//     setValue((currentValue) => {
-//       let value = null;
-//       if (typeof newValue === "function") {
-//         setCookie(key, newValue(currentValue));
-//         value = newValue(currentValue);
-//       } else {
-//         setCookie(key, newValue);
-//         value = newValue;
-//       }
-//       // const result =
-//       //   typeof newValue === "function" ? newValue(currentValue) : newValue;
-//       // localStorage.setItem(key, JSON.stringify(result));
-//       return value;
-//     });
-//   };
-//   useEffect(() => {
-//     const storedValue = JSON.parse(localStorage.getItem(key));
-//     if (storedValue) {
-//       setValueInLocalStorage(storedValue);
-//     } else {
-//       setValueInLocalStorage(value);
-//     }
-//   }, []);
-//   return [value, setValueInLocalStorage];
-// }
-// export default useLocalState;
+};
 
 /***/ }),
 
@@ -2585,6 +2055,19 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
+
+/***/ }),
+
+/***/ "TrRe":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  normal: 50,
+  high: 100,
+  higher: 150,
+  highest: 200
+});
 
 /***/ }),
 
@@ -4367,13 +3850,6 @@ Router.events = (0, _mitt.default)();
 
 /***/ }),
 
-/***/ "fEgT":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/Dialog");
-
-/***/ }),
-
 /***/ "fcRV":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4868,7 +4344,11 @@ const GoogleLogo = () => {
     })]
   });
 };
+// EXTERNAL MODULE: ./theme/zIndexes.tsx
+var zIndexes = __webpack_require__("TrRe");
+
 // CONCATENATED MODULE: ./Components/Layout/Topbar/Topbar.tsx
+
 
 
 
@@ -4889,7 +4369,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     alignItems: "center",
     paddingLeft: "2.5%",
     paddingRight: "2.5%",
-    zIndex: 4000,
+    zIndex: zIndexes["a" /* default */].normal,
     background: "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box"
   },
   placeholder: {

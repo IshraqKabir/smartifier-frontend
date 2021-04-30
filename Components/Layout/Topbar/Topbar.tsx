@@ -4,6 +4,7 @@ import { LinearProgress, makeStyles } from "@material-ui/core";
 import Image from "next/image";
 import NavItems from "./NavItems/NavItems";
 import Login from "./NavItems/NavItem/Login/Login";
+import zIndexes from "../../../theme/zIndexes";
 
 const useStyles = makeStyles({
   topbarContainer: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     paddingLeft: "2.5%",
     paddingRight: "2.5%",
-    zIndex: 4000,
+    zIndex: zIndexes.normal,
     background:
       "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box",
   },

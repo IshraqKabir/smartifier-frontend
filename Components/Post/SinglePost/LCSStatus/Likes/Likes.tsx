@@ -2,6 +2,7 @@ import { Avatar, Box, Snackbar, withStyles } from "@material-ui/core";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useLocalState from "../../../../../custom-hooks/useLocalState";
+import useLoginAlert from "../../../../../custom-hooks/useLoginAlert";
 import IPost from "../../../../../Models/IPost";
 import { backend_url } from "../../../../../url";
 
@@ -11,7 +12,7 @@ interface IProps {
 
 const Likes: React.FC<IProps> = ({ post }) => {
   const [user] = useLocalState("user", "");
-  const [showLoginAlert, setShowLoginAlert] = useState<boolean>(false);
+  const { showLoginAlert, handleClickWhenLoggedOut } = useLoginAlert();
   const [isLikedByUser, setIsLikedByUser] = useState<boolean>(false);
   const [likesCount, setLikesCount] = useState<number>(
     post?.likes_count ? post?.likes_count : 0
@@ -19,11 +20,7 @@ const Likes: React.FC<IProps> = ({ post }) => {
 
   const handleClick = () => {
     if (!user || !user.token) {
-      setShowLoginAlert(true);
-      setTimeout(() => {
-        setShowLoginAlert(false);
-      }, 3000);
-
+      handleClickWhenLoggedOut();
       return;
     }
 

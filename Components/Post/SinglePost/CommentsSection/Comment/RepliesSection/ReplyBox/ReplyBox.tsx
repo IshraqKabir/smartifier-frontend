@@ -6,14 +6,14 @@ import {
   Snackbar,
   withStyles,
 } from "@material-ui/core";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
 import axios from "axios";
 import useLocalState from "../../../../../../../custom-hooks/useLocalState";
 import { backend_url } from "../../../../../../../url";
 import IPostCommentReply from "../../../../../../../Models/IPostCommentReply";
-import IPostComment from "../../../../../../../Models/IPostComment";
+import useLoginAlert from "../../../../../../../custom-hooks/useLoginAlert";
 
 interface IProps {
   commentId: string;
@@ -27,19 +27,19 @@ const ReplyBox: React.FC<IProps> = ({ commentId, setReplies, setComment }) => {
   const [user] = useLocalState("user", "");
   const [reply, setReply] = useState<string>("");
   const [isSending, setIsSending] = useState<boolean>(false);
-  const [showLoginAlert, setShowLoginAlert] = useState<boolean>(false);
+  const { showLoginAlert, handleClickWhenLoggedOut } = useLoginAlert();
 
   const classes = useStyles({ reply });
 
   const handleSubmit = () => {
     if (!user || !user.token) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
     if (reply.length > MAX_CHARACTER_COUNT) return;
     if (reply.length == 0) {
-      showAlert();
+      handleClickWhenLoggedOut();
       return;
     }
 
@@ -79,13 +79,6 @@ const ReplyBox: React.FC<IProps> = ({ commentId, setReplies, setComment }) => {
 
         setReply("");
       });
-  };
-
-  const showAlert = () => {
-    setShowLoginAlert(true);
-    setTimeout(() => {
-      setShowLoginAlert(false);
-    }, 3000);
   };
 
   return (

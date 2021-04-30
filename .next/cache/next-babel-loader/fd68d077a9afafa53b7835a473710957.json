@@ -1,0 +1,1 @@
+{"ast":null,"code":"export default {\n  normal: 50,\n  high: 100,\n  higher: 150,\n  highest: 200\n};","map":null,"metadata":{},"sourceType":"module"}

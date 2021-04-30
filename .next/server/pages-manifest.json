@@ -11,7 +11,7 @@
   "/": "pages/index.html",
   "/quizzes": "pages/quizzes.js",
   "/share/fb/quizzes/[id]": "pages/share/fb/quizzes/[id].js",
-  "/test/[id]/result": "pages/test/[id]/result.html",
+  "/test/[id]/result": "pages/test/[id]/result.js",
   "/test/quiz/[id]": "pages/test/quiz/[id].js",
   "/user/profile": "pages/user/profile.html",
   "/_error": "pages/_error.js",

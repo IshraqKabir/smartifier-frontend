@@ -1036,63 +1036,7 @@ const setCookie = (key, value) => {
 const getCookie = key => {
   const result = js_cookie__WEBPACK_IMPORTED_MODULE_1___default.a.get(JSON.stringify(key));
   return result ? JSON.parse(result) : result;
-}; // function useLocalState<T>(key: string, defaultValue: T) {
-//   const [value, setValue] = useState(() => {
-//     if (isLocalStorageWorking() == false) {
-//       return getCookie(key);
-//     }
-//     let result = null;
-//     if (process.browser) {
-//       const storedValue = localStorage.getItem(key)
-//         ? JSON.parse(localStorage.getItem(key))
-//         : localStorage.getItem(key);
-//       if (!storedValue) {
-//         result = defaultValue;
-//       }
-//       result = storedValue === null ? defaultValue : storedValue;
-//     } else {
-//       result = defaultValue;
-//     }
-//     return result;
-//   });
-//   useEffect(() => {
-//     const listener = (e) => {
-//       if (e.storageArea === localStorage && e.key === key) {
-//         setValue(JSON.parse(e.newValue));
-//       }
-//     };
-//     window.addEventListener("storage", listener);
-//     return () => {
-//       window.removeEventListener("storage", listener);
-//     };
-//   }, [key]);
-//   const setValueInLocalStorage = (newValue) => {
-//     setValue((currentValue) => {
-//       let value = null;
-//       if (typeof newValue === "function") {
-//         setCookie(key, newValue(currentValue));
-//         value = newValue(currentValue);
-//       } else {
-//         setCookie(key, newValue);
-//         value = newValue;
-//       }
-//       // const result =
-//       //   typeof newValue === "function" ? newValue(currentValue) : newValue;
-//       // localStorage.setItem(key, JSON.stringify(result));
-//       return value;
-//     });
-//   };
-//   useEffect(() => {
-//     const storedValue = JSON.parse(localStorage.getItem(key));
-//     if (storedValue) {
-//       setValueInLocalStorage(storedValue);
-//     } else {
-//       setValueInLocalStorage(value);
-//     }
-//   }, []);
-//   return [value, setValueInLocalStorage];
-// }
-// export default useLocalState;
+};
 
 /***/ }),
 
@@ -1114,6 +1058,19 @@ function _interopRequireDefault(obj) {
 }
 
 module.exports = _interopRequireDefault;
+
+/***/ }),
+
+/***/ "TrRe":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  normal: 50,
+  high: 100,
+  higher: 150,
+  highest: 200
+});
 
 /***/ }),
 
@@ -3934,7 +3891,11 @@ const GoogleLogo = () => {
     })]
   });
 };
+// EXTERNAL MODULE: ./theme/zIndexes.tsx
+var zIndexes = __webpack_require__("TrRe");
+
 // CONCATENATED MODULE: ./Components/Layout/Topbar/Topbar.tsx
+
 
 
 
@@ -3955,7 +3916,7 @@ const Topbar_useStyles = Object(core_["makeStyles"])({
     alignItems: "center",
     paddingLeft: "2.5%",
     paddingRight: "2.5%",
-    zIndex: 4000,
+    zIndex: zIndexes["a" /* default */].normal,
     background: "transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box"
   },
   placeholder: {

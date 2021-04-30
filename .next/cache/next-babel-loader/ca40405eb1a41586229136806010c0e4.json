@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["import IQuiz from \"./IQuiz\";\n\nexport default interface ITest {\n  id: number;\n  created_at: string;\n}\n"]},"metadata":{},"sourceType":"module"}
