@@ -43,7 +43,7 @@ const Container = withStyles({
     minHeight: "calc(100vh - 100px)",
     flexDirection: "column",
     alignItems: "center",
-    padding: "5rem 0rem",
+    padding: "5rem 0rem 0rem 0rem",
     backgroundColor: "#f0f2f5",
   },
 })(Box);

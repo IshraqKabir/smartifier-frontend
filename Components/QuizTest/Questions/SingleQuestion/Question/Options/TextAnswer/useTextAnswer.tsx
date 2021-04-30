@@ -8,9 +8,15 @@ export default function useTextAnswer(
   const [text, setText] = useState(getTextValue());
 
   function getTextValue(): string {
-    if (!answers) return "";
+    if (
+      !answers ||
+      !answers[`${question?.id}`] ||
+      !answers[`${question?.id}`][0]
+    ) {
+      return "";
+    }
 
-    return answers[`${question?.id}`]?.text;
+    return answers[`${question?.id}`][0]?.text;
   }
 
   function handleChange(e: any) {

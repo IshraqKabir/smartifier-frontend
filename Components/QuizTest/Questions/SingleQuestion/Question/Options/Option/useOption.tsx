@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import getIsOptionChecked from "../../../../../../../UtilFunctions/getIsOptionChecked";
+import { useEffect, useState } from "react";
+import IQuestion from "../../../../../../../Models/IQuestion";
 
 export default function useOption(
   optionId: number,
@@ -20,4 +20,32 @@ export default function useOption(
   };
 
   return { isChecked, handleClick };
+}
+
+function getIsOptionChecked(
+  optionId: number,
+  question: IQuestion,
+  answers: any
+): boolean {
+  if (!answers) {
+    return false;
+  }
+
+  if (!answers[question?.id]) {
+    return false;
+  }
+
+  if (!Array.isArray(answers[question?.id])) {
+    return false;
+  }
+
+  let checked = false;
+
+  answers[question?.id]?.forEach((option) => {
+    if (option?.optionId == optionId) {
+      checked = true;
+    }
+  });
+
+  return checked;
 }

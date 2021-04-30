@@ -11,7 +11,8 @@ export default interface IQuiz {
   certificate_title: string;
   duration: string;
   retake: boolean;
-  assessment: boolean;
+  assessment?: boolean;
+  is_assessment?: boolean;
   created_at: string;
   updated_at: string;
   image_id: number;

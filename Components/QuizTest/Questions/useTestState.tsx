@@ -11,7 +11,7 @@ export default function useTestState(
 ) {
   const [user] = useLocalState("user", "");
   const [answers, setAnswersState] = useLocalState(
-    `${user?.email}-quiz${quizId}-answers`,
+    `${user?.email}-test${test?.id}-answers`,
     {}
   );
 
@@ -62,40 +62,66 @@ export default function useTestState(
       if (question.answer_type === "multiple_choice") {
         const options = tempAnswers[`${question?.id}`];
 
-        if (options && options.includes(optionId)) {
-          tempAnswers = { ...state, [`${question?.id}`]: [] };
-        } else {
-          tempAnswers = { ...state, [`${question?.id}`]: [optionId] };
+        if (!options || (Array.isArray(options) && !options[0])) {
+          tempAnswers = {
+            ...state,
+            [`${question?.id}`]: [{ optionId: optionId }],
+          };
+        }
+
+        if (options && Array.isArray(options) && options[0]) {
+          if (options[0]?.optionId == optionId) {
+            tempAnswers = { ...state, [`${question?.id}`]: [] };
+          } else {
+            tempAnswers = {
+              ...state,
+              [`${question?.id}`]: [{ optionId: optionId }],
+            };
+          }
         }
       } else if (question?.answer_type === "checkboxes") {
         const options = tempAnswers[`${question?.id}`];
 
-        if (options && options.includes(optionId)) {
+        if (!options || (Array.isArray(options) && !options[0])) {
           tempAnswers = {
             ...state,
-            [`${question?.id}`]: options.filter(
-              (option: number) => option != optionId
-            ),
+            [`${question?.id}`]: [{ optionId: optionId }],
           };
-        } else if (options && !options.includes(optionId)) {
-          tempAnswers = {
-            ...state,
-            [`${question?.id}`]: [...options, optionId],
-          };
-        } else {
-          tempAnswers = {
-            ...state,
-            [`${question?.id}`]: [optionId],
-          };
+        }
+
+        if (options && Array.isArray(options)) {
+          let includes = false;
+
+          options?.forEach((option) => {
+            if (option?.optionId == optionId) {
+              includes = true;
+            }
+          });
+
+          if (includes) {
+            tempAnswers = {
+              ...state,
+              [`${question?.id}`]: options?.filter((option) => {
+                return option?.optionId != optionId;
+              }),
+            };
+          } else {
+            tempAnswers = {
+              ...state,
+              [`${question?.id}`]: [...options, { optionId: optionId }],
+            };
+          }
         }
       } else if (question?.answer_type === "short_paragraph") {
         if (!text) return { ...tempAnswers };
         tempAnswers = {
           ...state,
-          [`${question?.id}`]: {
-            optionId: optionId,
-            text: text,
-          },
+          [`${question?.id}`]: [
+            {
+              optionId: optionId,
+              text: text,
+            },
+          ],
         };
       }
 
@@ -123,18 +149,35 @@ export default function useTestState(
   }
 
   async function handleSubmit() {
+    if (!answers) alert("Not enough answers to submit!");
     setIsSubmitting(true);
-    const response = await submitTest(test?.id, answers, user?.token);
 
-    setIsSubmitting(false);
+    const processedAnswers = [];
 
-    if (response.error) {
+    Object.values(answers)?.forEach((answer: any) => {
+      if (answer && Array.isArray(answer)) {
+        answer?.forEach((option) => {
+          if (option?.optionId) {
+            processedAnswers.push({
+              optionId: option?.optionId,
+              text: option?.text ? option?.text : "",
+            });
+          }
+        });
+      }
+    });
+
+    const response = await submitTest(test?.id, processedAnswers, user?.token);
+
+    if (response.error || response == "error") {
       alert("Something went wrong. Please refresh and submit the test.");
       return;
     }
 
     setAnswersState({});
-    window.location.href = "/user/profile";
+    window.location.href = `/user/profile`;
+    // window.location.href = `/test/${test?.id}/result`;
+    setIsSubmitting(false);
   }
 
   return {

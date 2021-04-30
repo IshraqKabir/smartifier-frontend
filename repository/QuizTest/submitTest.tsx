@@ -6,18 +6,14 @@ export default async function submitTest(
   answers: any,
   token: string
 ) {
-  const finalAnswers = Object.keys(answers).map((key) => {
-    return {
-      options: answers[key],
-    };
-  });
+  if (!answers) return;
 
   const response = await axios
     .post(
       `${local_backend_url}/api/quiz-test/answers/store`,
       {
         test_id: testId,
-        answers: finalAnswers,
+        options: answers,
       },
       {
         headers: {
@@ -27,7 +23,6 @@ export default async function submitTest(
       }
     )
     .then((response) => {
-      console.log(response.data);
       return response.data;
     })
     .catch(() => {
