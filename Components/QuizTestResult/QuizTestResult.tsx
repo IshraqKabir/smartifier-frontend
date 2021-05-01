@@ -5,6 +5,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 import React from "react";
+import Badge from "./Badge/Badge";
 import TestInfo from "./TestInfo/TestInfo";
 import useQuizTestResult from "./useQuizTestResult";
 
@@ -29,6 +30,11 @@ export default function QuizTestResult({ testId }: IProps) {
         {!isLoading && isAuthorized && test && (
           <TestInfo test={test} quiz={quiz} />
         )}
+
+        {!isLoading &&
+          isAuthorized &&
+          !quiz?.is_assessment &&
+          test?.has_passed && <Badge testId={test?.id} />}
       </InnerContainer>
     </Container>
   );

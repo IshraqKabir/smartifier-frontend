@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -169,7 +169,7 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ 12:
+/***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("xiiG");
@@ -3720,6 +3720,159 @@ var Topbar = __webpack_require__("gMP8");
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__("cDcd");
 
+// EXTERNAL MODULE: ./url.js
+var url = __webpack_require__("Gw4m");
+
+// EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
+var useLocalState = __webpack_require__("PhsX");
+
+// EXTERNAL MODULE: external "axios"
+var external_axios_ = __webpack_require__("zr5I");
+var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
+
+// CONCATENATED MODULE: ./repository/QuizTest/getBadgeImageLink.tsx
+
+
+async function getBadgeImageLink(testId, token) {
+  if (!testId) return;
+  const quizStatus = await external_axios_default.a.get(`${url["a" /* backend_url */]}/api/quiz-test/${testId}/get-badge-image-link`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then(response => {
+    return response.data;
+  });
+  return quizStatus;
+}
+// CONCATENATED MODULE: ./Components/QuizTestResult/Badge/useBadge.tsx
+
+
+
+function useBadge(testId) {
+  const [user] = Object(useLocalState["a" /* default */])("user", "");
+  const {
+    0: isLoading,
+    1: setIsLoading
+  } = Object(external_react_["useState"])(false);
+  const {
+    0: badgeImageLink,
+    1: setBadgeImageLink
+  } = Object(external_react_["useState"])("");
+  const {
+    0: error,
+    1: setError
+  } = Object(external_react_["useState"])("");
+  Object(external_react_["useEffect"])(() => {
+    if (user) fetchBadgeImageLink();
+  }, []);
+
+  async function fetchBadgeImageLink() {
+    setIsLoading(true);
+    const response = await getBadgeImageLink(testId, user === null || user === void 0 ? void 0 : user.token);
+    setIsLoading(false);
+
+    if (response == "not_quiz" || response == "failed") {
+      setError("Some Error has occured, sorry. Please contact our support.");
+      return;
+    }
+
+    if (response == "badge_not_ready_yet") {
+      setError("Sorry, we are still working on your badge.");
+      return;
+    }
+
+    setBadgeImageLink(response);
+  }
+
+  return {
+    isLoading,
+    error,
+    badgeImageLink
+  };
+}
+// CONCATENATED MODULE: ./Components/QuizTestResult/Badge/Badge.tsx
+
+
+
+
+
+
+function Badge({
+  testId
+}) {
+  const {
+    isLoading,
+    error,
+    badgeImageLink
+  } = useBadge(testId);
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Title, {
+      variant: "h5",
+      children: "Quiz Badge"
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Divider, {}), isLoading && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(LoadingContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
+        variant: "subtitle1",
+        children: "Getting Your Badge Ready. Please wait."
+      })]
+    }), !isLoading && badgeImageLink && /*#__PURE__*/Object(jsx_runtime_["jsx"])(ImageContainer, {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+        src: `${url["a" /* backend_url */]}/storage/${badgeImageLink}`,
+        variant: "square",
+        style: {
+          width: "min(450px, 95%)",
+          height: "100%"
+        }
+      })
+    }), !isLoading && error && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
+      variant: "subtitle1",
+      color: "error",
+      children: error
+    })]
+  });
+}
+const Container = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    border: "1px solid #e6e6e4",
+    borderRadius: "7px 7px 0px 0px",
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: "1rem"
+  }
+})(core_["Box"]);
+const LoadingContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "1rem"
+  }
+})(core_["Box"]);
+const Title = Object(core_["withStyles"])({
+  root: {
+    padding: "0.7rem",
+    textTransform: "capitalize"
+  }
+})(core_["Typography"]);
+const Divider = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "#e6e6e4"
+  }
+})(core_["Box"]);
+const ImageContainer = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyItems: "center",
+    padding: "1rem 0"
+  }
+})(core_["Box"]);
 // CONCATENATED MODULE: ./Components/QuizTestResult/TestInfo/TestInfo.tsx
 
 
@@ -3737,11 +3890,16 @@ function TestInfo({
   const failedText = `Thank you for participating in the quiz on
   ‘${quiz === null || quiz === void 0 ? void 0 : quiz.title}’! Please retake the quiz and try to get your
   badge by scoring more than ${quiz === null || quiz === void 0 ? void 0 : quiz.passing_percentage}% marks.`;
-  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Title, {
+
+  const handleClick = () => {
+    window.location.href = `/test/quiz/${quiz === null || quiz === void 0 ? void 0 : quiz.id}`;
+  };
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(TestInfo_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(TestInfo_Title, {
       variant: "h5",
       children: `${quiz === null || quiz === void 0 ? void 0 : quiz.title} ${assessmentOrQuiz}`
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Divider, {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ScoreContainer, {
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(TestInfo_Divider, {}), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ScoreContainer, {
       children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["Typography"], {
         variant: "subtitle1",
         children: ["Score: ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
@@ -3761,10 +3919,15 @@ function TestInfo({
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(HasPassedText, {
       variant: "subtitle1",
       children: (test === null || test === void 0 ? void 0 : test.has_passed) ? passedText : failedText
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeButton, {
+      onClick: handleClick,
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(RetakeButtonText, {
+        children: "Retake"
+      })
     })]
   });
 }
-const Container = Object(core_["withStyles"])({
+const TestInfo_Container = Object(core_["withStyles"])({
   root: {
     width: "100%",
     border: "1px solid #e6e6e4",
@@ -3775,13 +3938,13 @@ const Container = Object(core_["withStyles"])({
     alignItems: "center"
   }
 })(core_["Box"]);
-const Title = Object(core_["withStyles"])({
+const TestInfo_Title = Object(core_["withStyles"])({
   root: {
     padding: "0.7rem",
     textTransform: "capitalize"
   }
 })(core_["Typography"]);
-const Divider = Object(core_["withStyles"])({
+const TestInfo_Divider = Object(core_["withStyles"])({
   root: {
     width: "100%",
     height: 2,
@@ -3808,16 +3971,26 @@ const ScoreContainer = Object(core_["withStyles"])({
     width: "min(600px, 97%)"
   }
 })(core_["Box"]);
-// EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
-var useLocalState = __webpack_require__("PhsX");
-
-// EXTERNAL MODULE: external "axios"
-var external_axios_ = __webpack_require__("zr5I");
-var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
-
-// EXTERNAL MODULE: ./url.js
-var url = __webpack_require__("Gw4m");
-
+const RetakeButton = Object(core_["withStyles"])({
+  root: {
+    float: "right",
+    margin: "0rem 0.5rem 0.5rem auto",
+    right: 10,
+    color: "white",
+    backgroundColor: "#0e62cb",
+    padding: "0.4rem 1rem",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#09448e"
+    }
+  }
+})(core_["Box"]);
+const RetakeButtonText = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    textTransform: "capitalize"
+  }
+})(core_["Typography"]);
 // CONCATENATED MODULE: ./repository/QuizTestResult/getResultInfo.tsx
 
 
@@ -3882,6 +4055,7 @@ function useQuizTestResult(testId) {
 
 
 
+
 function QuizTestResult({
   testId
 }) {
@@ -3900,6 +4074,8 @@ function QuizTestResult({
       }), !isLoading && isAuthorized && test && /*#__PURE__*/Object(jsx_runtime_["jsx"])(TestInfo, {
         test: test,
         quiz: quiz
+      }), !isLoading && isAuthorized && !(quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) && (test === null || test === void 0 ? void 0 : test.has_passed) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Badge, {
+        testId: test === null || test === void 0 ? void 0 : test.id
       })]
     })
   });

@@ -88,12 +88,12 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 11:
+/***/ 12:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("jtXw");
@@ -174,10 +174,10 @@ const Quiz = ({
       content: "website"
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:title",
-      content: `${quiz.title}`
+      content: `${quiz === null || quiz === void 0 ? void 0 : quiz.title}`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:description",
-      content: `${quiz.description}`
+      content: `${quiz === null || quiz === void 0 ? void 0 : quiz.description}`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:image",
       content: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/storage/${image === null || image === void 0 ? void 0 : image.image_link}`
