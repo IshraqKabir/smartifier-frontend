@@ -37,8 +37,8 @@ const Quiz: React.FC<IProps> = ({ quiz, image }) => {
     <Head key={`quizzes/${quiz.id}`}>
       <meta property="og:url" content={`https://www.smartifier.org/quizzes`} />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={`${quiz.title}`} />
-      <meta property="og:description" content={`${quiz.description}`} />
+      <meta property="og:title" content={`${quiz?.title}`} />
+      <meta property="og:description" content={`${quiz?.description}`} />
       <meta
         property="og:image"
         content={`${local_backend_url}/storage/${image?.image_link}`}

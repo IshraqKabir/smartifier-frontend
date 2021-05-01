@@ -10,6 +10,7 @@
   "/blog/topics/[slug]/posts": "pages/blog/topics/[slug]/posts.js",
   "/": "pages/index.html",
   "/quizzes": "pages/quizzes.js",
+  "/share/fb/badge/[id]": "pages/share/fb/badge/[id].js",
   "/share/fb/quizzes/[id]": "pages/share/fb/quizzes/[id].js",
   "/test/[id]/result": "pages/test/[id]/result.js",
   "/test/quiz/[id]": "pages/test/quiz/[id].js",

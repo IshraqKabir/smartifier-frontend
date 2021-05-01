@@ -1,12 +1,12 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills-86280b662315d6357ee7.js"
+    "static/chunks/polyfills-ad988a031cb8322d00a2.js"
   ],
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/LTxkdCx8hWnSJsl9N6fjj/_buildManifest.js",
-    "static/LTxkdCx8hWnSJsl9N6fjj/_ssgManifest.js"
+    "static/Q3DnttWlx6PReuG4Mjrqz/_buildManifest.js",
+    "static/Q3DnttWlx6PReuG4Mjrqz/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -102,11 +102,17 @@
       "static/chunks/35369a13267aa15328c4e7755bfa06e273ae6d31.b2a89b171d032b19fbc6.js",
       "static/chunks/pages/quizzes-08054026992dd5e2889f.js"
     ],
+    "/share/fb/badge/[id]": [
+      "static/chunks/main-e33e87327d282b41c000.js",
+      "static/chunks/webpack-95c2b224bccf352ee870.js",
+      "static/chunks/framework.017c4b60e3e1f640722e.js",
+      "static/chunks/pages/share/fb/badge/[id]-d17fbef7a28190cff466.js"
+    ],
     "/share/fb/quizzes/[id]": [
       "static/chunks/main-e33e87327d282b41c000.js",
       "static/chunks/webpack-95c2b224bccf352ee870.js",
       "static/chunks/framework.017c4b60e3e1f640722e.js",
-      "static/chunks/pages/share/fb/quizzes/[id]-6a8ca8775ca5c0d54b94.js"
+      "static/chunks/pages/share/fb/quizzes/[id]-b6f819f0fefdb521d3ce.js"
     ],
     "/test/[id]/result": [
       "static/chunks/main-e33e87327d282b41c000.js",
@@ -116,7 +122,7 @@
       "static/chunks/7dc7c7d49937a59e91d2db59c47565bff8e73551.c14f9162c1d42a9e7966.js",
       "static/chunks/da5e837a7652c31fcda93270f468d2589a02dc37.39b2e536f8d87564244f.js",
       "static/chunks/1949a92850a5440f140dccda5a26668b6e270f43.df0c32d02644cdd801cc.js",
-      "static/chunks/pages/test/[id]/result-cf34d4c3b320ee8375f5.js"
+      "static/chunks/pages/test/[id]/result-5c7e7415396813111bdc.js"
     ],
     "/test/quiz/[id]": [
       "static/chunks/main-e33e87327d282b41c000.js",
@@ -128,7 +134,7 @@
       "static/chunks/1949a92850a5440f140dccda5a26668b6e270f43.df0c32d02644cdd801cc.js",
       "static/chunks/3a6e42721a2309fdea52fc56177aed4b8feb7f82.e89f539126caab5667e8.js",
       "static/chunks/c3a6850abcd7a4b38b4a84e9d3f61fe4bbdf1fcc.20a2f58e50cf107e7498.js",
-      "static/chunks/pages/test/quiz/[id]-a50b7db66618d64e7d8a.js"
+      "static/chunks/pages/test/quiz/[id]-4ada7075f97e0fe519b4.js"
     ],
     "/user/profile": [
       "static/chunks/main-e33e87327d282b41c000.js",
@@ -138,7 +144,7 @@
       "static/chunks/7dc7c7d49937a59e91d2db59c47565bff8e73551.c14f9162c1d42a9e7966.js",
       "static/chunks/da5e837a7652c31fcda93270f468d2589a02dc37.39b2e536f8d87564244f.js",
       "static/chunks/1949a92850a5440f140dccda5a26668b6e270f43.df0c32d02644cdd801cc.js",
-      "static/chunks/pages/user/profile-58de72679b3ced39c8f1.js"
+      "static/chunks/pages/user/profile-158dc6a366c78d6fbc58.js"
     ]
   },
   "ampFirstPages": []

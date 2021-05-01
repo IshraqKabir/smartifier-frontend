@@ -21,6 +21,10 @@ export default function TestInfo({ test, quiz }: IProps) {
   ‘${quiz?.title}’! Please retake the quiz and try to get your
   badge by scoring more than ${quiz?.passing_percentage}% marks.`;
 
+  const handleClick = () => {
+    window.location.href = `/test/quiz/${quiz?.id}`;
+  };
+
   return (
     <Container>
       <Title variant="h5">{`${quiz?.title} ${assessmentOrQuiz}`}</Title>
@@ -39,6 +43,9 @@ export default function TestInfo({ test, quiz }: IProps) {
       <HasPassedText variant="subtitle1">
         {test?.has_passed ? passedText : failedText}
       </HasPassedText>
+      <RetakeButton onClick={handleClick}>
+        <RetakeButtonText>Retake</RetakeButtonText>
+      </RetakeButton>
     </Container>
   );
 }
@@ -91,3 +98,25 @@ const ScoreContainer = withStyles({
     width: "min(600px, 97%)",
   },
 })(Box);
+
+const RetakeButton = withStyles({
+  root: {
+    float: "right",
+    margin: "0rem 0.5rem 0.5rem auto",
+    right: 10,
+    color: "white",
+    backgroundColor: "#0e62cb",
+    padding: "0.4rem 1rem",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#09448e",
+    },
+  },
+})(Box);
+
+const RetakeButtonText = withStyles({
+  root: {
+    fontWeight: 600,
+    textTransform: "capitalize",
+  },
+})(Typography);
