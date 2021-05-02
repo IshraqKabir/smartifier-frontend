@@ -37,6 +37,7 @@ const Quiz: React.FC<IProps> = ({ quiz, image }) => {
     <Head key={`quizzes/${quiz.id}`}>
       <meta property="og:url" content={`https://www.smartifier.org/quizzes`} />
       <meta property="og:type" content="article" />
+      <meta property="fb:app_id" content={`${process.env.FB_APP_ID}`} />
       {quiz?.title && <meta property="og:title" content={`${quiz?.title}`} />}
       {quiz?.description && (
         <meta property="og:description" content={`${quiz?.description}`} />
