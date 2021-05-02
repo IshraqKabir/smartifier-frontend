@@ -197,11 +197,7 @@ const Badge = ({
   var _info$quiz, _info$test;
 
   const router = Object(next_router__WEBPACK_IMPORTED_MODULE_5__["useRouter"])();
-  Object(react__WEBPACK_IMPORTED_MODULE_6__["useEffect"])(() => {
-    setTimeout(() => {
-      router.replace("/quizzes");
-    }, 500);
-  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_6__["useEffect"])(() => {}, []);
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
     children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
       children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
