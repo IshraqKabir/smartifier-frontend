@@ -15,4 +15,6 @@ export default interface IQuestion {
   options?: IOption[];
   chosenOption?: IOption;
   style: number;
+  correct_questions?: IOption[];
+  wrong_questions?: IOption[];
 }

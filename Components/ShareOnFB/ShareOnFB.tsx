@@ -5,9 +5,10 @@ import ShareLink from "react-facebook-share-link";
 interface IProps {
   link: string;
   title: string;
+  color: string;
 }
 
-const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
+const ShareOnFB: React.FC<IProps> = ({ link, title, color }) => {
   return (
     <>
       <ShareLink link={`${link}`}>
@@ -15,7 +16,7 @@ const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
           <a
             href={`${link}`}
             target="_blank"
-            style={{ textDecoration: "none", color: "white" }}
+            style={{ textDecoration: "none", color: color }}
           >
             <Container>
               <Avatar
@@ -28,7 +29,9 @@ const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
                   marginBottom: "auto",
                 }}
               />
-              <Typography variant="caption">{title}</Typography>
+              <Typography variant="caption" color="inherit">
+                {title}
+              </Typography>
             </Container>
           </a>
         )}
@@ -46,6 +49,5 @@ const Container = withStyles({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    color: "inherit",
   },
 })(Box);

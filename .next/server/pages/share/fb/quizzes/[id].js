@@ -170,6 +170,9 @@ const Quiz = ({
       property: "og:url",
       content: `https://smartifier.org/share/fb/quizzes/${quiz === null || quiz === void 0 ? void 0 : quiz.id}`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+      property: "og:uri",
+      content: `https://smartifier.org/quizzes`
+    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:type",
       content: "website"
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {

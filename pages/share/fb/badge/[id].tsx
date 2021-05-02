@@ -1,8 +1,5 @@
 import { GetServerSideProps } from "next";
 
-import IQuiz from "../../../../Models/IQuiz";
-import IImage from "../../../../Models/IImage";
-
 import axios from "axios";
 import { local_backend_url } from "../../../../url";
 
@@ -11,37 +8,44 @@ import Head from "next/head";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params;
 
-  const quiz: IQuiz = await axios({
+  const info = await axios({
     method: "get",
-    url: `${local_backend_url}/api/quizzes/${id}`,
+    url: `${local_backend_url}/api/share/tests/${id}`,
   })
     .then((res) => {
       return res.data;
     })
     .catch((err) => console.log(err));
 
-  const image: IImage = quiz?.image;
-
   return {
-    props: { quiz, image },
+    props: { info },
   };
 };
 
 interface IProps {
-  quiz: IQuiz;
-  image: IImage;
+  info: any;
 }
 
-const Badge: React.FC<IProps> = ({ quiz, image }) => {
+const Badge: React.FC<IProps> = ({ info }) => {
   return (
-    <Head key={`quizzes/${quiz.id}`}>
-      <meta property="og:url" content={`https://www.smartifier.org/quizzes`} />
+    <Head key={`quizzes/${info?.quiz?.id}`}>
+      <meta
+        property="og:url"
+        content={`https://www.smartifier.org/share/fb/badge/${info?.test?.id}`}
+      />
+      <meta
+        property="og:redirect_uri"
+        content={`https://www.smartifier.org/quizzes`}
+      />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={`${quiz.title}`} />
-      <meta property="og:description" content={`${quiz.description}`} />
+      <meta property="og:title" content={`${info?.quiz.title}`} />
+      <meta
+        property="og:description"
+        content={`Click Here To Take The Quiz.`}
+      />
       <meta
         property="og:image"
-        content={`${local_backend_url}/storage/${image?.image_link}`}
+        content={`${local_backend_url}/storage/${info?.test?.badge_image_link}`}
       />
     </Head>
   );

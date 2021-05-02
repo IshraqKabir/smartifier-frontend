@@ -6,7 +6,8 @@ import {
   withStyles,
 } from "@material-ui/core";
 import React from "react";
-import { backend_url } from "../../../url";
+import url, { backend_url } from "../../../url";
+import ShareOnFB from "../../ShareOnFB/ShareOnFB";
 import useBadge from "./useBadge";
 
 interface IProps {
@@ -36,6 +37,13 @@ export default function Badge({ testId }: IProps) {
             variant="square"
             style={{ width: "min(450px, 95%)", height: "100%" }}
           />
+          <FBShareContainer>
+            <ShareOnFB
+              title={`Share Your Badge On Facebook`}
+              link={`${url}/share/fb/badge/${testId}`}
+              color="black"
+            />
+          </FBShareContainer>
         </ImageContainer>
       )}
 
@@ -93,5 +101,13 @@ const ImageContainer = withStyles({
     alignItems: "center",
     justifyItems: "center",
     padding: "1rem 0",
+  },
+})(Box);
+
+const FBShareContainer = withStyles({
+  root: {
+    margin: "1rem",
+    color: "black",
+    fontSize: "1rem",
   },
 })(Box);

@@ -30,14 +30,6 @@ export default function MyApp(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <div id="fb-root"></div>
-      <script
-        async
-        defer
-        crossOrigin="anonymous"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=184804400173448&autoLogAppEvents=1"
-        nonce="70yrKyMu"
-      ></script>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />

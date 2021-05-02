@@ -39,6 +39,7 @@ const Quiz: React.FC<IProps> = ({ quiz, image }) => {
         property="og:url"
         content={`https://smartifier.org/share/fb/quizzes/${quiz?.id}`}
       />
+      <meta property="og:uri" content={`https://smartifier.org/quizzes`} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={`${quiz?.title}`} />
       <meta property="og:description" content={`${quiz?.description}`} />

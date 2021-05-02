@@ -93,6 +93,74 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "+p0v":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("F5FC");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KKbo");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("9a6F");
+/* harmony import */ var react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+
+
+const ShareOnFB = ({
+  link,
+  title,
+  color
+}) => {
+  return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
+    children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      link: `${link}`,
+      children: link => /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("a", {
+        href: `${link}`,
+        target: "_blank",
+        style: {
+          textDecoration: "none",
+          color: color
+        },
+        children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(Container, {
+          children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Avatar"], {
+            src: `/assets/facebook.png`,
+            variant: "square",
+            style: {
+              height: 18,
+              width: 18,
+              marginRight: 5,
+              marginBottom: "auto"
+            }
+          }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+            variant: "caption",
+            color: "inherit",
+            children: title
+          })]
+        })
+      })
+    })
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (ShareOnFB);
+const Container = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["withStyles"])({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%"
+  }
+})(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Box"]);
+
+/***/ }),
+
 /***/ "/Cw6":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3732,63 +3800,9 @@ var core_ = __webpack_require__("KKbo");
 // EXTERNAL MODULE: ./Components/PageTitle/PageTitle.tsx
 var PageTitle = __webpack_require__("/Cw6");
 
-// EXTERNAL MODULE: external "react-facebook-share-link"
-var external_react_facebook_share_link_ = __webpack_require__("9a6F");
-var external_react_facebook_share_link_default = /*#__PURE__*/__webpack_require__.n(external_react_facebook_share_link_);
+// EXTERNAL MODULE: ./Components/ShareOnFB/ShareOnFB.tsx
+var ShareOnFB = __webpack_require__("+p0v");
 
-// CONCATENATED MODULE: ./Components/ShareOnFB/ShareOnFB.tsx
-
-
-
-
-
-
-
-const ShareOnFB = ({
-  link,
-  title
-}) => {
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(jsx_runtime_["Fragment"], {
-    children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(external_react_facebook_share_link_default.a, {
-      link: `${link}`,
-      children: link => /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
-        href: `${link}`,
-        target: "_blank",
-        style: {
-          textDecoration: "none",
-          color: "white"
-        },
-        children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
-          children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
-            src: `/assets/facebook.png`,
-            variant: "square",
-            style: {
-              height: 18,
-              width: 18,
-              marginRight: 5,
-              marginBottom: "auto"
-            }
-          }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
-            variant: "caption",
-            children: title
-          })]
-        })
-      })
-    })
-  });
-};
-
-/* harmony default export */ var ShareOnFB_ShareOnFB = (ShareOnFB);
-const Container = Object(core_["withStyles"])({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    height: "100%",
-    color: "inherit"
-  }
-})(core_["Box"]);
 // EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
 var useLocalState = __webpack_require__("PhsX");
 
@@ -3875,7 +3889,7 @@ function BottomBar({
     buttonText,
     startTest
   } = useBottomBar(testStatus);
-  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(BottomBar_Container, {
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Container, {
     children: testStatus !== "highest_attempt_count_reached" ? /*#__PURE__*/Object(jsx_runtime_["jsx"])(Button, {
       onClick: () => {
         startTest(quizId);
@@ -3891,7 +3905,7 @@ function BottomBar({
     })
   });
 }
-const BottomBar_Container = Object(core_["withStyles"])({
+const Container = Object(core_["withStyles"])({
   root: {
     position: "fixed",
     bottom: 0,
@@ -4495,22 +4509,10 @@ const Quiz = ({
         quiz: quiz
       })]
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(FBShareContainer, {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ShareOnFB_ShareOnFB, {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ShareOnFB["a" /* default */], {
         link: `${url["b" /* default */]}/share/fb/quizzes/${quiz.id}`,
-        title: "Share this on Facebook"
-      })
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      id: "fb-root"
-    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
-      className: "fb-share-button",
-      "data-href": "https://smartifier.org/share/fb/quizzes/2",
-      "data-layout": "button_count",
-      "data-size": "small",
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
-        target: "_blank",
-        href: "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsmartifier.org%2Fshare%2Ffb%2Fquizzes%2F2&src=sdkpreparse",
-        className: "fb-xfbml-parse-ignore",
-        children: "Share"
+        title: "Share this on Facebook",
+        color: "white"
       })
     })]
   });

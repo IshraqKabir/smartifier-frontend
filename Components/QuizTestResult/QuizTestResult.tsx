@@ -9,6 +9,8 @@ import Badge from "./Badge/Badge";
 import TestInfo from "./TestInfo/TestInfo";
 import useQuizTestResult from "./useQuizTestResult";
 
+import Questions from "./Questions/Questions";
+
 interface IProps {
   testId: number;
 }
@@ -34,7 +36,32 @@ export default function QuizTestResult({ testId }: IProps) {
         {!isLoading &&
           isAuthorized &&
           !quiz?.is_assessment &&
+          test &&
           test?.has_passed && <Badge testId={test?.id} />}
+
+        {/* questions answered correctly */}
+        {!isLoading &&
+          isAuthorized &&
+          test &&
+          test?.questions &&
+          test?.questions?.correct_questions && (
+            <Questions
+              questions={test?.questions?.correct_questions}
+              isAnsweredCorrectly={true}
+            />
+          )}
+        {/* questions answered wrong */}
+        {!isLoading &&
+          isAuthorized &&
+          test &&
+          test?.questions &&
+          test?.questions?.wrong_questions &&
+          test?.questions?.wrong_questions?.length > 0 && (
+            <Questions
+              questions={test?.questions?.correct_questions}
+              isAnsweredCorrectly={false}
+            />
+          )}
       </InnerContainer>
     </Container>
   );
