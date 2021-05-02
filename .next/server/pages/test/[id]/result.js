@@ -4235,6 +4235,7 @@ const Options_Container = Object(core_["withStyles"])({
     width: "100%",
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     backgroundColor: "#eef3f7",
     marginTop: "0.5rem",
     padding: "0 0.5rem"
@@ -4381,7 +4382,7 @@ function QuizTestResult({
         questions: test === null || test === void 0 ? void 0 : (_test$questions2 = test.questions) === null || _test$questions2 === void 0 ? void 0 : _test$questions2.correct_questions,
         isAnsweredCorrectly: true
       }), !isLoading && isAuthorized && test && (test === null || test === void 0 ? void 0 : test.questions) && (test === null || test === void 0 ? void 0 : (_test$questions3 = test.questions) === null || _test$questions3 === void 0 ? void 0 : _test$questions3.wrong_questions) && (test === null || test === void 0 ? void 0 : (_test$questions4 = test.questions) === null || _test$questions4 === void 0 ? void 0 : (_test$questions4$wron = _test$questions4.wrong_questions) === null || _test$questions4$wron === void 0 ? void 0 : _test$questions4$wron.length) > 0 && /*#__PURE__*/Object(jsx_runtime_["jsx"])(CorrectAnswers, {
-        questions: test === null || test === void 0 ? void 0 : (_test$questions5 = test.questions) === null || _test$questions5 === void 0 ? void 0 : _test$questions5.correct_questions,
+        questions: test === null || test === void 0 ? void 0 : (_test$questions5 = test.questions) === null || _test$questions5 === void 0 ? void 0 : _test$questions5.wrong_questions,
         isAnsweredCorrectly: false
       })]
     })

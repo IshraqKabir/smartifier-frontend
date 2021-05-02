@@ -24,6 +24,7 @@ const Container = withStyles({
     width: "100%",
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
     backgroundColor: "#eef3f7",
     marginTop: "0.5rem",
     padding: "0 0.5rem",
