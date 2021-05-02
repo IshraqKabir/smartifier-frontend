@@ -58,7 +58,7 @@ export default function QuizTestResult({ testId }: IProps) {
           test?.questions?.wrong_questions &&
           test?.questions?.wrong_questions?.length > 0 && (
             <Questions
-              questions={test?.questions?.correct_questions}
+              questions={test?.questions?.wrong_questions}
               isAnsweredCorrectly={false}
             />
           )}
