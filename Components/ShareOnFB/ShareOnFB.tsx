@@ -15,7 +15,7 @@ const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
           <a
             href={`${link}`}
             target="_blank"
-            style={{ textDecoration: "none", color: "white" }}
+            style={{ textDecoration: "none" }}
           >
             <Container>
               <Avatar
@@ -28,7 +28,9 @@ const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
                   marginBottom: "auto",
                 }}
               />
-              <Typography variant="caption">{title}</Typography>
+              <Typography variant="caption" color="inherit">
+                {title}
+              </Typography>
             </Container>
           </a>
         )}
@@ -46,6 +48,5 @@ const Container = withStyles({
     justifyContent: "center",
     width: "100%",
     height: "100%",
-    color: "inherit",
   },
 })(Box);

@@ -200,14 +200,6 @@ function MyApp(props) {
         name: "viewport",
         content: "minimum-scale=1, initial-scale=1, width=device-width"
       })]
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
-      id: "fb-root"
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("script", {
-      async: true,
-      defer: true,
-      crossOrigin: "anonymous",
-      src: "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=184804400173448&autoLogAppEvents=1",
-      nonce: "70yrKyMu"
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__["ThemeProvider"], {
       theme: _src_theme__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"],
       children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core_CssBaseline__WEBPACK_IMPORTED_MODULE_4___default.a, {}), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(Component, _objectSpread({}, pageProps))]

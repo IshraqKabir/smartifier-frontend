@@ -146,43 +146,45 @@ const getServerSideProps = async context => {
   const {
     id
   } = context.params;
-  const quiz = await axios__WEBPACK_IMPORTED_MODULE_1___default()({
+  const info = await axios__WEBPACK_IMPORTED_MODULE_1___default()({
     method: "get",
-    url: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/api/quizzes/${id}`
+    url: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/api/share/tests/${id}`
   }).then(res => {
     return res.data;
   }).catch(err => console.log(err));
-  const image = quiz === null || quiz === void 0 ? void 0 : quiz.image;
   return {
     props: {
-      quiz,
-      image
+      info
     }
   };
 };
 
 const Badge = ({
-  quiz,
-  image
+  info
 }) => {
+  var _info$quiz, _info$test, _info$test2;
+
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
     children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:url",
+      content: `https://www.smartifier.org/share/fb/badge/${info === null || info === void 0 ? void 0 : (_info$test = info.test) === null || _info$test === void 0 ? void 0 : _info$test.id}`
+    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+      property: "og:redirect_uri",
       content: `https://www.smartifier.org/quizzes`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:type",
       content: "website"
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:title",
-      content: `${quiz.title}`
+      content: `${info === null || info === void 0 ? void 0 : info.quiz.title}`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:description",
-      content: `${quiz.description}`
+      content: `Click Here To Take The Quiz.`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:image",
-      content: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/storage/${image === null || image === void 0 ? void 0 : image.image_link}`
+      content: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/storage/${info === null || info === void 0 ? void 0 : (_info$test2 = info.test) === null || _info$test2 === void 0 ? void 0 : _info$test2.badge_image_link}`
     })]
-  }, `quizzes/${quiz.id}`);
+  }, `quizzes/${info === null || info === void 0 ? void 0 : (_info$quiz = info.quiz) === null || _info$quiz === void 0 ? void 0 : _info$quiz.id}`);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Badge);

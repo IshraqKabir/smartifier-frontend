@@ -37,7 +37,8 @@ export default function TestInfo({ test, quiz }: IProps) {
           Total Questions: <b>{`${quiz?.total_questions_count}`}</b>
         </Typography>
         <Typography variant="subtitle1">
-          Right Answers: <b>{`${test?.correct_answers_count}`}</b>
+          Right Answers:{" "}
+          <b>{`${test?.questions?.correct_questions?.length}`}</b>
         </Typography>
       </ScoreContainer>
       <HasPassedText variant="subtitle1">

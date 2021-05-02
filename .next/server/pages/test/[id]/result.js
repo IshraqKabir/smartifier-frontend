@@ -93,6 +93,72 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "+p0v":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("F5FC");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("KKbo");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("cDcd");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("9a6F");
+/* harmony import */ var react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+
+
+const ShareOnFB = ({
+  link,
+  title
+}) => {
+  return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
+    children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      link: `${link}`,
+      children: link => /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("a", {
+        href: `${link}`,
+        target: "_blank",
+        style: {
+          textDecoration: "none"
+        },
+        children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(Container, {
+          children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Avatar"], {
+            src: `/assets/facebook.png`,
+            variant: "square",
+            style: {
+              height: 18,
+              width: 18,
+              marginRight: 5,
+              marginBottom: "auto"
+            }
+          }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
+            variant: "caption",
+            color: "inherit",
+            children: title
+          })]
+        })
+      })
+    })
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (ShareOnFB);
+const Container = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["withStyles"])({
+  root: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%"
+  }
+})(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Box"]);
+
+/***/ }),
+
 /***/ "/jkW":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -496,6 +562,13 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 }
 
 module.exports = _objectWithoutPropertiesLoose;
+
+/***/ }),
+
+/***/ "9a6F":
+/***/ (function(module, exports) {
+
+module.exports = require("react-facebook-share-link");
 
 /***/ }),
 
@@ -3723,6 +3796,9 @@ var external_react_ = __webpack_require__("cDcd");
 // EXTERNAL MODULE: ./url.js
 var url = __webpack_require__("Gw4m");
 
+// EXTERNAL MODULE: ./Components/ShareOnFB/ShareOnFB.tsx
+var ShareOnFB = __webpack_require__("+p0v");
+
 // EXTERNAL MODULE: ./custom-hooks/useLocalState.ts
 var useLocalState = __webpack_require__("PhsX");
 
@@ -3805,6 +3881,7 @@ function useBadge(testId) {
 
 
 
+
 function Badge({
   testId
 }) {
@@ -3822,15 +3899,20 @@ function Badge({
         variant: "subtitle1",
         children: "Getting Your Badge Ready. Please wait."
       })]
-    }), !isLoading && badgeImageLink && /*#__PURE__*/Object(jsx_runtime_["jsx"])(ImageContainer, {
-      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+    }), !isLoading && badgeImageLink && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ImageContainer, {
+      children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
         src: `${url["a" /* backend_url */]}/storage/${badgeImageLink}`,
         variant: "square",
         style: {
           width: "min(450px, 95%)",
           height: "100%"
         }
-      })
+      }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(FBShareContainer, {
+        children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ShareOnFB["a" /* default */], {
+          title: `Share Your Badge On Facebook`,
+          link: `${url["b" /* default */]}/share/fb/badge/${testId}`
+        })
+      })]
     }), !isLoading && error && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
       variant: "subtitle1",
       color: "error",
@@ -3881,6 +3963,13 @@ const ImageContainer = Object(core_["withStyles"])({
     padding: "1rem 0"
   }
 })(core_["Box"]);
+const FBShareContainer = Object(core_["withStyles"])({
+  root: {
+    margin: "1rem",
+    color: "black",
+    fontSize: "1rem"
+  }
+})(core_["Box"]);
 // CONCATENATED MODULE: ./Components/QuizTestResult/TestInfo/TestInfo.tsx
 
 
@@ -3889,6 +3978,8 @@ function TestInfo({
   test,
   quiz
 }) {
+  var _test$questions, _test$questions$corre;
+
   const assessmentOrQuiz = (quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) ? "assessment" : "quiz"; // const passedText = `Congratulations! You have passed the quiz on
   // ‘______________’. Do remember to share your badge on social
   // media for personal branding.`;
@@ -3920,8 +4011,8 @@ function TestInfo({
         })]
       }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["Typography"], {
         variant: "subtitle1",
-        children: ["Right Answers: ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
-          children: `${test === null || test === void 0 ? void 0 : test.correct_answers_count}`
+        children: ["Right Answers:", " ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+          children: `${test === null || test === void 0 ? void 0 : (_test$questions = test.questions) === null || _test$questions === void 0 ? void 0 : (_test$questions$corre = _test$questions.correct_questions) === null || _test$questions$corre === void 0 ? void 0 : _test$questions$corre.length}`
         })]
       })]
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(HasPassedText, {
@@ -4056,7 +4147,202 @@ function useQuizTestResult(testId) {
     quiz
   };
 }
+// EXTERNAL MODULE: external "@material-ui/icons"
+var icons_ = __webpack_require__("2kat");
+
+// CONCATENATED MODULE: ./Components/QuizTestResult/Questions/SingleQuestion/Options/Option/Option.tsx
+
+
+
+
+
+
+function Option({
+  option
+}) {
+  var _option$image, _option$image2;
+
+  const classes = useStyles();
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+    className: classes.container,
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(TickContainer, {
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(icons_["CheckCircleOutlined"], {
+        color: "inherit"
+      })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])("div", {
+      className: classes.titleAndImageContainer,
+      children: [(option === null || option === void 0 ? void 0 : option.title) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Option_Title, {
+        children: option === null || option === void 0 ? void 0 : option.title
+      }), (option === null || option === void 0 ? void 0 : (_option$image = option.image) === null || _option$image === void 0 ? void 0 : _option$image.image_link) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+        src: `${url["a" /* backend_url */]}/storage/${option === null || option === void 0 ? void 0 : (_option$image2 = option.image) === null || _option$image2 === void 0 ? void 0 : _option$image2.image_link}`,
+        variant: "square",
+        style: {
+          height: 200,
+          width: 200,
+          margin: "0.2rem 0"
+        }
+      })]
+    })]
+  });
+}
+const useStyles = Object(core_["makeStyles"])({
+  container: {
+    borderTop: "1px solid gray",
+    padding: "0.1rem 0rem",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer",
+    width: "100%"
+  },
+  titleAndImageContainer: {
+    width: "100%",
+    padding: "0.5rem 0",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
+});
+const Option_Title = Object(core_["withStyles"])({
+  root: {}
+})(core_["Typography"]);
+const TickContainer = Object(core_["withStyles"])({
+  root: {
+    color: "green"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTestResult/Questions/SingleQuestion/Options/Options.tsx
+
+
+
+function Options({
+  options
+}) {
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Options_Container, {
+    children: options && options.map(option => {
+      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Option, {
+        option: option
+      }, option === null || option === void 0 ? void 0 : option.id);
+    })
+  });
+}
+const Options_Container = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#eef3f7",
+    marginTop: "0.5rem",
+    padding: "0 0.5rem"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTestResult/Questions/SingleQuestion/SingleQuestion.tsx
+
+
+
+
+
+
+function SingleQuestion({
+  question,
+  isAnsweredCorrectly
+}) {
+  var _question$image, _question$image2;
+
+  return /*#__PURE__*/Object(jsx_runtime_["jsx"])(SingleQuestion_Container, {
+    children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuestionContainer, {
+      children: [(question === null || question === void 0 ? void 0 : question.question) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionTitle, {
+        variant: "subtitle1",
+        children: `Q. ${question === null || question === void 0 ? void 0 : question.question}`
+      }), (question === null || question === void 0 ? void 0 : (_question$image = question.image) === null || _question$image === void 0 ? void 0 : _question$image.image_link) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
+        src: `${url["a" /* backend_url */]}/storage/${question === null || question === void 0 ? void 0 : (_question$image2 = question.image) === null || _question$image2 === void 0 ? void 0 : _question$image2.image_link}`,
+        variant: "square",
+        style: {
+          height: 200,
+          width: 200,
+          margin: "0.2rem 0"
+        }
+      }), isAnsweredCorrectly && (question === null || question === void 0 ? void 0 : question.options) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Options, {
+        options: question === null || question === void 0 ? void 0 : question.options
+      })]
+    })
+  });
+}
+const SingleQuestion_Container = Object(core_["withStyles"])({
+  root: {
+    width: "98%",
+    margin: "1rem 0",
+    overflowY: "scroll",
+    overflowX: "hidden",
+    border: "1px solid #e6e6e4",
+    borderRadius: "7px 7px 0px 0px",
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  }
+})(core_["Box"]);
+const QuestionTitle = Object(core_["withStyles"])({
+  root: {
+    fontWeight: 600,
+    padding: "0 0.5rem"
+  }
+})(core_["Typography"]);
+const QuestionContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center"
+  }
+})(core_["Box"]);
+// CONCATENATED MODULE: ./Components/QuizTestResult/Questions/Questions.tsx
+
+
+
+
+function CorrectAnswers({
+  questions,
+  isAnsweredCorrectly
+}) {
+  return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Questions_Container, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Questions_Title, {
+      variant: "h5",
+      children: `${isAnsweredCorrectly ? "Correct" : "Wrong"} Answers`
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Questions_Divider, {}), questions === null || questions === void 0 ? void 0 : questions.map(question => {
+      return /*#__PURE__*/Object(jsx_runtime_["jsx"])(SingleQuestion, {
+        question: question,
+        isAnsweredCorrectly: isAnsweredCorrectly
+      }, question === null || question === void 0 ? void 0 : question.id);
+    })]
+  });
+}
+const Questions_Container = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    border: "1px solid #e6e6e4",
+    borderRadius: "7px 7px 0px 0px",
+    backgroundColor: "white",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    margin: "1rem 0"
+  }
+})(core_["Box"]);
+const Questions_Title = Object(core_["withStyles"])({
+  root: {
+    padding: "0.7rem",
+    textTransform: "capitalize"
+  }
+})(core_["Typography"]);
+const Questions_Divider = Object(core_["withStyles"])({
+  root: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "#e6e6e4"
+  }
+})(core_["Box"]);
 // CONCATENATED MODULE: ./Components/QuizTestResult/QuizTestResult.tsx
+
 
 
 
@@ -4067,6 +4353,8 @@ function useQuizTestResult(testId) {
 function QuizTestResult({
   testId
 }) {
+  var _test$questions, _test$questions2, _test$questions3, _test$questions4, _test$questions4$wron, _test$questions5;
+
   const {
     isLoading,
     isAuthorized,
@@ -4082,8 +4370,14 @@ function QuizTestResult({
       }), !isLoading && isAuthorized && test && /*#__PURE__*/Object(jsx_runtime_["jsx"])(TestInfo, {
         test: test,
         quiz: quiz
-      }), !isLoading && isAuthorized && !(quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) && (test === null || test === void 0 ? void 0 : test.has_passed) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Badge, {
+      }), !isLoading && isAuthorized && !(quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) && test && (test === null || test === void 0 ? void 0 : test.has_passed) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Badge, {
         testId: test === null || test === void 0 ? void 0 : test.id
+      }), !isLoading && isAuthorized && test && (test === null || test === void 0 ? void 0 : test.questions) && (test === null || test === void 0 ? void 0 : (_test$questions = test.questions) === null || _test$questions === void 0 ? void 0 : _test$questions.correct_questions) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(CorrectAnswers, {
+        questions: test === null || test === void 0 ? void 0 : (_test$questions2 = test.questions) === null || _test$questions2 === void 0 ? void 0 : _test$questions2.correct_questions,
+        isAnsweredCorrectly: true
+      }), !isLoading && isAuthorized && test && (test === null || test === void 0 ? void 0 : test.questions) && (test === null || test === void 0 ? void 0 : (_test$questions3 = test.questions) === null || _test$questions3 === void 0 ? void 0 : _test$questions3.wrong_questions) && (test === null || test === void 0 ? void 0 : (_test$questions4 = test.questions) === null || _test$questions4 === void 0 ? void 0 : (_test$questions4$wron = _test$questions4.wrong_questions) === null || _test$questions4$wron === void 0 ? void 0 : _test$questions4$wron.length) > 0 && /*#__PURE__*/Object(jsx_runtime_["jsx"])(CorrectAnswers, {
+        questions: test === null || test === void 0 ? void 0 : (_test$questions5 = test.questions) === null || _test$questions5 === void 0 ? void 0 : _test$questions5.correct_questions,
+        isAnsweredCorrectly: false
       })]
     })
   });

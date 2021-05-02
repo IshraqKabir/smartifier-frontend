@@ -1,3 +1,4 @@
+import IQuestion from "./IQuestion";
 import IQuiz from "./IQuiz";
 
 export default interface ITest {
@@ -7,4 +8,5 @@ export default interface ITest {
   percentage?: number;
   correct_answers?: any;
   correct_answers_count?: number;
+  questions?: IQuestion;
 }
