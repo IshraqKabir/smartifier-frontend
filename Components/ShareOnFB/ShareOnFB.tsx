@@ -5,9 +5,10 @@ import ShareLink from "react-facebook-share-link";
 interface IProps {
   link: string;
   title: string;
+  color: string;
 }
 
-const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
+const ShareOnFB: React.FC<IProps> = ({ link, title, color }) => {
   return (
     <>
       <ShareLink link={`${link}`}>
@@ -15,7 +16,7 @@ const ShareOnFB: React.FC<IProps> = ({ link, title }) => {
           <a
             href={`${link}`}
             target="_blank"
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: "none", color: color }}
           >
             <Container>
               <Avatar

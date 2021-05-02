@@ -11,7 +11,9 @@ export default function Options({ options }: IProps) {
     <Container>
       {options &&
         options.map((option) => {
-          return <Option key={option?.id} option={option} />;
+          if (option?.is_right) {
+            return <Option key={option?.id} option={option} />;
+          }
         })}
     </Container>
   );

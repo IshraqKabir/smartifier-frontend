@@ -41,6 +41,7 @@ export default function Badge({ testId }: IProps) {
             <ShareOnFB
               title={`Share Your Badge On Facebook`}
               link={`${url}/share/fb/badge/${testId}`}
+              color="black"
             />
           </FBShareContainer>
         </ImageContainer>

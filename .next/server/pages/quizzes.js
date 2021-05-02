@@ -114,7 +114,8 @@ module.exports =
 
 const ShareOnFB = ({
   link,
-  title
+  title,
+  color
 }) => {
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -123,7 +124,8 @@ const ShareOnFB = ({
         href: `${link}`,
         target: "_blank",
         style: {
-          textDecoration: "none"
+          textDecoration: "none",
+          color: color
         },
         children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(Container, {
           children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Avatar"], {
@@ -4509,7 +4511,8 @@ const Quiz = ({
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(FBShareContainer, {
       children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ShareOnFB["a" /* default */], {
         link: `${url["b" /* default */]}/share/fb/quizzes/${quiz.id}`,
-        title: "Share this on Facebook"
+        title: "Share this on Facebook",
+        color: "white"
       })
     })]
   });

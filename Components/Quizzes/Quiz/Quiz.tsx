@@ -29,6 +29,7 @@ const Quiz: React.FC<IProps> = ({ quiz }) => {
         <ShareOnFB
           link={`${url}/share/fb/quizzes/${quiz.id}`}
           title="Share this on Facebook"
+          color="white"
         />
       </FBShareContainer>
     </Container>
