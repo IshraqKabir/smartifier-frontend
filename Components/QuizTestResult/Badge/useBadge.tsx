@@ -18,6 +18,10 @@ export default function useBadge(testId: number) {
 
     setIsLoading(false);
 
+    if (response.error) {
+      setError("Something went wrong. Please contact our support.");
+    }
+
     if (response == "not_quiz" || response == "failed") {
       setError("Some Error has occured, sorry. Please contact our support.");
       return;

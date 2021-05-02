@@ -12,6 +12,9 @@ export default async function getBadgeImageLink(testId: number, token: string) {
     })
     .then((response) => {
       return response.data;
+    })
+    .catch((err) => {
+      return { error: err };
     });
 
   return quizStatus;

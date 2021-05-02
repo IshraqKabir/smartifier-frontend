@@ -36,13 +36,17 @@ const Quiz: React.FC<IProps> = ({ quiz, image }) => {
   return (
     <Head key={`quizzes/${quiz.id}`}>
       <meta property="og:url" content={`https://www.smartifier.org/quizzes`} />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={`${quiz?.title}`} />
-      <meta property="og:description" content={`${quiz?.description}`} />
-      <meta
-        property="og:image"
-        content={`${local_backend_url}/storage/${image?.image_link}`}
-      />
+      <meta property="og:type" content="article" />
+      {quiz?.title && <meta property="og:title" content={`${quiz?.title}`} />}
+      {quiz?.description && (
+        <meta property="og:description" content={`${quiz?.description}`} />
+      )}
+      {image?.image_link && (
+        <meta
+          property="og:image"
+          content={`${local_backend_url}/storage/${image?.image_link}`}
+        />
+      )}
     </Head>
   );
 };
