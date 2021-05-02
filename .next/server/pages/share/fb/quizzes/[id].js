@@ -172,6 +172,9 @@ const Quiz = ({
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:type",
       content: "article"
+    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+      property: "fb:app_id",
+      content: `${process.env.FB_APP_ID}`
     }), (quiz === null || quiz === void 0 ? void 0 : quiz.title) && /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:title",
       content: `${quiz === null || quiz === void 0 ? void 0 : quiz.title}`
