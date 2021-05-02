@@ -31,6 +31,21 @@ const Quiz: React.FC<IProps> = ({ quiz }) => {
           title="Share this on Facebook"
         />
       </FBShareContainer>
+      <div id="fb-root"></div>
+      <div
+        className="fb-share-button"
+        data-href="https://smartifier.org/share/fb/quizzes/2"
+        data-layout="button_count"
+        data-size="small"
+      >
+        <a
+          target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsmartifier.org%2Fshare%2Ffb%2Fquizzes%2F2&amp;src=sdkpreparse"
+          className="fb-xfbml-parse-ignore"
+        >
+          Share
+        </a>
+      </div>
     </Container>
   );
 };

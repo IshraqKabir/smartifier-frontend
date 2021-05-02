@@ -4499,6 +4499,19 @@ const Quiz = ({
         link: `${url["b" /* default */]}/share/fb/quizzes/${quiz.id}`,
         title: "Share this on Facebook"
       })
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+      id: "fb-root"
+    }), /*#__PURE__*/Object(jsx_runtime_["jsx"])("div", {
+      className: "fb-share-button",
+      "data-href": "https://smartifier.org/share/fb/quizzes/2",
+      "data-layout": "button_count",
+      "data-size": "small",
+      children: /*#__PURE__*/Object(jsx_runtime_["jsx"])("a", {
+        target: "_blank",
+        href: "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsmartifier.org%2Fshare%2Ffb%2Fquizzes%2F2&src=sdkpreparse",
+        className: "fb-xfbml-parse-ignore",
+        children: "Share"
+      })
     })]
   });
 };
