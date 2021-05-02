@@ -171,14 +171,14 @@ const Quiz = ({
       content: `https://www.smartifier.org/quizzes`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:type",
-      content: "website"
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+      content: "article"
+    }), (quiz === null || quiz === void 0 ? void 0 : quiz.title) && /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:title",
       content: `${quiz === null || quiz === void 0 ? void 0 : quiz.title}`
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+    }), (quiz === null || quiz === void 0 ? void 0 : quiz.description) && /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:description",
       content: `${quiz === null || quiz === void 0 ? void 0 : quiz.description}`
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+    }), (image === null || image === void 0 ? void 0 : image.image_link) && /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:image",
       content: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/storage/${image === null || image === void 0 ? void 0 : image.image_link}`
     })]

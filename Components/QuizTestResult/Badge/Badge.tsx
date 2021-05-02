@@ -7,7 +7,6 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { backend_url } from "../../../url";
-import ShareOnFB from "../../ShareOnFB/ShareOnFB";
 import useBadge from "./useBadge";
 
 interface IProps {

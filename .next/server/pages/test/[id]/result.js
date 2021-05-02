@@ -3741,6 +3741,10 @@ async function getBadgeImageLink(testId, token) {
     }
   }).then(response => {
     return response.data;
+  }).catch(err => {
+    return {
+      error: err
+    };
   });
   return quizStatus;
 }
@@ -3770,6 +3774,10 @@ function useBadge(testId) {
     setIsLoading(true);
     const response = await getBadgeImageLink(testId, user === null || user === void 0 ? void 0 : user.token);
     setIsLoading(false);
+
+    if (response.error) {
+      setError("Something went wrong. Please contact our support.");
+    }
 
     if (response == "not_quiz" || response == "failed") {
       setError("Some Error has occured, sorry. Please contact our support.");
