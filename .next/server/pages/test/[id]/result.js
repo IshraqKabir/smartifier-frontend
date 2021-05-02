@@ -115,7 +115,8 @@ module.exports =
 const ShareOnFB = ({
   link,
   title,
-  color
+  color,
+  variant = "caption"
 }) => {
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -132,13 +133,13 @@ const ShareOnFB = ({
             src: `/assets/facebook.png`,
             variant: "square",
             style: {
-              height: 18,
-              width: 18,
+              height: 25,
+              width: 25,
               marginRight: 5,
               marginBottom: "auto"
             }
           }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-            variant: "caption",
+            variant: variant,
             color: "inherit",
             children: title
           })]
@@ -3913,7 +3914,8 @@ function Badge({
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ShareOnFB["a" /* default */], {
           title: `Share Your Badge On Facebook`,
           link: `${url["b" /* default */]}/share/fb/badge/${testId}`,
-          color: "black"
+          color: "black",
+          variant: "subtitle1"
         })
       })]
     }), !isLoading && error && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
@@ -3932,7 +3934,8 @@ const Container = Object(core_["withStyles"])({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "1rem"
+    marginTop: "2rem",
+    position: "relative"
   }
 })(core_["Box"]);
 const LoadingContainer = Object(core_["withStyles"])({
@@ -3963,14 +3966,17 @@ const ImageContainer = Object(core_["withStyles"])({
     flexDirection: "column",
     alignItems: "center",
     justifyItems: "center",
-    padding: "1rem 0"
+    padding: "1rem 0",
+    marginBottom: "2rem"
   }
 })(core_["Box"]);
 const FBShareContainer = Object(core_["withStyles"])({
   root: {
-    margin: "1rem",
     color: "black",
-    fontSize: "1rem"
+    fontSize: "1rem",
+    position: "absolute",
+    right: "0.5rem",
+    bottom: "0.5rem"
   }
 })(core_["Box"]);
 // CONCATENATED MODULE: ./Components/QuizTestResult/TestInfo/TestInfo.tsx
@@ -3983,12 +3989,12 @@ function TestInfo({
 }) {
   var _test$questions, _test$questions$corre;
 
-  const assessmentOrQuiz = (quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) ? "assessment" : "quiz"; // const passedText = `Congratulations! You have passed the quiz on
-  // ‘______________’. Do remember to share your badge on social
-  // media for personal branding.`;
-
+  const assessmentOrQuiz = (quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) ? "assessment" : "quiz";
   const passedText = `Congratulations! You have passed the ${assessmentOrQuiz} on
-  ‘${quiz === null || quiz === void 0 ? void 0 : quiz.title}’.`;
+  ‘${quiz === null || quiz === void 0 ? void 0 : quiz.title}’. Do remember to share your badge on social
+  media for personal branding.`; // const passedText = `Congratulations! You have passed the ${assessmentOrQuiz} on
+  // ‘${quiz?.title}’.`;
+
   const failedText = `Thank you for participating in the quiz on
   ‘${quiz === null || quiz === void 0 ? void 0 : quiz.title}’! Please retake the quiz and try to get your
   badge by scoring more than ${quiz === null || quiz === void 0 ? void 0 : quiz.passing_percentage}% marks.`;
@@ -4076,7 +4082,7 @@ const ScoreContainer = Object(core_["withStyles"])({
 const RetakeButton = Object(core_["withStyles"])({
   root: {
     float: "right",
-    margin: "0rem 0.5rem 0.5rem auto",
+    margin: "1rem 0.5rem 0.5rem auto",
     right: 10,
     color: "white",
     backgroundColor: "#0e62cb",
@@ -4265,7 +4271,7 @@ function SingleQuestion({
         style: {
           height: 200,
           width: 200,
-          margin: "0.2rem 0"
+          margin: "0.2rem auto"
         }
       }), isAnsweredCorrectly && (question === null || question === void 0 ? void 0 : question.options) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Options, {
         options: question === null || question === void 0 ? void 0 : question.options
@@ -4276,7 +4282,7 @@ function SingleQuestion({
 const SingleQuestion_Container = Object(core_["withStyles"])({
   root: {
     width: "98%",
-    margin: "1rem 0",
+    margin: "2rem 0",
     overflowY: "scroll",
     overflowX: "hidden",
     border: "1px solid #e6e6e4",
@@ -4298,7 +4304,7 @@ const QuestionContainer = Object(core_["withStyles"])({
     display: "flex",
     width: "100%",
     flexDirection: "column",
-    alignItems: "center"
+    justifyContent: "center"
   }
 })(core_["Box"]);
 // CONCATENATED MODULE: ./Components/QuizTestResult/Questions/Questions.tsx
@@ -4331,7 +4337,7 @@ const Questions_Container = Object(core_["withStyles"])({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: "1rem 0"
+    margin: "2rem 0"
   }
 })(core_["Box"]);
 const Questions_Title = Object(core_["withStyles"])({

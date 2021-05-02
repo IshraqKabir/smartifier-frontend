@@ -6,9 +6,15 @@ interface IProps {
   link: string;
   title: string;
   color: string;
+  variant?: "caption" | "subtitle1" | "subtitle2" | "h6";
 }
 
-const ShareOnFB: React.FC<IProps> = ({ link, title, color }) => {
+const ShareOnFB: React.FC<IProps> = ({
+  link,
+  title,
+  color,
+  variant = "caption",
+}) => {
   return (
     <>
       <ShareLink link={`${link}`}>
@@ -23,13 +29,13 @@ const ShareOnFB: React.FC<IProps> = ({ link, title, color }) => {
                 src={`/assets/facebook.png`}
                 variant="square"
                 style={{
-                  height: 18,
-                  width: 18,
+                  height: 25,
+                  width: 25,
                   marginRight: 5,
                   marginBottom: "auto",
                 }}
               />
-              <Typography variant="caption" color="inherit">
+              <Typography variant={variant} color="inherit">
                 {title}
               </Typography>
             </Container>
