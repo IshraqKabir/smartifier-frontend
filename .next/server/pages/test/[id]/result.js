@@ -4296,9 +4296,9 @@ const QuestionTitle = Object(core_["withStyles"])({
 const QuestionContainer = Object(core_["withStyles"])({
   root: {
     display: "flex",
+    width: "100%",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: "center"
   }
 })(core_["Box"]);
 // CONCATENATED MODULE: ./Components/QuizTestResult/Questions/Questions.tsx

@@ -61,8 +61,8 @@ const QuestionTitle = withStyles({
 const QuestionContainer = withStyles({
   root: {
     display: "flex",
+    width: "100%",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
   },
 })(Box);
