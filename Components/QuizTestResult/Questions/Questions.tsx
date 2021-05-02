@@ -40,7 +40,7 @@ const Container = withStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: "1rem 0",
+    margin: "2rem 0",
   },
 })(Box);
 

@@ -25,7 +25,7 @@ export default function SingleQuestion({
           <Avatar
             src={`${backend_url}/storage/${question?.image?.image_link}`}
             variant="square"
-            style={{ height: 200, width: 200, margin: "0.2rem 0" }}
+            style={{ height: 200, width: 200, margin: "0.2rem auto" }}
           />
         )}
         {isAnsweredCorrectly && question?.options && (
@@ -39,7 +39,7 @@ export default function SingleQuestion({
 const Container = withStyles({
   root: {
     width: "98%",
-    margin: "1rem 0",
+    margin: "2rem 0",
     overflowY: "scroll",
     overflowX: "hidden",
     border: "1px solid #e6e6e4",
@@ -63,6 +63,6 @@ const QuestionContainer = withStyles({
     display: "flex",
     width: "100%",
     flexDirection: "column",
-    alignItems: "center",
+    justifyContent: "center",
   },
 })(Box);

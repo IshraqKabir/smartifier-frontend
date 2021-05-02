@@ -42,6 +42,7 @@ export default function Badge({ testId }: IProps) {
               title={`Share Your Badge On Facebook`}
               link={`${url}/share/fb/badge/${testId}`}
               color="black"
+              variant="subtitle1"
             />
           </FBShareContainer>
         </ImageContainer>
@@ -65,7 +66,8 @@ const Container = withStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "1rem",
+    marginTop: "2rem",
+    position: "relative",
   },
 })(Box);
 
@@ -101,13 +103,16 @@ const ImageContainer = withStyles({
     alignItems: "center",
     justifyItems: "center",
     padding: "1rem 0",
+    marginBottom: "2rem",
   },
 })(Box);
 
 const FBShareContainer = withStyles({
   root: {
-    margin: "1rem",
     color: "black",
     fontSize: "1rem",
+    position: "absolute",
+    right: "0.5rem",
+    bottom: "0.5rem",
   },
 })(Box);

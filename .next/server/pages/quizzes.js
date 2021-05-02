@@ -115,7 +115,8 @@ module.exports =
 const ShareOnFB = ({
   link,
   title,
-  color
+  color,
+  variant = "caption"
 }) => {
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["Fragment"], {
     children: /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react_facebook_share_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -132,13 +133,13 @@ const ShareOnFB = ({
             src: `/assets/facebook.png`,
             variant: "square",
             style: {
-              height: 18,
-              width: 18,
+              height: 25,
+              width: 25,
               marginRight: 5,
               marginBottom: "auto"
             }
           }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__["Typography"], {
-            variant: "caption",
+            variant: variant,
             color: "inherit",
             children: title
           })]

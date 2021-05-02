@@ -10,12 +10,12 @@ interface IProps {
 export default function TestInfo({ test, quiz }: IProps) {
   const assessmentOrQuiz = quiz?.is_assessment ? "assessment" : "quiz";
 
-  // const passedText = `Congratulations! You have passed the quiz on
-  // ‘______________’. Do remember to share your badge on social
-  // media for personal branding.`;
-
   const passedText = `Congratulations! You have passed the ${assessmentOrQuiz} on
-  ‘${quiz?.title}’.`;
+  ‘${quiz?.title}’. Do remember to share your badge on social
+  media for personal branding.`;
+
+  // const passedText = `Congratulations! You have passed the ${assessmentOrQuiz} on
+  // ‘${quiz?.title}’.`;
 
   const failedText = `Thank you for participating in the quiz on
   ‘${quiz?.title}’! Please retake the quiz and try to get your
@@ -103,7 +103,7 @@ const ScoreContainer = withStyles({
 const RetakeButton = withStyles({
   root: {
     float: "right",
-    margin: "0rem 0.5rem 0.5rem auto",
+    margin: "1rem 0.5rem 0.5rem auto",
     right: 10,
     color: "white",
     backgroundColor: "#0e62cb",
