@@ -168,20 +168,17 @@ const Quiz = ({
   return /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxs"])(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, {
     children: [/*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:url",
-      content: `https://www.smartifier.org/quizzes`
+      content: `https://smartifier.org/share/fb/quizzes/${quiz === null || quiz === void 0 ? void 0 : quiz.id}`
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:type",
-      content: "article"
+      content: "website"
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
-      property: "fb:app_id",
-      content: `${process.env.FB_APP_ID}`
-    }), (quiz === null || quiz === void 0 ? void 0 : quiz.title) && /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:title",
       content: `${quiz === null || quiz === void 0 ? void 0 : quiz.title}`
-    }), (quiz === null || quiz === void 0 ? void 0 : quiz.description) && /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:description",
       content: `${quiz === null || quiz === void 0 ? void 0 : quiz.description}`
-    }), (image === null || image === void 0 ? void 0 : image.image_link) && /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:image",
       content: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/storage/${image === null || image === void 0 ? void 0 : image.image_link}`
     })]
