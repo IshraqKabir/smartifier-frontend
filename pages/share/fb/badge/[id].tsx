@@ -33,11 +33,7 @@ interface IProps {
 const Badge: React.FC<IProps> = ({ info, testId }) => {
   const router = useRouter();
 
-  useEffect(() => {
-    setTimeout(() => {
-      router.replace("/quizzes");
-    }, 500);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
