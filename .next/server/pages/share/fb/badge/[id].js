@@ -154,7 +154,8 @@ const getServerSideProps = async context => {
   }).catch(err => console.log(err));
   return {
     props: {
-      info
+      info,
+      testId: id
     }
   };
 };
@@ -184,6 +185,12 @@ const Badge = ({
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:image",
       content: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/storage/${info === null || info === void 0 ? void 0 : (_info$test = info.test) === null || _info$test === void 0 ? void 0 : _info$test.badge_image_link}`
+    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+      property: "og:image:width",
+      content: "600"
+    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
+      property: "og:image:width",
+      content: "600"
     })]
   }, `quizzes/${info === null || info === void 0 ? void 0 : (_info$quiz = info.quiz) === null || _info$quiz === void 0 ? void 0 : _info$quiz.id}`);
 };
