@@ -64,7 +64,6 @@ const getValue = (key) => {
 };
 
 const isLocalStorageWorking = (): boolean => {
-  return false;
   const key = "local-storage-test";
   const value = 19;
 
