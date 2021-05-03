@@ -184,12 +184,6 @@ const Quiz = ({
     }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
       property: "og:image",
       content: `${_url__WEBPACK_IMPORTED_MODULE_2__[/* local_backend_url */ "c"]}/storage/${image === null || image === void 0 ? void 0 : image.image_link}`
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
-      property: "og:image:width",
-      content: "600"
-    }), /*#__PURE__*/Object(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__["jsx"])("meta", {
-      property: "og:image:height",
-      content: "600"
     })]
   }, `quizzes/${quiz.id}`);
 };
