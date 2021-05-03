@@ -48,8 +48,6 @@ const Badge: React.FC<IProps> = ({ info, testId }) => {
         property="og:image"
         content={`${local_backend_url}/storage/${info?.test?.badge_image_link}`}
       />
-      <meta property="og:image:width" content="600" />
-      <meta property="og:image:width" content="600" />
     </Head>
   );
 };

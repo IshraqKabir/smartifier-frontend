@@ -47,8 +47,6 @@ const Quiz: React.FC<IProps> = ({ quiz, image }) => {
         property="og:image"
         content={`${local_backend_url}/storage/${image?.image_link}`}
       />
-      <meta property="og:image:width" content="600" />
-      <meta property="og:image:height" content="600" />
     </Head>
   );
 };
