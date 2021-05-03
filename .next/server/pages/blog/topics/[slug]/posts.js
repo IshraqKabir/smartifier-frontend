@@ -964,6 +964,7 @@ const getValue = key => {
 };
 
 const isLocalStorageWorking = () => {
+  return false;
   const key = "local-storage-test";
   const value = 19;
   localStorage.setItem(key, JSON.stringify(value));
