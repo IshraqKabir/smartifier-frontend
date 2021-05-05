@@ -40,6 +40,9 @@ export default function TestInfo({ test, quiz }: IProps) {
           Right Answers:{" "}
           <b>{`${test?.questions?.correct_questions?.length}`}</b>
         </Typography>
+        <Typography variant="subtitle1">
+          Not Answered: <b>{`${test?.not_answered_questions_count}`}</b>
+        </Typography>
       </ScoreContainer>
       <HasPassedText variant="subtitle1">
         {test?.has_passed ? passedText : failedText}
