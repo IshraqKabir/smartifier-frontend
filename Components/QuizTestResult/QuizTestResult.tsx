@@ -33,11 +33,9 @@ export default function QuizTestResult({ testId }: IProps) {
           <TestInfo test={test} quiz={quiz} />
         )}
 
-        {!isLoading &&
-          isAuthorized &&
-          !quiz?.is_assessment &&
-          test &&
-          test?.has_passed && <Badge testId={test?.id} />}
+        {!isLoading && isAuthorized && test && test?.has_passed && (
+          <Badge testId={test?.id} isAssessment={quiz?.is_assessment} />
+        )}
 
         {/* questions answered correctly */}
         {!isLoading &&

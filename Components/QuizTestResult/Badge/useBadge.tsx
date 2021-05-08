@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useLocalState from "../../../custom-hooks/useLocalState";
 import getBadgeImageLink from "../../../repository/QuizTest/getBadgeImageLink";
 
-export default function useBadge(testId: number) {
+export default function useBadge(testId: number, isAssessment: boolean) {
   const [user] = useLocalState("user", "");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [badgeImageLink, setBadgeImageLink] = useState<string>("");
@@ -35,9 +35,27 @@ export default function useBadge(testId: number) {
     setBadgeImageLink(response);
   }
 
+  function getWidth() {
+    if (isAssessment) {
+      return "95%";
+    }
+
+    return "min(400px, 95%)";
+  }
+
+  function getHeight() {
+    if (isAssessment) {
+      return "100%";
+    }
+
+    return "100%";
+  }
+
   return {
     isLoading,
     error,
     badgeImageLink,
+    getHeight,
+    getWidth,
   };
 }

@@ -12,20 +12,28 @@ import useBadge from "./useBadge";
 
 interface IProps {
   testId: number;
+  isAssessment: boolean;
 }
 
-export default function Badge({ testId }: IProps) {
-  const { isLoading, error, badgeImageLink } = useBadge(testId);
+export default function Badge({ testId, isAssessment }: IProps) {
+  const { isLoading, error, badgeImageLink, getHeight, getWidth } = useBadge(
+    testId,
+    isAssessment
+  );
 
   return (
     <Container>
-      <Title variant="h5">Quiz Badge</Title>
+      <Title variant="h5">
+        {isAssessment ? "Assessment Certificate" : "Quiz Badge"}{" "}
+      </Title>
       <Divider />
       {isLoading && (
         <LoadingContainer>
           <CircularProgress />
           <Typography variant="subtitle1">
-            Getting Your Badge Ready. Please wait.
+            {`Getting Your ${
+              isAssessment ? "Certificate" : "Badge"
+            } Ready. Please Wait.`}
           </Typography>
         </LoadingContainer>
       )}
@@ -35,11 +43,16 @@ export default function Badge({ testId }: IProps) {
           <Avatar
             src={`${backend_url}/storage/${badgeImageLink}`}
             variant="square"
-            style={{ width: "min(450px, 95%)", height: "100%" }}
+            style={{
+              width: getWidth(),
+              height: getHeight(),
+            }}
           />
           <FBShareContainer>
             <ShareOnFB
-              title={`Share Your Badge On Facebook`}
+              title={`Share Your ${
+                isAssessment ? "Certificate" : "Badge"
+              } On Facebook`}
               link={`${url}/share/fb/badge/${testId}`}
               color="black"
               variant="subtitle1"

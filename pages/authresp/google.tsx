@@ -12,6 +12,9 @@ import {
 } from "@material-ui/core";
 
 import { useRouter } from "next/router";
+import getGoogleIdToken from "../../repository/SignIn/getGoogleIdToken";
+import getUserDataFromGoogle from "../../repository/SignIn/getUserDataFromGoogle";
+import backendSignIn from "../../repository/SignIn/backendSignIn";
 
 interface IProps {}
 
@@ -20,6 +23,46 @@ const Google: React.FC<IProps> = () => {
   const { code } = router.query;
 
   const [user, setUser] = useLocalState("user", "");
+
+  // useEffect(() => {
+  //   if (code) {
+  //     login();
+  //   }
+  // }, [code]);
+
+  // async function login() {
+  //   // get google id token (code)
+  //   const id_token = await getGoogleIdToken(code);
+  //   // get user data from google (id_token)
+  //   const {
+  //     email,
+  //     email_verified,
+  //     at_hash,
+  //     name,
+  //     picture,
+  //   } = await getUserDataFromGoogle(id_token);
+  //   // login to our own backend (
+  //   // id_token, email, at_hash, email_verified, name, picture
+  //   // )
+  //   const token = await backendSignIn({
+  //     id_token,
+  //     email,
+  //     at_hash,
+  //     email_verified,
+  //     name,
+  //     picture,
+  //   });
+
+  //   // set the user
+  //   const authUser: any = {
+  //     email: email,
+  //     name: name,
+  //     picture: picture,
+  //     token: token,
+  //   };
+
+  //   setUser(authUser);
+  // }
 
   useEffect(() => {
     if (code) {
@@ -67,13 +110,11 @@ const Google: React.FC<IProps> = () => {
                 // router.replace("/");
               })
               .catch((error) => {
-                setUser("");
                 // window.history.back();
                 console.log(error);
               });
           })
           .catch((error) => {
-            setUser("");
             console.log(error);
             // window.history.back();
           });

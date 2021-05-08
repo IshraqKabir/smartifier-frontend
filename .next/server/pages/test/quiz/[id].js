@@ -556,9 +556,14 @@ function Question({}) {
   } = Object(external_react_["useContext"])(QuestionContext);
   return /*#__PURE__*/Object(jsx_runtime_["jsx"])(Question_Container, {
     children: /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuestionContainer, {
-      children: [(question === null || question === void 0 ? void 0 : question.question) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionTitle, {
-        variant: "subtitle1",
-        children: `Q. ${question === null || question === void 0 ? void 0 : question.question}`
+      children: [(question === null || question === void 0 ? void 0 : question.question) && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(QuestionTitleContainer, {
+        children: [(question === null || question === void 0 ? void 0 : question.answer_type) == "checkboxes" && /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionTitle, {
+          variant: "caption",
+          children: "*Multiple Answers Might Be Correct."
+        }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(QuestionTitle, {
+          variant: "subtitle1",
+          children: `Q. ${question === null || question === void 0 ? void 0 : question.question}`
+        })]
       }), (question === null || question === void 0 ? void 0 : (_question$image = question.image) === null || _question$image === void 0 ? void 0 : _question$image.image_link) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
         src: `${url["a" /* backend_url */]}/storage/${question === null || question === void 0 ? void 0 : (_question$image2 = question.image) === null || _question$image2 === void 0 ? void 0 : _question$image2.image_link}`,
         variant: "square",
@@ -585,6 +590,12 @@ const QuestionTitle = Object(core_["withStyles"])({
     padding: "0 0.5rem"
   }
 })(core_["Typography"]);
+const QuestionTitleContainer = Object(core_["withStyles"])({
+  root: {
+    display: "flex",
+    flexDirection: "column"
+  }
+})(core_["Box"]);
 const QuestionContainer = Object(core_["withStyles"])({
   root: {
     display: "flex",

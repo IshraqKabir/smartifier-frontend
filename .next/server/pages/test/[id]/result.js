@@ -3832,7 +3832,7 @@ async function getBadgeImageLink(testId, token) {
 
 
 
-function useBadge(testId) {
+function useBadge(testId, isAssessment) {
   const [user] = Object(useLocalState["a" /* default */])("user", "");
   const {
     0: isLoading,
@@ -3872,10 +3872,28 @@ function useBadge(testId) {
     setBadgeImageLink(response);
   }
 
+  function getWidth() {
+    if (isAssessment) {
+      return "95%";
+    }
+
+    return "min(400px, 95%)";
+  }
+
+  function getHeight() {
+    if (isAssessment) {
+      return "100%";
+    }
+
+    return "100%";
+  }
+
   return {
     isLoading,
     error,
-    badgeImageLink
+    badgeImageLink,
+    getHeight,
+    getWidth
   };
 }
 // CONCATENATED MODULE: ./Components/QuizTestResult/Badge/Badge.tsx
@@ -3887,33 +3905,36 @@ function useBadge(testId) {
 
 
 function Badge({
-  testId
+  testId,
+  isAssessment
 }) {
   const {
     isLoading,
     error,
-    badgeImageLink
-  } = useBadge(testId);
+    badgeImageLink,
+    getHeight,
+    getWidth
+  } = useBadge(testId, isAssessment);
   return /*#__PURE__*/Object(jsx_runtime_["jsxs"])(Container, {
-    children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(Title, {
+    children: [/*#__PURE__*/Object(jsx_runtime_["jsxs"])(Title, {
       variant: "h5",
-      children: "Quiz Badge"
+      children: [isAssessment ? "Assessment Certificate" : "Quiz Badge", " "]
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(Divider, {}), isLoading && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(LoadingContainer, {
       children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["CircularProgress"], {}), /*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Typography"], {
         variant: "subtitle1",
-        children: "Getting Your Badge Ready. Please wait."
+        children: `Getting Your ${isAssessment ? "Certificate" : "Badge"} Ready. Please Wait.`
       })]
     }), !isLoading && badgeImageLink && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(ImageContainer, {
       children: [/*#__PURE__*/Object(jsx_runtime_["jsx"])(core_["Avatar"], {
         src: `${url["a" /* backend_url */]}/storage/${badgeImageLink}`,
         variant: "square",
         style: {
-          width: "min(450px, 95%)",
-          height: "100%"
+          width: getWidth(),
+          height: getHeight()
         }
       }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(FBShareContainer, {
         children: /*#__PURE__*/Object(jsx_runtime_["jsx"])(ShareOnFB["a" /* default */], {
-          title: `Share Your Badge On Facebook`,
+          title: `Share Your ${isAssessment ? "Certificate" : "Badge"} On Facebook`,
           link: `${url["b" /* default */]}/share/fb/badge/${testId}`,
           color: "black",
           variant: "subtitle1"
@@ -3988,7 +4009,7 @@ function TestInfo({
   test,
   quiz
 }) {
-  var _test$questions, _test$questions$corre;
+  var _test$questions, _test$questions$corre, _test$questions2, _test$questions3, _test$questions3$wron;
 
   const assessmentOrQuiz = (quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) ? "assessment" : "quiz";
   const passedText = `Congratulations! You have passed the ${assessmentOrQuiz} on
@@ -4023,6 +4044,16 @@ function TestInfo({
         variant: "subtitle1",
         children: ["Right Answers:", " ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
           children: `${test === null || test === void 0 ? void 0 : (_test$questions = test.questions) === null || _test$questions === void 0 ? void 0 : (_test$questions$corre = _test$questions.correct_questions) === null || _test$questions$corre === void 0 ? void 0 : _test$questions$corre.length}`
+        })]
+      }), test && (test === null || test === void 0 ? void 0 : test.questions) && (test === null || test === void 0 ? void 0 : (_test$questions2 = test.questions) === null || _test$questions2 === void 0 ? void 0 : _test$questions2.wrong_questions) && /*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["Typography"], {
+        variant: "subtitle1",
+        children: ["Wrong Answers:", " ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+          children: `${test === null || test === void 0 ? void 0 : (_test$questions3 = test.questions) === null || _test$questions3 === void 0 ? void 0 : (_test$questions3$wron = _test$questions3.wrong_questions) === null || _test$questions3$wron === void 0 ? void 0 : _test$questions3$wron.length}`
+        })]
+      }), /*#__PURE__*/Object(jsx_runtime_["jsxs"])(core_["Typography"], {
+        variant: "subtitle1",
+        children: ["Not Answered: ", /*#__PURE__*/Object(jsx_runtime_["jsx"])("b", {
+          children: `${test === null || test === void 0 ? void 0 : test.not_answered_questions_count}`
         })]
       })]
     }), /*#__PURE__*/Object(jsx_runtime_["jsx"])(HasPassedText, {
@@ -4383,8 +4414,9 @@ function QuizTestResult({
       }), !isLoading && isAuthorized && test && /*#__PURE__*/Object(jsx_runtime_["jsx"])(TestInfo, {
         test: test,
         quiz: quiz
-      }), !isLoading && isAuthorized && !(quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment) && test && (test === null || test === void 0 ? void 0 : test.has_passed) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Badge, {
-        testId: test === null || test === void 0 ? void 0 : test.id
+      }), !isLoading && isAuthorized && test && (test === null || test === void 0 ? void 0 : test.has_passed) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(Badge, {
+        testId: test === null || test === void 0 ? void 0 : test.id,
+        isAssessment: quiz === null || quiz === void 0 ? void 0 : quiz.is_assessment
       }), !isLoading && isAuthorized && test && (test === null || test === void 0 ? void 0 : test.questions) && (test === null || test === void 0 ? void 0 : (_test$questions = test.questions) === null || _test$questions === void 0 ? void 0 : _test$questions.correct_questions) && /*#__PURE__*/Object(jsx_runtime_["jsx"])(CorrectAnswers, {
         questions: test === null || test === void 0 ? void 0 : (_test$questions2 = test.questions) === null || _test$questions2 === void 0 ? void 0 : _test$questions2.correct_questions,
         isAnsweredCorrectly: true
