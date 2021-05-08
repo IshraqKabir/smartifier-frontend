@@ -14,7 +14,6 @@ export default async function startTest(quizId: number, token: string) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        
       }
     )
     .then((response) => {

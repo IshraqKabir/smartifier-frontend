@@ -13,9 +13,16 @@ export default function Question({}: IProps) {
     <Container>
       <QuestionContainer>
         {question?.question && (
-          <QuestionTitle variant="subtitle1">
-            {`Q. ${question?.question}`}
-          </QuestionTitle>
+          <QuestionTitleContainer>
+            {question?.answer_type == "checkboxes" && (
+              <QuestionTitle variant="caption">
+                *Multiple Answers Might Be Correct.
+              </QuestionTitle>
+            )}
+            <QuestionTitle variant="subtitle1">
+              {`Q. ${question?.question}`}
+            </QuestionTitle>
+          </QuestionTitleContainer>
         )}
         {question?.image?.image_link && (
           <Avatar
@@ -45,6 +52,13 @@ const QuestionTitle = withStyles({
     padding: "0 0.5rem",
   },
 })(Typography);
+
+const QuestionTitleContainer = withStyles({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+  },
+})(Box);
 
 const QuestionContainer = withStyles({
   root: {

@@ -1,0 +1,662 @@
+<!DOCTYPE html><html lang="en"><head><meta name="theme-color" content="#556cd6"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"/><meta charSet="utf-8"/><meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/><title>Smartifer Blog</title><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/9213374c16c8ec9906ab.css" as="style"/><link rel="stylesheet" href="/_next/static/css/9213374c16c8ec9906ab.css" data-n-g=""/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main-1a48b6fa33834ec8a2ed.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.2890804e4782b2c2976a.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.9b549cceddc4472f1953.js" as="script"/><link rel="preload" href="/_next/static/chunks/4fcf514f0f4d33a96808db008622d8b7e1ddf406.c14f9162c1d42a9e7966.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-8143e33fd1208c3197c2.js" as="script"/><link rel="preload" href="/_next/static/chunks/da5e837a7652c31fcda93270f468d2589a02dc37.609b44ac48796b780be0.js" as="script"/><link rel="preload" href="/_next/static/chunks/1949a92850a5440f140dccda5a26668b6e270f43.df0c32d02644cdd801cc.js" as="script"/><link rel="preload" href="/_next/static/chunks/b31399dbaa9e2da616feb21f1d8889d5f78c66ff.a4783d719d0ad42e8d8b.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/blog/posts-d3e9a1c6ba6e91fbc482.js" as="script"/><style id="jss-server-side">html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+strong, b {
+  font-weight: 700;
+}
+body {
+  color: rgba(0, 0, 0, 0.87);
+  margin: 0;
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  background-color: #fff;
+}
+@media print {
+  body {
+    background-color: #fff;
+  }
+}
+body::backdrop {
+  background-color: #fff;
+}
+
+.jss43 {}
+.jss58 {}
+.MuiTypography-root {
+  margin: 0;
+}
+.MuiTypography-body2 {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+}
+.MuiTypography-body1 {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+.MuiTypography-caption {
+  font-size: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+}
+.MuiTypography-button {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+}
+.MuiTypography-h1 {
+  font-size: 6rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.167;
+  letter-spacing: -0.01562em;
+}
+.MuiTypography-h2 {
+  font-size: 3.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.00833em;
+}
+.MuiTypography-h3 {
+  font-size: 3rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.167;
+  letter-spacing: 0em;
+}
+.MuiTypography-h4 {
+  font-size: 2.125rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.235;
+  letter-spacing: 0.00735em;
+}
+.MuiTypography-h5 {
+  font-size: 1.5rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.334;
+  letter-spacing: 0em;
+}
+.MuiTypography-h6 {
+  font-size: 1.25rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+}
+.MuiTypography-subtitle1 {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  letter-spacing: 0.00938em;
+}
+.MuiTypography-subtitle2 {
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.57;
+  letter-spacing: 0.00714em;
+}
+.MuiTypography-overline {
+  font-size: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 2.66;
+  letter-spacing: 0.08333em;
+  text-transform: uppercase;
+}
+.MuiTypography-srOnly {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+}
+.MuiTypography-alignLeft {
+  text-align: left;
+}
+.MuiTypography-alignCenter {
+  text-align: center;
+}
+.MuiTypography-alignRight {
+  text-align: right;
+}
+.MuiTypography-alignJustify {
+  text-align: justify;
+}
+.MuiTypography-noWrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.MuiTypography-gutterBottom {
+  margin-bottom: 0.35em;
+}
+.MuiTypography-paragraph {
+  margin-bottom: 16px;
+}
+.MuiTypography-colorInherit {
+  color: inherit;
+}
+.MuiTypography-colorPrimary {
+  color: #556cd6;
+}
+.MuiTypography-colorSecondary {
+  color: #19857b;
+}
+.MuiTypography-colorTextPrimary {
+  color: rgba(0, 0, 0, 0.87);
+}
+.MuiTypography-colorTextSecondary {
+  color: rgba(0, 0, 0, 0.54);
+}
+.MuiTypography-colorError {
+  color: #ff1744;
+}
+.MuiTypography-displayInline {
+  display: inline;
+}
+.MuiTypography-displayBlock {
+  display: block;
+}
+.MuiDivider-root {
+  border: none;
+  height: 1px;
+  margin: 0;
+  flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+.MuiDivider-absolute {
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+.MuiDivider-inset {
+  margin-left: 72px;
+}
+.MuiDivider-light {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.MuiDivider-middle {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.MuiDivider-vertical {
+  width: 1px;
+  height: 100%;
+}
+.MuiDivider-flexItem {
+  height: auto;
+  align-self: stretch;
+}
+.jss10 {
+  color: white;
+  cursor: pointer;
+  font-size: small;
+  text-transform: capitalize;
+}
+.jss10:hover {
+  font-size: 16px;
+  transition: 0.3s;
+}
+@media (max-width: 700px) {
+  .jss10 {
+    margin-right: 1rem;
+  }
+}
+  .jss9 {
+    color: white;
+    display: flex;
+    overflow: hidden;
+    font-size: small;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .jss11 {
+    cursor: pointer;
+    display: flex;
+    padding: 0.5rem 0.5rem 0.5rem 0.25rem;
+    position: relative;
+    min-width: 150px;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-between;
+  }
+  .jss12 {
+    margin: 0px 5px 0px 2px;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+  .jss13 {
+    float: left;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .jss14 {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .jss15 {
+    color: #3798A7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .jss16 {
+    top: 50px;
+    color: white;
+    right: 0;
+    width: auto;
+    display: flex;
+    z-index: 1000;
+    position: absolute;
+    flex-direction: column;
+    background-color: #003085;
+  }
+  .jss17 {
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    height: 100%;
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid white;
+  }
+  .jss17:hover {
+    border-bottom: 1px solid #3798A7;
+  }
+  .jss18 {
+    color: white;
+  }
+  .jss18:hover {
+    color: #3798A7;
+  }
+  .jss19 {
+    background-color: white;
+  }
+  .jss20 {
+    color: black;
+  }
+  .jss4 {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    display: flex;
+    z-index: 50;
+    position: fixed;
+    background: transparent linear-gradient(180deg, #003EAA 0%, #002461E0 100%) 0% 0% no-repeat padding-box;
+    align-items: center;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    justify-content: space-between;
+    border-bottom-right-radius: 15px;
+  }
+  .jss5 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    background: transparent linear-gradient(180deg, #000266 0%, #032C73 57%, #00163B 100%, #003A67 100%) 0% 0% no-repeat padding-box;
+    margin-right: 100px;
+  }
+  .jss6 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss7 {
+    top: 100px;
+    left: 0;
+    color: white;
+    right: 0;
+    padding: 0.5rem 1rem;
+    z-index: 40;
+    position: fixed;
+    background-color: rgba(0, 34, 94, 0.8);
+  }
+@media (min-width: 700px) {
+  .jss7 {
+    display: none;
+  }
+}
+  .jss8 {
+    width: 60%;
+  }
+@media (max-width: 700px) {
+  .jss8 {
+    display: none;
+  }
+}
+  .jss49 {
+    color: white;
+    cursor: pointer;
+    padding-top: 2px;
+    margin-right: 10px;
+    padding-left: 10px;
+    border-radius: 15px;
+    padding-right: 10px;
+    padding-bottom: 2px;
+    text-transform: capitalize;
+  }
+  .jss49:hover {
+    text-decoration: underline;
+  }
+  .jss50 {
+    background-color: #97A5B8;
+  }
+  .jss52 {
+    background-color: #9C95FD;
+  }
+  .jss53 {
+    background-color: #F493FF;
+  }
+  .jss54 {
+    background-color: #28E36E;
+  }
+  .jss59 {
+    background-color: #97A5B8;
+  }
+  .jss60 {
+    background-color: #9C95FD;
+  }
+  .jss61 {
+    background-color: #F493FF;
+  }
+
+  .jss48 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-block: auto;
+  }
+  .jss37 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss38 {
+    color: white;
+    width: 150px;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 3px;
+    white-space: nowrap;
+    padding-left: 3px;
+    border-radius: 10px;
+    padding-right: 3px;
+    text-overflow: ellipsis;
+    padding-bottom: 3px;
+    text-transform: capitalize;
+  }
+  .jss38:hover {
+    text-decoration: underline;
+  }
+  .jss39 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .jss40 {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+  }
+  .jss41 {
+    background-color: #97A5B8;
+  }
+  .jss57 {
+    background-color: #9C95FD;
+  }
+  .jss42 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .jss45 {
+    color: #3798A7;
+    cursor: pointer;
+    margin-top: 10px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  .jss45:hover {
+    text-decoration: underline;
+  }
+  .jss47 {
+    color: #686868;
+    cursor: pointer;
+    line-height: 1.5;
+    padding-right: 10%;
+    text-transform: capitalize;
+  }
+  .jss46 {
+    color: #C5C5C5;
+    margin-top: 10px;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .jss55 {
+    color: #C5C5C5;
+    margin-top: 10px;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .jss56 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .jss36 {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+  .jss31 {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .jss32 {
+    width: 100%;
+    cursor: pointer;
+    max-width: 414px;
+    background: #0380A7D4 0% 0% no-repeat padding-box;
+    text-align: center;
+    margin-left: auto;
+    padding-top: 5px;
+    border-radius: 40px;
+    padding-bottom: 5px;
+  }
+@media (max-width: 750px) {
+  .jss32 {
+    max-width: 100%;
+  }
+}
+  .jss33 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+    z-index: 200;
+    position: fixed;
+    background-color: black;
+  }
+  .jss35 {
+    color: #CFCFCF;
+    text-transform: capitalize;
+  }
+  .jss35:hover {
+    color: white;
+  }
+  .jss66 {
+    margin-bottom: 5px;
+  }
+  .jss67 {
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  .jss67:hover {
+    text-decoration: underline;
+  }
+  .jss68 {
+    margin: 0;
+  }
+  .jss63 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss64 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .jss65 {
+    margin-bottom: 10px;
+  }
+  .jss62 {
+    color: #97A5B8;
+    height: 100%;
+    padding: 30px 20px;
+    min-width: 414px;
+    margin-left: 8%;
+    background-color: #F3F5F8;
+  }
+@media (max-width: 750px) {
+  .jss62 {
+    display: none;
+  }
+}
+  .jss27 {
+    cursor: pointer;
+    display: flex;
+    font-color: blue;
+    align-items: center;
+    padding-top: 15px;
+    margin-right: 10%;
+    padding-bottom: 15px;
+    text-transform: capitalize;
+  }
+  .jss27:hover {
+    text-decoration: underline;
+  }
+  .jss28 {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    border-radius: 50%;
+  }
+  .jss29 {
+    background-color: #97A5B8;
+  }
+  .jss30 {
+    color: #96A4B7;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .jss26 {
+    width: 100%;
+    display: flex;
+    z-index: 100;
+    border-top: 1px solid #96A4B7;
+    align-items: center;
+    padding-left: 5px;
+    border-bottom: 1px solid #96A4B7;
+    padding-right: 5px;
+  }
+@media (max-width: 700px) {
+  .jss26 {
+    overflow-x: scroll;
+  }
+}
+  .jss21 {
+    position: relative;
+    background-color: inherit;
+  }
+  .jss22 {
+    width: 100vw;
+    height: 300px;
+    z-index: -1;
+    clip-path: polygon(0% 0%, 0% 100%, 15.22% 69.33%, 32.07% 92.67%, 50.33% 70.00%, 60.89% 93%, 74.63% 77.67%, 87.26% 97.33%, 100% 100%, 100% 0%);
+    background: transparent linear-gradient(180deg, #028D9ADE 0%, #8F749CE6 100%) 0% 0% no-repeat padding-box;
+  }
+  .jss23 {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    position: absolute;
+    padding-top: 50px;
+  }
+  .jss24 {
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    text-transform: capitalize;
+  }
+  .jss25 {
+    top: 250px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .jss1 {
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: white;
+  }
+  .jss2 {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    padding-top: 40px;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .jss3 {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }</style></head><body><div id="__next"><div class="jss1"><div></div><div class="jss6"><div class="jss5"></div><div class="jss6"><div class="jss4"><div><div style="display:inline-block;max-width:100%;overflow:hidden;position:relative;box-sizing:border-box;margin:0"><div style="box-sizing:border-box;display:block;max-width:100%"><img style="max-width:100%;display:block" alt="" aria-hidden="true" role="presentation" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM1IiBoZWlnaHQ9IjQ1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIvPg=="/></div><img alt="Smartifier Logo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" style="visibility:hidden;position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"/></div></div><div class="jss8"><div class="jss9"><div class="jss10"><a style="text-decoration:none;color:white" href="/">Home</a></div><div class="jss10"><a style="text-decoration:none;color:white" href="/quizzes">Quizzes</a></div><div class="jss10"><a style="text-decoration:none;color:white" href="/blog/posts">Blog</a></div> </div></div><div class="jss11 jss19"><div class="jss13"><svg width="20" height="20" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"></path><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"></path><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"></path><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"></path></svg></div><p class="jss12 jss20">Loading...</p><p class="jss12 jss20"></p><p class="jss12 jss20"></p></div></div><div class="jss7"><div class="jss9"><div class="jss10"><a style="text-decoration:none;color:white" href="/">Home</a></div><div class="jss10"><a style="text-decoration:none;color:white" href="/quizzes">Quizzes</a></div><div class="jss10"><a style="text-decoration:none;color:white" href="/blog/posts">Blog</a></div> </div></div></div></div><div class="jss21"><div class="jss22"></div><div class="jss23"><div class="jss24"><h1 class="MuiTypography-root MuiTypography-h4">Smartifier Blog</h1></div></div></div><div class="jss2"><div class="jss26"><div class="jss27"><div class="jss28 jss29"></div><a style="text-decoration:none" href="/blog/topics/career-lessons-from-top-tv-series/posts"><h6 class="MuiTypography-root jss30 MuiTypography-subtitle1">Career Lessons From Top TV Series!</h6></a></div></div><div class="jss31"><div class="jss32"><p class="MuiTypography-root jss35 MuiTypography-body1">Search</p></div></div><div class="jss3"><div class="jss36"><div class="MuiBox-root jss43 jss42" classes="[object Object]"><a style="text-decoration:none" href="/blog/topics/career-lessons-from-top-tv-series/posts"><div class="jss38 jss41"><h6 class="MuiTypography-root jss44 MuiTypography-subtitle2">Career Lessons From Top TV Series!</h6></div></a><div><div class="jss39"><a style="text-decoration:none" href="/blog/posts/learn-how-to-earn-the-crown"><h5 class="MuiTypography-root jss45 MuiTypography-h5">Learn how to earn the crown!</h5></a><h6 class="MuiTypography-root jss46 MuiTypography-subtitle2">by <!-- -->Example User</h6></div><div><p class="MuiTypography-root jss47 MuiTypography-body1">Let’s take a look at some of the life lessons we can adopt while binging on the new season of this amazing series.[...][...]</p></div></div><div class="jss40"><div class="jss48"><div class="jss49 jss50"><a style="text-decoration:none;color:white" href="/blog/tags/life-lessons/posts"><span class="MuiTypography-root jss51 MuiTypography-caption">life lessons</span></a></div><div class="jss49 jss52"><a style="text-decoration:none;color:white" href="/blog/tags/series/posts"><span class="MuiTypography-root jss51 MuiTypography-caption">series</span></a></div><div class="jss49 jss53"><a style="text-decoration:none;color:white" href="/blog/tags/the-crown/posts"><span class="MuiTypography-root jss51 MuiTypography-caption">The crown</span></a></div><div class="jss49 jss54"><a style="text-decoration:none;color:white" href="/blog/tags/career-tips/posts"><span class="MuiTypography-root jss51 MuiTypography-caption">career tips</span></a></div></div><h6 class="MuiTypography-root jss55 MuiTypography-subtitle2">3 mins read</h6></div><hr class="MuiDivider-root jss56"/></div><div class="MuiBox-root jss58 jss42" classes="[object Object]"><a style="text-decoration:none" href="/blog/topics/career-lessons-from-top-tv-series/posts"><div class="jss38 jss57"><h6 class="MuiTypography-root jss44 MuiTypography-subtitle2">Career Lessons From Top TV Series!</h6></div></a><div><div class="jss39"><a style="text-decoration:none" href="/blog/posts/career-tips-from-friends"><h5 class="MuiTypography-root jss45 MuiTypography-h5">Career tips from F.r.i.e.n.d.s!</h5></a><h6 class="MuiTypography-root jss46 MuiTypography-subtitle2">by <!-- -->Example User</h6></div><div><p class="MuiTypography-root jss47 MuiTypography-body1">Let&#x27;s see what Friend&#x27;s for us![...][...]</p></div></div><div class="jss40"><div class="jss48"><div class="jss49 jss59"><a style="text-decoration:none;color:white" href="/blog/tags/career/posts"><span class="MuiTypography-root jss51 MuiTypography-caption">career</span></a></div><div class="jss49 jss60"><a style="text-decoration:none;color:white" href="/blog/tags/friends/posts"><span class="MuiTypography-root jss51 MuiTypography-caption">friends</span></a></div><div class="jss49 jss61"><a style="text-decoration:none;color:white" href="/blog/tags/career-tips/posts"><span class="MuiTypography-root jss51 MuiTypography-caption">career tips</span></a></div></div><h6 class="MuiTypography-root jss55 MuiTypography-subtitle2">4 mins read</h6></div><hr class="MuiDivider-root jss56"/></div></div><div class="jss62"><div class="jss63"><div><div class="jss64">Top Articles</div><hr class="MuiDivider-root jss65 MuiDivider-light"/></div><div class="jss66"><a style="text-decoration:none;color:inherit" href="/blog/posts/learn-how-to-earn-the-crown"><p class="MuiTypography-root jss67 MuiTypography-body1">Learn how to earn the crown!</p></a><hr class="MuiDivider-root jss68 MuiDivider-light"/></div><div class="jss66"><a style="text-decoration:none;color:inherit" href="/blog/posts/career-tips-from-friends"><p class="MuiTypography-root jss67 MuiTypography-body1">Career tips from F.r.i.e.n.d.s!</p></a><hr class="MuiDivider-root jss68 MuiDivider-light"/></div></div></div></div></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"posts":[{"id":"46063131-a7f9-438f-95d0-17ef4fc1393e","slug":"learn-how-to-earn-the-crown","title":"Learn how to earn the crown!","summary":"Let’s take a look at some of the life lessons we can adopt while binging on the new season of this amazing series.","body":"\u003cblockquote\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eA fairytale wedding, eating disorder, civil unrest, unemployment - so many factors and one show - The Crown.\u0026nbsp;\u003c/span\u003e\u003c/blockquote\u003e\u003cblockquote\u003e\u003cbr\u003e\u003c/blockquote\u003e\u003ch3\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eThe Crown just came out with its 4th season a few weeks ago and the audience loves it. Starting from the tragic relationship between Charles, Diana, and Camilla, the rule of Thatcher as the first female prime minister, the failure of the queen as a mother – this season has it all! Let’s take a look at some of the life lessons we can adopt while binging on the new season of this amazing series.\u0026nbsp;\u003c/span\u003e\u003c/h3\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e1️⃣ 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐢𝐬 𝐭𝐡𝐞 𝐤𝐞𝐲 𝐭𝐨 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐚𝐧𝐝 𝐜𝐚𝐫𝐞𝐞𝐫 𝐬𝐮𝐜𝐜𝐞𝐬𝐬:\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eSeason 4 of The Crown focuses more on the relationship between Charles and Diana. From their very first meeting, it could be seen that Diana and Charles were not compatible with each other. In addition to this, they never seemed to communicate properly. In fact, Diana met Charles only a couple of times before they officially got married. Even after their wedding, they failed to communicate their issues with each other which ultimately led to their separation.\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eSimilarly, communication is very crucial in our workplace. Lack of communication in work may lead to misunderstandings which can cause problems to both individual employees and the organization.\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e2️⃣ 𝐈𝐧𝐬𝐞𝐜𝐮𝐫𝐢𝐭𝐢𝐞𝐬 𝐜𝐚𝐧 𝐤𝐢𝐥𝐥 𝐚 𝐫𝐞𝐥𝐚𝐭𝐢𝐨𝐧𝐬𝐡𝐢𝐩:\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eCharles had a very terrible childhood. However, it cannot excuse his poor behavior. One of the main reasons behind the separation between Charles and Diana was his insecurity against his wife. Diana was young, beautiful, relatable, and friendly. This caused the public to fall in love with her which was greatly displayed in the Australian tour. This made Charles more angry and insecure regarding his position as a future King (“One day, dear boy, you shall be king” - And shall the longest internship begin!)\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eIn our workplace, many times our colleagues will go ahead in the race. However, we should never get insecure about their achievement. Rather, learn from them and move forward with your handwork and talent.\u0026nbsp;\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e3️⃣ 𝐀 𝐤𝐢𝐧𝐝 𝐠𝐞𝐬𝐭𝐮𝐫𝐞 𝐜𝐚𝐧 𝐠𝐨 𝐚 𝐥𝐨𝐧𝐠 𝐰𝐚𝐲:\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eOne of the best scenes from this season was when Diana hugged the child with AIDS. The moment Diana hugged the child just like that, without gloves, without any doubt or hesitation, changed everything for the sick people. By this simple yet so bold and important gesture, Diana ended the taboo and stigma among people against AIDS patients.\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eThis shows how much even a small gesture of help can change the life of a person for the better. So, the next time your colleague asks for your help in a presentation or your classmate asks for guidance in a competition, be there for them!\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e4️⃣ 𝐃𝐞𝐚𝐥 𝐰𝐢𝐭𝐡 𝐩𝐫𝐨𝐛𝐥𝐞𝐦𝐬 𝐢𝐧𝐬𝐭𝐞𝐚𝐝 𝐨𝐟 𝐢𝐠𝐧𝐨𝐫𝐢𝐧𝐠 𝐭𝐡𝐞𝐦:\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eDiana was a young, innocent girl who married into a family she thought would make her happy. Instead, it was like a nightmare she couldn’t get away from. The royals neglected her, ignored her, and made her feel alone and unsupported. The biggest tragedy for Diana was the infidelity of her own husband. The pressure and the grief led Diana to depression and she suffered from bulimia. However, Diana or any other royal members never took any step to face this problem. Rather, everyone conveniently ignored it which ultimately worsened her condition.\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eIn life, we cannot go very far ignoring problems because they are inevitable. So, the sooner you start seeing problems as opportunities to grow, the sooner you will learn to solve problems better.\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eAdmit it, most of us are obsessed with the royal family. We believe they have it all. However, this season of The Crown beautifully sheds the perfect image of this family. It highlights how even the most powerful people in the world can share the same sorrows and difficulties as ordinary human beings. So, the biggest lesson from this season would be to not judge others before walking in their shoes. Rather, work on yourself to be a better spouse, parent, child, and leader! \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e","published_at":"2021-04-10T15:34:00.000000Z","featured_image":"/storage/canvas/images/3K9l9yiZWP4uWXocLD6eTRcJyNQxVc189n7G1mBt.jpg","featured_image_caption":null,"user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","meta":{"title":null,"description":null,"canonical_link":null},"created_at":"2021-04-14T15:34:54.000000Z","updated_at":"2021-05-04T20:11:16.000000Z","deleted_at":null,"read_time":"3 mins read","user":{"id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","name":"Example User","email":"email@example.com","username":"example","summary":null,"avatar":null,"dark_mode":false,"digest":null,"locale":"en","role":3,"created_at":"2021-04-09T11:18:00.000000Z","updated_at":"2021-04-09T11:19:28.000000Z","deleted_at":null,"default_avatar":"https://secure.gravatar.com/avatar/5658ffccee7f0ebfda2b226238b1eb6e?s=200\u0026d=retro\u0026r=g","default_locale":"en"},"topic":[{"id":"404fe1b6-d764-4ed2-8e0b-d75c39d41bb6","slug":"career-lessons-from-top-tv-series","name":"Career Lessons From Top TV Series!","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T14:22:52.000000Z","updated_at":"2021-04-14T15:51:34.000000Z","deleted_at":null,"pivot":{"post_id":"46063131-a7f9-438f-95d0-17ef4fc1393e","topic_id":"404fe1b6-d764-4ed2-8e0b-d75c39d41bb6"}}],"tags":[{"id":"1c0f688d-c512-4a80-9ebb-3eed5cab2de9","slug":"life-lessons","name":"life lessons","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T15:38:24.000000Z","updated_at":"2021-04-14T15:38:24.000000Z","deleted_at":null,"pivot":{"post_id":"46063131-a7f9-438f-95d0-17ef4fc1393e","tag_id":"1c0f688d-c512-4a80-9ebb-3eed5cab2de9"}},{"id":"9d134b09-587c-43a0-a2fe-740c187c1500","slug":"series","name":"series","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T15:38:01.000000Z","updated_at":"2021-04-14T15:38:01.000000Z","deleted_at":null,"pivot":{"post_id":"46063131-a7f9-438f-95d0-17ef4fc1393e","tag_id":"9d134b09-587c-43a0-a2fe-740c187c1500"}},{"id":"bfdd8bf8-4aaf-4749-8930-0314034ad1c5","slug":"the-crown","name":"The crown","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T15:38:08.000000Z","updated_at":"2021-04-14T15:38:08.000000Z","deleted_at":null,"pivot":{"post_id":"46063131-a7f9-438f-95d0-17ef4fc1393e","tag_id":"bfdd8bf8-4aaf-4749-8930-0314034ad1c5"}},{"id":"ee05c8ef-8ecf-45b9-b3a1-faeee82af069","slug":"career-tips","name":"career tips","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T14:23:15.000000Z","updated_at":"2021-04-14T14:23:15.000000Z","deleted_at":null,"pivot":{"post_id":"46063131-a7f9-438f-95d0-17ef4fc1393e","tag_id":"ee05c8ef-8ecf-45b9-b3a1-faeee82af069"}}]},{"id":"7e301530-3c8a-40b4-ab03-73f35d12325d","slug":"career-tips-from-friends","title":"Career tips from F.r.i.e.n.d.s!","summary":"Let's see what Friend's for us!","body":"\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e6 friends, 1 coffee shop, and an epic story!\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eYes, I am talking about the legendary sitcom called 𝐅𝐫𝐢𝐞𝐧𝐝𝐬. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eFor so many years, FRIENDS (TV Show) has been an integral part of our lives. Phrases like \"How you doing?\", \"She is your lobster\" and \"We were on a break\" are now part of our every conversation. But, aside from memories, this series also gave us career lessons which we can adopt in our life to become even more successful. So, let’s take a look at the lessons we can take from each character of this fan-favorite series. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e➡ 𝐉𝐨𝐞𝐲: 𝐈𝐟 𝐲𝐨𝐮 𝐡𝐚𝐯𝐞 𝐚 𝐩𝐚𝐬𝐬𝐢𝐨𝐧, 𝐬𝐭𝐢𝐜𝐤 𝐭𝐨 𝐢𝐭 𝐰𝐢𝐭𝐡 𝐩𝐚𝐭𝐢𝐞𝐧𝐜𝐞\u003c/span\u003e\u003c/p\u003e\u003cdiv class=\"embedded_image\" data-layout=\"default\" contenteditable=\"false\"\u003e\u003cimg alt=\"\" src=\"/storage/canvas/images/BnVgUbvU2gp88U9cVffEYx41FiIIouiuoz8XNbJd.jpg\"\u003e\u003c/div\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eJoey always dreamt to be an actor. However, the journey was not easy for him at all. He had faced constant rejections. He played every single odd role he got (Remember the Al Pacino incident?). It took him a long time and perseverance and the encouraging words of some amazing friends to get his defining role of Dr. Drake Ramoray. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eIn the same way, getting your first job or following your passion is never easy. You will face a lot of difficulties, challenges, and hurdles every single minute. You will have to wait for a long time to get that right job. But, like Joey, you also have to be patient in this period and keep learning, or as we say at Smartifier “Growth Mindset, my friends!”\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e➡ 𝐑𝐨𝐬𝐬: 𝐊𝐞𝐞𝐩 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐚𝐧𝐝 𝐩𝐫𝐨𝐟𝐞𝐬𝐬𝐢𝐨𝐧𝐚𝐥 𝐥𝐢𝐟𝐞 𝐬𝐞𝐩𝐚𝐫𝐚𝐭𝐞\u003c/span\u003e\u003c/p\u003e\u003cdiv class=\"embedded_image\" data-layout=\"default\" contenteditable=\"false\"\u003e\u003cimg alt=\"\" src=\"/storage/canvas/images/rVIe5M3AlECwkW76zL9SgUHaTsGGtFy77SdTjQxq.webp\"\u003e\u003c/div\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eRoss was a really good paleontologist. But, his work ethic was not very admirable. He gave boring lectures, was always late for his class, and got tricked by his students to give them extra marks. However, the main issue about Ross was his lack of professionalism. Starting from having an affair with Charlie, to shouting at his colleague for a mere sandwich to finally going out with his student Elizabeth, he has done it all!\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eIn our work, it is not only enough to do the assigned tasks. Rather, stay in your boundaries and keep your personal and professional life separate. Otherwise, you might not get as lucky as Ross and may get fired. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e➡ 𝐑𝐚𝐜𝐡𝐞𝐥: 𝐏𝐥𝐚𝐲 𝐭𝐨 𝐲𝐨𝐮𝐫 𝐬𝐭𝐫𝐞𝐧𝐠𝐭𝐡\u003c/span\u003e\u003c/p\u003e\u003cdiv class=\"embedded_image\" data-layout=\"default\" contenteditable=\"false\"\u003e\u003cimg alt=\"\" src=\"/storage/canvas/images/WbbnViQjWdFBwXmo4UQ5CSuBSvRCe7UJAqYAvGVn.jpg\"\u003e\u003c/div\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eRachel loved fashion. Unfortunately, due to a lack of experience, she initially had to start as a waitress at a coffee shop. She didn’t enjoy making coffee or serving people which showed in her lack of ever getting a simple order correctly. However, the minute she got a job at a fashion house, she excelled in her role, proved herself and later even scored a job at Ralph Lauren. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eThis teaches us to always play to our strengths. Find your Ikigai and build yourself on it. As Benny mentioned in the current hit series, 𝑻𝒉𝒆 𝑸𝒖𝒆𝒆𝒏'𝒔 𝑮𝒂𝒎𝒃𝒊𝒕, “You should always play your line, never his. You play what's best for you.”\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e➡ 𝐂𝐡𝐚𝐧𝐝𝐥𝐞𝐫: 𝐈𝐭’𝐬 𝐧𝐞𝐯𝐞𝐫 𝐭𝐨𝐨 𝐥𝐚𝐭𝐞 𝐭𝐨 𝐟𝐨𝐥𝐥𝐨𝐰 𝐲𝐨𝐮𝐫 𝐩𝐚𝐬𝐬𝐢𝐨𝐧\u003c/span\u003e\u003c/p\u003e\u003cdiv class=\"embedded_image\" data-layout=\"default\" contenteditable=\"false\"\u003e\u003cimg alt=\"\" src=\"/storage/canvas/images/PXlqWAWpw7aQ4KQsxZU9lVFmX2RjTcfKPwTbPJjz.jpg\"\u003e\u003c/div\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eChandler had a high-paying job (which I still cannot name). But, he was not content with his career choice. Though he was scared initially, he finally got the courage at the end to quit and start doing something he truly loved.\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eThis teaches us, it’s never too late to start working on our passion. The hardest part is to show that little courage for starting the job. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e➡ 𝐌𝐨𝐧𝐢𝐜𝐚: 𝐇𝐚𝐯𝐞 𝐚 𝐰𝐢𝐧𝐧𝐢𝐧𝐠 𝐬𝐩𝐢𝐫𝐢𝐭\u003c/span\u003e\u003c/p\u003e\u003cdiv class=\"embedded_image\" data-layout=\"default\" contenteditable=\"false\"\u003e\u003cimg alt=\"\" src=\"/storage/canvas/images/vT8FH9ekYe3K34z3yWKwhd6h8gLmKBW0kba72Kpf.jpg\"\u003e\u003c/div\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eMonica was a very competitive person. She wanted to win every single game she participated in. While sometimes, she did get carried away doing this; her winning attitude is something everyone should adopt in their life. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eLet’s get it straight. Life has become a race and you need to survive. And to survive, you need to compete and believe you can win. So, next time you are participating in a business competition or giving an interview for a job, take the competitive spirit of Monica along with you and win it!\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e➡ 𝐏𝐡𝐨𝐞𝐛𝐞: 𝐃𝐨𝐧'𝐭 𝐥𝐞𝐭 𝐲𝐨𝐮𝐫 𝐩𝐚𝐬𝐭 𝐝𝐞𝐟𝐢𝐧𝐞 𝐲𝐨𝐮𝐫 𝐟𝐮𝐭𝐮𝐫𝐞\u003c/span\u003e\u003c/p\u003e\u003cdiv class=\"embedded_image\" data-layout=\"default\" contenteditable=\"false\"\u003e\u003cimg alt=\"\" src=\"/storage/canvas/images/F9z6BQjCUARXRkagwJdEjtBLeyRV8A0zvwLCAkT6.jpg\"\u003e\u003c/div\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003ePhoebe had a really terrible childhood. Her dad was never around. Her mother killed herself. She was homeless and living on her own in the streets of New York at the age of 14 ( You were probably watching Pokémon at that age). However, she didn't allow her past to define her. She did every odd job she was offered and ultimately became an amazing masseuse and a part-time singer ( Ahh Smelly Cats!). What really matters is that she didn't give up and got through that horrible period of her life. \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eThere will also be many times in your life when you fail. Perhaps, you lost a huge competition or you couldn't get your dream job even after months of preparation. However, one failure cannot define your entire life's hard work. So, instead of whining, get up and start your next battle. Always remember, if Phoebe could do it, so could you!\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e\u0026nbsp;\u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003e10 years, 236 episodes, 5192 minutes – a lifetime of memories! \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cspan style=\"background-color: transparent; color: rgb(0, 0, 0);\"\u003eSo, let’s end this article with the hope that you guys will achieve your dream career and we all will finally get a reunion of these 6 amazing characters in 2021! \u003c/span\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e","published_at":"2021-03-31T13:44:00.000000Z","featured_image":"/storage/canvas/images/NkhMaRC2JqFJMPWkfGloLypaEYeEJ3zIoZjvxa4Y.jpg","featured_image_caption":null,"user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","meta":{"title":null,"description":null,"canonical_link":null},"created_at":"2021-04-14T13:44:41.000000Z","updated_at":"2021-04-30T06:00:26.000000Z","deleted_at":null,"read_time":"4 mins read","user":{"id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","name":"Example User","email":"email@example.com","username":"example","summary":null,"avatar":null,"dark_mode":false,"digest":null,"locale":"en","role":3,"created_at":"2021-04-09T11:18:00.000000Z","updated_at":"2021-04-09T11:19:28.000000Z","deleted_at":null,"default_avatar":"https://secure.gravatar.com/avatar/5658ffccee7f0ebfda2b226238b1eb6e?s=200\u0026d=retro\u0026r=g","default_locale":"en"},"topic":[{"id":"404fe1b6-d764-4ed2-8e0b-d75c39d41bb6","slug":"career-lessons-from-top-tv-series","name":"Career Lessons From Top TV Series!","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T14:22:52.000000Z","updated_at":"2021-04-14T15:51:34.000000Z","deleted_at":null,"pivot":{"post_id":"7e301530-3c8a-40b4-ab03-73f35d12325d","topic_id":"404fe1b6-d764-4ed2-8e0b-d75c39d41bb6"}}],"tags":[{"id":"3a00b357-0515-4c66-86b4-6616a16c086e","slug":"career","name":"career","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T14:23:03.000000Z","updated_at":"2021-04-14T14:23:03.000000Z","deleted_at":null,"pivot":{"post_id":"7e301530-3c8a-40b4-ab03-73f35d12325d","tag_id":"3a00b357-0515-4c66-86b4-6616a16c086e"}},{"id":"60baa8a4-bebf-4bbd-9206-a549af5eb1d9","slug":"friends","name":"friends","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T14:22:58.000000Z","updated_at":"2021-04-14T14:22:58.000000Z","deleted_at":null,"pivot":{"post_id":"7e301530-3c8a-40b4-ab03-73f35d12325d","tag_id":"60baa8a4-bebf-4bbd-9206-a549af5eb1d9"}},{"id":"ee05c8ef-8ecf-45b9-b3a1-faeee82af069","slug":"career-tips","name":"career tips","user_id":"2f09abd7-25fb-41c7-a2a8-53fc237c47e4","created_at":"2021-04-14T14:23:15.000000Z","updated_at":"2021-04-14T14:23:15.000000Z","deleted_at":null,"pivot":{"post_id":"7e301530-3c8a-40b4-ab03-73f35d12325d","tag_id":"ee05c8ef-8ecf-45b9-b3a1-faeee82af069"}}]}],"topics":[{"id":"404fe1b6-d764-4ed2-8e0b-d75c39d41bb6","name":"Career Lessons From Top TV Series!","slug":"career-lessons-from-top-tv-series","posts":2}],"topPosts":[{"id":"46063131-a7f9-438f-95d0-17ef4fc1393e","title":"Learn how to earn the crown!","slug":"learn-how-to-earn-the-crown","published_at":"2021-04-10T15:34:00.000000Z","views_count":112,"read_time":"0 mins read","user":null},{"id":"7e301530-3c8a-40b4-ab03-73f35d12325d","title":"Career tips from F.r.i.e.n.d.s!","slug":"career-tips-from-friends","published_at":"2021-03-31T13:44:00.000000Z","views_count":79,"read_time":"0 mins read","user":null}]},"__N_SSG":true},"page":"/blog/posts","query":{},"buildId":"Vqtd5yQOyAo87_xGEXXYx","nextExport":false,"isFallback":false,"gsp":true}</script><script nomodule="" src="/_next/static/chunks/polyfills-c27aa7029cfe20c706fa.js"></script><script src="/_next/static/chunks/main-1a48b6fa33834ec8a2ed.js" async=""></script><script src="/_next/static/chunks/webpack-95c2b224bccf352ee870.js" async=""></script><script src="/_next/static/chunks/framework.2890804e4782b2c2976a.js" async=""></script><script src="/_next/static/chunks/commons.9b549cceddc4472f1953.js" async=""></script><script src="/_next/static/chunks/4fcf514f0f4d33a96808db008622d8b7e1ddf406.c14f9162c1d42a9e7966.js" async=""></script><script src="/_next/static/chunks/pages/_app-8143e33fd1208c3197c2.js" async=""></script><script src="/_next/static/chunks/da5e837a7652c31fcda93270f468d2589a02dc37.609b44ac48796b780be0.js" async=""></script><script src="/_next/static/chunks/1949a92850a5440f140dccda5a26668b6e270f43.df0c32d02644cdd801cc.js" async=""></script><script src="/_next/static/chunks/b31399dbaa9e2da616feb21f1d8889d5f78c66ff.a4783d719d0ad42e8d8b.js" async=""></script><script src="/_next/static/chunks/pages/blog/posts-d3e9a1c6ba6e91fbc482.js" async=""></script><script src="/_next/static/Vqtd5yQOyAo87_xGEXXYx/_buildManifest.js" async=""></script><script src="/_next/static/Vqtd5yQOyAo87_xGEXXYx/_ssgManifest.js" async=""></script></body></html>

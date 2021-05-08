@@ -1,5 +1,4 @@
 import IQuestion from "./IQuestion";
-import IQuiz from "./IQuiz";
 
 export default interface ITest {
   id: number;
