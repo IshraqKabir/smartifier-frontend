@@ -7,15 +7,15 @@ const api = async (req, res) => {
     const { body } = req;
     const { id_token } = body;
 
-    const userData = await backendGoogleSignin(id_token);
+    const { success, response: user, error } = await backendGoogleSignin(id_token);
 
-    if (userData?.success == false) {
-        return res.status(200).json({ success: false, message: userData })
+    if (success == false) {
+        return res.status(200).json({ success: false, message: error })
     }
 
     res.setHeader(
         "Set-Cookie",
-        cookie.serialize("token", userData?.response?.token?.token, {
+        cookie.serialize("token", user?.token, {
             httpOnly: true,
             secure: process.env.NODE_ENV !== "development",
             sameSite: "strict",
@@ -24,11 +24,10 @@ const api = async (req, res) => {
     );
 
     // delete userData["token"];
-    userData["token"] = userData["token"]["token"]
 
     return res.status(200).json({
         success: true,
-        response: userData
+        response: user
     });
 }
 

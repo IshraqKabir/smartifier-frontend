@@ -160,11 +160,9 @@ export default function useAuthModal(
 
       setIsLoading(true);
 
-      let response = await verifyEmail(email, password, values.code);
+      const { response } = await verifyEmail(email, password, values.code);
 
       setIsLoading(false);
-
-      response = response.response;
 
       if (!response?.verified) {
         if (response?.status == "invalid_code") {
@@ -204,23 +202,23 @@ export default function useAuthModal(
 
       setIsLoading(true);
 
-      const response = await sendPasswordResetmail(values.email);
+      const { success, response } = await sendPasswordResetmail(values.email);
 
       setIsLoading(false);
 
-      if (!response?.success) {
+      if (!success) {
         alert("Some went wrong. Please try again.");
         return;
       }
 
-      if (response?.response == "user_not_found") {
+      if (response == "user_not_found") {
         setForgotPasswordTabError(
           "Email not found. Please make sure you have already registered your email with us."
         );
         return;
       }
 
-      if (response?.response == "sent") {
+      if (response == "sent") {
         goToResetPasswordTab(values.email);
         return;
       }
@@ -239,7 +237,7 @@ export default function useAuthModal(
 
       setIsLoading(true);
 
-      const response = await resetPassword(
+      const { response, success } = await resetPassword(
         email,
         values.code,
         values.password,
@@ -248,24 +246,24 @@ export default function useAuthModal(
 
       setIsLoading(false);
 
-      if (!response?.success) {
+      if (!success) {
         alert("Some went wrong. Please try again.");
         return;
       }
 
-      if (response?.response == "user_not_found") {
+      if (response == "user_not_found") {
         setResetPasswordTabError(
           "Email not found. Please make sure you have already registered your email with us."
         );
         return;
       }
 
-      if (response?.response == "invalid_code") {
+      if (response == "invalid_code") {
         setResetPasswordTabError("Invalid Verification Code.");
         return;
       }
 
-      if (response?.response == "time_over") {
+      if (response == "time_over") {
         setResetPasswordTabError(
           "Your verification code has expired. We have sent another verficiation code to your email."
         );
@@ -273,15 +271,15 @@ export default function useAuthModal(
       }
 
       if (
-        response?.response == "something_went_wrong" ||
-        response?.response == "code_not_set"
+        response == "something_went_wrong" ||
+        response == "code_not_set"
       ) {
         alert(ERROR_ALERT);
         setCurrentTab("signin");
         return;
       }
 
-      if (response?.response == "password_changed") {
+      if (response == "password_changed") {
         alert("Success!");
         setCurrentTab("signin");
         return;

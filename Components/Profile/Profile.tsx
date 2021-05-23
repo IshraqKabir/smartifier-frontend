@@ -13,7 +13,7 @@ const Profile: React.FC<IProps> = () => {
       <InnerContainer>
         <UserInfo />
       </InnerContainer>
-      <QuizResults />
+      {/* <QuizResults /> */}
     </Container>
   );
 };
@@ -24,6 +24,7 @@ const Container = withStyles({
   root: {
     width: "100%",
     // height: 3000,
+    minHeight: "100vh",
     background:
       "transparent linear-gradient(180deg, #5D00A5 0%, #002461 100%) 0% 0% no-repeat padding-box",
     position: "relative",

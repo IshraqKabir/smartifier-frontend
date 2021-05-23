@@ -9,7 +9,7 @@ const UserProfile: React.FC<{}> = () => {
   return (
     <>
       <Topbar />
-      {user ? (
+      {!user ? (
         <Typography variant="h4">You have to login to continue</Typography>
       ) : (
         <Profile />

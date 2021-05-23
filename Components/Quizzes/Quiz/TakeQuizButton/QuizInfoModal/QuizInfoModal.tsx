@@ -50,7 +50,7 @@ export default function QuizInfoModal({
         <AppBar className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
-              {quizTitle.toLocaleLowerCase()}
+              {quizTitle?.toLocaleLowerCase()}
             </Typography>
             <IconButton color="inherit" onClick={closeModal} aria-label="close">
               <CloseIcon />
